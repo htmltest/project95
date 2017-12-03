@@ -33,6 +33,47 @@ $(document).ready(function() {
         dots: false
     });
 
+    $('.task-steps-days-list').slick({
+        dots: false,
+        infinite: false,
+        variableWidth: true,
+        prevArrow: '<button type="button" class="slick-prev"></button>',
+        nextArrow: '<button type="button" class="slick-next"></button>'
+    });
+
+    $('.task-menu a').click(function(e) {
+        var curItem = $(this).parent();
+        if (!curItem.hasClass('active')) {
+            $('.task-menu li.active').removeClass('active');
+            curItem.addClass('active');
+            var curIndex = $('.task-menu li').index(curItem);
+            $('.task-tab.active').removeClass('active');
+            $('.task-tab').eq(curIndex).addClass('active');
+        }
+        e.preventDefault();
+    });
+
+});
+
+$(window).on('load resize', function() {
+    if ($('.header-submenu-2').length > 0) {
+        if ($('.header-submenu-2-inner').hasClass('slick-slider')) {
+            $('.header-submenu-2-inner').slick('unslick');
+        }
+        var curWidth = 0;
+        $('.header-submenu-2-item').each(function() {
+            curWidth += $(this).width();
+        });
+        if (curWidth > $('.header-submenu-2-wrap').width()) {
+            $('.header-submenu-2-inner').slick({
+                dots: false,
+                infinite: false,
+                variableWidth: true,
+                prevArrow: '<button type="button" class="slick-prev"></button>',
+                nextArrow: '<button type="button" class="slick-next"></button>'
+            });
+        }
+    }
 });
 
 $(window).on('resize', function() {
@@ -73,7 +114,50 @@ function initForm(curForm) {
         }
     });
 
+
+    curForm.find('.form-file input').change(function() {
+        var curInput = $(this);
+        var curField = curInput.parent().parent().parent().parent();
+        curField.find('.form-file-name').html(curInput.val().replace(/.*(\/|\\)/, ''));
+        curField.find('label.error').remove();
+        curField.removeClass('error');
+    });
+
     curForm.validate({
-        ignore: ''
+        ignore: '',
+        invalidHandler: function(form, validatorcalc) {
+            validatorcalc.showErrors();
+            checkErrors();
+        }
+    });
+}
+
+function checkErrors() {
+    $('.form-checkbox, .form-file').each(function() {
+        var curField = $(this);
+        if (curField.find('input.error').length > 0) {
+            curField.addClass('error');
+        } else {
+            curField.removeClass('error');
+        }
+        if (curField.find('input.valid').length > 0) {
+            curField.addClass('valid');
+        } else {
+            curField.removeClass('valid');
+        }
+    });
+
+    $('.form-select').each(function() {
+        var curField = $(this).parent().parent();
+        if (curField.find('select.error').length > 0) {
+            curField.addClass('error');
+        } else {
+            curField.removeClass('error');
+        }
+        if (curField.find('select.valid').length > 0) {
+            curField.addClass('valid');
+        } else {
+            curField.removeClass('valid');
+        }
     });
 }
