@@ -53,6 +53,41 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    $('.gallery-big').slick({
+        infinite: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        adaptiveHeight: true,
+        dots: false
+    }).on('beforeChange', function(event, slick, currentSlide, nextSlide){
+        $('.gallery-preview-item.active').removeClass('active');
+        $('.gallery-preview-item').eq(nextSlide).addClass('active');
+    });
+
+    $('.gallery-preview-inner').slick({
+        infinite: false,
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        prevArrow: '<button type="button" class="slick-prev"></button>',
+        nextArrow: '<button type="button" class="slick-next"></button>',
+        adaptiveHeight: true,
+        dots: false
+    });
+
+    $('.gallery-preview-item:first').addClass('active');
+
+    $('.gallery-preview-item a').click(function(e) {
+        var curItem = $(this).parent();
+        if (!curItem.hasClass('active')) {
+            $('.gallery-preview-item.active').removeClass('active');
+            curItem.addClass('active');
+            var curIndex = $('.gallery-preview-item').index(curItem);
+            $('.gallery-big').slick('slickGoTo', curIndex);
+        }
+        e.preventDefault();
+    });
+
 });
 
 $(window).on('load resize', function() {

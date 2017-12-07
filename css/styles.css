@@ -12,7 +12,7 @@ a {color:#717171}
 
 img {border:none}
 
-h1 {font-weight:bold; font-size:33px; line-height:36px; margin:36px 0 60px 0; padding:0; text-transform:uppercase; color:#1e1e1e}
+h1 {font-weight:bold; font-size:33px; line-height:36px; margin:52px 0 60px 0; padding:0; text-transform:uppercase; color:#1e1e1e}
 .h1-sub {display:block; color:#717171; font-weight:normal; font-size:24px; text-transform:none; padding:5px 0 0 0}
 h2 {font-weight:bold; font-size:24px; line-height:30px; margin:48px 0 24px 0; padding:0; text-transform:uppercase; color:#1e1e1e}
 h3 {font-weight:bold; font-size:20px; line-height:24px; margin:48px 0 24px 0; padding:0; text-transform:uppercase; color:#1e1e1e}
@@ -30,7 +30,7 @@ li ol li:before {content:counter(point)'.'counter(subpoint); counter-increment:s
 hr {height:1px; width:100%; margin:48px 0; padding:0; border:none; background:#e6e6e6}
 blockquote {font-size:24px; line-height:36px; padding:4px 0 8px 27px; border-left:4px solid #3fdcea; margin:54px 0 60px 0}
 .wrapper table {width:100%; margin:54px 0 60px 0; border-collapse:collapse}
-.wrapper th {vertical-align:top; text-align:left; font-weight:normal; font-size:11px; line-height:24px; text-transform:uppercase; padding:0 0 2px 30px; color:#0bccba}
+.wrapper th {vertical-align:top; text-align:left; font-weight:normal; font-size:11px; line-height:12px; text-transform:uppercase; padding:6px 0 8px 30px; color:#0bccba}
 .wrapper th:first-child {padding-left:0}
 .wrapper td {vertical-align:top; text-align:left; border-top:1px solid #f2ecec; padding:12px 0 12px 30px}
 .wrapper thead+tbody td {padding-top:23px; padding-bottom:26px}
@@ -162,6 +162,11 @@ label.error {display:block; color:#f00; padding:10px 0 0 0}
 .btn-max {display:block; border-radius:5px; background:#fe6600; margin:0; padding:0; outline:none; width:100%; border:none; text-decoration:none; height:60px; box-sizing:border-box; color:#fff; text-align:center; text-transform:uppercase; font:bold 14px/60px HelveticaNeueCyr, sans-serif; letter-spacing:1px; -webkit-appearance:none; cursor:pointer}
 .btn-max:hover {color:#fff; background:#0bccba}
 .btn-max:active {color:#fff; background:#0bc5cc}
+
+.pager {font-size:0; line-height:0; letter-spacing:-1px; text-align:center; padding:40px 0 0 0; border-top:1px solid #e6e6e6; margin:47px 0}
+.task-events+.pager {margin-top:0}
+.pager a {display:inline-block; margin:0 9px; vertical-align:top; width:30px; height:30px; border:1px solid #fe6600; border-radius:5px; font-weight:bold; font-size:12px; line-height:30px; color:#1e1e1e; text-decoration:none; letter-spacing:0}
+.pager a.active {color:#fff; background:#fe6600}
 
 .wrapper {min-width:1140px; width:100%; min-height:100%; position:relative; overflow:hidden}
 .wrapper-inner {padding:0 0 576px 0}
@@ -296,7 +301,7 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .main-subscribe-field .form-input input.valid {border-color:#0cb009}
 .main-subscribe-field .form-input input:focus {border-color:#0bccba; border-width:2px; padding:25px 23px 11px 23px}
 .main-subscribe-field label.error {display:none !important}
-.main-subscribe-field .form-submit {position:absolute; right:0; top:0; margin:0; padding:0}
+.main-subscribe-field .form-submit {position:absolute; right:0; top:0; margin:0; padding:0; width:auto; margin:0}
 .main-subscribe-field .form-submit input {display:block; width:65px; height:70px; border-radius:0 3px 3px 0; background:#fe6600 url(../images/main-subscribe-submit.png) no-repeat center; margin:0; padding:0; outline:none; border:none; box-sizing:border-box; -webkit-appearance:none; cursor:pointer}
 .main-subscribe-field .form-submit input:hover {background-color:#0bccba}
 .main-subscribe-field .form-submit input:active {background-color:#0bc5cc}
@@ -337,15 +342,17 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .main-calendar-list .slick-next.slick-disabled {display:none !important}
 .main-calendar-all {width:170px; margin:0 auto; padding:55px 0 0 0}
 
-.breadcrumbs {font-size:12px; padding:16px 0 0 0}
+.breadcrumbs {font-size:12px; margin:35px 0 0 0}
+.breadcrumbs:first-child {margin:16px 0 0 0}
 .breadcrumbs span {display:inline-block; vertical-align:middle; width:4px; height:7px; background:url(../images/breadcrumbs.png); margin:-4px 8px 0 7px}
 
-.directions {margin:48px 0 85px 0; border-radius:8px; background:#51a9bc url(../images/directions.jpg) no-repeat center top; background-size:cover; color:#fff}
+.directions {margin:48px 0 35px 0; border-radius:8px; background:#51a9bc url(../images/directions.jpg) no-repeat center top; background-size:cover; color:#fff}
 .directions-item {position:relative; padding:0 140px 28px 95px}
 .directions-item+.directions-item {border-top:12px solid #fff}
 .directions-item+.directions-item:before {content:""; display:block; width:10px; height:32px; position:absolute; left:0; top:-22px; background:url(../images/directions-corners.png)}
 .directions-item+.directions-item:after {content:""; display:block; width:10px; height:32px; position:absolute; right:0; top:-22px; background:url(../images/directions-corners.png) -10px top}
 .directions-item-icon {width:48px; height:48px; position:absolute; left:24px; top:24px; background:#fff; border-radius:50%; line-height:46px; text-align:center}
+.directions-item-icon a {display:block; width:48px; height:48px; border-radius:50%}
 .directions-item-icon img {vertical-align:middle}
 .directions-item-title {font-size:20px; line-height:24px; font-weight:bold; text-transform:uppercase; padding:30px 0 0 0}
 .directions-item-title a {color:#fff; text-decoration:none}
@@ -366,17 +373,16 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .content-title-section {font-weight:bold; font-size:10px; line-height:14px; color:#ccc; text-transform:uppercase; letter-spacing:1px}
 .content-title-text {font-weight:bold; font-size:33px; line-height:36px; text-transform:uppercase; color:#1e1e1e}
 
-.content-ctrl {text-transform:uppercase; color:#ccc; font-size:12px; font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin:42px 0 -18px 0}
-.content-ctrl-close {display:inline-block; vertical-align:middle; margin:-4px 22px 0 0; width:11px; height:11px; background:url(../images/content-ctrl-close.png); opacity:.15}
-.content-ctrl-close:hover {opacity:.2}
-.content-ctrl-prev {display:inline-block; vertical-align:middle; margin:-4px 8px 0 0; width:8px; height:13px; background:url(../images/content-ctrl-prev.png); opacity:.15}
-.content-ctrl-prev:hover {opacity:.2}
-.content-ctrl-next {display:inline-block; vertical-align:middle; margin:-4px 26px 0 0; width:8px; height:13px; background:url(../images/content-ctrl-next.png); opacity:.15}
-.content-ctrl-next:hover {opacity:.2}
+.content-ctrl {text-transform:uppercase; color:#b2b2b2; font-size:12px; font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin:57px 0 -32px 0}
 .content-ctrl-text {display:inline-block; vertical-align:middle}
+.content-ctrl-prev {display:inline-block; vertical-align:middle; margin:-4px 0 0 17px}
+.content-ctrl-next {display:inline-block; vertical-align:middle; margin:-4px 0 0 8px}
+.content-ctrl-close {display:inline-block; vertical-align:middle; margin:-4px 0 0 22px}
+.content-ctrl svg {display:inline-block; vertical-align:middle}
+.content-ctrl a:hover svg path {fill:#b2b2b2}
 
-.tasks {margin:48px 0 85px 0; border-radius:8px; background:#51a9bc url(../images/directions.jpg) no-repeat center top; background-size:cover; color:#fff}
-.tasks+.tasks {margin-top:-73px}
+.tasks {margin:48px 0 35px 0; border-radius:8px; background:#51a9bc url(../images/directions.jpg) no-repeat center top; background-size:cover; color:#fff}
+.tasks+.tasks {margin-top:-23px}
 .tasks-item {position:relative; padding:0 140px 28px 95px}
 .tasks-item+.tasks-item {border-top:12px solid #fff}
 .tasks-item+.tasks-item:before {content:""; display:block; width:10px; height:32px; position:absolute; left:0; top:-22px; background:url(../images/directions-corners.png)}
@@ -438,8 +444,57 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .task-about-row-value-inner {float:left; width:100%}
 .task-about-row-value-doc+.task-about-row-value-doc {margin:12px 0 0 0}
 .task-about-row-value-doc a {text-decoration:none; color:#717171}
-.task-about-row-value-doc img {vertical-align:middle; margin:-4px 5px 0 0}
 .task-about-row-value-doc-type {color:#bababa}
+
+h2+.task-events {margin-top:-22px}
+.task-event {border-top:1px solid #e6e6e6; padding:47px 0}
+.task-event:first-child {border-top:none}
+.task-event-group {font-size:12px; text-transform:uppercase; color:#ff6600}
+.task-event-group a {color:#ff6600; text-decoration:none}
+.task-event-group img {vertical-align:middle; margin:-6px 3px 0 0}
+.task-event-title {padding:19px 0 0 0}
+.task-event-title a {color:#5480a8; text-decoration:none}
+.task-event-info {font-size:14px; color:#b9b9b9; padding:17px 0 0 0}
+.task-event-info:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
+.task-event-info-date {float:left}
+.task-event-info-tag {float:left; margin:0 0 0 28px; padding:0 0 0 20px; background:url(../images/task-event-info-tag.png) no-repeat left 4px}
+.task-event-info-tag a {color:#b9b9b9; text-decoration:none}
+
+.doc-icon {display:inline-block; width:21px; height:24px; vertical-align:middle; margin:-4px 5px 0 0; background:url(../images/doc-icon.png); position:relative; overflow:hidden; text-align:center; text-transform:uppercase; color:#2a2a2a; font-size:7px; font-weight:bold; line-height:32px}
+
+.event-doc {margin:24px 0 24px 33px; position:relative}
+.event-doc .doc-icon {position:absolute; left:-33px; top:2px}
+.event-doc a {color:#5480a8; text-decoration:none}
+.event-doc-type {color:#737373}
+
+h1+.event-info {margin-top:-42px}
+.event-info {font-size:14px; color:#b9b9b9; margin:24px 0}
+.event-info:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
+.event-info-date {float:left}
+.event-info-group {float:left; margin:0 0 0 27px; color:#ff6600; text-transform:uppercase; font-size:12px}
+.event-info-group a {color:#ff6600; text-decoration:none}
+.event-info-group img {vertical-align:middle; margin:-6px 3px 0 0}
+.event-info-tag {float:left; margin:0 0 0 28px; padding:0 0 0 20px; background:url(../images/task-event-info-tag.png) no-repeat left 4px}
+.event-info-tag a {color:#b9b9b9; text-decoration:none}
+
+.back-link {display:inline-block; vertical-align:top; margin:14px 0 10px 6px; color:#2a2a2a; font-weight:bold; font-size:12px; line-height:30px; height:30px; position:relative; text-transform:uppercase; border:1px solid #e57d32; border-radius:0 5px 5px 0; border-left:none; padding:0 22px 0 18px; text-decoration:none}
+.back-link:before {content:""; display:block; position:absolute; left:-16px; top:-1px; width:16px; height:32px; background:url(../images/back-link.png)}
+
+.gallery {background:#f2f5fc; margin:48px 0; padding:60px 95px; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap}
+.gallery img {display:block; width:100%}
+.gallery-big {width:100%; position:relative; overflow:hidden}
+.gallery-big-item {display:inline-block; vertical-align:top; width:100%}
+.gallery-preview {margin:15px -4px 0 -8px}
+.gallery-preview-inner {width:100%; position:relative}
+.gallery-preview-item {display:inline-block; vertical-align:top; width:20%}
+.gallery-preview-item a {display:block; position:relative; margin:0 8px}
+.gallery-preview-item.active a:after {content:""; display:block; position:absolute; left:0; top:0; right:0; bottom:0; border:2px solid #e1670f; background:rgba(0, 0, 0, .6)}
+.gallery-preview .slick-prev,
+.gallery-preview .slick-next {display:block; position:absolute; z-index:2; top:50%; width:20px; height:49px; border:none; border-radius:0; margin:-25px 0 0 0; padding:0; outline:none; -webkit-appearance:none; cursor:pointer; background:url(../images/gallery-arrows.png)}
+.gallery-preview .slick-prev {left:-40px}
+.gallery-preview .slick-next {right:-40px; background-position:-21px top}
+.gallery-preview .slick-prev.slick-disabled,
+.gallery-preview .slick-next.slick-disabled {display:none !important}
 
 footer {min-width:1140px; height:480px; position:relative; margin:-480px 0 0 0; background:#6697b5 url(../images/footer.jpg) no-repeat center top; background-size:cover; color:#fff; text-shadow:0 2px 3px rgba(149, 115, 64, .35)}
 footer a {color:#fff}
