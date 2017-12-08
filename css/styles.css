@@ -165,8 +165,10 @@ label.error {display:block; color:#f00; padding:10px 0 0 0}
 
 .pager {font-size:0; line-height:0; letter-spacing:-1px; text-align:center; padding:40px 0 0 0; border-top:1px solid #e6e6e6; margin:47px 0}
 .task-events+.pager {margin-top:0}
-.pager a {display:inline-block; margin:0 9px; vertical-align:top; width:30px; height:30px; border:1px solid #fe6600; border-radius:5px; font-weight:bold; font-size:12px; line-height:30px; color:#1e1e1e; text-decoration:none; letter-spacing:0}
+.events+.pager {margin-top:0}
+.pager a {display:inline-block; margin:0 9px; vertical-align:top; text-align:center; min-width:10px; height:30px; padding:0 10px; border:1px solid #fe6600; border-radius:5px; font-weight:bold; font-size:12px; line-height:30px; color:#1e1e1e; text-decoration:none; letter-spacing:0}
 .pager a.active {color:#fff; background:#fe6600}
+.pager span {display:inline-block; margin:0 5px; vertical-align:top; font-weight:bold; font-size:12px; line-height:32px; color:#1e1e1e; text-decoration:none; letter-spacing:0}
 
 .wrapper {min-width:1140px; width:100%; min-height:100%; position:relative; overflow:hidden}
 .wrapper-inner {padding:0 0 576px 0}
@@ -480,8 +482,9 @@ h1+.event-info {margin-top:-42px}
 .event-info-tag {float:left; margin:0 0 0 28px; padding:0 0 0 20px; background:url(../images/task-event-info-tag.png) no-repeat left 4px}
 .event-info-tag a {color:#b9b9b9; text-decoration:none}
 
-.back-link {display:inline-block; vertical-align:top; margin:14px 0 10px 6px; color:#2a2a2a; font-weight:bold; font-size:12px; line-height:30px; height:30px; position:relative; text-transform:uppercase; border:1px solid #e57d32; border-radius:0 5px 5px 0; border-left:none; padding:0 22px 0 18px; text-decoration:none}
-.back-link:before {content:""; display:block; position:absolute; left:-16px; top:-1px; width:16px; height:32px; background:url(../images/back-link.png)}
+.back-link {margin:48px 0 24px 6px}
+.back-link a {display:inline-block; vertical-align:top; color:#2a2a2a; font-weight:bold; font-size:12px; line-height:30px; height:30px; position:relative; text-transform:uppercase; border:1px solid #e57d32; border-radius:0 5px 5px 0; border-left:none; padding:0 22px 0 18px; text-decoration:none}
+.back-link a:before {content:""; display:block; position:absolute; left:-16px; top:-1px; width:16px; height:32px; background:url(../images/back-link.png)}
 
 .gallery {background:#f2f5fc; margin:48px 0; padding:60px 95px; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap}
 .gallery img {display:block; width:100%}
@@ -498,6 +501,24 @@ h1+.event-info {margin-top:-42px}
 .gallery-preview .slick-next {right:-40px; background-position:-21px top}
 .gallery-preview .slick-prev.slick-disabled,
 .gallery-preview .slick-next.slick-disabled {display:none !important}
+
+.events-header:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
+.events-header h1 {float:left; margin-bottom:0}
+.events-header form {float:left; width:290px; margin:40px 0 0 40px}
+
+.event {border-top:1px solid #e6e6e6; padding:44px 0 47px 0}
+.event:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
+.event:first-child {border-top:none}
+.event-preview {float:left; line-height:0; width:245px; padding:4px 0 0 0}
+.event-preview img {border-radius:5px; width:100%}
+.event-preview+.event-container {margin:0 0 0 285px}
+.event-wrap {float:left; width:100%}
+.event-group {font-size:12px; text-transform:uppercase; color:#ff6600}
+.event-group a {color:#ff6600; text-decoration:none}
+.event-group img {vertical-align:middle; margin:-6px 3px 0 0}
+.event-title {padding:12px 0 0 0; font-size:24px; line-height:32px}
+.event-title a {color:#5480a8; text-decoration:none}
+.event .event-info {font-size:14px; color:#b9b9b9; padding:14px 0 0 0; margin:0}
 
 footer {min-width:1140px; height:480px; position:relative; margin:-480px 0 0 0; background:#6697b5 url(../images/footer.jpg) no-repeat center top; background-size:cover; color:#fff; text-shadow:0 2px 3px rgba(149, 115, 64, .35)}
 footer a {color:#fff}
