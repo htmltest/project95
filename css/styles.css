@@ -400,7 +400,10 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .task-steps-month {float:left; width:232px; padding:0 0 0 20px; position:relative; border:1px solid #dadada; border-radius:3px 0 0 3px}
 .task-steps-month-title {color:#1e1e1e; line-height:34px}
 .task-steps-month-calendar {position:absolute; right:18px; top:8px}
-.task-steps-month-calendar-link {display:block; width:16px; height:16px; background:url(../images/task-steps-month-link.png)}
+.task-steps-month-calendar-field {display:block; width:16px; height:16px; background:url(../images/task-steps-month-link.png); cursor:pointer}
+.task-steps-month-calendar-field form {margin:0; padding:0}
+.task-steps-month-calendar-field input {display:block; width:16px; height:16px; background:url(../images/blank.gif); border:none; margin:0; padding:0; outline:none; color:rgba(0, 0, 0, 0); font-size:0; line-height:0; cursor:pointer; -webkit-appearance:none}
+.ui-datepicker-calendar {display:none}
 .task-steps-days {margin:0 0 0 254px; height:34px; border:1px solid #dadada; border-radius:0 3px 3px 0; border-left:none; padding:0 98px 0 0}
 .task-steps-days-inner {float:left; width:100%; margin:-7px 0}
 .task-steps-days-list {font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; position:relative; width:100%}

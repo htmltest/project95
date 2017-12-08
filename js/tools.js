@@ -24,6 +24,42 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    var dateFormat = 'MM yy';
+    $('#task-steps-month-calendar-datepicker').datepicker({
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true,
+        minDate: new Date(2018, 2, 1),
+        maxDate: new Date(2020, 8, 1),
+        dateFormat: dateFormat,
+        onClose: function(dateText, inst) {
+            var month = $('#ui-datepicker-div .ui-datepicker-month :selected').val();
+            var year = $('#ui-datepicker-div .ui-datepicker-year :selected').val();
+            $(this).datepicker('setDate', new Date(year, month, 1));
+            var curForm = $('#task-steps-month-calendar-datepicker').parent();
+            $.ajax({
+                type: 'POST',
+                url: curForm.attr('action'),
+                dataType: 'html',
+                data: 'month=' + month + '&year=' + year,
+                cache: false
+            }).done(function(html) {
+                $('.task-steps-month-title').html($('#task-steps-month-calendar-datepicker').val());
+                if ($('.task-steps-days-list').hasClass('slick-slider')) {
+                    $('.task-steps-days-list').slick('unslick');
+                }
+                $('.task-steps-days-inner').html(html);
+                $('.task-steps-days-list').slick({
+                    dots: false,
+                    infinite: false,
+                    variableWidth: true,
+                    prevArrow: '<button type="button" class="slick-prev"></button>',
+                    nextArrow: '<button type="button" class="slick-next"></button>'
+                });
+            });
+        }
+    });
+
     $('.main-calendar-list-inner').slick({
         infinite: false,
         slidesToShow: 3,
