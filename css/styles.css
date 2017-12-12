@@ -568,10 +568,13 @@ footer a {color:#fff}
 .footer-social a.footer-social-yt {background-position:-204px top}
 .footer-social a.footer-social-tw {background-position:-238px top}
 
-.up-link {display:none; position:fixed; right:60px; bottom:108px; font-weight:bold; font-size:11px; line-height:14px; text-transform:uppercase; text-decoration:none; color:#fe6600}
+.up-link {display:none; position:fixed; right:60px; bottom:108px}
 .up-link.visible {display:block}
-.up-link:before {content:""; display:block; width:13px; height:12px; background:url(../images/up.svg) no-repeat; background-size:100%; margin:0 auto 3px auto}
+.up-link a {display:block; font-weight:bold; font-size:11px; line-height:14px; text-transform:uppercase; text-decoration:none; color:#fe6600}
+.up-link a:before {content:""; display:block; width:13px; height:12px; background:url(../images/up.svg) no-repeat; background-size:100%; margin:0 auto 3px auto}
 
 @media screen and (max-width:1350px) {
-    .up-link.visible {display:none}
+    .up-link {display:block; margin:24px 0 0 0 !important; position:relative; right:auto; bottom:auto}
+    .up-link:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
+    .up-link a {float:right}
 }

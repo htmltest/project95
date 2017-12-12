@@ -124,7 +124,7 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-    $('.up-link').click(function(e) {
+    $('.up-link a').click(function(e) {
         $.scrollTo(0, {duration : 500});
         e.preventDefault();
     });
