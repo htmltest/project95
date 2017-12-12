@@ -124,6 +124,25 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    $('.up-link').click(function(e) {
+        $.scrollTo(0, {duration : 500});
+        e.preventDefault();
+    });
+
+});
+
+$(window).on('load resize scroll', function() {
+    if ($(window).scrollTop() > $(window).height()) {
+        $('.up-link').addClass('visible');
+    } else {
+        $('.up-link').removeClass('visible');
+    }
+    var curDiff = $(window).scrollTop() + $(window).height() - $('footer').offset().top - 60;
+    if (curDiff > 0) {
+        $('.up-link').css({'margin-bottom': curDiff});
+    } else {
+        $('.up-link').css({'margin-bottom': 0});
+    }
 });
 
 $(window).on('load resize', function() {

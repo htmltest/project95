@@ -166,6 +166,7 @@ label.error {display:block; color:#f00; padding:10px 0 0 0}
 .pager {font-size:0; line-height:0; letter-spacing:-1px; text-align:center; padding:40px 0 0 0; border-top:1px solid #e6e6e6; margin:47px 0}
 .task-events+.pager {margin-top:0}
 .events+.pager {margin-top:0}
+.docs+.pager {margin-top:0}
 .pager a {display:inline-block; margin:0 9px; vertical-align:top; text-align:center; min-width:10px; height:30px; padding:0 10px; border:1px solid #fe6600; border-radius:5px; font-weight:bold; font-size:12px; line-height:30px; color:#1e1e1e; text-decoration:none; letter-spacing:0}
 .pager a.active {color:#fff; background:#fe6600}
 .pager span {display:inline-block; margin:0 5px; vertical-align:top; font-weight:bold; font-size:12px; line-height:32px; color:#1e1e1e; text-decoration:none; letter-spacing:0}
@@ -393,6 +394,7 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .tasks-item-title {font-size:20px; line-height:24px; font-weight:bold; padding:30px 0 0 0}
 .tasks-item-title a {color:#fff; text-decoration:none}
 .tasks-item-title-sub {font-weight:normal; display:block; color:#f2d6c3}
+.tasks-item-title-events {display:block; font-weight:normal; font-size:11px; line-height:14px; text-transform:uppercase; color:#fff; letter-spacing:1px; padding:11px 0 2px 0}
 
 .task-steps {margin:60px 0}
 .task-steps:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
@@ -450,6 +452,10 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .task-about-row-value-doc+.task-about-row-value-doc {margin:12px 0 0 0}
 .task-about-row-value-doc a {text-decoration:none; color:#717171}
 .task-about-row-value-doc-type {color:#bababa}
+
+.task-about-big {padding:0; margin:24px 0}
+.task-about-big .task-about-row-title {width:270px}
+.task-about-big .task-about-row-value {margin:0 0 0 285px}
 
 h2+.task-events {margin-top:-22px}
 .task-event {border-top:1px solid #e6e6e6; padding:47px 0}
@@ -520,6 +526,15 @@ h1+.event-info {margin-top:-42px}
 .event-title a {color:#5480a8; text-decoration:none}
 .event .event-info {font-size:14px; color:#b9b9b9; padding:14px 0 0 0; margin:0}
 
+.container-padding {padding:0 95px}
+
+.docs {margin:-21px 0 0 0}
+.docs-item {position:relative; border-top:1px solid #e6e6e6; padding:21px 0 18px 33px}
+.docs-item:first-child {border-top:none}
+.docs-item .doc-icon {position:absolute; left:0; top:23px}
+.docs-item a {color:#5480a8; text-decoration:none}
+.docs-item-type {color:#737373}
+
 footer {min-width:1140px; height:480px; position:relative; margin:-480px 0 0 0; background:#6697b5 url(../images/footer.jpg) no-repeat center top; background-size:cover; color:#fff; text-shadow:0 2px 3px rgba(149, 115, 64, .35)}
 footer a {color:#fff}
 
@@ -552,3 +567,11 @@ footer a {color:#fff}
 .footer-social a.footer-social-in {background-position:-170px top}
 .footer-social a.footer-social-yt {background-position:-204px top}
 .footer-social a.footer-social-tw {background-position:-238px top}
+
+.up-link {display:none; position:fixed; right:60px; bottom:108px; font-weight:bold; font-size:11px; line-height:14px; text-transform:uppercase; text-decoration:none; color:#fe6600}
+.up-link.visible {display:block}
+.up-link:before {content:""; display:block; width:13px; height:12px; background:url(../images/up.svg) no-repeat; background-size:100%; margin:0 auto 3px auto}
+
+@media screen and (max-width:1350px) {
+    .up-link.visible {display:none}
+}
