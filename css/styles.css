@@ -578,3 +578,18 @@ footer a {color:#fff}
     .up-link:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
     .up-link a {float:right}
 }
+
+.window-open body {overflow:hidden}
+.window-open .wrapper {-webkit-filter:blur(8px); -moz-filter:blur(8px); -o-filter:blur(8px); -ms-filter:blur(8px); filter:blur(8px)}
+.window-open footer {-webkit-filter:blur(8px); -moz-filter:blur(8px); -o-filter:blur(8px); -ms-filter:blur(8px); filter:blur(8px)}
+
+.window {position:fixed; left:0; top:0; right:0; bottom:0; z-index:99997; overflow:auto; background:rgba(246, 246, 246, .25)}
+.window-loading {position:absolute; left:50%; top:50%; width:24px; height:24px; margin:-12px 0 0 -12px; background:url(../images/loading.gif)}
+.window-container {position:absolute; z-index:99999; left:50%; top:50%}
+.window-container-load {position:fixed; left:-9999px; top:-9999px}
+.window-content {position:relative; background:#fff; box-shadow:0 0 10px rgba(0, 0, 0, .5)}
+.window-close {display:block; position:absolute; width:11px; height:11px; right:48px; top:43px; background:url(../images/window-close.png)}
+.window-close:hover {background-position:left -11px}
+
+.window-event {width:1000px; padding:49px 30px 50px 30px}
+.window-event h1 {margin-top:0}
