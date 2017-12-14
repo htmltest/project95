@@ -9,11 +9,13 @@ html {min-width:1140px; height:100%}
 body {min-width:1140px; height:100%; margin:0; padding:0; font:16px/24px HelveticaNeueCyr, sans-serif; color:#717171; background:#fff; -webkit-text-size-adjust:100%}
 
 a {color:#717171}
+a.link-orange {color:#fe6600; text-decoration:none}
 
 img {border:none}
 
 h1 {font-weight:bold; font-size:30px; line-height:36px; margin:52px 0 60px 0; padding:0; text-transform:uppercase; color:#1e1e1e}
 .h1-sub {display:block; color:#717171; font-weight:normal; font-size:24px; text-transform:none; padding:5px 0 0 0}
+.h1-thin {display:block; font-weight:normal}
 h2 {font-weight:bold; font-size:24px; line-height:30px; margin:48px 0 24px 0; padding:0; text-transform:uppercase; color:#1e1e1e}
 h3 {font-weight:bold; font-size:20px; line-height:24px; margin:48px 0 24px 0; padding:0; text-transform:uppercase; color:#1e1e1e}
 h4 {font-weight:bold; font-size:16px; line-height:24px; margin:48px 0 24px 0; padding:0; text-transform:uppercase; color:#1e1e1e}
@@ -54,6 +56,16 @@ blockquote {font-size:24px; line-height:36px; padding:4px 0 8px 27px; border-lef
     .wrapper tbody tr:hover+tr td {border-top-color:#f7f7f7}
     .wrapper tbody tr:hover+tr:before {border-top-color:#f7f7f7}
     .wrapper tbody tr:hover+tr:after {border-top-color:#f7f7f7}
+
+    .wrapper .task-tab table {width:100%; margin-left:0; margin-right:0}
+    .wrapper .task-tab thead tr:before {display:none}
+    .wrapper .task-tab thead tr:after {display:none}
+    .wrapper .task-tab tbody tr:before {display:none}
+    .wrapper .task-tab tbody tr:after {display:none}
+    .wrapper .task-tab tbody tr:hover {background:none}
+    .wrapper .task-tab tbody tr:hover td {border-top-color:#f2ecec}
+    .wrapper .task-tab tbody tr:hover+tr td {border-top-color:#f2ecec}
+    .wrapper .task-tab thead+tbody tr:first-child td {border-top-color:#0bccba}
 }
 
 .signature {margin:48px 0}
@@ -368,7 +380,7 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .comments {margin:48px 0}
 
 .content-title {margin:52px 0 40px 0}
-.content-title-row {position:relative; padding:0 0 20px 0}
+.content-title-row {position:relative; padding:0 0 35px 0}
 .content-title-row:before {content:""; display:block; width:2px; position:absolute; left:24px; top:52px; bottom:15px; background:#dadada}
 .content-title-row-sub:before {width:14px; height:16px; background:url(../images/content-title-arrow.png); left:18px; top:-20px; bottom:auto}
 .content-title-row:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
@@ -428,21 +440,25 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .task-steps-days .slick-next:hover:before {opacity:.2}
 
 .task-menu {text-transform:uppercase; font-weight:bold; letter-spacing:1px; font-size:11px; margin:27px 0 0 0}
+.task-about+.task-menu {margin:72px 0 0 0}
 .task-menu ul {margin:0; padding:0; list-style:none}
 .task-menu ul:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
 .task-menu ul li {float:left; margin:0 0 0 30px; padding:0 0 16px 0; position:relative}
 .task-menu ul li:first-child {margin:0}
 .task-menu ul li:before {display:none}
 .task-menu ul li.active:after {content:""; display:block; position:absolute; left:0; bottom:0; right:0; height:6px; background:#fe6600}
-.task-menu ul li a {color:#717171; text-decoration:none}
+.task-menu ul li a {color:#b3b3b3; text-decoration:none}
 .task-menu ul li.active a,
 .task-menu ul li a:hover {color:#fe6600}
 
 .task-tabs {position:relative; background:#f7f7f7}
 .task-tabs:before {content:""; display:block; position:absolute; right:100%; width:999px; top:0; bottom:0; background:#f7f7f7}
 .task-tabs:after {content:""; display:block; position:absolute; left:100%; width:999px; top:0; bottom:0; background:#f7f7f7}
-.task-tab {display:none}
+.task-tab {display:none; padding:1px 0; position:relative}
 .task-tab.active {display:block}
+.task-tab a {color:#fe6600; text-decoration:none}
+.task-tab > p:first-child {margin-top:54px}
+.task-tab > table:last-child tbody tr:last-child td {border-bottom:none}
 
 .task-about {padding:31px 0 41px 0}
 .task-about hr {margin:38px 0}
@@ -461,11 +477,12 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 
 h2+.task-events {margin-top:-22px}
 .task-event {border-top:1px solid #e6e6e6; padding:47px 0}
+.task-events-2 .task-event {padding:37px 0}
 .task-event:first-child {border-top:none}
 .task-event-group {font-size:12px; text-transform:uppercase; color:#ff6600}
 .task-event-group a {color:#ff6600; text-decoration:none}
 .task-event-group img {vertical-align:middle; margin:-6px 3px 0 0}
-.task-event-title {padding:19px 0 0 0}
+.task-event-title {padding:12px 0 0 0}
 .task-event-title a {color:#5480a8; text-decoration:none}
 .task-event-info {font-size:14px; color:#b9b9b9; padding:17px 0 0 0}
 .task-event-info:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
@@ -485,6 +502,7 @@ h1+.event-info {margin-top:-42px}
 .event-info:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
 .event-info-date {float:left}
 .event-info-group {float:left; margin:0 0 0 27px; color:#ff6600; text-transform:uppercase; font-size:12px}
+.event-info-group-2 {margin:0 0 24px 0; font-size:16px}
 .event-info-group a {color:#ff6600; text-decoration:none}
 .event-info-group img {vertical-align:middle; margin:-6px 3px 0 0}
 .event-info-tag {float:left; margin:0 0 0 28px; padding:0 0 0 20px; background:url(../images/task-event-info-tag.png) no-repeat left 4px}
@@ -537,6 +555,82 @@ h1+.event-info {margin-top:-42px}
 .docs-item a {color:#5480a8; text-decoration:none}
 .docs-item-type {color:#737373}
 .docs-item-file {position:relative; padding:21px 0 0 33px; margin:0 0 0 25px; font-size:14px; line-height:20px}
+
+.challenges-item {position:relative; margin:12px 0; border-radius:8px; background:#51a9bc url(../images/directions.jpg) no-repeat center top; padding:0 18px 24px 18px}
+
+.challenges-item-header {padding:0 0 5px 0}
+.challenges-item-header:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
+.challenges-item-header-left {float:left; width:430px}
+.challenges-item-header-right {float:right; width:430px}
+.challenges-item-header-icon {float:left; margin:47px 0 0 0; width:60px; height:60px; border-radius:50%; background:#fff; line-height:60px; text-align:center}
+.challenges-item-header-right .challenges-item-header-icon {float:right}
+.challenges-item-header-icon img {vertical-align:middle}
+.challenges-item-header-content {margin:0 0 0 77px}
+.challenges-item-header-right .challenges-item-header-content {margin:0 77px 0 0}
+.challenges-item-header-type {font-size:11px; font-weight:bold; color:#fff; opacity:.7; text-transform:uppercase; padding:16px 0 0 0}
+.challenges-item-header-title {text-transform:uppercase; font-weight:bold; color:#fff; font-size:20px; line-height:24px; padding:14px 0 0 0}
+.challenges-item-header-number {font-size:18px; color:#becfd8; padding:2px 0 0 0}
+.challenges-item-header-right .challenges-item-header-number {color:#e0d2cb}
+.challenges-item-header-arrow {width:48px; padding:60px 0 0 0; margin:0 auto}
+.challenges-item-header-arrow a {display:block; width:46px; height:46px; border:1px solid #fe6600; background:#fe6600; border-radius:50%; position:relative; transition:all .3s}
+.challenges-item.open .challenges-item-header-arrow a {background:transparent}
+.challenges-item-header-arrow a:after {content:""; display:block; width:14px; height:8px; background:url(../images/challenges-item-arrow.png); position:absolute; left:50%; top:50%; margin:-4px 0 0 -7px; transition:all .3s}
+.challenges-item.open .challenges-item-header-arrow a:after {transform:rotate(180deg)}
+
+.challenges-item-more {display:none; padding:28px 0 0 0}
+.challenges-item-more-text {border-radius:8px; background:#fff; display:table; width:100%}
+.challenges-item-more-left {display:table-cell; vertical-align:top; width:50%; padding:40px 50px 40px 40px; box-sizing:border-box}
+.challenges-item-more-right {display:table-cell; vertical-align:top; width:50%; padding:40px 40px 40px 50px; box-sizing:border-box; border-radius:0 8px 8px 0; background:#f9f9f9}
+.challenges-item-more-type {text-transform:uppercase; color:#fe6600; font-weight:bold; font-size:11px}
+.challenges-item-more-title {color:#1e1e1e; font-weight:bold; text-transform:uppercase}
+.challenges-item-more-descr {padding:24px 0 0 0}
+.challenges-item-more-links {text-align:center; padding:24px 0 0 0}
+.challenges-item-more-links a.btn-med {display:inline-block; vertical-align:top; width:auto; padding:0 22px; margin:0 0 0 24px; font-size:11px; letter-spacing:1px}
+.challenges-item-more-links a.btn-med:first-child {margin:0}
+.challenges-item-more-links a.btn-med img {vertical-align:middle; margin:-2px 6px 0 0}
+
+.programms {margin:0 0 88px 0}
+.programms-menu {text-transform:uppercase; font-weight:bold; letter-spacing:1px; font-size:11px; margin:51px 0 0 0}
+.programms-menu ul {margin:0; padding:0; list-style:none; border-bottom:1px solid #e6e6e6}
+.programms-menu ul:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
+.programms-menu ul li {float:left; margin:0 0 0 30px; padding:0 0 14px 0; position:relative}
+.programms-menu ul li:first-child {margin:0}
+.programms-menu ul li:before {display:none}
+.programms-menu ul li.active:after {content:""; display:block; position:absolute; left:0; bottom:-2px; right:0; height:3px; background:#fe6600}
+.programms-menu ul li a {color:#717171; text-decoration:none}
+.programms-menu ul li.active a,
+.programms-menu ul li a:hover {color:#fe6600}
+.programms-list a {text-decoration:underline}
+.programms-item {border-bottom:1px solid #e6e6e6; padding:25px 0}
+
+.similars-link span:nth-child(1) {color:#fe6600; border-bottom:1px dotted #fe6600}
+.similars-link span:nth-child(2) {display:none; color:#717171; border-bottom:1px dotted #717171}
+.similars.open .similars-link span:nth-child(1) {display:none}
+.similars.open .similars-link span:nth-child(2) {display:inline}
+.similars-list {display:none}
+
+.nioktr {font-size:0; line-height:0; letter-spacing:-1px; margin:0 -15px; padding:45px 0 55px 0}
+.nioktr-item {display:inline-block; vertical-align:top; width:33.33%; padding:15px; box-sizing:border-box}
+.nioktr-item-link {display:table; text-decoration:none}
+.nioktr-item-link-icon {display:table-cell; vertical-align:top; width:65px}
+.nioktr-item-link-icon-img {width:65px; height:65px; background:#fe6600; border-radius:50%; line-height:65px; text-align:center; transition:all .3s; position:relative}
+.nioktr-item.open .nioktr-item-link-icon-img {background:#0bccba}
+.nioktr-item.open .nioktr-item-link-icon-img:after {content:""; display:block; width:0; height:0; border-bottom:10px solid #fff; border-left:10px solid transparent; border-right:10px solid transparent; position:absolute; left:50%; bottom:-20px; margin-left:-10px}
+.nioktr-item-link-icon-img img {vertical-align:middle}
+.nioktr-item-link-title {display:table-cell; padding:0 0 0 30px; vertical-align:middle; font-size:16px; line-height:24px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; color:#fe6600}
+.nioktr-item-link-title-text {color:#1e1e1e; border-bottom:1px dotted #fe6600}
+.nioktr-item-content {display:none; padding:20px 0 0 0; position:relative}
+.nioktr-item:nth-child(3n) .nioktr-item-content {margin:0 15px 0 calc(-200% - 60px)}
+.nioktr-item:nth-child(3n-1) .nioktr-item-content {margin:0 calc(-100% - 15px) 0 calc(-100% - 30px)}
+.nioktr-item:nth-child(3n-2) .nioktr-item-content {margin:0 calc(-200% - 45px) 0 0}
+.nioktr-item-content-wrap {background:#fff; border-radius:8px; padding:0 45px; font-size:16px; line-height:24px; letter-spacing:0}
+
+.nioktr-links {counter-reset:point; padding:30px 0}
+.nioktr-link {padding:23px 0 26px 50px; border-top:1px solid #e6e6e6; position:relative}
+.nioktr-link:first-child {border-top:none}
+.nioktr-link:before {content:counter(point)'.'; counter-increment:point 1; position:absolute; left:0; top:23px}
+.nioktr-link a {color:#fe6600; text-decoration:none}
+.nioktr-link a:hover {text-decoration:underline}
 
 footer {min-width:1140px; height:480px; position:relative; margin:-480px 0 0 0; background:#6697b5 url(../images/footer.jpg) no-repeat center top; background-size:cover; color:#fff; text-shadow:0 2px 3px rgba(149, 115, 64, .35)}
 footer a {color:#fff}

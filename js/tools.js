@@ -156,6 +156,58 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    $('.challenges-item-header-arrow a').click(function(e) {
+        var curBlock = $(this).parents().filter('.challenges-item');
+        curBlock.toggleClass('open');
+        curBlock.find('.challenges-item-more').slideToggle();
+        e.preventDefault();
+    });
+
+    $('.programms-list').isotope({
+        itemSelector: '.programms-item',
+        filter: $('.programms-menu li.active a').data('filter')
+    });
+
+    $('.programms-menu li a').click(function(e) {
+        var curLi = $(this).parent();
+        if (!curLi.hasClass('active')) {
+            $('.programms-menu li.active').removeClass('active');
+            var curFilter = $(this).data('filter');
+            $('.programms-list').isotope({
+                filter: curFilter
+            });
+            curLi.addClass('active');
+        }
+        e.preventDefault();
+    });
+
+    $('.similars-link a').click(function(e) {
+        var curBlock = $(this).parents().filter('.similars');
+        curBlock.toggleClass('open');
+        curBlock.find('.similars-list').slideToggle();
+        e.preventDefault();
+    });
+
+    $('.nioktr-item-link').click(function(e) {
+        var curBlock = $(this).parent();
+        if (curBlock.hasClass('open')) {
+            curBlock.removeClass('open');
+            curBlock.find('.nioktr-item-content').slideUp();
+        } else {
+            if ($('.nioktr-item.open').length > 0) {
+                $('.nioktr-item.open').find('.nioktr-item-content').slideUp(function() {
+                    $('.nioktr-item.open').removeClass('open');
+                    curBlock.addClass('open');
+                    curBlock.find('.nioktr-item-content').slideDown();
+                });
+            } else {
+                curBlock.addClass('open');
+                curBlock.find('.nioktr-item-content').slideDown();
+            }
+        }
+        e.preventDefault();
+    });
+
 });
 
 $(window).on('load resize scroll', function() {
