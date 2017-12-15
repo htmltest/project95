@@ -10,6 +10,7 @@ body {min-width:1140px; height:100%; margin:0; padding:0; font:16px/24px Helveti
 
 a {color:#717171}
 a.link-orange {color:#fe6600; text-decoration:none}
+a.link-orange:hover {text-decoration:underline}
 
 img {border:none}
 
@@ -457,6 +458,7 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .task-tab {display:none; padding:1px 0; position:relative}
 .task-tab.active {display:block}
 .task-tab a {color:#fe6600; text-decoration:none}
+.task-tab a:hover {text-decoration:underline}
 .task-tab > p:first-child {margin-top:54px}
 .task-tab > table:last-child tbody tr:last-child td {border-bottom:none}
 
@@ -558,7 +560,7 @@ h1+.event-info {margin-top:-42px}
 
 .challenges-item {position:relative; margin:12px 0; border-radius:8px; background:#51a9bc url(../images/directions.jpg) no-repeat center top; padding:0 18px 24px 18px}
 
-.challenges-item-header {padding:0 0 5px 0}
+.challenges-item-header {display:block; text-decoration:none; padding:0 0 5px 0}
 .challenges-item-header:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
 .challenges-item-header-left {float:left; width:430px}
 .challenges-item-header-right {float:right; width:430px}
@@ -572,10 +574,10 @@ h1+.event-info {margin-top:-42px}
 .challenges-item-header-number {font-size:18px; color:#becfd8; padding:2px 0 0 0}
 .challenges-item-header-right .challenges-item-header-number {color:#e0d2cb}
 .challenges-item-header-arrow {width:48px; padding:60px 0 0 0; margin:0 auto}
-.challenges-item-header-arrow a {display:block; width:46px; height:46px; border:1px solid #fe6600; background:#fe6600; border-radius:50%; position:relative; transition:all .3s}
-.challenges-item.open .challenges-item-header-arrow a {background:transparent}
-.challenges-item-header-arrow a:after {content:""; display:block; width:14px; height:8px; background:url(../images/challenges-item-arrow.png); position:absolute; left:50%; top:50%; margin:-4px 0 0 -7px; transition:all .3s}
-.challenges-item.open .challenges-item-header-arrow a:after {transform:rotate(180deg)}
+.challenges-item-header-arrow div {display:block; width:46px; height:46px; border:1px solid #fe6600; background:#fe6600; border-radius:50%; position:relative; transition:all .3s}
+.challenges-item.open .challenges-item-header-arrow div {background:transparent}
+.challenges-item-header-arrow div:after {content:""; display:block; width:14px; height:8px; background:url(../images/challenges-item-arrow.png); position:absolute; left:50%; top:50%; margin:-4px 0 0 -7px; transition:all .3s}
+.challenges-item.open .challenges-item-header-arrow div:after {transform:rotate(180deg)}
 
 .challenges-item-more {display:none; padding:28px 0 0 0}
 .challenges-item-more-text {border-radius:8px; background:#fff; display:table; width:100%}
@@ -603,6 +605,7 @@ h1+.event-info {margin-top:-42px}
 .programms-list a {text-decoration:underline}
 .programms-item {border-bottom:1px solid #e6e6e6; padding:25px 0}
 
+.task-tab .similars-link a:hover {text-decoration:none}
 .similars-link span:nth-child(1) {color:#fe6600; border-bottom:1px dotted #fe6600}
 .similars-link span:nth-child(2) {display:none; color:#717171; border-bottom:1px dotted #717171}
 .similars.open .similars-link span:nth-child(1) {display:none}
@@ -612,6 +615,7 @@ h1+.event-info {margin-top:-42px}
 .nioktr {font-size:0; line-height:0; letter-spacing:-1px; margin:0 -15px; padding:45px 0 55px 0}
 .nioktr-item {display:inline-block; vertical-align:top; width:33.33%; padding:15px; box-sizing:border-box}
 .nioktr-item-link {display:table; text-decoration:none}
+.task-tab .nioktr-item-link:hover {text-decoration:none}
 .nioktr-item-link-icon {display:table-cell; vertical-align:top; width:65px}
 .nioktr-item-link-icon-img {width:65px; height:65px; background:#fe6600; border-radius:50%; line-height:65px; text-align:center; transition:all .3s; position:relative}
 .nioktr-item.open .nioktr-item-link-icon-img {background:#0bccba}

@@ -156,7 +156,7 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-    $('.challenges-item-header-arrow a').click(function(e) {
+    $('.challenges-item-header').click(function(e) {
         var curBlock = $(this).parents().filter('.challenges-item');
         curBlock.toggleClass('open');
         curBlock.find('.challenges-item-more').slideToggle();
