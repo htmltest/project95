@@ -241,6 +241,7 @@ $(window).on('load resize', function() {
             $('.header-submenu-2-inner').slick({
                 dots: false,
                 infinite: false,
+                centerMode: true,
                 variableWidth: true,
                 prevArrow: '<button type="button" class="slick-prev"></button>',
                 nextArrow: '<button type="button" class="slick-next"></button>',
