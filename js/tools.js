@@ -234,12 +234,17 @@ $(window).on('load resize', function() {
             curWidth += $(this).width();
         });
         if (curWidth > $('.header-submenu-2-wrap').width()) {
+            var curIndex = $('.header-submenu-2-item').index($('.header-submenu-2-item.active'));
+            if (curIndex < 0) {
+                curIndex = 0;
+            }
             $('.header-submenu-2-inner').slick({
                 dots: false,
                 infinite: false,
                 variableWidth: true,
                 prevArrow: '<button type="button" class="slick-prev"></button>',
-                nextArrow: '<button type="button" class="slick-next"></button>'
+                nextArrow: '<button type="button" class="slick-next"></button>',
+                initialSlide: curIndex
             });
         }
     }

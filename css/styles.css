@@ -364,19 +364,19 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .breadcrumbs:first-child {margin:16px 0 0 0}
 .breadcrumbs span {display:inline-block; vertical-align:middle; width:4px; height:7px; background:url(../images/breadcrumbs.png); margin:-4px 8px 0 7px}
 
-.directions {margin:48px 0 35px 0; border-radius:8px; background:#51a9bc url(../images/directions.jpg) no-repeat center top; background-size:cover; color:#fff}
-.directions-item {position:relative; padding:0 140px 28px 95px}
-.directions-item+.directions-item {border-top:12px solid #fff}
-.directions-item+.directions-item:before {content:""; display:block; width:10px; height:32px; position:absolute; left:0; top:-22px; background:url(../images/directions-corners.png)}
-.directions-item+.directions-item:after {content:""; display:block; width:10px; height:32px; position:absolute; right:0; top:-22px; background:url(../images/directions-corners.png) -10px top}
-.directions-item-icon {width:48px; height:48px; position:absolute; left:24px; top:24px; background:#fff; border-radius:50%; line-height:46px; text-align:center}
-.directions-item-icon a {display:block; width:48px; height:48px; border-radius:50%}
+.directions {margin:48px 0 35px 0}
+.directions-item {position:relative; padding:0 130px 28px 105px; margin:12px 0; border-radius:8px; background:#f0f4fb; background:-moz-linear-gradient(top, #f0f4fb 0%, #f7f9fd 100%); background:-webkit-linear-gradient(top, #f0f4fb 0%, #f7f9fd 100%); background:linear-gradient(to bottom, #f0f4fb 0%, #f7f9fd 100%); filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f4fb', endColorstr='#f7f9fd',GradientType=0)}
+.directions-item-icon {width:65px; height:65px; position:absolute; left:19px; top:19px; background:#fe6600; border-radius:50%; line-height:63px; text-align:center}
+.directions-item-icon a {display:block; width:65px; height:65px; border-radius:50%}
 .directions-item-icon img {vertical-align:middle}
-.directions-item-title {font-size:20px; line-height:24px; font-weight:bold; text-transform:uppercase; padding:30px 0 0 0}
-.directions-item-title a {color:#fff; text-decoration:none}
-.directions-item-anonce {padding:26px 0 0 0}
-.directions-item-link {font-weight:bold; font-size:11px; text-transform:uppercase; letter-spacing:1px; padding:25px 0 0 0}
-.directions-item-link a {color:#fff; text-decoration:none}
+.directions-item-title {font-size:20px; line-height:24px; font-weight:bold; text-transform:uppercase; padding:31px 0 0 0}
+.directions-item-title a {color:#000; text-decoration:none}
+.directions-item-title a:hover {text-decoration:underline}
+.directions-item-anonce {padding:26px 0 0 0; color:#000}
+.directions-item-tasks {color:#b3b3b3; font-size:11px; text-transform:uppercase; letter-spacing:1px; padding:4px 0 0 0}
+.directions-item-link {font-weight:bold; font-size:11px; text-transform:uppercase; letter-spacing:1px; padding:21px 0 0 0}
+.directions-item-link a {color:#fe6600; text-decoration:none}
+.directions-item-link a:hover {text-decoration:underline}
 
 .comments {margin:48px 0}
 
@@ -399,17 +399,15 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .content-ctrl svg {display:inline-block; vertical-align:middle}
 .content-ctrl a:hover svg path {fill:#b2b2b2}
 
-.tasks {margin:48px 0 35px 0; border-radius:8px; background:#51a9bc url(../images/directions.jpg) no-repeat center top; background-size:cover; color:#fff}
+.tasks {margin:48px 0 35px 0}
 .tasks+.tasks {margin-top:-23px}
-.tasks-item {position:relative; padding:0 140px 28px 95px}
-.tasks-item+.tasks-item {border-top:12px solid #fff}
-.tasks-item+.tasks-item:before {content:""; display:block; width:10px; height:32px; position:absolute; left:0; top:-22px; background:url(../images/directions-corners.png)}
-.tasks-item+.tasks-item:after {content:""; display:block; width:10px; height:32px; position:absolute; right:0; top:-22px; background:url(../images/directions-corners.png) -10px top}
-.tasks-item-number {width:33px; height:33px; position:absolute; left:0; top:50%; background:url(../images/tasks-item-number.png); line-height:33px; text-align:center; padding:0 0 0 26px; color:#fe6600; font-weight:bold; margin-top:-17px}
+.tasks-item {position:relative; padding:0 95px 28px 95px; margin:12px 0; border-radius:8px; background:#f0f4fb; background:-moz-linear-gradient(top, #f0f4fb 0%, #f7f9fd 100%); background:-webkit-linear-gradient(top, #f0f4fb 0%, #f7f9fd 100%); background:linear-gradient(to bottom, #f0f4fb 0%, #f7f9fd 100%); filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f4fb', endColorstr='#f7f9fd',GradientType=0)}
+.tasks-item-number {width:33px; height:33px; position:absolute; left:26px; top:50%; line-height:33px; text-align:center; color:#fff; font-weight:bold; margin-top:-17px; background:#fe6600; border-radius:50%}
 .tasks-item-title {font-size:20px; line-height:24px; font-weight:bold; padding:30px 0 0 0}
-.tasks-item-title a {color:#fff; text-decoration:none}
-.tasks-item-title-sub {font-weight:normal; display:block; color:#f2d6c3}
-.tasks-item-title-events {display:block; font-weight:normal; font-size:11px; line-height:14px; text-transform:uppercase; color:#fff; letter-spacing:1px; padding:11px 0 2px 0}
+.tasks-item-title a {color:#000; text-decoration:none}
+.tasks-item-title a:hover {color:#fe6600}
+.tasks-item-title-sub {font-weight:normal; display:block; color:#fe6600}
+.tasks-item-title-events {display:block; font-weight:normal; font-size:11px; line-height:14px; text-transform:uppercase; color:#b3b3b3; letter-spacing:1px; padding:11px 0 2px 0}
 
 .task-steps {margin:60px 0}
 .task-steps:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
@@ -669,7 +667,7 @@ footer a {color:#fff}
 .footer-social a.footer-social-yt {background-position:-204px top}
 .footer-social a.footer-social-tw {background-position:-238px top}
 
-.up-link {display:none; position:fixed; right:60px; bottom:108px}
+.up-link {display:none; position:fixed; right:30px; bottom:108px}
 .up-link.visible {display:block}
 .up-link a {display:block; font-weight:bold; font-size:11px; line-height:14px; text-transform:uppercase; text-decoration:none; color:#fe6600}
 .up-link a:before {content:""; display:block; width:13px; height:12px; background:url(../images/up.svg) no-repeat; background-size:100%; margin:0 auto 3px auto}
@@ -693,4 +691,4 @@ footer a {color:#fff}
 .window-close:hover {background-position:left -11px}
 
 .window-event {width:1000px; padding:49px 30px 50px 30px}
-.window-event h1 {margin-top:0}
+.window-event h1 {margin-top:0; margin-right:50px}
