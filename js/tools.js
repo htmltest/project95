@@ -208,6 +208,38 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    $('.main-calendar-item-day-link').click(function(e) {
+        var curDay = $(this).parent();
+        if (curDay.hasClass('active')) {
+            if ($('.main-calendar-window').length > 0) {
+                $('.main-calendar-window').remove();
+            }
+            curDay.removeClass('active');
+        } else {
+            if ($('.main-calendar-window').length > 0) {
+                $('.main-calendar-window').remove();
+            }
+            $('.main-calendar-item-day.active').removeClass('active');
+            curDay.addClass('active');
+            $('.wrapper').append('<div class="main-calendar-window">' + curDay.find('.main-calendar-item-day-content').html() + '</div>');
+            var curWindow = $('.main-calendar-window');
+            curWindow.css({'left': curDay.offset().left, 'top': curDay.offset().top});
+            curWindow.find('.main-calendar-window-list-inner').jScrollPane({
+                autoReinitialise: true
+            });
+        }
+        e.preventDefault();
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.main-calendar-window').length == 0 && !$(e.target).hasClass('main-calendar-window') && !$(e.target).hasClass('main-calendar-item-day-link')) {
+            if ($('.main-calendar-window').length > 0) {
+                $('.main-calendar-window').remove();
+            }
+            $('.main-calendar-item-day.active').removeClass('active');
+        }
+    });
+
 });
 
 $(window).on('load resize scroll', function() {
