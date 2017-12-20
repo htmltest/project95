@@ -362,7 +362,9 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .main-calendar-all {width:170px; margin:0 auto; padding:55px 0 0 0}
 
 .main-calendar-window {position:absolute; left:0; top:0; margin:-35px 0 0 59px; z-index:90; box-shadow:0 8px 40px rgba(100, 160, 154, .4); padding:3px; border-radius:5px; background:#57c7b5; background:-moz-linear-gradient(-45deg, #57c7b5 0%, #fcc56f 100%); background:-webkit-linear-gradient(-45deg, #57c7b5 0%,#fcc56f 100%); background:linear-gradient(135deg, #57c7b5 0%,#fcc56f 100%); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#57c7b5', endColorstr='#fcc56f',GradientType=1)}
+.main-calendar-window.right {margin-left:-429px}
 .main-calendar-window:before {content:""; display:block; width:15px; height:23px; background:url(../images/main-calendar-window.png); position:absolute; left:-12px; top:40px}
+.main-calendar-window.right:before {left:auto; right:-12px; transform:scale(-1, 1)}
 .main-calendar-window-wrap {background:#fff; border-radius:2px; padding:0 27px; width:350px}
 .main-calendar-window-title {font-size:18px; font-weight:bold; color:#252525; border-bottom:1px solid #e6e6e6; padding:27px 0 18px 0}
 .main-calendar-window-list {padding:23px 0}

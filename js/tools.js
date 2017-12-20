@@ -224,6 +224,9 @@ $(document).ready(function() {
             $('.wrapper').append('<div class="main-calendar-window">' + curDay.find('.main-calendar-item-day-content').html() + '</div>');
             var curWindow = $('.main-calendar-window');
             curWindow.css({'left': curDay.offset().left, 'top': curDay.offset().top});
+            if (curWindow.offset().left + curWindow.outerWidth() > $('.wrapper').width()) {
+                curWindow.addClass('right');
+            }
             curWindow.find('.main-calendar-window-list-inner').jScrollPane({
                 autoReinitialise: true
             });
