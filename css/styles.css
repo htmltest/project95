@@ -580,13 +580,14 @@ h1+.event-info {margin-top:-42px}
 .challenges-item-header:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
 .challenges-item-header-left {float:left; width:430px}
 .challenges-item-header-right {float:right; width:430px}
-.challenges-item-header-icon {float:left; margin:47px 0 0 0; width:60px; height:60px; border-radius:50%; background:#fe6600; line-height:60px; text-align:center}
+.challenges-item-header-icon {float:left; margin:47px 0 0 0; width:60px; height:60px; border-radius:50%; background:#fe6600; line-height:58px; text-align:center}
 .challenges-item-header-right .challenges-item-header-icon {float:right}
 .challenges-item-header-icon img {vertical-align:middle}
 .challenges-item-header-content {margin:0 0 0 77px}
 .challenges-item-header-right .challenges-item-header-content {margin:0 77px 0 0}
 .challenges-item-header-type {font-size:11px; font-weight:bold; color:#b3b3b3; opacity:.7; text-transform:uppercase; padding:16px 0 0 0}
 .challenges-item-header-title {text-transform:uppercase; font-weight:bold; color:#000; font-size:20px; line-height:24px; padding:14px 0 0 0}
+.challenges-item-header:hover .challenges-item-header-title {text-decoration:underline}
 .challenges-item-header-number {font-size:18px; color:#fe6600; padding:2px 0 0 0}
 .challenges-item-header-arrow {width:48px; padding:60px 0 0 0; margin:0 auto}
 .challenges-item-header-arrow div {display:block; width:44px; height:44px; border:2px solid #fe6600; background:transparent; border-radius:50%; position:relative; transition:all .3s}
