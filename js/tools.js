@@ -243,6 +243,22 @@ $(document).ready(function() {
         }
     });
 
+    $('.header-search-link').click(function(e) {
+        $('.header-search').addClass('open');
+        e.preventDefault();
+    });
+
+    $('.header-search-close').click(function(e) {
+        $('.header-search').removeClass('open');
+        e.preventDefault();
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.header-search').length == 0) {
+            $('.header-search').removeClass('open');
+        }
+    });
+
 });
 
 $(window).on('load resize scroll', function() {
