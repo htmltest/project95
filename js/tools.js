@@ -163,17 +163,22 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-    $('.programms-list').isotope({
-        itemSelector: '.programms-item',
-        filter: $('.programms-menu li.active a').data('filter')
+    $('.programms').each(function() {
+        var curBlock = $(this);
+
+        curBlock.find('.programms-list').isotope({
+            itemSelector: '.programms-item',
+            filter: curBlock.find('.programms-menu li.active a').data('filter')
+        });
     });
 
     $('.programms-menu li a').click(function(e) {
         var curLi = $(this).parent();
+        var curBlock = curLi.parents().filter('.programms');
         if (!curLi.hasClass('active')) {
-            $('.programms-menu li.active').removeClass('active');
+            curBlock.find('.programms-menu li.active').removeClass('active');
             var curFilter = $(this).data('filter');
-            $('.programms-list').isotope({
+            curBlock.find('.programms-list').isotope({
                 filter: curFilter
             });
             curLi.addClass('active');
