@@ -229,7 +229,7 @@ $(document).ready(function() {
             curDay.addClass('active');
             $('.wrapper').append('<div class="main-calendar-window">' + curDay.find('.main-calendar-item-day-content').html() + '</div>');
             var curWindow = $('.main-calendar-window');
-            curWindow.css({'left': curDay.offset().left, 'top': curDay.offset().top});
+            curWindow.css({'left': curDay.offset().left, 'top': curDay.offset().top - $('.wrapper').offset().top});
             if (curWindow.offset().left + curWindow.outerWidth() > $('.wrapper').width()) {
                 curWindow.addClass('right');
             }
