@@ -1,5 +1,45 @@
 $(document).ready(function() {
 
+    $('.council').each(function() {
+        var curBlock = $(this);
+        var selectVariants = [];
+        curBlock.find('table tbody tr').each(function() {
+            var curTR = $(this);
+            var curID = curTR.data('group');
+            if (!searchVariant(selectVariants, curID)) {
+                var curName = curTR.data('group-name');
+                selectVariants.push([curID, curName]);
+            }
+        });
+        var curSelectHTML = '<form action="#" method="post"><div class="form-select"><select name="filter" data-placeholder="группа в совете"><option value="*" selected="selected">все группы</option>';
+        for (var i = 0; i < selectVariants.length; i++) {
+            curSelectHTML += '<option value="' + selectVariants[i][0] + '">' + selectVariants[i][1] + '</option>';
+        }
+        curSelectHTML    += '</select></form>';
+        curBlock.prepend(curSelectHTML);
+    });
+
+    function searchVariant(curArray, curValue) {
+        var result = false;
+        for (var i = 0; i < curArray.length; i++) {
+            if (curArray[i][0] == curValue) {
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    $('.council select').change(function() {
+        var curBlock = $(this).parents().filter('.council');
+        var curID = $('.council select option:selected').attr('value');
+        if (curID == '*') {
+            curBlock.find('table tbody tr').fadeIn();
+        } else {
+            curBlock.find('table tbody tr[data-group="' + curID + '"]').fadeIn();
+            curBlock.find('table tbody tr[data-group!="' + curID + '"]').fadeOut();
+        }
+    });
+
     $.validator.addMethod('maskPhone',
         function(value, element) {
             if (value == '') {
