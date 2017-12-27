@@ -100,6 +100,7 @@ $(document).ready(function() {
         }
     });
 
+    var slickAnimation = false;
     $('.main-calendar-list-inner').slick({
         infinite: false,
         slidesToShow: 3,
@@ -108,6 +109,58 @@ $(document).ready(function() {
         prevArrow: '<button type="button" class="slick-prev"></button>',
         nextArrow: '<button type="button" class="slick-next"></button>',
         dots: false
+    }).on('setPosition', function(event, slick) {
+        if ($('.main-calendar-window').length > 0) {
+            $('.main-calendar-window').remove();
+        }
+        $('.main-calendar-item-day.active').removeClass('active');
+        if (!$('.main-calendar-list .slick-prev').hasClass('slick-disabled') && !$('.main-calendar-list .slick-next').hasClass('slick-disabled')) {
+            slickAnimation = false;
+            $('.main-calendar-list').removeClass('prevLoading nextLoading');
+        }
+        if ($('.main-calendar-list .slick-prev').hasClass('slick-disabled')) {
+            if (!slickAnimation) {
+                if (!$('.main-calendar-item:first').hasClass('last')) {
+                    slickAnimation = true;
+                    $('.main-calendar-list').addClass('prevLoading');
+                    var loadURL = $('.main-calendar').data('prev-url');
+                    var loadMonth = $('.main-calendar-item:first').data('month');
+                    var loadYear = $('.main-calendar-item:first').data('year');
+                    $.ajax({
+                        type: 'POST',
+                        url: loadURL,
+                        dataType: 'html',
+                        data: 'month=' + loadMonth + '&year=' + loadYear,
+                        cache: false
+                    }).done(function(html) {
+                        var curLength = $('.main-calendar-item').length;
+                        $('.main-calendar-list-inner').slick('slickAdd', html, true);
+                        var curLength = $('.main-calendar-item').length - curLength;
+                        $('.main-calendar-list-inner').slick('slickGoTo', curLength, true);
+                    });
+                }
+            }
+        }
+        if ($('.main-calendar-list .slick-next').hasClass('slick-disabled')) {
+            if (!slickAnimation) {
+                if (!$('.main-calendar-item:last').hasClass('last')) {
+                    slickAnimation = true;
+                    $('.main-calendar-list').addClass('nextLoading');
+                    var loadURL = $('.main-calendar').data('next-url');
+                    var loadMonth = $('.main-calendar-item:last').data('month');
+                    var loadYear = $('.main-calendar-item:last').data('year');
+                    $.ajax({
+                        type: 'POST',
+                        url: loadURL,
+                        dataType: 'html',
+                        data: 'month=' + loadMonth + '&year=' + loadYear,
+                        cache: false
+                    }).done(function(html) {
+                        $('.main-calendar-list-inner').slick('slickAdd', html);
+                    });
+                }
+            }
+        }
     });
 
     $('.task-steps-days-list').slick({
@@ -254,7 +307,7 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-    $('.main-calendar-item-day-link').click(function(e) {
+    $('body').on('click', '.main-calendar-item-day-link', function(e) {
         var curDay = $(this).parent();
         if (curDay.hasClass('active')) {
             if ($('.main-calendar-window').length > 0) {

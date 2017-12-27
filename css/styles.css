@@ -348,7 +348,9 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .main-calendar {max-width:920px; margin:0 auto; padding:99px 0 0 0}
 .main-calendar-title {font-size:30px; line-height:36px; color:#1e1e1e; font-weight:bold; letter-spacing:1px; text-transform:uppercase}
 .main-calendar-title:before {content:""; display:block; width:32px; height:32px; background:url(../images/main-calendar-title.png); margin:0 0 28px 0}
-.main-calendar-list {margin:66px -30px 0 -30px}
+.main-calendar-list {margin:66px -30px 0 -30px; position:relative}
+.main-calendar-list.prevLoading:before {content:""; display:block; width:71px; height:71px; background:url(../images/main-calendar-loading.gif); position:absolute; left:-40px; top:132px}
+.main-calendar-list.nextLoading:after {content:""; display:block; width:71px; height:71px; background:url(../images/main-calendar-loading.gif); position:absolute; right:-40px; top:132px}
 .main-calendar-list-inner {font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; position:relative; width:100%}
 .main-calendar-item {display:inline-block; vertical-align:top; width:33.33%}
 .main-calendar-item-title {padding:0 0 0 30px; font-weight:bold; font-size:24px; line-height:30px; letter-spacing:0; color:#252525}
