@@ -358,6 +358,42 @@ $(document).ready(function() {
         }
     });
 
+    $('.indicators-group-header').click(function(e) {
+        var curBlock = $(this).parents().filter('.indicators-group');
+        curBlock.toggleClass('open');
+        curBlock.find('.indicators-group-inner').slideToggle();
+        e.preventDefault();
+    });
+
+    $('.indicators-group-inner-parent').click(function() {
+        $(this).parent().find('ul').slideToggle();
+    });
+
+    $('a.indicators-tree-group-item-header-inner').click(function(e) {
+        var curBlock = $(this).parents().filter('.indicators-tree-group-item').eq(0);
+        curBlock.toggleClass('open');
+        curBlock.find('.indicators-tree-group-item-list').eq(0).slideToggle();
+        if (curBlock.hasClass('open')) {
+            $.scrollTo(curBlock.find('.indicators-tree-group-item-list').eq(0), {duration : 500});
+        }
+        e.preventDefault();
+    });
+
+    $('#indicators-select-tree').change(function() {
+        var curValue = $(this).find('option:selected').attr('value');
+        var curBlock = $('#indicators-tree-' + curValue);
+        if (curBlock.length > 0) {
+            $('.indicators-tree-group-item.open').removeClass('open');
+            $('.indicators-tree-group-item-list').hide();
+            $.scrollTo(curBlock, {duration : 500});
+        }
+    });
+
+    $('#indicator-select-other').change(function() {
+        var curValue = $(this).find('option:selected').attr('value');
+        window.location.href = curValue;
+    });
+
 });
 
 $(window).on('load resize scroll', function() {
