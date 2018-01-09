@@ -84,7 +84,7 @@ $(document).ready(function() {
                 data: 'month=' + month + '&year=' + year,
                 cache: false
             }).done(function(html) {
-                $('.task-steps-month-title').html($('#task-steps-month-calendar-datepicker').val());
+                $('.task-steps-month-title, .task-steps-print-month').html($('#task-steps-month-calendar-datepicker').val());
                 if ($('.task-steps-days-list').hasClass('slick-slider')) {
                     $('.task-steps-days-list').slick('unslick');
                 }
@@ -392,6 +392,10 @@ $(document).ready(function() {
     $('#indicator-select-other').change(function() {
         var curValue = $(this).find('option:selected').attr('value');
         window.location.href = curValue;
+    });
+
+    $('.main-subscribe-field .form-input input').focus(function() {
+        $('.main-subscribe .form-checkbox').slideDown();
     });
 
 });

@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="js/jquery-ui-1.12.1.custom/jquery-ui.css" />
         <link rel="stylesheet" href="js/jscrollpane/jquery.jscrollpane.css" />
 
+        <link rel="stylesheet" href="css/print.css" media="print" />
+
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/jquery.maskedinput.js"></script>
         <script src="js/validation/jquery.validate.min.js"></script>
@@ -39,7 +41,7 @@
                 <header>
                     <div class="container">
 
-                        <div class="logo"></div>
+                        <div class="logo"><img src="images/logo-print.png" alt="" class="on-print" /></div>
 
                         <div class="title">Научно-технологическое развитие Российской Федерации</div>
 
@@ -200,19 +202,6 @@
                         <div class="main-news-all"><a href="#" class="btn-min">Все новости</a></div>
                     </div>
                     <!-- main news END -->
-
-                    <!-- main subscribe -->
-                    <div class="main-subscribe">
-                        <form action="#" method="post">
-                            <div class="main-subscribe-title">Подписаться на новости</div>
-                            <div class="main-subscribe-field">
-                                <div class="form-input"><span class="form-input-label">Введите ваш email</span><input type="text" name="email" value="" class="email required" autocomplete="off" /></div>
-                                <div class="form-submit"><input type="submit" value="" /></div>
-                            </div>
-                            <div class="form-checkbox"><label><input type="checkbox" name="agrement" checked="checked" class="required" /><span class="form-checkbox-icon"></span><span class="form-checkbox-text">Я даю согласие на обработку моих персональных данных в соответствии с Федеральным законом от 27.07.2006 год №152-ФЗ "О персональных данных", на условиях и для целей, определенных в <a href="#">Согласии на обработку персональных данных</a></span></label></div>
-                        </form>
-                    </div>
-                    <!-- main subscribe END -->
 
                     <!-- main calendar -->
                     <div class="main-calendar" data-prev-url="files/main-calendar-prev.html" data-next-url="files/main-calendar-next.html">
@@ -1805,6 +1794,21 @@
                     </div>
                     <!-- main calendar END -->
 
+                    <!-- main subscribe -->
+                    <div class="main-subscribe">
+                        <form action="#" method="post">
+                            <div class="main-subscribe-title">Подписка на новости и события</div>
+                            <div class="main-subscribe-field">
+                                <div class="form-input"><span class="form-input-label">Введите ваш email</span><input type="text" name="email" value="" class="email required" autocomplete="off" /></div>
+                                <div class="form-submit"><input type="submit" value="" /></div>
+                            </div>
+                            <div class="form-checkbox"><label><input type="checkbox" name="news" checked="checked" /><span class="form-checkbox-icon"></span><span class="form-checkbox-text">Я хочу получать информацию о новостях проекта</span></label></div>
+                            <div class="form-checkbox"><label><input type="checkbox" name="events" checked="checked" /><span class="form-checkbox-icon"></span><span class="form-checkbox-text">Я хочу получать информацию о событиях проекта</span></label></div>
+                            <div class="form-checkbox"><label><input type="checkbox" name="agrement" checked="checked" class="required" /><span class="form-checkbox-icon"></span><span class="form-checkbox-text">Я даю согласие на обработку моих персональных данных в соответствии с Федеральным законом от 27.07.2006 год №152-ФЗ "О персональных данных", на условиях и для целей, определенных в <a href="#">Согласии на обработку персональных данных</a></span></label></div>
+                        </form>
+                    </div>
+                    <!-- main subscribe END -->
+
                     <div class="up-link"><a href="#">Наверх</a></div>
 
                 </div>
@@ -1816,6 +1820,9 @@
 
         <footer>
             <div class="container">
+                <div class="logo on-print"><a href="#"></a><img src="images/logo-print.png" alt="" /></div>
+                <div class="title on-print">Научно-технологическое развитие Российской Федерации</div>
+
                 <div class="footer-nav">
                     <ul>
                         <li><a href="#">Основные направления государственной&nbsp;политики в&nbsp;области НТР</a></li>

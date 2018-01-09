@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="js/jquery-ui-1.12.1.custom/jquery-ui.css" />
         <link rel="stylesheet" href="js/jscrollpane/jquery.jscrollpane.css" />
 
+        <link rel="stylesheet" href="css/print.css" media="print" />
+
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/jquery.maskedinput.js"></script>
         <script src="js/validation/jquery.validate.min.js"></script>
@@ -39,7 +41,7 @@
                 <header>
                     <div class="container">
 
-                        <div class="logo"><a href="#"></a></div>
+                        <div class="logo"><a href="#"></a><img src="images/logo-print.png" alt="" class="on-print" /></div>
 
                         <div class="title">Научно-технологическое развитие Российской Федерации</div>
 
@@ -152,7 +154,7 @@
                 <!-- container -->
                 <div class="container">
 
-                    <div class="breadcrumbs"><a href="#">Главная</a> <span></span> <a href="#">Большие вызовы и приоритеты НТР</a> <span></span>Сырьевая зависимость и цифровая экономика</div>
+                    <div class="breadcrumbs"><a href="#">Главная</a> <span><img src="images/breadcrumbs-print.png" alt="" class="on-print" /></span> <a href="#">Большие вызовы и приоритеты НТР</a> <span><img src="images/breadcrumbs-print.png" alt="" class="on-print" /></span>Сырьевая зависимость и цифровая экономика</div>
 
                     <div class="content-title">
                         <div class="content-title-row">
@@ -163,6 +165,7 @@
                             </div>
                         </div>
                         <div class="content-title-row content-title-row-sub">
+                            <img src="images/content-title-arrow-print.png" alt="" class="on-print content-title-arrow-print" />
                             <div class="content-title-number">20a</div>
                             <div class="content-title-inner">
                                 <div class="content-title-section">Приоритет</div>
@@ -551,7 +554,7 @@
                         </table>
                     </div>
 
-                    <h2>H2 - Кнопки</h2>
+                    <h2 class="no-print">H2 - Кнопки</h2>
 
                     <form action="#" method="post" style="padding:0; background:none">
                         <div class="form-row-2" style="width:170px">
@@ -565,7 +568,7 @@
                         </div>
                     </form>
 
-                    <h2>H2 - Форма</h2>
+                    <h2 class="no-print">H2 - Форма</h2>
                     <form action="#" method="post">
                         <div class="form-success">
                             <div class="form-success-title">Всё Удалось!</div>
@@ -659,6 +662,9 @@
 
         <footer>
             <div class="container">
+                <div class="logo on-print"><a href="#"></a><img src="images/logo-print.png" alt="" /></div>
+                <div class="title on-print">Научно-технологическое развитие Российской Федерации</div>
+
                 <div class="footer-nav">
                     <ul>
                         <li><a href="#">Основные направления государственной&nbsp;политики в&nbsp;области НТР</a></li>

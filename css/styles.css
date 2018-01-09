@@ -304,7 +304,7 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .main-splash-item-title {font-weight:bold; font-size:30px; line-height:36px; text-transform:uppercase; letter-spacing:1px}
 .main-splash-item-subtitle {font-size:18px; padding:11px 0 0 0}
 
-.main-news {max-width:920px; margin:0 auto; padding:120px 0 80px 0}
+.main-news {max-width:920px; margin:0 auto; padding:120px 0 0 0}
 .main-news-title {font-size:30px; line-height:36px; color:#1e1e1e; font-weight:bold; letter-spacing:1px; text-transform:uppercase}
 .main-news-title:before {content:""; display:block; width:32px; height:32px; background:url(../images/main-news-title.png); margin:0 0 28px 0}
 .main-news-title a {display:inline-block; vertical-align:top; margin:5px 0 0 40px; line-height:0}
@@ -321,10 +321,10 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .main-news-item-date {font-size:14px; color:#b9b9b9; padding:13px 0 0 0}
 .main-news-all {width:170px; margin:0 auto; padding:13px 0 0 0}
 
-.main-subscribe {max-width:980px; margin:0 auto; background:#58c9b5 url(../images/main-subscribe.jpg) no-repeat center; background-size:cover; border-radius:5px}
-.main-subscribe form {margin:0 auto; padding:43px 0 45px 0; max-width:540px}
-.main-subscribe-title {font-weight:bold; font-size:30px; line-height:36px; color:#fff; text-transform:uppercase; letter-spacing:1px; text-shadow:0 2px 3px rgba(149, 115, 64, .35)}
-.main-subscribe-field {background:#fff; border-radius:3px; margin:41px 0 0 0; height:70px; padding:0 65px 0 0; position:relative}
+.main-subscribe {max-width:980px; margin:80px auto 0 auto; background:#58c9b5 url(../images/main-subscribe.jpg) no-repeat center; background-size:cover; border-radius:5px}
+.main-subscribe form {margin:0 auto; padding:23px 0 30px 0; max-width:540px}
+.main-subscribe-title {font-weight:bold; font-size:24px; line-height:30px; color:#fff; text-transform:uppercase; letter-spacing:1px; text-shadow:0 2px 3px rgba(149, 115, 64, .35)}
+.main-subscribe-field {background:#fff; border-radius:3px; margin:21px 0 0 0; height:70px; padding:0 65px 0 0; position:relative}
 .main-subscribe-field .form-input span {text-transform:none; left:24px; top:21px; font-size:16px}
 .main-subscribe-field .form-input.focus span {top:9px; font-size:12px}
 .main-subscribe-field .form-input input {border:1px solid #fff; padding:26px 24px 12px 24px; height:70px; border-radius:3px 0 0 3px; border-right:none}
@@ -336,7 +336,7 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .main-subscribe-field .form-submit input {display:block; width:65px; height:70px; border-radius:0 3px 3px 0; background:#fe6600 url(../images/main-subscribe-submit.png) no-repeat center; margin:0; padding:0; outline:none; border:none; box-sizing:border-box; -webkit-appearance:none; cursor:pointer}
 .main-subscribe-field .form-submit input:hover {background-color:#0bccba}
 .main-subscribe-field .form-submit input:active {background-color:#0bc5cc}
-.main-subscribe .form-checkbox {font-size:12px; line-height:18px; color:#fff; margin:24px 0 0 0}
+.main-subscribe .form-checkbox {display:none; font-size:12px; line-height:18px; color:#fff; margin:14px 0 0 0}
 .main-subscribe .form-checkbox label {padding-left:40px}
 .main-subscribe .form-checkbox .form-checkbox-icon {top:0}
 .main-subscribe .form-checkbox .form-checkbox-text {color:#fff}
@@ -345,7 +345,7 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .main-subscribe .form-checkbox label input:checked+.form-checkbox-icon+.form-checkbox-text,
 .main-subscribe .form-checkbox label input:checked+label+.form-checkbox-icon+.form-checkbox-text {color:#fff}
 
-.main-calendar {max-width:920px; margin:0 auto; padding:99px 0 0 0}
+.main-calendar {max-width:920px; margin:0 auto; padding:80px 0 0 0}
 .main-calendar-title {font-size:30px; line-height:36px; color:#1e1e1e; font-weight:bold; letter-spacing:1px; text-transform:uppercase}
 .main-calendar-title:before {content:""; display:block; width:32px; height:32px; background:url(../images/main-calendar-title.png); margin:0 0 28px 0}
 .main-calendar-list {margin:66px -30px 0 -30px; position:relative}
@@ -800,3 +800,5 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .indicators-tree-group-item .indicators-tree-group-item .indicators-tree-group-item-content {background:#fff; padding:40px 30px 30px 30px}
 
 .indicators-tree-group-item-list {display:none; margin:0 -60px}
+
+.on-print {display:none}
