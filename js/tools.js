@@ -108,7 +108,16 @@ $(document).ready(function() {
         initialSlide: 3,
         prevArrow: '<button type="button" class="slick-prev"></button>',
         nextArrow: '<button type="button" class="slick-next"></button>',
-        dots: false
+        dots: false,
+        responsive: [
+            {
+                breakpoint: 1139,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
     }).on('setPosition', function(event, slick) {
         if ($('.main-calendar-window').length > 0) {
             $('.main-calendar-window').remove();
@@ -202,7 +211,16 @@ $(document).ready(function() {
         prevArrow: '<button type="button" class="slick-prev"></button>',
         nextArrow: '<button type="button" class="slick-next"></button>',
         adaptiveHeight: true,
-        dots: false
+        dots: false,
+        responsive: [
+            {
+                breakpoint: 1139,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                }
+            }
+        ]
     });
 
     $('.gallery-preview-item:first').addClass('active');
@@ -343,12 +361,13 @@ $(document).ready(function() {
     });
 
     $('.header-search-link').click(function(e) {
-        $('.header-search').addClass('open');
+        $(this).parents().filter('.header-search').addClass('open');
         e.preventDefault();
     });
 
     $('.header-search-close').click(function(e) {
-        $('.header-search').removeClass('open');
+        $(this).parents().filter('.header-search').find('.header-search-input input').val('');
+        $(this).parents().filter('.header-search').removeClass('open');
         e.preventDefault();
     });
 
@@ -398,6 +417,13 @@ $(document).ready(function() {
         $('.main-subscribe .form-checkbox').slideDown();
     });
 
+    $('.header-menu-col-title a').click(function(e) {
+        if ($(window).width() < 1140) {
+            $(this).parent().toggleClass('open');
+            e.preventDefault();
+        }
+    });
+
 });
 
 $(window).on('load resize scroll', function() {
@@ -434,7 +460,17 @@ $(window).on('load resize', function() {
                 variableWidth: true,
                 prevArrow: '<button type="button" class="slick-prev"></button>',
                 nextArrow: '<button type="button" class="slick-next"></button>',
-                initialSlide: curIndex
+                initialSlide: curIndex,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            variableWidth: false
+                        }
+                    }
+                ]
             });
         }
     }
@@ -449,6 +485,25 @@ $(window).on('resize', function() {
             curSelect.parent().find('.chosen-single').prepend('<strong>' + curSelect.data('placeholder') + '</strong>');
         }
     });
+});
+
+$(window).bind('load resize', function() {
+    if ($('.task-menu').length > 0) {
+        if ($(window).width() < 1140) {
+            if (!$('.task-menu ul').hasClass('slick-slider')) {
+                $('.task-menu ul').slick({
+                    infinite: false,
+                    arrows: false,
+                    dots: false,
+                    variableWidth: true
+                });
+            }
+        } else {
+            if ($('.task-menu ul').hasClass('slick-slider')) {
+                $('.task-menu ul').slick('unslick');
+            }
+        }
+    }
 });
 
 function initForm(curForm) {
@@ -589,7 +644,16 @@ function windowOpen(linkWindow, dataWindow, callbackWindow) {
             prevArrow: '<button type="button" class="slick-prev"></button>',
             nextArrow: '<button type="button" class="slick-next"></button>',
             adaptiveHeight: true,
-            dots: false
+            dots: false,
+            responsive: [
+                {
+                    breakpoint: 1139,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                }
+            ]
         });
 
         $('.window .gallery-preview-item:first').addClass('active');
