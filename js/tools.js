@@ -404,6 +404,8 @@ $(document).ready(function() {
         if (curBlock.length > 0) {
             $('.indicators-tree-group-item.open').removeClass('open');
             $('.indicators-tree-group-item-list').hide();
+            curBlock.find('.indicators-tree-group-item').eq(0).addClass('open');
+            curBlock.find('.indicators-tree-group-item-list').eq(0).show();
             $.scrollTo(curBlock, {duration : 500});
         }
     });
