@@ -511,8 +511,11 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .main-subscribe .form-checkbox label input:checked+.form-checkbox-icon+.form-checkbox-text,
 .main-subscribe .form-checkbox label input:checked+label+.form-checkbox-icon+.form-checkbox-text {color:#fff}
 
+@media screen and (max-width:1139px) {
+    .main-subscribe-title {font-size:21px; line-height:24px; text-align:center}
+}
+
 @media screen and (max-width:768px) {
-    .main-subscribe-title {font-size:33px; line-height:36px; text-align:center}
     .main-subscribe form {padding-left:30px; padding-right:30px}
 }
 
@@ -849,6 +852,7 @@ h1+.event-info {margin-top:-42px}
 .event:first-child {border-top:none}
 .events-in-task .event:first-child {padding-top:0}
 .event-preview {float:left; line-height:0; width:245px; padding:4px 0 0 0}
+.event-preview a {display:block}
 .events-in-task .event-preview {width:150px}
 .event-preview img {border-radius:5px; width:100%}
 .event-preview+.event-container {margin:0 0 0 285px}
@@ -868,6 +872,8 @@ h1+.event-info {margin-top:-42px}
     .event-preview {float:none; width:auto}
     .event-preview+.event-container {margin:30px 0 0 0}
     .event-title {font-size:16px; line-height:24px}
+    .events-in-task .event-preview {width:auto}
+    .events-in-task .event-preview+.event-container {margin:30px 0 0 0}
 }
 
 .container-padding {padding:0 95px}
@@ -1106,6 +1112,15 @@ footer a:focus {color:#fff}
 
 .window-event {width:1000px; padding:49px 30px 50px 30px}
 .window-event h1 {margin-top:0; margin-right:50px}
+.window .gallery {margin-left:-30px; margin-right:-30px; padding:30px 30px}
+
+@media screen and (max-width:1059px) {
+    .window-event {width:700px}
+}
+
+@media screen and (max-width:767px) {
+    .window-event {width:400px}
+}
 
 .council form {margin:0; padding:0; width:50%}
 
