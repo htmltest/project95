@@ -503,7 +503,7 @@ $(window).on('resize', function() {
 $(window).bind('load resize', function() {
     if ($('.task-menu').length > 0) {
         if ($(window).width() < 1140) {
-            var curIndex = $('.task-menu ul li').index($('.task-menu ul li.active')) - 1;
+            var curIndex = $('.task-menu ul li').index($('.task-menu ul li.active'));
             if (curIndex < 0) {
                 curIndex = 0;
             }
