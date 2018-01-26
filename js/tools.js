@@ -188,6 +188,10 @@ $(document).ready(function() {
             var curIndex = $('.task-menu li').index(curItem);
             $('.task-tab.active').removeClass('active');
             $('.task-tab').eq(curIndex).addClass('active');
+            if ($('.task-menu ul').hasClass('slick-slider')) {
+                $('.task-menu ul').slick('slickGoTo', curIndex);
+            }
+
         }
         e.preventDefault();
     });
