@@ -772,10 +772,10 @@ h2+.task-events {margin-top:-22px}
 .task-event-title {padding:12px 0 0 0}
 .task-event-title a {color:#5480a8; text-decoration:none}
 .task-event-title a:hover {text-decoration:underline}
-.task-event-info {font-size:14px; color:#b9b9b9; padding:17px 0 0 0}
+.task-event-info {font-size:14px; color:#b9b9b9; margin:0 0 0 -28px}
 .task-event-info:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
-.task-event-info-date {float:left}
-.task-event-info-tag {float:left; margin:0 0 0 28px; padding:0 0 0 20px; background:url(../images/task-event-info-tag.png) no-repeat left 4px}
+.task-event-info-date {float:left; margin:17px 0 0 28px}
+.task-event-info-tag {float:left; margin:17px 0 0 28px; padding:0 0 0 20px; background:url(../images/task-event-info-tag.png) no-repeat left 4px}
 .task-event-info-tag a {color:#b9b9b9; text-decoration:none}
 .task-event-info-tag a:hover {color:#1e1e1e}
 
@@ -788,15 +788,15 @@ h2+.task-events {margin-top:-22px}
 .event-doc-type {color:#737373}
 
 h1+.event-info {margin-top:-42px}
-.event-info {font-size:14px; color:#b9b9b9; margin:24px 0}
+.event-info {font-size:14px; color:#b9b9b9; margin:7px 0 24px -28px}
 .event-info:after {content:"."; display:block; clear:both; visibility:hidden; height:0}
-.event-info-date {float:left}
-.event-info-group {float:left; margin:0 0 0 27px; color:#ff6600; text-transform:uppercase; font-size:12px}
+.event-info-date {float:left; margin:17px 0 0 28px}
+.event-info-group {float:left; margin:17px 0 0 28px; color:#ff6600; text-transform:uppercase; font-size:12px}
 .event-info-group-2 {margin:0 0 24px 0; font-size:16px}
 .event-info-group a {color:#ff6600; text-decoration:none}
 .event-info-group a:hover {text-decoration:underline}
 .event-info-group img {vertical-align:middle; margin:-6px 3px 0 0}
-.event-info-tag {float:left; margin:0 0 0 28px; padding:0 0 0 20px; background:url(../images/task-event-info-tag.png) no-repeat left 4px}
+.event-info-tag {float:left; margin:17px 0 0 28px; padding:0 0 0 20px; background:url(../images/task-event-info-tag.png) no-repeat left 4px}
 .event-info-tag a {color:#b9b9b9; text-decoration:none}
 .event-info-tag a:hover {color:#1e1e1e}
 
@@ -866,7 +866,7 @@ h1+.event-info {margin-top:-42px}
 .events-in-task .event-title {font-size:16px; line-height:24px}
 .event-title a {color:#5480a8; text-decoration:none}
 .event-title a:hover {text-decoration:underline}
-.event .event-info {font-size:14px; color:#b9b9b9; padding:14px 0 0 0; margin:0}
+.event .event-info {font-size:14px; color:#b9b9b9; padding:14px 0 0 0; margin-top:0; margin-bottom:0}
 
 @media screen and (max-width:767px) {
     .event-preview {float:none; width:auto}

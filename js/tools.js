@@ -453,7 +453,7 @@ $(window).on('load resize scroll', function() {
     }
 });
 
-$(window).on('load resize', function() {
+$(window).on('load', function() {
     if ($('.header-submenu-2').length > 0) {
         if ($('.header-submenu-2-inner').hasClass('slick-slider')) {
             $('.header-submenu-2-inner').slick('unslick');
