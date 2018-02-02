@@ -1098,6 +1098,15 @@ footer a:focus {color:#fff}
     .up-link a {float:right}
 }
 
+@media screen and (max-width:1139px) {
+    .up-link {display:none; margin:0 !important; position:fixed; right:35px; bottom:35px; z-index:20}
+    .up-link.visible {display:block}
+    .up-link:after {display:none}
+    .up-link a {float:none; width:0; height:0; padding:56px 0 0 56px; font-size:0; line-height:0; letter-spacing:-1px; background:url(../images/up-mobile.png); position:relative; overflow:hidden}
+    .up-link a:before {display:none}
+    .up-link a:hover {opacity:1}
+}
+
 .window-open body {overflow:hidden}
 .window-open .wrapper {-webkit-filter:blur(8px); -moz-filter:blur(8px); -o-filter:blur(8px); -ms-filter:blur(8px); filter:blur(8px)}
 .window-open footer {-webkit-filter:blur(8px); -moz-filter:blur(8px); -o-filter:blur(8px); -ms-filter:blur(8px); filter:blur(8px)}
@@ -1109,6 +1118,11 @@ footer a:focus {color:#fff}
 .window-content {position:relative; background:#fff; box-shadow:0 0 10px rgba(0, 0, 0, .5)}
 .window-close {display:block; position:absolute; width:11px; height:11px; right:48px; top:43px; background:url(../images/window-close.png)}
 .window-close:hover {background-position:left -11px}
+
+@media screen and (max-width:1139px) {
+    .window-close {right:13px; top:12px; width:35px; height:35px; background:#fff url(../images/window-close-mobile.png) no-repeat center; border-radius:50%; box-shadow:0 0 6px rgba(0, 0, 0, .16)}
+    .window-close:hover {background-position:center}
+}
 
 .window-event {width:1000px; padding:49px 30px 50px 30px}
 .window-event h1 {margin-top:0; margin-right:50px}
