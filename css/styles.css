@@ -655,15 +655,16 @@ nav {float:left; width:100%; padding:20px 0 19px 0}
 .tasks {margin:48px 0 35px 0}
 .tasks+.tasks {margin-top:-23px}
 .tasks-item {position:relative; padding:0 95px 28px 95px; margin:12px 0; border-radius:8px; background:#f0f4fb; background:-moz-linear-gradient(top, #f0f4fb 0%, #f7f9fd 100%); background:-webkit-linear-gradient(top, #f0f4fb 0%, #f7f9fd 100%); background:linear-gradient(to bottom, #f0f4fb 0%, #f7f9fd 100%); filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f4fb', endColorstr='#f7f9fd',GradientType=0)}
-.tasks-item-number {width:33px; height:33px; position:absolute; left:26px; top:50%; line-height:33px; text-align:center; color:#fff; font-weight:bold; margin-top:-17px; background:#fe6600; border-radius:50%}
+.tasks-item-number {width:33px; height:33px; position:absolute; left:26px; top:33px; line-height:33px; text-align:center; color:#fff; font-weight:bold; background:#fe6600; border-radius:50%}
 .tasks-item-title {font-size:20px; line-height:24px; font-weight:bold; padding:30px 0 0 0}
 .tasks-item-title a {color:#000; text-decoration:none}
 .tasks-item-title a:hover {color:#fe6600}
 .tasks-item-title-sub {font-weight:normal; display:block; color:#fe6600}
 .tasks-item-title-events {display:block; font-weight:normal; font-size:11px; line-height:14px; text-transform:uppercase; color:#b3b3b3; letter-spacing:1px; padding:11px 0 2px 0}
+.tasks-item-finish {display:block; width:22px; height:28px; background:url(../images/task-finish.png); position:absolute; right:20px; top:33px}
 
 @media screen and (max-width:1139px) {
-    .tasks-item {padding-right:30px}
+    .tasks-item {padding-right:60px}
 }
 
 @media screen and (min-width:1200px) {

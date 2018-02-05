@@ -245,13 +245,18 @@
                         var myChart = new Chart(ctx, {
                             type: 'line',
                             data: {
-                                labels: ["2012", "2013", "2014", "2015", "2016", "2017"],
+                                labels: ["2012","2013","2014","2015","2016"],
+
                                 datasets: [{
-                                    label: '# исследований',
-                                    data: [12, 19, 3, 5, 5, 3],
-                                    backgroundColor: 'transparent',
-                                    borderColor: '#808080',
-                                    borderWidth: 1
+                                    label: '%',
+                                    data: [69,68,72,64,66],
+                                    fill: false,
+                                    lineTension: 0,
+                                    borderColor: [
+                                        'rgba(254,102,0, 1)'
+                                    ],
+                                    borderWidth: 2,
+                                    min : 56,                                        
                                 }]
                             },
                             options: {
@@ -261,9 +266,10 @@
                                 },
                                 title: {
                                     display: false
-                                }
+                                },
+                                          
                             }
-                        });
+                        });                            
                     </script>
 
                     <p>
