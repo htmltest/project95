@@ -3,6 +3,7 @@
 
 @font-face {font-family:"HelveticaNeueCyr"; src:url("../fonts/HelveticaNeueCyr-Roman.woff") format("woff"); font-weight:normal; font-style:normal}
 @font-face {font-family:"HelveticaNeueCyr"; src:url("../fonts/HelveticaNeueCyr-Bold.woff") format("woff"); font-weight:bold; font-style:normal}
+@font-face {font-family:"HelveticaNeueCyrMedium"; src:url("../fonts/HelveticaNeueCyr-Medium.woff") format("woff"); font-weight:normal; font-style:normal}
 @font-face {font-family:"HelveticaNeueCyrLight"; src:url("../fonts/HelveticaNeueCyr-Light.woff") format("woff"); font-weight:normal; font-style:normal}
 
 html {min-width:480px; height:100%}
@@ -1209,6 +1210,31 @@ a.indicators-group-header:hover .indicators-group-header-arrow div {background:#
 @media screen and (max-width:1139px) {
     .indicators-select {width:100%}
 }
+
+.indicators-select-2 {width:610px; margin:48px 0}
+
+@media screen and (max-width:1139px) {
+    .indicators-select-2 {width:100%}
+}
+
+.indicators-select-field {position:relative}
+.indicators-select-value {border:1px solid #e6e6e6; position:relative; cursor:pointer; padding:0 0 0 20px; border-radius:3px; color:#000; font-weight:bold; text-transform:uppercase; font-size:10px; line-height:58px; height:58px; letter-spacing:1px}
+.indicators-select-value:after {content:""; display:block; width:9px; height:6px; background:url(../images/arrow.png); position:absolute; right:20px; top:50%; margin-top:-3px}
+.indicators-select-field.open .indicators-select-value {border-radius:3px 3px 0 0}
+.indicators-select-field.open .indicators-select-value:after {background-position:left -7px}
+.indicators-select-list {display:none; position:absolute; left:0; top:100%; margin-top:-1px; width:100%; max-height:300px; overflow:auto; background:#fff; z-index:99; box-sizing:border-box; border:1px solid #e6e6e6; border-radius:0 0 3px 3px}
+.indicators-select-field.open .indicators-select-list {display:block}
+.indicators-select-list ul {margin:0; padding:5px 0; list-style:none; font:18px/24px HelveticaNeueCyrMedium, sans-serif}
+.indicators-select-list ul li {margin:0; padding:0}
+.indicators-select-list ul li:before {display:none}
+.indicators-select-list ul li a {display:block; padding:9px 20px; color:#1e1e1e; text-decoration:none}
+.indicators-select-list ul li a:hover {background:#f1f1f1}
+.indicators-select-list ul ul {padding:0; font:16px/24px HelveticaNeueCyr, sans-serif}
+.indicators-select-list ul ul ul {font-size:14px}
+.indicators-select-list ul li ul li a {padding-left:40px}
+.indicators-select-list ul li ul li ul li a {padding-left:60px}
+.indicators-select-list ul li ul li ul li ul li a {padding-left:80px}
+.indicators-select-list ul li ul li ul li ul li ul li a {padding-left:100px}
 
 .indicators-ratings {margin:43px 0}
 .indicators-ratings ul {margin:12px 0; padding:0; list-style:none}

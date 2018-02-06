@@ -402,17 +402,40 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-    $('#indicators-select-tree').change(function() {
-        var curValue = $(this).find('option:selected').attr('value');
-        var curBlock = $('#indicators-tree-' + curValue);
+    $('.indicators-select-value').click(function(e) {
+        $(this).parent().toggleClass('open');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.indicators-select-field').length == 0) {
+            $('.indicators-select-field').removeClass('open');
+        }
+    });
+
+    $('.indicators-select-list a').click(function(e) {
+        $('.indicators-select-field').removeClass('open');
+        var curValue = $(this).attr('data-indicator-id');
+        var curBlock = $('#indicators-item-' + curValue);
         if (curBlock.length > 0) {
             $('.indicators-tree-group-item.open').removeClass('open');
             $('.indicators-tree-group-item-list').hide();
-            curBlock.find('.indicators-tree-group-item').eq(0).addClass('open');
+            curBlock.addClass('open');
             curBlock.find('.indicators-tree-group-item-list').eq(0).show();
-            $.scrollTo(curBlock, {duration : 500});
+            curBlock.parents().filter('.indicators-tree-group-item').addClass('open');
+            curBlock.parents().filter('.indicators-tree-group-item').each(function() {
+                $(this).find('.indicators-tree-group-item-list').eq(0).show();
+            });
+            window.setTimeout(function() {
+                $.scrollTo(curBlock, {duration : 500});
+            }, 100);
+
         }
+        e.preventDefault();
     });
+
+    if (window.location.hash != '') {
+        $('a[data-indicator-id="' + window.location.hash.replace('#', '') + '"]').click();
+    }
 
     $('#indicator-select-other').change(function() {
         var curValue = $(this).find('option:selected').attr('value');
