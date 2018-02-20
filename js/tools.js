@@ -282,10 +282,16 @@ $(document).ready(function() {
     $('.programms').each(function() {
         var curBlock = $(this);
 
+        var curFilter = curBlock.find('.programms-menu li.active a').data('filter');
         curBlock.find('.programms-list').isotope({
             itemSelector: '.programms-item',
-            filter: curBlock.find('.programms-menu li.active a').data('filter')
+            filter: curFilter
         });
+        if (curFilter != '*' && curBlock.find('.programms-item' + curFilter).length == 0) {
+            curBlock.find('.programms-list-empty').show();
+        } else {
+            curBlock.find('.programms-list-empty').hide();
+        }
     });
 
     $('.programms-menu li a').click(function(e) {
@@ -298,6 +304,11 @@ $(document).ready(function() {
                 filter: curFilter
             });
             curLi.addClass('active');
+            if (curFilter != '*' && curBlock.find('.programms-item' + curFilter).length == 0) {
+                curBlock.find('.programms-list-empty').show();
+            } else {
+                curBlock.find('.programms-list-empty').hide();
+            }
         }
         e.preventDefault();
     });

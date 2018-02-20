@@ -988,6 +988,8 @@ h1+.event-info {margin-top:-42px}
 .programms-list a:hover {text-decoration:none}
 .programms-item {border-bottom:1px solid #e6e6e6; padding:25px 0}
 
+.programms-list-empty {border-bottom:1px solid #e6e6e6; padding:25px 0; display:none}
+
 .task-tab .similars-link a:hover {text-decoration:none}
 .similars-link span:nth-child(1) {color:#fe6600; border-bottom:1px dotted #fe6600}
 .similars-link span:nth-child(2) {display:none; color:#717171; border-bottom:1px dotted #717171}
