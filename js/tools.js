@@ -1,5 +1,13 @@
-$(document).ready(function() {
+$(window).on('load', function() {
+//Будет ждать загрузки только DOM-дерева
+    $('#no-block').removeAttr("id");
+});
 
+$(document).ready(function() {
+    $(document).on('click','.header-menu-col-title a', function(e){
+        e.preventDefault();
+    });
+    
     $('.council').each(function() {
         var curBlock = $(this);
         var selectVariants = [];
@@ -40,6 +48,7 @@ $(document).ready(function() {
         }
     });
 
+
     $.validator.addMethod('maskPhone',
         function(value, element) {
             if (value == '') {
@@ -69,26 +78,28 @@ $(document).ready(function() {
         changeMonth: true,
         changeYear: true,
         showButtonPanel: true,
-        minDate: new Date(2018, 2, 1),
-        maxDate: new Date(2020, 8, 1),
+        minDate: new Date(2016, 1, 1),
+        maxDate: new Date(2026, 12, 1),
         dateFormat: dateFormat,
         onClose: function(dateText, inst) {
+            var curForm = $('#task-steps-month-calendar-datepicker').parent();
             var month = $('#ui-datepicker-div .ui-datepicker-month :selected').val();
             var year = $('#ui-datepicker-div .ui-datepicker-year :selected').val();
-            $(this).datepicker('setDate', new Date(year, month, 1));
-            var curForm = $('#task-steps-month-calendar-datepicker').parent();
-            $.ajax({
+            var data = curForm.serialize() + '&month=' + month + '&year=' + year;
+						$(this).datepicker('setDate', new Date(year, month, 1));
+            console.log(data);
+						$.ajax({
                 type: 'POST',
                 url: curForm.attr('action'),
                 dataType: 'html',
-                data: 'month=' + month + '&year=' + year,
-                cache: false
+                data: data,
+                cache: false                        
             }).done(function(html) {
+                //$('#stagesContainer').html(html);
                 $('.task-steps-month-title, .task-steps-print-month').html($('#task-steps-month-calendar-datepicker').val());
                 if ($('.task-steps-days-list').hasClass('slick-slider')) {
                     $('.task-steps-days-list').slick('unslick');
                 }
-                $('.task-steps-days-inner').html(html);
                 $('.task-steps-days-list').slick({
                     dots: false,
                     infinite: false,
@@ -99,9 +110,13 @@ $(document).ready(function() {
             });
         }
     });
+    
+    $("#tagSelector, #yearSelector").change(function(){
+			$(this).parents("form").submit();
+		});
 
     var slickAnimation = false;
-    $('.main-calendar-list-inner').slick({
+		$('.main-calendar-list-inner').slick({
         infinite: false,
         slidesToShow: 3,
         slidesToScroll: 3,
@@ -113,12 +128,12 @@ $(document).ready(function() {
             {
                 breakpoint: 1139,
                 settings: {
-                    slidesToShow: 1,
+                   slidesToShow: 1,
                     slidesToScroll: 1
                 }
             }
         ]
-    }).on('setPosition', function(event, slick) {
+		}).on('setPosition', function(event, slick) {
         if ($('.main-calendar-window').length > 0) {
             $('.main-calendar-window').remove();
         }
@@ -191,7 +206,6 @@ $(document).ready(function() {
             if ($('.task-menu ul').hasClass('slick-slider')) {
                 $('.task-menu ul').slick('slickGoTo', curIndex);
             }
-
         }
         e.preventDefault();
     });
@@ -246,7 +260,7 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '.window-link', function(e) {
-        var curLink = $(this);
+				var curLink = $(this);
         windowOpen(curLink.attr('href'));
         e.preventDefault();
     });
@@ -291,7 +305,7 @@ $(document).ready(function() {
             curBlock.find('.programms-list-empty').show();
         } else {
             curBlock.find('.programms-list-empty').hide();
-        }
+        }        
     });
 
     $('.programms-menu li a').click(function(e) {
@@ -340,6 +354,7 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+
     $('body').on('click', '.main-calendar-item-day-link', function(e) {
         var curDay = $(this).parent();
         if (curDay.hasClass('active')) {
@@ -358,7 +373,7 @@ $(document).ready(function() {
             curWindow.css({'left': curDay.offset().left, 'top': curDay.offset().top - $('.wrapper').offset().top});
             if (curWindow.offset().left + curWindow.outerWidth() > $('.wrapper').width()) {
                 curWindow.addClass('right');
-            }
+            }                        
             curWindow.find('.main-calendar-window-list-inner').jScrollPane({
                 autoReinitialise: true
             });
@@ -447,7 +462,7 @@ $(document).ready(function() {
     if (window.location.hash != '') {
         $('a[data-indicator-id="' + window.location.hash.replace('#', '') + '"]').click();
     }
-
+    
     $('#indicator-select-other').change(function() {
         var curValue = $(this).find('option:selected').attr('value');
         window.location.href = curValue;
@@ -457,12 +472,17 @@ $(document).ready(function() {
         $('.main-subscribe .form-checkbox').slideDown();
     });
 
-    $('.header-menu-col-title a').click(function(e) {
-        if ($(window).width() < 1140) {
-            $(this).parent().toggleClass('open');
-            e.preventDefault();
-        }
-    });
+    // $('.header-menu-col-title a').click(function(e) {
+    //     $(this).parent().toggleClass('open');
+    //     e.preventDefault();
+    // });
+    
+		//обработчик формы подписки
+		$("#subscribeForm").submit(function(e){
+			//alert('sended');
+			//e.preventDefault();
+		});
+
 
     $(window).on('load resize scroll', function() {
         $('.main-splash-item, .directions-item, .tasks-item, .challenges-item, .indicators-group').each(function() {
@@ -475,6 +495,47 @@ $(document).ready(function() {
         });
     });
 
+});
+
+$(window).on('load', function() {
+    if ($('.header-submenu-1').length > 0) {
+        if ($('.header-submenu-1-inner').hasClass('slick-slider')) {
+            $('.header-submenu-1-inner').slick('unslick');
+        }
+        var curWidth = 0;
+        $('.header-submenu-1-item').each(function() {
+            curWidth += $(this).width();
+        });
+        if (curWidth > $('.header-submenu-1-wrap').width()) {
+            var curIndex = $('.header-submenu-1-item').index($('.header-submenu-1-item.active'));
+            curIndex = curIndex -1;            
+            if (curIndex < 0) {
+                curIndex = 0;
+            }
+            $('.header-submenu-1-inner').slick({
+
+                centerPadding: "0px",
+                edgeFriction:10,
+                dots: false,
+                rows: 0,
+                infinite: false,
+                variableWidth: true,
+                prevArrow: '<button type="button" class="slick-prev"></button>',
+                nextArrow: '<button type="button" class="slick-next"></button>',
+                initialSlide: curIndex,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            variableWidth: false
+                        }
+                    }
+                ]
+            });
+        }
+    }
 });
 
 $(window).on('load resize scroll', function() {
@@ -507,7 +568,7 @@ $(window).on('load', function() {
             }
             $('.header-submenu-2-inner').slick({
                 dots: false,
-                infinite: false,
+								infinite: false,
                 variableWidth: true,
                 prevArrow: '<button type="button" class="slick-prev"></button>',
                 nextArrow: '<button type="button" class="slick-next"></button>',
@@ -549,7 +610,7 @@ $(window).bind('load resize', function() {
                 $('.task-menu ul').slick({
                     infinite: false,
                     arrows: false,
-                    initialSlide: curIndex,
+					initialSlide: curIndex,
                     dots: false,
                     variableWidth: true
                 });
@@ -598,13 +659,41 @@ function initForm(curForm) {
         curField.removeClass('error');
     });
 
-    curForm.validate({
-        ignore: '',
-        invalidHandler: function(form, validatorcalc) {
-            validatorcalc.showErrors();
-            checkErrors();
-        }
-    });
+    
+		if (curForm.parent().hasClass('main-subscribe')) {
+            curForm.validate({
+                submitHandler: function(form, validatorcalc) {
+                    $.ajax({
+                        type: 'POST',
+                        url: $(form).attr('action'),
+                        data: $(form).serialize(),
+                        dataType: 'json',
+                        cache: false
+                    }).done(function(res) {
+                        /*
+												if ($('.window').length > 0) {
+                            windowClose();
+                        }
+                        windowOpen(html);
+                        */
+                        alert(res.m);
+                        if(res.s == 1){
+													//сбросим текстовое поле в случае успеха
+													$(".main-subscribe input[type=text]").val('');
+												}
+                    });
+                }
+            });
+      } else {
+        curForm.validate({
+            ignore: '',
+            invalidHandler: function(form, validatorcalc) {
+                validatorcalc.showErrors();
+                checkErrors();
+            }
+        });
+    }
+
 }
 
 function checkErrors() {
@@ -748,3 +837,18 @@ function windowClose() {
         $('html').removeClass('window-open');
     }
 }
+
+$(window).on('load', function() {
+
+    $(".header-menu-col-title").click(function () {
+        $(this).parent().find(".header-menu-col-list").slideToggle({
+            duration: 200,
+            complete: function () {
+                var button =  $(this).parent().find(".header-menu-col-title");
+                if ($(this).is(':visible')) button.addClass('open');
+                else button.removeClass('open');
+            }
+        });
+    });
+
+}); 
