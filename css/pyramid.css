@@ -1,0 +1,13 @@
+.pyramid {width:500px; height:500px; position:relative; margin:176px auto 0 auto}
+.pyramid-container {width:100px; height:500px; position:relative; transition:transform 50ms linear; transform-style:preserve-3d; transform-origin:116px 200px 116px; transform:rotateX(0deg) rotateY(180deg) rotateZ(-90deg)}
+
+.pyramid-face {border-color:transparent; border-style:solid; border-width:200px 0 200px 346px; position:absolute; left:0; top:0; box-sizing:border-box; transform-origin:0 0}
+.pyramid-face svg {display:block; position:absolute; left:-346px; top:-200px}
+.pyramid-face path {fill:#b8e5ffa3; stroke:rgb(54, 162, 235); stroke-width:2}
+.pyramid-face:nth-child(1) {transform:rotateY(-19.5deg) rotateX(180deg) translateY(-400px)}
+.pyramid-face:nth-child(2) {transform:rotateY(90deg) rotateZ(60deg) rotateX(180deg) translateY(-400px)}
+.pyramid-face:nth-child(3) {transform:rotateX(60deg) rotateY(19.5deg)}
+.pyramid-face:nth-child(4) {transform:rotateX(-60deg) rotateY(19.5deg) translateX(-116px) translateY(-200px) translateZ(326px)}
+
+.pyramid-title {position:absolute; left:0px; top:-75px; white-space:nowrap; transform:translateX(-50%) rotate(90deg)}
+.pyramid-text {position:absolute; left:-326px; top:0; white-space:nowrap; transform:translateX(-50%) rotate(90deg)}

@@ -37,31 +37,54 @@ ol li:before {content:counter(point)'.'; counter-increment:point 1; position:abs
 li ol li:before {content:counter(point)'.'counter(subpoint); counter-increment:subpoint 1}
 hr {height:1px; width:100%; margin:48px 0; padding:0; border:none; background:#e6e6e6}
 blockquote {font-size:24px; line-height:36px; padding:4px 0 8px 27px; border-left:4px solid #3fdcea; margin:54px 0 60px 0}
-.wrapper table {width:100%; margin:54px 0 60px 0; border-collapse:collapse}
-.wrapper th {vertical-align:top; text-align:left; font-weight:normal; font-size:11px; line-height:12px; text-transform:uppercase; padding:6px 0 8px 30px; color:#0bccba}
-.wrapper th:first-child {padding-left:0}
-.wrapper td {vertical-align:top; text-align:left; border-top:1px solid #f2ecec; padding:12px 0 12px 30px}
-.wrapper thead+tbody td {padding-top:23px; padding-bottom:26px}
-.wrapper td:first-child {padding-left:0}
-.wrapper tbody tr:first-child td {border-top:none}
-.wrapper thead+tbody tr:first-child td {border-top:2px solid #0bccba}
-.wrapper thead+tbody tr:last-child td {border-bottom:1px solid #e6e6e6}
+.wrapper table,
+.window table {width:100%; margin:54px 0 60px 0; border-collapse:collapse}
+.wrapper th,
+.window th {vertical-align:top; text-align:left; font-weight:normal; font-size:11px; line-height:12px; text-transform:uppercase; padding:6px 0 8px 30px; color:#0bccba}
+.wrapper th:first-child,
+.window th:first-child {padding-left:0}
+.wrapper td,
+.window td {vertical-align:top; text-align:left; border-top:1px solid #f2ecec; padding:12px 0 12px 30px}
+.wrapper thead+tbody td,
+.window thead+tbody td {padding-top:23px; padding-bottom:26px}
+.wrapper td:first-child,
+.window td:first-child {padding-left:0}
+.wrapper tbody tr:first-child td,
+.window tbody tr:first-child td {border-top:none}
+.wrapper thead+tbody tr:first-child td,
+.window thead+tbody tr:first-child td {border-top:2px solid #0bccba}
+.wrapper thead+tbody tr:last-child td,
+.window thead+tbody tr:last-child td {border-bottom:1px solid #e6e6e6}
 
 @media screen and (min-width:1200px) {
-    .wrapper table {width:calc(100% + 30px); margin-left:-15px; margin-right:-15px}
-    .wrapper thead tr:before {content:""; display:table-cell; width:15px}
-    .wrapper thead tr:after {content:""; display:table-cell; width:15px}
-    .wrapper tbody tr:before {content:""; display:table-cell; width:15px; border-top:1px solid #f2ecec}
-    .wrapper tbody tr:after {content:""; display:table-cell; width:15px; border-top:1px solid #f2ecec}
-    .wrapper tbody tr:first-child:before {border-top:none}
-    .wrapper tbody tr:first-child:after {border-top:none}
-    .wrapper tbody tr:hover {background:#f7f7f7}
-    .wrapper tbody tr:hover td {border-top-color:#f7f7f7}
-    .wrapper tbody tr:hover:before {border-top-color:#f7f7f7}
-    .wrapper tbody tr:hover:after {border-top-color:#f7f7f7}
-    .wrapper tbody tr:hover+tr td {border-top-color:#f7f7f7}
-    .wrapper tbody tr:hover+tr:before {border-top-color:#f7f7f7}
-    .wrapper tbody tr:hover+tr:after {border-top-color:#f7f7f7}
+    .wrapper table,
+    .window table {width:calc(100% + 30px); margin-left:-15px; margin-right:-15px}
+    .wrapper thead tr:before,
+    .window thead tr:before {content:""; display:table-cell; width:15px}
+    .wrapper thead tr:after,
+    .window thead tr:after {content:""; display:table-cell; width:15px}
+    .wrapper tbody tr:before,
+    .window tbody tr:before {content:""; display:table-cell; width:15px; border-top:1px solid #f2ecec}
+    .wrapper tbody tr:after,
+    .window tbody tr:after {content:""; display:table-cell; width:15px; border-top:1px solid #f2ecec}
+    .wrapper tbody tr:first-child:before,
+    .window tbody tr:first-child:before {border-top:none}
+    .wrapper tbody tr:first-child:after,
+    .window tbody tr:first-child:after {border-top:none}
+    .wrapper tbody tr:hover,
+    .window tbody tr:hover {background:#f7f7f7}
+    .wrapper tbody tr:hover td,
+    .window tbody tr:hover td {border-top-color:#f7f7f7}
+    .wrapper tbody tr:hover:before,
+    .window tbody tr:hover:before {border-top-color:#f7f7f7}
+    .wrapper tbody tr:hover:after,
+    .window tbody tr:hover:after {border-top-color:#f7f7f7}
+    .wrapper tbody tr:hover+tr td,
+    .window tbody tr:hover+tr td {border-top-color:#f7f7f7}
+    .wrapper tbody tr:hover+tr:before,
+    .window tbody tr:hover+tr:before {border-top-color:#f7f7f7}
+    .wrapper tbody tr:hover+tr:after,
+    .window tbody tr:hover+tr:after {border-top-color:#f7f7f7}
 
     .wrapper .task-tab table {width:100%; margin-left:0; margin-right:0}
     .wrapper .task-tab thead tr:before {display:none}
@@ -357,7 +380,7 @@ header {background:#6697b5 url(../images/header.jpg) no-repeat center top;  back
     .header-menu-col-list {display:none; font-size:16px}
     .header-menu-col-list ul {padding:0 0 10px 0; margin:-13px 0 0 0}
     .header-menu-col-list ul li{padding-left: 15px;}
-    .header-menu-col-list ul li.active{background-color: rgb(1,1,1,0.2); margin: 9px 0; padding: 9px 0 9px 15px}    
+    .header-menu-col-list ul li.active{background-color: rgb(1,1,1,0.2); margin: 9px 0; padding: 9px 0 9px 15px}
     .header-menu-col-title.open+.header-menu-col-list {display:block}
     .header-menu-col-add {line-height:24px}
     .header-menu-col-add {position:absolute; left:0; bottom:-142px; right:0}
@@ -1232,7 +1255,7 @@ a.indicators-group-header:after {content:"."; display:block; clear:both; visibil
 .indicators-group-header-icon {float:left; width:60px; height:60px; background:#fe6600; text-align:center; line-height:58px; border-radius:50%}
 a.indicators-group-header:hover .indicators-group-header-icon {background:#c44d1d}
 .indicators-group-header-icon img {vertical-align:middle}
-.indicators-group-header-title {float:left; padding:19px 0 0 17px; text-transform:uppercase}
+.indicators-group-header-title {float:left; padding:19px 0 0 17px; text-transform:uppercase; max-width:calc(100% - 154px)}
 a.indicators-group-header:hover .indicators-group-header-title {text-decoration:underline}
 .indicators-group-header-arrow {float:right; width:48px; padding:6px 0 0 0}
 .indicators-group-header-arrow div {display:block; width:46px; height:46px; border:1px solid #fe6600; background:transparent; border-radius:50%; position:relative; transition:all .3s; background:#fe6600}
@@ -1257,7 +1280,7 @@ a.indicators-group-header:hover .indicators-group-header-arrow div {background:#
 .indicators-group-inner ul li ul li a:hover {text-decoration:underline}
 
 @media screen and (max-width:1139px) {
-    .indicators-group-header-title {max-width:calc(100% - 154px); position:relative; top:30px; transform:translateY(-50%); padding-top:0}
+    .indicators-group-header-title {position:relative; top:30px; transform:translateY(-50%); padding-top:0}
     .indicators-group-inner {padding:0 30px}
 }
 

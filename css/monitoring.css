@@ -15,7 +15,7 @@
 .monitoring-tab.active {position:relative; left:auto; top:auto; opacity:1}
 
 .monitoring-by-docs {padding:38px 0 0 0}
-.monitoring-by-docs-item {display:table; max-width:728px; margin:28px 0; text-decoration:none; color:#5480bb; transition:all 0.2s}
+.monitoring-by-docs-item {display:table; margin:28px 0; text-decoration:none; color:#5480bb; transition:all 0.2s}
 .monitoring-by-docs-item:hover {color:#fe6600}
 .monitoring-by-docs-item-icon {display:table-cell; vertical-align:top; width:81px}
 .monitoring-by-docs-item-icon-inner {width:81px; height:81px; background:#fe6600; border-radius:50%; text-align:center; line-height:81px; transition:all 0.2s}
@@ -26,6 +26,42 @@
 .monitoring-by-docs-item-notice {font-size:18px; line-height:23px; margin:7px 0 0 0}
 
 .monitoring-tab .docs {margin:20px 0 0 0}
+
+.monitoring-map-header {margin:62px 0 0 0}
+.monitoring-map-header::after {content:""; display:block; clear:both}
+.monitoring-map-header-year {position:relative; float:left; text-transform:uppercase; font:12px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em}
+.monitoring-map-header-year.open {z-index:9999}
+.monitoring-map-header-year-current {display:inline-block; vertical-align:top; color:#757575; transition:all 0.2s; cursor:pointer; padding:0 19px 0 0; position:relative}
+.monitoring-map-header-year-current::after {content:""; display:block; position:absolute; right:0; top:50%; width:11px; height:8px; background:url(../images/map-russia-sort-type.svg) no-repeat; margin-top:-4px}
+.monitoring-map-header-year-current:hover {color:#fe6600}
+.monitoring-map-header-year-list {display:none; z-index:9999; position:absolute; left:-20px; top:100%; white-space:nowrap; background:#fff; border:1px solid #e6e6e6}
+.monitoring-map-header-year.open .monitoring-map-header-year-list {display:block}
+.monitoring-map-header-year-list ul {margin:0; padding:5px 0; list-style:none}
+.monitoring-map-header-year-list ul li {margin:0; padding:5px 20px; color:#a6a6a6; cursor:pointer}
+.monitoring-map-header-year-list ul li::before {display:none}
+.monitoring-map-header-year-list ul li:hover {color:#fe6600}
+.monitoring-map-header-year-list ul li.active {color:#2f2f2f}
+
+.monitoring-map-header-zoom {float:right; width:32px; text-align:center; font-size:24px; line-height:28px; color:#fe6600; user-select:none}
+.monitoring-map-header-zoom-inc {width:32px; height:32px; border:1px solid #cbcbcb; box-sizing:border-box; cursor:pointer}
+.monitoring-map-header-zoom-inc:hover {border-color:#fe6600; position:relative}
+.monitoring-map-header-zoom-inc.disabled {pointer-events:none; color:#cbcbcb}
+.monitoring-map-header-zoom-dec {width:32px; height:32px; border:1px solid #cbcbcb; margin:-1px 0 0 0; box-sizing:border-box; cursor:pointer}
+.monitoring-map-header-zoom-dec:hover {border-color:#fe6600; position:relative}
+.monitoring-map-header-zoom-dec.disabled {pointer-events:none; color:#cbcbcb}
+
+.monitoring-map-inner {position:relative; overflow:hidden; width:100%; height:600px}
+.monitoring-map-inner svg {display:block; position:relative}
+.monitoring-map-region {stroke:#fff; fill:#f4995c; transition:all 0.2s; cursor:pointer}
+.monitoring-map-region:hover {fill:#fe6600}
+
+.monitoring-map-region-hint {position:absolute; margin:-2px 0 0 24px; z-index:999; background:#fff; box-shadow:0px 4px 20px rgba(0, 0, 0, 0.14); border-radius:2px; height:27px; font-size:12px; line-height:27px; letter-spacing:0.04em; color:#393939; padding:0 10px}
+
+.monitoring-map-list-window table {margin:0}
+.monitoring-map-list th,
+.monitoring-map-list-window th {color:#121212; font:16px/16px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; text-transform:uppercase; padding:12px 0; border-bottom:2px solid #fe6600}
+
+.monitoring-map-list-window {width:843px; padding:43px 60px 86px 60px; box-sizing:border-box}
 
 .indicators-groups-monitoring .indicators-group {padding:24px 30px; margin:10px 0}
 .indicators-groups-monitoring .indicators-group-header-icon {width:55px; height:55px; color:#fff; font:24px/55px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; text-transform:uppercase}
@@ -60,23 +96,28 @@
 .cube-menu ul li.active a {color:#fe6600}
 .cube-menu ul li.active a::after {content:""; display:block; position:absolute; left:0; bottom:-14px; right:0; height:3px; background:#fe6600; pointer-events:none}
 
-.cube {width:624px; height:624px; position:relative; margin:176px auto 0 auto; perspective:1248px; perspective-origin:50% 312px; transform:scale(0.75, 0.75)}
+.cube {width:624px; height:624px; position:relative; margin:126px auto 0 auto; perspective:1248px; perspective-origin:50% 312px; transform:scale(0.75, 0.75)}
 .cube-container {width:624px; height:624px; position:relative; transition:transform 50ms linear; transform-style:preserve-3d; transform:rotateX(-10deg) rotateY(20deg)}
 
-.cube-face {width:624px; height:624px; background:#f2f2f2; position:absolute; left:0; top:0; box-sizing:border-box; border:1px solid #e5e5e5}
+.cube-face {width:624px; height:624px; background:#f2f2f2; position:absolute; left:0; top:0; box-sizing:border-box; border:1px solid #e5e5e5; pointer-events:none}
+.cube-face.active {pointer-events:auto}
 .cube-face:nth-child(1) {transform:rotateX(90deg) translateZ(312px)}
 .cube-face:nth-child(2) {transform:translateZ(312px)}
 .cube-face:nth-child(3) {transform:rotateY(90deg) translateZ(312px)}
 .cube-face:nth-child(4) {transform:rotateY(180deg) translateZ(312px)}
-.cube-face:nth-child(5) {transform:rotateY(-90deg) translateZ(312px)}
-.cube-face:nth-child(6) {transform:rotateX(-90deg) rotate(180deg) translateZ(312px)}
+.cube-face:nth-child(5) {transform:rotateY(270deg) translateZ(312px)}
+.cube-face:nth-child(6) {transform:rotateX(270deg) translateZ(312px)}
 
-.map-russia {position:relative; padding:145px 0 0 0}
-.map-russia svg {display:block; margin:0 auto}
+.cube-face-title {visibility:hidden; position:absolute; left:0; bottom:100%; margin-bottom:26px; right:0; color:#121212; font-size:18px; line-height:18px; letter-spacing:0.04em; font-weight:bold}
+.cube-face:nth-child(3) .cube-face-title {font-weight:normal}
+.cube-face.active .cube-face-title {visibility:visible}
 
-.map-window {display:none; position:fixed; z-index:99; left:0; width:442px; margin:30px 0 0 -221px; background:#fff; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); padding:40px 30px; box-sizing:border-box}
-.map-window::before {content:""; display:block; position:absolute; left:50%; top:-11px; margin-left:-11px; border-bottom:11px solid #fff; border-left:11px solid transparent; border-right:11px solid transparent}
-.map-window-title {font:14px/19px HelveticaNeueCyrMedium, sans-serif; color:#121212; letter-spacing:0.04em}
+.cube-face-footer {visibility:hidden; position:absolute; left:0; top:100%; margin-top:26px; right:0}
+.cube-face.active .cube-face-footer {visibility:visible}
+
+.cube-face-download a {display:inline-block; vertical-align:top; border:1px solid #d9d9d9; height:35px; box-sizing:border-box; font-size:11px; line-height:33px; color:#393939; text-decoration:none; border-radius:2px; padding:0 13px 0 8px}
+.cube-face-download a:hover {color:#fe6600; border-color:#fe6600}
+.cube-face-download span {display:inline-block; vertical-align:middle; width:27px; height:13px; margin:-2px 5px 0 0; background:#fe6600; color:#fff; border-radius:2px; text-align:center; font-weight:bold; font-size:8px; line-height:14px; letter-spacing:0.06em; text-transform:uppercase}
 
 .face-1-legend {padding:38px 0 0 41px; font-size:12px; line-height:15px; color:#393939}
 .face-1-legend-item {margin:10px 0 0 0; position:relative; padding:0 0 0 30px}
@@ -86,10 +127,119 @@
 .face-1-legend-forecast::before {content:""; display:block; position:absolute; left:0; top:3px; right:0; height:3px; background:#fe6600}
 
 .face-1-container {position:relative; margin:0 40px; overflow:auto}
-.face-1-content {display:block; width:1000px; height:482px}
-#canvas-face-1 {width:100%; height:482px}
+.face-1-content {display:inline-block; vertical-align:top; height:482px}
+.face-1-chart {display:block; height:482px; position:relative}
+.face-1-chart-graph {position:absolute; left:0; right:0; top:66px; bottom:150px}
+.face-1-chart-line {position:absolute; height:2px; border-top:2px dotted #fe6600; transform-origin:left center; margin-left:21px; margin-top:5px; z-index:1}
+.face-1-chart-line.active {border-top:2px solid #fe6600}
+.face-1-chart-point {display:block; width:12px; height:12px; position:absolute; border:2px solid #fe6600; box-sizing:border-box; background:#f2f2f2; border-radius:50%; margin-left:15px; z-index:2}
+.face-1-chart-point span {display:block; position:absolute; white-space:nowrap; text-align:center; bottom:15px; left:50%; transform:translateX(-50%); color:#393939; opacity:0.6; font-size:12px; line-height:14px; letter-spacing:0.04em}
+.face-1-chart-point strong {font-weight:normal; font-family:HelveticaNeueCyrMedium, sans-serif; display:block}
+.face-1-chart-point.active {background:#fe6600}
+.face-1-chart-point.active span {opacity:1}
+.face-1-chart-labels {position:absolute; bottom:60px; left:0; right:0}
+.face-1-chart-year {position:absolute; bottom:0; width:42px; height:18px; font:12px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; text-align:center}
+.face-1-chart-year a {display:block; height:18px; text-decoration:none; color:#262626; border-radius:5px; background:rgba(255, 220, 197, 0.67); transition:all 0.2s}
+.face-1-chart-year a:hover {background:rgba(255, 220, 197, 1)}
+.face-1-chart-year span {display:block; height:18px; text-decoration:none; color:#262626; border-radius:5px; opacity:0.5}
 
-#canvas-face-3 {width:500px; height:500px}
+.window-face1 {width:778px; box-sizing:border-box; padding:50px 89px 40px 89px}
+.window-face1-title {font:22px/22px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#121212}
+.window-face1-subtitle {font-size:16px; line-height:16px; color:#939393; letter-spacing:0.04em; padding:13px 0 0 0}
+.window-face1-list {margin:37px 0 0 0}
+.window-face1-btn {padding:50px 0 0 0}
+
+.map-russia {position:relative; padding:90px 40px 0 40px}
+.map-russia svg {display:block; margin:0 auto}
+.map-russia .map-russia-district {stroke:#f2f2f2; transition:all 0.2s; cursor:pointer}
+.map-russia .map-russia-district:hover {opacity:0.9}
+
+.map-region {position:relative; margin:90px 40px 0 40px; display:none; height:309px}
+.map-region svg {display:block; margin:0 auto; position:relative}
+.map-region .map-region-item {stroke:#f2f2f2; transition:all 0.2s; cursor:pointer}
+.map-region .map-region-item:hover {opacity:0.9}
+
+.map-region-1 svg {left:0; top:-600px}
+.map-region-2 svg {left:-50px; top:-150px}
+.map-region-3 svg {left:100px; top:-800px}
+.map-region-4 svg {left:-50px; top:-1950px}
+.map-region-5 svg {left:-200px; top:-700px}
+.map-region-6 svg {left:-150px; top:-250px}
+.map-region-7 svg {left:-150px; top:-150px}
+.map-region-8 svg {left:-250px; top:-50px}
+
+.map-russia-sort-type {position:relative; margin:103px 0 0 40px; text-transform:uppercase; font:12px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em}
+.map-russia-sort-type.open {z-index:9999}
+.map-russia-sort-type-current {display:inline-block; vertical-align:top; color:#757575; transition:all 0.2s; cursor:pointer; padding:0 19px 0 0; position:relative}
+.map-russia-sort-type-current::after {content:""; display:block; position:absolute; right:0; top:50%; width:11px; height:8px; background:url(../images/map-russia-sort-type.svg) no-repeat; margin-top:-4px}
+.map-russia-sort-type-current:hover {color:#fe6600}
+.map-russia-sort-type-list {display:none; z-index:9999; position:absolute; left:-20px; top:100%; white-space:nowrap; background:#fff; border:1px solid #e6e6e6}
+.map-russia-sort-type.open .map-russia-sort-type-list {display:block}
+.map-russia-sort-type-list ul {margin:0; padding:5px 0; list-style:none}
+.map-russia-sort-type-list ul li {margin:0; padding:5px 20px; color:#a6a6a6; cursor:pointer}
+.map-russia-sort-type-list ul li::before {display:none}
+.map-russia-sort-type-list ul li:hover {color:#fe6600}
+.map-russia-sort-type-list ul li.active {color:#2f2f2f}
+
+.map-window {display:none; position:absolute; z-index:99; left:0; width:442px; margin:30px 0 0 -221px; background:#fff; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); padding:40px 30px; box-sizing:border-box}
+.map-window::before {content:""; display:block; position:absolute; left:50%; top:-11px; margin-left:-11px; border-bottom:11px solid #fff; border-left:11px solid transparent; border-right:11px solid transparent}
+.map-window-title {font:14px/19px HelveticaNeueCyrMedium, sans-serif; color:#121212; letter-spacing:0.04em}
+.map-window-info {padding:13px 0 0 0}
+.map-window-info::after {content:""; display:block; clear:both}
+.map-window-info-item {float:left; padding:0 0 0 73px}
+.map-window-info-item:first-child {padding:0}
+.map-window-info-item-title {font:13px/16px HelveticaNeueCyrLight, sans-serif; color:#393939; letter-spacing:0.04em}
+.map-window-info-item-value {font:14px/23px HelveticaNeueCyrMedium, sans-serif; color:#fe6600; letter-spacing:0.04em; padding:12px 0 0 0}
+.map-window-info-chart-title {font:14px/19px HelveticaNeueCyrMedium, sans-serif; color:#2f2f2f; letter-spacing:0.04em; padding:32px 0 10px 0}
+.map-window-info-link {padding:46px 0 0 0}
+.map-window-region .map-window-info-link {display:none}
+.map-window-info-link .btn-med {height:36px; line-height:36px; display:inline-block; vertical-align:top; width:auto; padding:0 16px; font-family:HelveticaNeueCyrMedium, sans-serif; font-weight:normal}
+.map-window-info-chart {font-size:0; line-height:0; letter-spacing:-1px}
+.map-window-info-chart-item {display:inline-block; vertical-align:bottom; margin:0 0 0 30px; width:26px; text-align:left; white-space:nowrap}
+.map-window-info-chart-item:first-child {margin:0}
+.map-window-info-chart-item-value {font-size:11px; line-height:11px; color:#262626; letter-spacing:0.04em; padding:0 0 15px 0}
+.map-window-info-chart-item-bar {width:26px; margin:0 auto; background:#fe6600; min-height:2px}
+.map-window-info-chart-item-predict .map-window-info-chart-item-bar {background:url(../images/monitoring-bar.png) left bottom}
+.map-window-info-chart-item-year {font:11px/11px HelveticaNeueCyrMedium, sans-serif; color:#262626; letter-spacing:0.04em; padding:21px 0 0 0}
+.map-window-info-chart-item-predict .map-window-info-chart-item-year {opacity:0.5}
+
+.face-2-header {padding:37px 43px 0 43px; text-transform:uppercase; font:12px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; position:relative; z-index:1}
+.face-2-header::after {content:""; display:block; clear:both}
+.face-2-type {float:left}
+.face-2-type ul {margin:0; padding:0; list-style:none}
+.face-2-type ul li {padding:0; float:left; margin:0 0 0 17px; position:relative}
+.face-2-type ul li:first-child {margin:0}
+.face-2-type ul li::before {display:none}
+.face-2-type ul li.active::after {content:""; display:block; position:absolute; left:0; bottom:-3px; right:0; height:2px; background:#fe6600}
+.face-2-type ul li a {color:#a6a6a6; text-decoration:none}
+.face-2-type ul li a:hover {color:#fe6600}
+.face-2-type ul li.active a {color:#fe6600}
+.face-2-back {float:right; text-transform:uppercase; visibility:hidden; opacity:0; transition:all 0.2s}
+.face-2-back.visible {visibility:visible; opacity:1}
+.face-2-back a {display:block; position:relative; padding:0 0 0 18px; color:#757575; text-decoration:none}
+.face-2-back a:hover {color:#fe6600}
+.face-2-back a::before {content:""; display:block; width:8px; height:11px; background:url(../images/monitoring-russia-back.svg) no-repeat; position:absolute; left:0; top:50%; margin-top:-6px}
+
+.face-2-table {display:table; width:100%; margin:0 0 13px 0}
+.face-2-table-header {display:table-row}
+.face-2-table-head {display:table-cell; vertical-align:top; font:13px/16px HelveticaNeueCyrLight, sans-serif; color:#393939; letter-spacing:0.04em; white-space:nowrap; padding:4px 0 36px 40px}
+.face-2-table-head:first-child {width:100%; padding-left:0}
+.face-2-table-head.active {font-family:HelveticaNeueCyrMedium, sans-serif}
+.face-2-table-head a {display:block; color:#393939; text-decoration:none; position:relative}
+.face-2-table-head a:hover {color:#fe6600}
+.face-2-table-head a::after {content:""; display:block; position:absolute; left:0; bottom:-8px; right:0; height:2px; background:#cecece}
+.face-2-table-head.active a::after {background:#fe6600}
+.face-2-table-row {display:table-row; font:14px/23px HelveticaNeueCyrLight, sans-serif; letter-spacing:0.04em}
+.face-2-table-name {display:table-cell; vertical-align:top; padding:0 0 20px 0}
+.face-2-table-name a {display:inline-block; vertical-align:top; text-decoration:none; color:#121212; padding:0 0 0 32px; position:relative}
+.face-2-table-name a:hover {color:#fe6600}
+.face-2-table-name-region {display:inline-block; vertical-align:top; color:#121212; padding:0 0 0 32px; position:relative}
+.face-2-table-name-color {display:block; position:absolute; left:0; top:2px; width:19px; height:19px; border-radius:50%}
+.face-2-table-name-text {text-decoration:underline}
+.face-2-table-value {display:table-cell; vertical-align:top; padding:0 0 17px 40px; color:#121212}
+.face-2-table-value.active {font-family:HelveticaNeueCyrMedium, sans-serif}
+
+#canvas-face-3 {width:500px; height:500px; margin-top:120px}
 
 .face-3-header {padding:37px 43px 0 43px; text-transform:uppercase; font:12px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; text-transform:uppercase}
 .face-3-header::after {content:""; display:block; clear:both}
@@ -102,15 +252,30 @@
 .face-3-type ul li a {color:#a6a6a6; text-decoration:none}
 .face-3-type ul li a:hover {color:#fe6600}
 .face-3-type ul li.active a {color:#fe6600}
-.face-3-year {float:right}
-.face-3-year ul {margin:0; padding:0; list-style:none}
-.face-3-year ul li {padding:0; float:left; margin:0 0 0 17px; position:relative}
-.face-3-year ul li:first-child {margin:0}
+.face-3-year {float:right; position:relative}
+.face-3-year.open {z-index:9999}
+.face-3-year-current {display:inline-block; vertical-align:top; color:#757575; transition:all 0.2s; cursor:pointer; padding:0 19px 0 0; position:relative}
+.face-3-year-current::after {content:""; display:block; position:absolute; right:0; top:50%; width:11px; height:8px; background:url(../images/map-russia-sort-type.svg) no-repeat; margin-top:-4px}
+.face-3-year-current:hover {color:#fe6600}
+.face-3-year ul {margin:0; padding:5px 0; list-style:none; display:none; z-index:9999; position:absolute; left:-20px; top:100%; white-space:nowrap; background:#fff; border:1px solid #e6e6e6; box-sizing:border-box}
+.face-3-year.open ul {display:block}
+.face-3-year ul li {margin:0; padding:5px 20px; color:#a6a6a6; cursor:pointer}
 .face-3-year ul li::before {display:none}
-.face-3-year ul li.active::after {content:""; display:block; position:absolute; left:0; bottom:-3px; right:0; height:2px; background:#fe6600}
 .face-3-year ul li a {color:#a6a6a6; text-decoration:none}
 .face-3-year ul li a:hover {color:#fe6600}
-.face-3-year ul li.active a {color:#fe6600}
+.face-3-year ul li.active a {color:#2f2f2f}
+
+.face3-list {column-count:2; padding:48px 0 36px 0}
+.face3-list-item {padding:0 0 26px 0}
+.face3-list-item-inner {display:table}
+.face3-list-item-icon {display:table-cell; width:19px; vertical-align:top; padding:0}
+.face3-list-item-icon-inner {display:block; width:19px; height:19px; border-radius:50%}
+.face3-list-item-title {display:table-cell; vertical-align:top; padding:3px 0 0 13px; color:#121212; font:14px/14px HelveticaNeueCyrLight, sans-serif; letter-spacing:0.04em}
+.face3-list-item-title span {font-family:HelveticaNeueCyrMedium, sans-serif}
+
+#chartjs-tooltip {opacity:0; position:absolute; background:#fff; color:#121212; font-size:14px; line-height:14px; width:214px; padding:20px; letter-spacing:0.04em; box-sizing:border-box; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); transition:all 0.1s ease; pointer-events:none; transform:translate(-50%, 0)}
+#chartjs-tooltip::before {content:""; display:block; position:absolute; left:50%; top:-11px; width:0; height:0; border-bottom:11px solid #fff; border-left:11px solid transparent; border-right:11px solid transparent; margin-left:-11px}
+#chartjs-tooltip span {display:block; color:#fe6600; font-family:HelveticaNeueCyrMedium, sans-serif; margin:10px 0 0 0}
 
 .face-4-header {padding:37px 35px 0 43px; text-transform:uppercase; font:12px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; text-transform:uppercase}
 .face-4-header::after {content:""; display:block; clear:both}
