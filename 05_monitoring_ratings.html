@@ -169,10 +169,10 @@
                         <ul>
                             <li><a href="#">Ретроспектива<br /> и прогноз</a></li>
                             <li><a href="#">Декомпозиция<br /> по регионам</a></li>
-                            <li><a href="#">Декомпозиция<br /> по ФОИВ и типам<br /> организаций</a></li>
-                            <li><a href="#">Декомпозиция<br /> по приоритетам<br /> СНТР</a></li>
-                            <li><a href="#">Инструменты,<br /> влияющие на<br /> место по статьям</a></li>
-                            <li><a href="#">Методика<br /> расчета<br /> показателя</a></li>
+                            <li><a href="#">Декомпозиция<br class="no-mobile" /> по ФОИВ<br class="on-mobile" /> и типам<br class="no-mobile" /> организаций</a></li>
+                            <li><a href="#">Декомпозиция<br /> по приоритетам<br class="no-mobile" /> СНТР</a></li>
+                            <li><a href="#">Инструменты,<br class="no-mobile" /> влияющие<br class="on-mobile" /> на<br class="no-mobile" /> место по статьям</a></li>
+                            <li><a href="#">Методика<br class="no-mobile" /> расчета<br /> показателя</a></li>
                         </ul>
                     </div>
                     <!-- cube menu END -->
@@ -2699,7 +2699,7 @@
                             <!-- cube face -->
                             <div class="cube-face">
 
-                                <div class="cube-face-title">Распределение научных статей по федеральным округам за <span class="face-2-year">2018</span> год</div>
+                                <div class="cube-face-title">Распределение научных статей по <span class="face-2-title-russia">федеральным округам</span> <span class="face-2-title-regions">регионам</span> за <span class="face-2-year">2018</span> год</div>
 
                                 <div class="cube-face-footer">
                                     <div class="face-2-table">
@@ -12200,8 +12200,11 @@
                                     </div>
                                 </div>
 
-                                <canvas id="canvas-face-3"></canvas>
-                                <div id="chartjs-tooltip"></div>
+                                <div class="face-3-content">
+                                    <div class="face-3-hints"></div>
+                                    <canvas id="canvas-face-3" width="352" height="352"></canvas>
+                                    <div id="chartjs-tooltip"></div>
+                                </div>
 
                                 <script>
                                     var face3data = [
@@ -12363,7 +12366,7 @@
                                                 var newBody = body[0].replace(':', '<span>') + '%</span>';
                                                 innerHtml += newBody;
                                             });
-                                            
+
                                             tooltipEl.innerHTML = innerHtml;
                                         }
 
@@ -12387,6 +12390,14 @@
                                             }]
                                         },
                                         options: {
+                                            layout: {
+                                                padding: {
+                                                    left: 0,
+                                                    right: 0,
+                                                    top: 0,
+                                                    bottom: 0
+                                                }
+                                            },
                                             responsive: true,
                                             legend: {
                                                 position: 'none',
