@@ -634,6 +634,9 @@ $(document).ready(function() {
             var newHTML = '';
             if (windowData != null) {
                 var maxWidthLine = 240;
+                if ($(window).width() < 1140) {
+                    maxWidthLine = 107;
+                }
 
                 var maxValue = 0;
                 for (var i = 0; i < windowData.length; i++) {
@@ -711,7 +714,7 @@ $(document).ready(function() {
 
         $('body').on('click', '.map-russia-district', function(e) {
             if ($('.map-window').length == 0) {
-                $('.wrapper').append('<div class="map-window">' +
+                $('body').append('<div class="map-window"><div class="map-window-inner">' +
                                         '<div class="map-window-title"></div>' +
                                         '<div class="map-window-info">' +
                                             '<div class="map-window-info-item">' +
@@ -726,7 +729,8 @@ $(document).ready(function() {
                                         '<div class="map-window-info-chart-title">Фактическое и прогнозное<br /> число статей, тыс. ед.</div>' +
                                         '<div class="map-window-info-chart"></div>' +
                                         '<div class="map-window-info-link"><a href="#" class="btn-med" data-id="">Перейти на карту ФО</a></div>' +
-                                     '</div>');
+                                        '<div class="map-window-close"></div>' +
+                                     '</div></div>');
             }
             var curLeft = e.pageX;
             var curTop = e.pageY;
@@ -784,12 +788,24 @@ $(document).ready(function() {
                 curItem.find('.map-window-info-chart-item-bar').css({'height': parseInt(curItem.find('.map-window-info-chart-item-value').html().replace(/ /g, '')) / curMax * 108 + 'px'});
             });
 
+            var newWidth = $('.map-window-info-chart-item').length * 56 + 30;
+            if (newWidth < 350) {
+                newWidth = 350;
+            }
+            $('.map-window').css({'width': newWidth, 'margin-left': -newWidth / 2});
+
             $('.map-window').show();
+            $('html').addClass('map-window-opened');
+        });
+
+        $('body').on('click', '.map-window-close', function() {
+            $('.map-window').hide();
+            $('html').removeClass('map-window-opened');
         });
 
         $('body').on('click', '.map-region-item', function(e) {
             if ($('.map-window').length == 0) {
-                $('.wrapper').append('<div class="map-window">' +
+                $('body').append('<div class="map-window"><div class="map-window-inner">' +
                                         '<div class="map-window-title"></div>' +
                                         '<div class="map-window-info">' +
                                             '<div class="map-window-info-item">' +
@@ -804,7 +820,8 @@ $(document).ready(function() {
                                         '<div class="map-window-info-chart-title">Фактическое и прогнозное<br /> число статей, тыс. ед.</div>' +
                                         '<div class="map-window-info-chart"></div>' +
                                         '<div class="map-window-info-link"><a href="#" class="btn-med" data-id="">Перейти на карту ФО</a></div>' +
-                                     '</div>');
+                                        '<div class="map-window-close"></div>' +
+                                     '</div></div>');
             }
             var curLeft = e.pageX;
             var curTop = e.pageY;
@@ -866,12 +883,20 @@ $(document).ready(function() {
                 curItem.find('.map-window-info-chart-item-bar').css({'height': parseInt(curItem.find('.map-window-info-chart-item-value').html().replace(/ /g, '')) / curMax * 108 + 'px'});
             });
 
+            var newWidth = $('.map-window-info-chart-item').length * 56 + 30;
+            if (newWidth < 350) {
+                newWidth = 350;
+            }
+            $('.map-window').css({'width': newWidth, 'margin-left': -newWidth / 2});
+
             $('.map-window').show();
+            $('html').addClass('map-window-opened');
         });
 
         $(document).click(function(e) {
             if ($(e.target).parents().filter('.map-window').length == 0 && !$(e.target).hasClass('map-window') && $(e.target).parents().filter('.map-russia-district').length == 0 && !$(e.target).hasClass('map-russia-district') && $(e.target).parents().filter('.map-region-item').length == 0 && !$(e.target).hasClass('map-region-item')) {
                 $('.map-window').hide();
+                $('html').removeClass('map-window-opened');
             }
         });
 
@@ -882,6 +907,7 @@ $(document).ready(function() {
             $('.face-2-title-regions').css({'display': 'inline'});
             $('.map-window').hide();
             $('.map-russia').hide();
+            $('html').removeClass('map-window-opened');
             $('.map-region[data-id="' + curID + '"]').show();
             var curType = $('.face-2-type li.active').attr('data-type');
             var curSort = $('.map-russia-sort-type-list li.active').attr('data-sortType');
@@ -1005,6 +1031,7 @@ $(document).ready(function() {
             $('.map-window').hide();
             $('.map-region').hide();
             $('.map-russia').show();
+            $('html').removeClass('map-window-opened');
             face2Redraw();
             $('.cube').css({'margin-bottom': $('.cube-face').eq(1).find('.cube-face-footer').outerHeight()});
             e.preventDefault();
@@ -1040,7 +1067,7 @@ $(document).ready(function() {
         $('body').on('click', '.face-2-table-name-link', function(e) {
             var curID = $(this).attr('data-id');
             if ($('.map-window').length == 0) {
-                $('.wrapper').append('<div class="map-window">' +
+                $('body').append('<div class="map-window">' +
                                         '<div class="map-window-title"></div>' +
                                         '<div class="map-window-info">' +
                                             '<div class="map-window-info-item">' +
@@ -1059,6 +1086,17 @@ $(document).ready(function() {
             }
             $('.map-window-info-link a').attr('data-id', curID).trigger('click');
             e.preventDefault();
+        });
+
+        $('.map-russia').mCustomScrollbar({
+            axis: 'x'
+        });
+
+        $('.face-2-table-wrap').mCustomScrollbar({
+            axis: 'x',
+            scrollButtons: {
+                enable: true
+            }
         });
 
         $('body').on('click', '.face-3-type a', function(e) {
@@ -1108,13 +1146,50 @@ $(document).ready(function() {
             if (!curLi.hasClass('active')) {
                 $('.face-4-letter li.active').removeClass('active');
                 curLi.addClass('active');
+                $('.face-4-letter-current').html($(this).html());
+                $('.face-4-letter').removeClass('open');
                 face4Redraw();
             }
             e.preventDefault();
         });
 
+        $('.face-4-container').mCustomScrollbar({
+            axis: 'y'
+        });
+
+        $('.face-4-letter-current').click(function() {
+            $('.face-4-letter').toggleClass('open');
+        });
+
+        $(document).click(function(e) {
+            if ($(e.target).parents().filter('.face-4-letter').length == 0) {
+                $('.face-4-letter').removeClass('open');
+            }
+        });
+
+        $('.face-4-title-hint-icon').click(function(e) {
+            if ($(window).width() < 1140) {
+                $('html').addClass('window-open');
+
+                if ($('.window').length > 0) {
+                    $('.window').remove();
+                }
+                $('body').append('<div class="window window-monitoring"><div class="window-loading"></div></div>');
+
+                var windowHTML = '<div class="window-formula-info-mobile">' + $(this).parent().find('.face-4-title-hint-content').html() + '</div>';
+
+                $('.window').html('<div class="window-container window-container-load"><div class="window-content">' + windowHTML + '<a href="#" class="window-close"></a></div></div>')
+
+                $('.window-container').removeClass('window-container-load');
+                windowPosition();
+            }
+        });
+
         $('.face-5-list').each(function() {
             var maxWidthLine = 153;
+            if ($(window).width() < 1140) {
+                maxWidthLine = 107;
+            }
 
             var maxValue = 0;
             for (var i = 0; i < face5data.length; i++) {
@@ -1154,6 +1229,42 @@ $(document).ready(function() {
             axis: 'y',
             scrollButtons: {
                 enable: true
+            }
+        });
+
+        $('.face-5-item-info-icon').click(function(e) {
+            if ($(window).width() < 1140) {
+                $('html').addClass('window-open');
+
+                if ($('.window').length > 0) {
+                    $('.window').remove();
+                }
+                $('body').append('<div class="window window-monitoring"><div class="window-loading"></div></div>');
+
+                var windowHTML = '<div class="window-formula-info-mobile">' + $(this).parent().find('.face-5-item-info-content').html() + '</div>';
+
+                $('.window').html('<div class="window-container window-container-load"><div class="window-content">' + windowHTML + '<a href="#" class="window-close"></a></div></div>')
+
+                $('.window-container').removeClass('window-container-load');
+                windowPosition();
+            }
+        });
+
+        $('.cube-formula-legend-item-info-icon').click(function(e) {
+            if ($(window).width() < 1140) {
+                $('html').addClass('window-open');
+
+                if ($('.window').length > 0) {
+                    $('.window').remove();
+                }
+                $('body').append('<div class="window window-monitoring"><div class="window-loading"></div></div>');
+
+                var windowHTML = '<div class="window-formula-info-mobile">' + $(this).parent().find('.cube-formula-legend-item-info-content').html() + '</div>';
+
+                $('.window').html('<div class="window-container window-container-load"><div class="window-content">' + windowHTML + '<a href="#" class="window-close"></a></div></div>')
+
+                $('.window-container').removeClass('window-container-load');
+                windowPosition();
             }
         });
 
@@ -1338,6 +1449,9 @@ function face4Redraw() {
     if (curData !== null) {
         $('.face-4-list').each(function() {
             var maxWidthLine = 240;
+            if ($(window).width() < 1140) {
+                maxWidthLine = 87;
+            }
 
             var maxValue = 0;
             for (var i = 0; i < curData.length; i++) {
