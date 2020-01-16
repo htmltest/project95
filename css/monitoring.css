@@ -49,7 +49,7 @@
 
 .monitoring-map-header {margin:62px 0 0 0}
 .monitoring-map-header::after {content:""; display:block; clear:both}
-.monitoring-map-header-year {position:relative; float:left; text-transform:uppercase; font:12px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em}
+.monitoring-map-header-year {position:relative; float:left; text-transform:uppercase; font:12.5px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em}
 .monitoring-map-header-year.open {z-index:9999}
 .monitoring-map-header-year-current {display:inline-block; vertical-align:top; color:#757575; transition:all 0.2s; cursor:pointer; padding:0 19px 0 0; position:relative}
 .monitoring-map-header-year-current::after {content:""; display:block; position:absolute; right:0; top:50%; width:11px; height:8px; background:url(../images/map-russia-sort-type.svg) no-repeat; margin-top:-4px}
@@ -157,7 +157,7 @@
 .cube-menu ul::after {content:""; display:inline-block; vertical-align:top; width:100%}
 .cube-menu ul li {display:inline-block; vertical-align:top; margin:0; padding:0}
 .cube-menu ul li::before {display:none}
-.cube-menu ul li a {display:block; float:left; color:#a6a6a6; text-align:left; text-decoration:none; position:relative}
+.cube-menu ul li a {display:block; color:#a6a6a6; text-align:left; text-decoration:none; position:relative}
 .cube-menu ul li a:hover {color:#fe6600}
 .cube-menu ul li.active a {color:#fe6600}
 .cube-menu ul li.active a::after {content:""; display:block; position:absolute; left:0; bottom:-14px; right:0; height:3px; background:#fe6600; pointer-events:none}
@@ -167,7 +167,8 @@
     .cube-menu {font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; margin:-30px 0 0 -10px; padding:0}
     .cube-menu .slick-list {overflow:visible !important}
     .cube-menu ul {margin:0}
-    .cube-menu ul li {float:none; display:inline-block !important; vertical-align:top; margin:0; padding:0 0 0 10px}
+    .cube-menu ul li {float:none; display:inline-block; vertical-align:top; margin:0; padding:0 0 0 10px}
+    .cube-menu ul.slick-initialized .slick-slide {display:inline-block}
     .cube-menu ul li a {float:none; display:inline-block; color:#404040; padding:15px; border:1px solid #fff0e6; border-radius:4px; background:#fff0e6; box-sizing:border-box; font-size:11px; line-height:16px; letter-spacing:0.04em}
     .cube-menu ul li a:hover {color:#404040}
     .cube-menu ul li.active a {color:#404040}
@@ -178,7 +179,7 @@
 }
 
 .cube {width:624px; height:624px; position:relative; margin:126px auto 0 auto; perspective:1248px; perspective-origin:50% 312px; transform:scale(0.75, 0.75)}
-.cube-container {width:624px; height:624px; position:relative; transition:transform 50ms linear; transform-style:preserve-3d; transform:rotateX(-10deg) rotateY(20deg)}
+.cube-container {width:624px; height:624px; position:relative; transition:transform 50ms linear; transform-style:preserve-3d; transform:rotateX(-70deg) rotateY(10deg)}
 
 @media screen and (max-width:1139px) {
     .cube {width:350px; height:350px; margin-top:65px; perspective:700px; perspective-origin:50% 175px}
@@ -217,9 +218,11 @@
 .cube-face-footer {visibility:hidden; position:absolute; left:0; top:100%; margin-top:26px; right:0}
 .cube-face.active .cube-face-footer {visibility:visible}
 
-.cube-face-download a {display:inline-block; vertical-align:top; border:1px solid #d9d9d9; height:35px; box-sizing:border-box; font-size:11px; line-height:37px; color:#393939; text-decoration:none; border-radius:2px; padding:0 13px 0 8px}
+.cube-face-download a {display:inline-block; vertical-align:top; border:1px solid #d9d9d9; height:35px; box-sizing:border-box; font-size:11px; line-height:37px; letter-spacing:0.06em; color:#393939; text-decoration:none; border-radius:2px; padding:0 13px 0 8px}
 .cube-face-download a:hover {color:#fe6600; border-color:#fe6600}
 .cube-face-download span {display:inline-block; vertical-align:middle; width:27px; height:13px; margin:-2px 5px 0 0; background:#fe6600; color:#fff; border-radius:2px; text-align:center; font-weight:bold; font-size:8px; line-height:14px; letter-spacing:0.06em; text-transform:uppercase}
+
+.cube-face:nth-child(3) .cube-face-download a {font-family:HelveticaNeueCyrLight, sans-serif}
 
 .face-1-legend {padding:38px 0 0 41px; font-size:12px; line-height:15px; color:#393939}
 .face-1-legend-item {margin:10px 0 0 0; position:relative; padding:0 0 0 30px}
@@ -243,13 +246,16 @@
 .face-1-chart-graph {position:absolute; left:0; right:0; top:66px; bottom:150px}
 .face-1-chart-line {position:absolute; height:2px; border-top:2px dotted #fe6600; transform-origin:left center; margin-left:21px; margin-top:5px; z-index:1}
 .face-1-chart-line.active {border-top:2px solid #fe6600}
-.face-1-chart-point {display:block; width:12px; height:12px; position:absolute; border:2px solid #fe6600; box-sizing:border-box; background:#f2f2f2; border-radius:50%; margin-left:15px; z-index:2}
+.face-1-chart-point {display:block; width:12px; height:12px; position:absolute; border:2px solid #fe6600; box-sizing:border-box; background:#f2f2f2; border-radius:50%; margin-left:15px; z-index:2; transition:box-shadow 0.2s}
+.face-1-chart-point.active {cursor:pointer}
+.face-1-chart-point.active:hover {box-shadow:0px 2px 4px rgba(0, 0, 0, 0.25)}
 .face-1-chart-point span {display:block; position:absolute; white-space:nowrap; text-align:center; bottom:15px; left:50%; transform:translateX(-50%); color:#393939; opacity:0.6; font-size:12px; line-height:14px; letter-spacing:0.04em}
 .face-1-chart-point strong {font-weight:normal; font-family:HelveticaNeueCyrMedium, sans-serif; display:block}
+.face-1-chart-point em {font-style:normal; border-bottom:1px dashed #fe6600}
 .face-1-chart-point.active {background:#fe6600}
 .face-1-chart-point.active span {opacity:1}
 .face-1-chart-labels {position:absolute; bottom:60px; left:0; right:0}
-.face-1-chart-year {position:absolute; bottom:0; width:42px; height:18px; font:12px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; text-align:center}
+.face-1-chart-year {position:absolute; bottom:0; width:42px; height:18px; font:12.5px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; text-align:center}
 .face-1-chart-year a {display:block; height:18px; text-decoration:none; color:#262626; border-radius:5px; background:rgba(255, 220, 197, 0.67); transition:all 0.2s}
 .face-1-chart-year a:hover {background:rgba(255, 220, 197, 1)}
 .face-1-chart-year span {display:block; height:18px; text-decoration:none; color:#262626; border-radius:5px; opacity:0.5}
@@ -340,6 +346,28 @@
     .map-russia-sort-type {position:absolute; margin:0; left:20px; bottom:18px; font:9px/18px HelveticaNeueCyr, sans-serif}
 }
 
+.map-russia-legend-icon {display:none}
+
+.map-russia-legend {position:absolute; bottom:44px; right:0; width:186px; font:12px/24px HelveticaNeueCyrLight, sans-serif; letter-spacing:0.04em; color:#121212}
+.map-russia-legend-item {padding:0 0 0 47px; position:relative}
+.map-russia-legend-item-color {position:absolute; left:0; top:0; width:36px; height:24px}
+
+@media screen and (max-width:1139px) {
+    .map-russia-legend-icon {display:block; position:absolute; right:20px; bottom:20px; width:21px; height:21px; background:#fff url(../images/cube-info.svg) no-repeat center; cursor:pointer; border-radius:50%}
+    .map-russia-legend {display:none}
+}
+
+.window-map-legend {background:rgba(0, 0, 0, 0.2)}
+.window-map-legend .window-content {box-shadow:none}
+.window-map-legend .window-close {right:20px; top:20px; width:15px; height:15px; background:none; border-radius:0; box-shadow:none}
+.window-map-legend .window-close::before {content:""; display:block; position:absolute; left:-2px; top:6px; right:-2px; height:3px; background:#fe6600; transform:rotate(-45deg)}
+.window-map-legend .window-close::after {content:""; display:block; position:absolute; left:-2px; top:6px; right:-2px; height:3px; background:#fe6600; transform:rotate(45deg)}
+.window-map-legend-inner {width:410px; padding:41px 30px 44px 30px; box-sizing:border-box}
+.window-map-legend-title {font:16px/16px HelveticaNeueCyrMedium, sans-serif; color:#121212; letter-spacing:0.04em}
+.window-map-legend-list {margin:23px 0 0 0; font:14px/29px HelveticaNeueCyrLight, sans-serif; letter-spacing:0.04em; color:#121212}
+.window-map-legend-list .map-russia-legend-item {padding:0 0 0 53px}
+.window-map-legend-list .map-russia-legend-item-color {width:43px; height:29px}
+
 .map-window {display:none; position:absolute; z-index:99; left:0; width:442px; margin:30px 0 0 -221px; background:#fff; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); padding:40px 30px; box-sizing:border-box}
 .map-window::before {content:""; display:block; position:absolute; left:50%; top:-11px; margin-left:-11px; border-bottom:11px solid #fff; border-left:11px solid transparent; border-right:11px solid transparent}
 .map-window-title {font:14px/19px HelveticaNeueCyrMedium, sans-serif; color:#121212; letter-spacing:0.04em}
@@ -420,7 +448,7 @@
 }
 
 .face-3-content {position:relative; margin:120px auto 0 auto; width:352px; height:352px}
-.face-3-hints {position:absolute; left:0; top:0; right:0; bottom:0; pointer-events:none; font-size:14px; line-height:14px; letter-spacing:0.04em; color:#393939; white-space:nowrap}
+.face-3-hints {position:absolute; left:0; top:0; right:0; bottom:0; pointer-events:none; font-size:14px; line-height:14px; font-family:HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#393939; white-space:nowrap}
 .face-3-hints-item {position:absolute; left:50%; top:50%; width:0; height:0}
 .face-3-hints-item span {display:block; position:absolute; left:0; top:-210px}
 .face-3-content canvas {position:relative}
@@ -431,7 +459,7 @@
     .face-3-hints-item span {top:-125px}
 }
 
-.face-3-header {padding:37px 43px 0 43px; text-transform:uppercase; font:12px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; text-transform:uppercase}
+.face-3-header {padding:37px 43px 0 43px; text-transform:uppercase; font:12.5px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; text-transform:uppercase}
 .face-3-header::after {content:""; display:block; clear:both}
 .face-3-type {float:left}
 .face-3-type ul {margin:0; padding:0; list-style:none}
@@ -464,8 +492,8 @@
 .face3-list-item-inner {display:table}
 .face3-list-item-icon {display:table-cell; width:19px; vertical-align:top; padding:0}
 .face3-list-item-icon-inner {display:block; width:19px; height:19px; border-radius:50%}
-.face3-list-item-title {display:table-cell; vertical-align:top; padding:3px 0 0 13px; color:#121212; font:14px/14px HelveticaNeueCyrLight, sans-serif; letter-spacing:0.04em}
-.face3-list-item-title span {font-family:HelveticaNeueCyrMedium, sans-serif}
+.face3-list-item-title {display:table-cell; vertical-align:top; padding:3px 0 0 13px; color:#121212; font:100 14px/14px HelveticaNeueCyrLight, sans-serif; letter-spacing:0.04em}
+.face3-list-item-title span {font-family:HelveticaNeueCyr, sans-serif}
 
 @media screen and (max-width:1139px) {
     .face3-list {column-count:1; padding:0 0 26px 0}
@@ -476,6 +504,8 @@
 #chartjs-tooltip {opacity:0; position:absolute; background:#fff; color:#121212; font-size:14px; line-height:14px; width:214px; padding:20px; letter-spacing:0.04em; box-sizing:border-box; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); transition:all 0.1s ease; pointer-events:none; transform:translate(-50%, 0)}
 #chartjs-tooltip::before {content:""; display:block; position:absolute; left:50%; top:-11px; width:0; height:0; border-bottom:11px solid #fff; border-left:11px solid transparent; border-right:11px solid transparent; margin-left:-11px}
 #chartjs-tooltip span {display:block; color:#fe6600; font-family:HelveticaNeueCyrMedium, sans-serif; margin:10px 0 0 0}
+
+.face-4-container {height:624px}
 
 @media screen and (max-width:1139px) {
     .face-4-container {height:348px; width:353px; overflow:auto; position:relative}
@@ -538,32 +568,31 @@
     .face-4-title-hint-icon {width:22px; height:22px}
 }
 
-.face-4-list {font-size:16px; line-height:21px; color:#121212; padding:5px 25px 0 43px}
-.face-4-item-rus {margin:12px 0}
+.face-4-list {font-size:16px; line-height:21px; color:#121212; padding:5px 15px 0 33px}
+.face-4-list-inner.scroll {position:relative; overflow:auto; max-height:360px}
+.face-4-list .mCSB_inside > .mCSB_container {margin-right:0}
 .face-4-item-rus::after {content:""; display:block; clear:both}
 .face-4-item-rus-inner {float:left; position:relative}
-.face-4-item-rus-inner::before {content:""; display:block; background:rgba(254, 102, 0, 0.1); position:absolute; left:-10px; right:-10px; top:-5px; bottom:-5px}
-.face-4-item {margin:12px 0; display:table; position:relative}
+.face-4-item-rus-inner::before {content:""; display:block; background:rgba(254, 102, 0, 0.1); position:absolute; left:-10px; right:-10px; top:7px; bottom:-5px}
+.face-4-item {display:table; position:relative}
 .face-4-item-rus .face-4-item {margin:0}
-.face-4-item-flag {display:table-cell; vertical-align:middle; line-height:0; width:45px}
+.face-4-item-flag {display:table-cell; vertical-align:middle; line-height:0; width:55px; padding:12px 0 0 10px; box-sizing:border-box}
 .face-4-item-flag img {width:24px}
-.face-4-item-title {display:table-cell; vertical-align:middle; text-align:left; width:180px; text-transform:uppercase}
-.face-4-item-line {display:table-cell; vertical-align:middle}
+.face-4-item-title {display:table-cell; padding:12px 0 0 0; vertical-align:middle; text-align:left; width:180px; text-transform:uppercase}
+.face-4-item-line {display:table-cell; vertical-align:middle; padding:12px 0 0 0}
 .face-4-item-line-inner {height:11px; background:#fe6600; width:0}
-.face-4-item-value {display:table-cell; vertical-align:middle; padding:0 0 0 20px}
+.face-4-item-value {display:table-cell; vertical-align:middle; padding:12px 10px 0 20px}
 .face-4-item-sep {height:1px; background:#d7d7d7; margin:17px 0}
 
 @media screen and (max-width:1139px) {
-    .face-4-list {font-size:12px; line-height:24px; color:#000; padding:0 0 0 20px}
+    .face-4-list {font-size:12px; line-height:24px; color:#000; padding:0}
+    .face-4-item-line {padding:6px 0 0 0}
     .face-4-item-line-inner {height:7px}
-    .face-4-item-value {padding:0 0 0 13px}
-    .face-4-item {margin:6px 0}
-    .face-4-item-rus {margin:6px 0}
-    .face-4-item-rus .face-4-item {margin:0}
-    .face-4-item-rus-inner::before {top:-2px; bottom:-2px}
-    .face-4-item-flag {width:35px}
-    .face-4-item-title {width:130px}
-    .face-4-item-value {padding:0 0 0 10px; white-space:nowrap}
+    .face-4-item-value {padding:6px 10px 0 13px}
+    .face-4-item-rus-inner::before {top:2px; bottom:-2px}
+    .face-4-item-flag {width:45px; padding-top:6px}
+    .face-4-item-title {width:130px; padding-top:6px}
+    .face-4-item-value {padding:6px 10px 0 10px; white-space:nowrap}
 }
 
 .face-5-container {padding:20px}

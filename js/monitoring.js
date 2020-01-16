@@ -283,8 +283,8 @@ $(document).ready(function() {
             },
             touch = document.ontouchmove !== undefined,
             viewport = {
-                x: -10,
-                y: 20,
+                x: -70,
+                y: 10,
                 el: $('.cube-container')[0],
                 timer: null,
                 move: function(coords) {
@@ -343,125 +343,6 @@ $(document).ready(function() {
             return d;
         }();
 
-        /*$(document).keydown(function(evt) {
-            switch(evt.keyCode)
-            {
-                case 37:
-                    var curX = viewport.x;
-                    var diffX = Math.round(curX / 90);
-                    var newX = diffX * 90;
-
-                    var curY = viewport.y - 90;
-                    var diffY = Math.round(curY / 90);
-                    var newY = diffY * 90;
-
-                    viewport.move({x: newX, y: newY});
-                    break;
-
-                case 38:
-                    evt.preventDefault();
-                    var curX = viewport.x + 90;
-                    var diffX = Math.round(curX / 90);
-                    var newX = diffX * 90;
-
-                    var curY = viewport.y;
-                    var diffY = Math.round(curY / 90);
-                    var newY = diffY * 90;
-
-                    viewport.move({x: newX, y: newY});
-                    break;
-
-                case 39:
-                    var curX = viewport.x;
-                    var diffX = Math.round(curX / 90);
-                    var newX = diffX * 90;
-
-                    var curY = viewport.y + 90;
-                    var diffY = Math.round(curY / 90);
-                    var newY = diffY * 90;
-
-                    viewport.move({x: newX, y: newY});
-                    break;
-
-                case 40:
-                    evt.preventDefault();
-                    var curX = viewport.x - 90;
-                    var diffX = Math.round(curX / 90);
-                    var newX = diffX * 90;
-
-                    var curY = viewport.y;
-                    var diffY = Math.round(curY / 90);
-                    var newY = diffY * 90;
-
-                    viewport.move({x: newX, y: newY});
-                    break;
-
-                case 27:
-                    viewport.reset();
-                    break;
-
-                default:
-                    break;
-            };
-        }).bind('mousedown touchstart', function(evt) {
-            delete mouse.last;
-            if($(evt.target).is('a, iframe')) {
-                return true;
-            }
-
-            evt.originalEvent.touches ? evt = evt.originalEvent.touches[0] : null;
-            mouse.start.x = evt.pageX;
-            mouse.start.y = evt.pageY;
-            $(document).bind('mousemove touchmove', function(event) {
-                if(!touch || !(event.originalEvent && event.originalEvent.touches.length > 1)) {
-                    event.preventDefault();
-                    event.originalEvent.touches ? event = event.originalEvent.touches[0] : null;
-                    $('.cube').trigger('move-viewport', {x: event.pageX, y: event.pageY});
-                }
-            });
-
-            $(document).bind('mouseup touchend', function () {
-                $(document).unbind('mousemove touchmove');
-                var curX = viewport.x;
-                var diffX = Math.round(curX / 90);
-                var newX = diffX * 90;
-
-                var curY = viewport.y;
-                var diffY = Math.round(curY / 90);
-                var newY = diffY * 90;
-
-                viewport.move({x: newX, y: newY});
-            });
-        });*/
-
-        /*$('.cube').bind('move-viewport', function(evt, movedMouse) {
-
-            var movementScaleFactor = touch ? 4 : 1;
-
-            if (!mouse.last) {
-                mouse.last = mouse.start;
-            } else {
-                if (forward(mouse.start.x, mouse.last.x) != forward(mouse.last.x, movedMouse.x)) {
-                    mouse.start.x = mouse.last.x;
-                }
-                if (forward(mouse.start.y, mouse.last.y) != forward(mouse.last.y, movedMouse.y)) {
-                    mouse.start.y = mouse.last.y;
-                }
-            }
-
-            viewport.move({
-                x: viewport.x + parseInt((mouse.start.y - movedMouse.y)/movementScaleFactor),
-                y: viewport.y - parseInt((mouse.start.x - movedMouse.x)/movementScaleFactor)
-            });
-
-            mouse.last.x = movedMouse.x;
-            mouse.last.y = movedMouse.y;
-
-            function forward(v1, v2) {
-                return v1 >= v2 ? true : false;
-            }
-        });*/
-
         var face1Labels = [];
         var face1DataActually = [];
         var face1DataForecast = [];
@@ -494,21 +375,26 @@ $(document).ready(function() {
                     }
                 }
             }
-            face1DataActually.push(curPlaceMin);
+            if (curPlaceMin !== null) {
+                face1DataActually.push({"year": curYear.year, "place": curPlaceMin});
+            } else {
+                face1DataActually.push(null);
+            }
         }
 
         $('.face-1-chart').width(face1Labels.length * 79 - 37);
 
         var minPlace = 9999;
         var maxPlace = 0;
+        var curScroll = 0;
 
         for (var i = 0; i < face1DataActually.length; i++) {
             if (face1DataActually[i] != null) {
-                if (face1DataActually[i] < minPlace) {
-                    minPlace = face1DataActually[i];
+                if (face1DataActually[i].place < minPlace) {
+                    minPlace = face1DataActually[i].place;
                 }
-                if (face1DataActually[i] > maxPlace) {
-                    maxPlace = face1DataActually[i];
+                if (face1DataActually[i].place > maxPlace) {
+                    maxPlace = face1DataActually[i].place;
                 }
             }
         }
@@ -538,10 +424,11 @@ $(document).ready(function() {
         for (var i = 0; i < face1DataActually.length; i++) {
             if (face1DataActually[i] != null) {
                 var curX = (i * 79);
-                var curY = ((face1DataActually[i] - minPlace) / (maxPlace - minPlace)) * $('.face-1-chart-graph').height();
+                curScroll = curX;
+                var curY = ((face1DataActually[i].place - minPlace) / (maxPlace - minPlace)) * $('.face-1-chart-graph').height();
                 if (face1DataActually[i - 1] != null) {
                     var prevX = ((i - 1) * 79);
-                    var prevY = ((face1DataActually[i - 1] - minPlace) / (maxPlace - minPlace)) * $('.face-1-chart-graph').height();
+                    var prevY = ((face1DataActually[i - 1].place - minPlace) / (maxPlace - minPlace)) * $('.face-1-chart-graph').height();
                     var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
                     var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
                     if (curY < prevY) {
@@ -549,7 +436,7 @@ $(document).ready(function() {
                     }
                     $('.face-1-chart-graph').append('<div class="face-1-chart-line active" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
                 }
-                $('.face-1-chart-graph').append('<div class="face-1-chart-point active" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong>' + face1DataActually[i] + '</strong>место</span></div>');
+                $('.face-1-chart-graph').append('<div class="face-1-chart-point active" data-year="' + face1DataActually[i].year + '" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong><em>' + face1DataActually[i].place + '</em></strong><em>место</em></span></div>');
             }
         }
 
@@ -581,12 +468,13 @@ $(document).ready(function() {
 
         $('.face-1-container').mCustomScrollbar({
             axis: 'x',
+            setLeft: '-' + (curScroll - $('.face-1-container').width() / 2) + 'px',
             scrollButtons: {
                 enable: true
             }
         });
 
-        $('body').on('click', '.face-1-chart-year a', function(e) {
+        $('body').on('click', '.face-1-chart-year a, .face-1-chart-point.active', function(e) {
             var curLi = $(this);
             var curYear = $(this).attr('data-year');
 
@@ -688,7 +576,7 @@ $(document).ready(function() {
             }
 
             var windowHTML   =  '<div class="window-face1">';
-            windowHTML      +=      '<div class="window-face1-title">Топ 10 стран по количеству статей за ' + curYear + ' год, ед.</div>';
+            windowHTML      +=      '<div class="window-face1-title">Топ-10 стран по количеству статей за ' + curYear + ' год, ед.</div>';
             windowHTML      +=      '<div class="window-face1-subtitle">По данным ' + windowType + '</div>';
             windowHTML      +=      '<div class="window-face1-list">' + newHTML + '</div>';
             windowHTML      +=      '<div class="window-face1-btn">' + $('.cube-face-footer').html() + '</div>';
@@ -726,7 +614,7 @@ $(document).ready(function() {
                                                 '<div class="map-window-info-item-value map-window-info-item-value-2"></div>' +
                                             '</div>' +
                                         '</div>' +
-                                        '<div class="map-window-info-chart-title">Фактическое и прогнозное<br /> число статей, тыс. ед.</div>' +
+                                        '<div class="map-window-info-chart-title">Фактическое и прогнозное<br /> число статей, ед.</div>' +
                                         '<div class="map-window-info-chart"></div>' +
                                         '<div class="map-window-info-link"><a href="#" class="btn-med" data-id="">Перейти на карту ФО</a></div>' +
                                         '<div class="map-window-close"></div>' +
@@ -743,7 +631,7 @@ $(document).ready(function() {
                     districtTitle = russiaDistricts[i].title;
                 }
             }
-            $('.map-window-title').html(districtTitle);
+            $('.map-window-title').html(districtTitle + ' федеральный округ');
             $('.map-window-info-link a').attr('data-id', districtID);
             $('.map-window-info-chart').html('');
 
@@ -817,7 +705,7 @@ $(document).ready(function() {
                                                 '<div class="map-window-info-item-value map-window-info-item-value-2"></div>' +
                                             '</div>' +
                                         '</div>' +
-                                        '<div class="map-window-info-chart-title">Фактическое и прогнозное<br /> число статей, тыс. ед.</div>' +
+                                        '<div class="map-window-info-chart-title">Фактическое и прогнозное<br /> число статей, ед.</div>' +
                                         '<div class="map-window-info-chart"></div>' +
                                         '<div class="map-window-info-link"><a href="#" class="btn-med" data-id="">Перейти на карту ФО</a></div>' +
                                         '<div class="map-window-close"></div>' +
@@ -825,6 +713,12 @@ $(document).ready(function() {
             }
             var curLeft = e.pageX;
             var curTop = e.pageY;
+            if (curLeft === undefined) {
+                curLeft = $(this).offset().left;
+            }
+            if (curTop === undefined) {
+                curTop = $(this).offset().top;
+            }
             $('.map-window').css({'left': curLeft, 'top': curTop});
             $('.map-window').addClass('map-window-region');
             var regionID = $(this).attr('data-id');
@@ -894,7 +788,7 @@ $(document).ready(function() {
         });
 
         $(document).click(function(e) {
-            if ($(e.target).parents().filter('.map-window').length == 0 && !$(e.target).hasClass('map-window') && $(e.target).parents().filter('.map-russia-district').length == 0 && !$(e.target).hasClass('map-russia-district') && $(e.target).parents().filter('.map-region-item').length == 0 && !$(e.target).hasClass('map-region-item')) {
+            if ($(e.target).parents().filter('.map-window').length == 0 && !$(e.target).hasClass('map-window') && $(e.target).parents().filter('.map-russia-district').length == 0 && $(e.target).parents().filter('.face-2-table-name-region').length == 0 && !$(e.target).hasClass('map-russia-district') && !$(e.target).hasClass('face-2-table-name-region') && $(e.target).parents().filter('.map-region-item').length == 0 && !$(e.target).hasClass('map-region-item')) {
                 $('.map-window').hide();
                 $('html').removeClass('map-window-opened');
             }
@@ -1010,10 +904,10 @@ $(document).ready(function() {
                 }
                 $('.face-2-table').append('<div class="face-2-table-row">' +
                                             '<div class="face-2-table-name">' +
-                                                '<div class="face-2-table-name-region">' +
+                                                '<a href="#" class="face-2-table-name-region" data-id="' + regionID + '">' +
                                                     '<div class="face-2-table-name-color" style="background:' + curColor + '"></div>' +
                                                     regionTitle +
-                                                '</div>' +
+                                                '</a>' +
                                             '</div>' +
                                             '<div class="face-2-table-value' + activeValue + '">' + String(curData[i].value).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</div>' +
                                             '<div class="face-2-table-value' + activeValue100 + '">' + String(curData[i].value100).replace(/\./g, ',') + '</div>' +
@@ -1024,7 +918,15 @@ $(document).ready(function() {
             e.preventDefault();
         });
 
+        $('body').on('click', '.face-2-table-name-region', function(e) {
+            var curID = $(this).attr('data-id');
+            $('.map-region-item[data-id="' + curID + '"]').trigger('click');
+            $('html, body').animate({'scrollTop': $('.map-region .map-region-item[data-id="' + curID + '"]').offset().top});
+            e.preventDefault();
+        });
+
         $('body').on('click', '.face-2-back a', function(e) {
+            $('.face-2-table-head').eq(0).html('Федеральный<br />округ');
             $('.face-2-back').removeClass('visible').removeAttr('data-id');
             $('.face-2-title-russia').css({'display': 'inline'});
             $('.face-2-title-regions').css({'display': 'none'});
@@ -1065,6 +967,7 @@ $(document).ready(function() {
         });
 
         $('body').on('click', '.face-2-table-name-link', function(e) {
+            $('.face-2-table-head').eq(0).html('Субъект РФ');
             var curID = $(this).attr('data-id');
             if ($('.map-window').length == 0) {
                 $('body').append('<div class="map-window">' +
@@ -1151,10 +1054,6 @@ $(document).ready(function() {
                 face4Redraw();
             }
             e.preventDefault();
-        });
-
-        $('.face-4-container').mCustomScrollbar({
-            axis: 'y'
         });
 
         $('.face-4-letter-current').click(function() {
@@ -1268,6 +1167,22 @@ $(document).ready(function() {
             }
         });
 
+        $('.map-russia-legend-icon').click(function() {
+            $('html').addClass('window-open');
+
+            if ($('.window').length > 0) {
+                $('.window').remove();
+            }
+            $('body').append('<div class="window window-map-legend"><div class="window-loading"></div></div>');
+
+            var windowHTML = '<div class="window-map-legend-inner"><div class="window-map-legend-title">Легенда</div><div class="window-map-legend-list">' + $('.map-russia-legend').html() + '</div></div>';
+
+            $('.window').html('<div class="window-container window-container-load"><div class="window-content">' + windowHTML + '<a href="#" class="window-close"></a></div></div>')
+
+            $('.window-container').removeClass('window-container-load');
+            windowPosition();
+        });
+
     }
 
 });
@@ -1311,23 +1226,44 @@ function face2Redraw() {
         }
         var newMap = '';
         $('.face-2-table-row').remove();
+
+        var curRatingsArray = [];
+        if (curType == 'WoS') {
+            if (curSort == 'value') {
+                curRatingsArray = mapColorsDistrictsValueWoS;
+            } else {
+                curRatingsArray = mapColorsDistrictsValue100WoS;
+            }
+        } else {
+            if (curSort == 'value') {
+                curRatingsArray = mapColorsDistrictsValueScopus;
+            } else {
+                curRatingsArray = mapColorsDistrictsValue100Scopus;
+            }
+        }
+
+        var legendHTML = '';
+        if (curType == 'WoS') {
+            var legendColors = mapColors[0];
+        } else {
+            var legendColors = mapColors[1];
+        }
+        for (var ra = 0; ra < curRatingsArray.length; ra++) {
+            var legendText = '';
+            if (curRatingsArray[ra][0] == 0) {
+                legendText = 'до ' + String(curRatingsArray[ra][1]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+            } else if (curRatingsArray[ra][1] == Infinity) {
+                legendText = 'более ' + String(curRatingsArray[ra][0]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+            } else {
+                legendText = 'от ' + String(curRatingsArray[ra][0]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + ' до ' + String(curRatingsArray[ra][1]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+            }
+            legendHTML += '<div class="map-russia-legend-item"><div class="map-russia-legend-item-color" style="background:' + legendColors[ra] + '"></div>' + legendText + '</div>';
+        }
+
+        $('.map-russia-legend').html(legendHTML);
+
         for (var i = 0; i < curData.length; i++) {
             var districtID = curData[i].district;
-
-            var curRatingsArray = [];
-            if (curType == 'WoS') {
-                if (curSort == 'value') {
-                    curRatingsArray = mapColorsDistrictsValueWoS;
-                } else {
-                    curRatingsArray = mapColorsDistrictsValue100WoS;
-                }
-            } else {
-                if (curSort == 'value') {
-                    curRatingsArray = mapColorsDistrictsValueScopus;
-                } else {
-                    curRatingsArray = mapColorsDistrictsValue100Scopus;
-                }
-            }
 
             var curColorIndex = -1;
             var curValue = parseInt(curData[i].value.replace(/ /g, ''));
@@ -1461,22 +1397,24 @@ function face4Redraw() {
                 }
             }
 
-            var newHTML = '';
+            var newHTML = '<div class="face-4-list-inner">';
             var count = 0;
             var hasRussia = false;
 
             for (var i = 0; i < curData.length; i++) {
-                var curItem = curData[i];
-                var curValue = Math.round(parseFloat(curItem.value.replace(/,/, '.')));
-                var curWidth = curValue / maxValue * maxWidthLine + 1;
-                count++;
-                if (curItem.title == 'Россия') {
-                    hasRussia = true;
-                    if (count > 10) {
-                        newHTML += '<div class="face-4-item-sep"></div>';
+                if (!hasRussia || i < 10) {
+                    var curItem = curData[i];
+                    var curValue = Math.round(parseFloat(curItem.value.replace(/,/, '.')));
+                    var curWidth = curValue / maxValue * maxWidthLine + 1;
+                    count++;
+                    if (curItem.title == 'Россия') {
+                        hasRussia = true;
+                        if (count > 10) {
+                            newHTML += '</div>';
+                            newHTML += '<div class="face-4-item-sep"></div>';
+                        }
                     }
-                }
-                if (count < 11 || curItem.title == 'Россия') {
+
                     var flag = '';
                     for (var j = 0; j < cubeFlags.length; j++) {
                         if (cubeFlags[j].country == curItem.title) {
@@ -1495,29 +1433,49 @@ function face4Redraw() {
                                     '<div class="face-4-item-value">' + String(curItem.value).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</div>' +
                                '</div>';
 
-                   if (count < 11 && curItem.title == 'Россия') {
+                    if (count < 11 && curItem.title == 'Россия') {
                         newHTML += '</div></div>';
                     }
                 }
+
+            }
+            if (count < 10) {
+                newHTML += '</div>';
             }
 
             $('.face-4-list').html(newHTML);
+
+            if ($(window).width() > 1139) {
+                if (count > 10) {
+                    $('.face-4-list-inner').addClass('scroll').mCustomScrollbar({
+                        axis: 'y'
+                    });
+                } else {
+                    $('.face-4-list-inner').removeClass('scroll').mCustomScrollbar('destroy');
+                }
+            } else {
+                $('.face-4-list-inner').removeClass('scroll').mCustomScrollbar('destroy');
+            }
         });
     }
 }
 
 $(window).on('load resize', function() {
+    face4Redraw();
+
     if ($(window).width() > 1139) {
         $('.monitoring-menu ul, .cube-menu ul').each(function() {
             var curList = $(this);
             if (curList.hasClass('slick-slider')) {
                 curList.slick('unslick');
+                curList.find('li:gt(0)').before(' ');
             }
         });
 
         $('.monitoring-map-inner svg').attr('width', $('.monitoring-map-inner svg').attr('data-desktopwidth'));
         $('.monitoring-map-inner svg').attr('height', $('.monitoring-map-inner svg').attr('data-desktopheight'));
 
+        $('.face-4-container').mCustomScrollbar('destroy');
     } else {
         $('.monitoring-menu ul, .cube-menu ul').each(function() {
             var curList = $(this);
@@ -1536,6 +1494,10 @@ $(window).on('load resize', function() {
 
         $('.monitoring-map-inner svg').attr('width', $('.monitoring-map-inner svg').attr('data-mobilewidth'));
         $('.monitoring-map-inner svg').attr('height', $('.monitoring-map-inner svg').attr('data-mobileheight'));
+
+        $('.face-4-container').mCustomScrollbar({
+            axis: 'y'
+        });
     }
 
     $('.monitoring-map-header-zoom').each(function() {
