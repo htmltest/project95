@@ -246,12 +246,13 @@
 .face-1-chart-graph {position:absolute; left:0; right:0; top:66px; bottom:150px}
 .face-1-chart-line {position:absolute; height:2px; border-top:2px dotted #fe6600; transform-origin:left center; margin-left:21px; margin-top:5px; z-index:1}
 .face-1-chart-line.active {border-top:2px solid #fe6600}
-.face-1-chart-point {display:block; width:12px; height:12px; position:absolute; border:2px solid #fe6600; box-sizing:border-box; background:#f2f2f2; border-radius:50%; margin-left:15px; z-index:2; transition:box-shadow 0.2s}
+.face-1-chart-point {display:block; width:17px; height:17px; position:absolute; border:2px solid #fe6600; box-sizing:border-box; background:#f2f2f2; border-radius:50%; margin-left:13px; margin-top:-3px; z-index:2; transition:box-shadow 0.2s}
 .face-1-chart-point.active {cursor:pointer}
 .face-1-chart-point.active:hover {box-shadow:0px 2px 4px rgba(0, 0, 0, 0.25)}
-.face-1-chart-point span {display:block; position:absolute; white-space:nowrap; text-align:center; bottom:15px; left:50%; transform:translateX(-50%); color:#393939; opacity:0.6; font-size:12px; line-height:14px; letter-spacing:0.04em}
+.face-1-chart-point span {display:block; position:absolute; white-space:nowrap; text-align:center; bottom:20px; left:50%; transform:translateX(-50%); color:#393939; opacity:0.6; font-size:12px; line-height:14px; letter-spacing:0.04em}
 .face-1-chart-point strong {font-weight:normal; font-family:HelveticaNeueCyrMedium, sans-serif; display:block}
-.face-1-chart-point em {font-style:normal; border-bottom:1px dashed #fe6600}
+.face-1-chart-point em {font-style:normal; position:relative}
+.face-1-chart-point em::after {content:""; display:block; position:absolute; left:0; bottom:0; right:0; border-top:1px dashed #fe6600}
 .face-1-chart-point.active {background:#fe6600}
 .face-1-chart-point.active span {opacity:1}
 .face-1-chart-labels {position:absolute; bottom:60px; left:0; right:0}
@@ -433,7 +434,7 @@
 .face-2-table-head.active a::after {background:#fe6600}
 .face-2-table-row {display:table-row; font:14px/23px HelveticaNeueCyrLight, sans-serif; letter-spacing:0.04em}
 .face-2-table-name {display:table-cell; vertical-align:top; padding:0 0 20px 0}
-.face-2-table-name a {display:inline-block; vertical-align:top; text-decoration:none; color:#121212; padding:0 0 0 32px; position:relative}
+.face-2-table-name a {display:inline-block; vertical-align:top; color:#121212; padding:0 0 0 32px; position:relative}
 .face-2-table-name a:hover {color:#fe6600}
 .face-2-table-name-region {display:inline-block; vertical-align:top; color:#121212; padding:0 0 0 32px; position:relative}
 .face-2-table-name-color {display:block; position:absolute; left:0; top:2px; width:19px; height:19px; border-radius:50%}

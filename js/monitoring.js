@@ -876,6 +876,7 @@ $(document).ready(function() {
                 if (curSort == 'value100') {
                     curValue = parseFloat(curData[i].value100.replace(/ /g, '').replace(/,/g, '.'));
                 }
+                console.log(curRatingsArray);
                 for (var c = 0; c < curRatingsArray.length; c++) {
                     if (curValue >= curRatingsArray[c][0] && curValue < curRatingsArray[c][1]) {
                         curColorIndex = c;
@@ -915,6 +916,27 @@ $(document).ready(function() {
             }
             $('.map-region[data-id="' + curID + '"] svg').html(newMap);
             $('.cube').css({'margin-bottom': $('.cube-face').eq(1).find('.cube-face-footer').outerHeight()});
+
+            var legendHTML = '';
+            if (curType == 'WoS') {
+                var legendColors = mapColors[0];
+            } else {
+                var legendColors = mapColors[1];
+            }
+            for (var ra = 0; ra < curRatingsArray.length; ra++) {
+                var legendText = '';
+                if (curRatingsArray[ra][0] == 0) {
+                    legendText = 'до ' + String(curRatingsArray[ra][1]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+                } else if (curRatingsArray[ra][1] == Infinity) {
+                    legendText = 'более ' + String(curRatingsArray[ra][0]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+                } else {
+                    legendText = 'от ' + String(curRatingsArray[ra][0]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + ' до ' + String(curRatingsArray[ra][1]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+                }
+                legendHTML += '<div class="map-russia-legend-item"><div class="map-russia-legend-item-color" style="background:' + legendColors[ra] + '"></div>' + legendText + '</div>';
+            }
+
+            $('.map-russia-legend').html(legendHTML);
+
             e.preventDefault();
         });
 
