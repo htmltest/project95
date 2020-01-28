@@ -1483,7 +1483,9 @@ function face4Redraw() {
 }
 
 $(window).on('load resize', function() {
-    face4Redraw();
+    if ($('.cube').length > 0) {
+        face4Redraw();
+    }
 
     if ($(window).width() > 1139) {
         $('.monitoring-menu ul, .cube-menu ul').each(function() {
