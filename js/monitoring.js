@@ -283,8 +283,8 @@ $(document).ready(function() {
             },
             touch = document.ontouchmove !== undefined,
             viewport = {
-                x: -70,
-                y: 10,
+                x: -90,
+                y: 0,
                 el: $('.cube-container')[0],
                 timer: null,
                 move: function(coords) {
@@ -600,7 +600,28 @@ $(document).ready(function() {
             e.preventDefault();
         });
 
+        if ($(window).width() > 1139) {
+            $('body').on('mouseenter', '.map-russia-district, .map-region-item', function(e) {
+                $('.monitoring-map-region-hint').remove();
+                $('body').append('<div class="monitoring-map-region-hint">' + $(this).attr('data-title') + '</div>');
+                var curLeft = e.pageX;
+                var curTop = e.pageY;
+                $('.monitoring-map-region-hint').css({'left': curLeft, 'top': curTop});
+            });
+
+            $('body').on('mousemove', '.map-russia-district, .map-region-item', function(e) {
+                var curLeft = e.pageX;
+                var curTop = e.pageY;
+                $('.monitoring-map-region-hint').css({'left': curLeft, 'top': curTop});
+            });
+
+            $('body').on('mouseleave', '.map-russia-district, .map-region-item', function(e) {
+                $('.monitoring-map-region-hint').remove();
+            });
+        }
+
         $('body').on('click', '.map-russia-district', function(e) {
+            $('.monitoring-map-region-hint').remove();
             if ($('.map-window').length == 0) {
                 $('body').append('<div class="map-window"><div class="map-window-inner">' +
                                         '<div class="map-window-title"></div>' +
@@ -692,6 +713,7 @@ $(document).ready(function() {
         });
 
         $('body').on('click', '.map-region-item', function(e) {
+            $('.monitoring-map-region-hint').remove();
             if ($('.map-window').length == 0) {
                 $('body').append('<div class="map-window"><div class="map-window-inner">' +
                                         '<div class="map-window-title"></div>' +
@@ -788,7 +810,7 @@ $(document).ready(function() {
         });
 
         $(document).click(function(e) {
-            if ($(e.target).parents().filter('.map-window').length == 0 && !$(e.target).hasClass('map-window') && $(e.target).parents().filter('.map-russia-district').length == 0 && $(e.target).parents().filter('.face-2-table-name-region').length == 0 && !$(e.target).hasClass('map-russia-district') && !$(e.target).hasClass('face-2-table-name-region') && $(e.target).parents().filter('.map-region-item').length == 0 && !$(e.target).hasClass('map-region-item')) {
+            if ($(e.target).parents().filter('.map-window-inner').length == 0 && !$(e.target).hasClass('map-window-inner') && $(e.target).parents().filter('.map-russia-district').length == 0 && $(e.target).parents().filter('.face-2-table-name-region').length == 0 && !$(e.target).hasClass('map-russia-district') && !$(e.target).hasClass('face-2-table-name-region') && $(e.target).parents().filter('.map-region-item').length == 0 && !$(e.target).hasClass('map-region-item')) {
                 $('.map-window').hide();
                 $('html').removeClass('map-window-opened');
             }
@@ -851,6 +873,12 @@ $(document).ready(function() {
             $('.face-2-table-row').remove();
             for (var i = 0; i < curData.length; i++) {
                 var regionID = curData[i].id;
+                var regionTitle = '';
+                for (var r = 0; r < russiaRegions.length; r++) {
+                    if (russiaRegions[r].id == regionID) {
+                        regionTitle = russiaRegions[r].title;
+                    }
+                }
 
                 var curRatingsArray = [];
                 for (var c = 0; c < mapColorsRegions.length; c++) {
@@ -889,7 +917,7 @@ $(document).ready(function() {
                     var curColor = mapColors[1][curColorIndex];
                 }
 
-                newMap += '<g class="map-region-item" data-id="' + regionID + '">';
+                newMap += '<g class="map-region-item" data-id="' + regionID + '" data-title="' + regionTitle + '">';
                 for (var j = 0; j < russiaRegions.length; j++) {
                     var curRegion = russiaRegions[j];
                     if (curRegion.id == regionID) {
@@ -1217,6 +1245,8 @@ $(window).on('load', function() {
         face3Redraw();
         face4Redraw();
 
+        $('.cube-face').eq(0).addClass('active');
+        $('.cube').css({'margin-bottom': $('.cube-face').eq(0).find('.cube-face-footer').outerHeight()});
     }
 
 });
@@ -1286,6 +1316,12 @@ function face2Redraw() {
 
         for (var i = 0; i < curData.length; i++) {
             var districtID = curData[i].district;
+            var districtTitle = '';
+            for (var r = 0; r < russiaDistricts.length; r++) {
+                if (russiaDistricts[r].id == districtID) {
+                    districtTitle = russiaDistricts[r].title;
+                }
+            }
 
             var curColorIndex = -1;
             var curValue = parseInt(curData[i].value.replace(/ /g, ''));
@@ -1304,7 +1340,7 @@ function face2Redraw() {
                 var curColor = mapColors[1][curColorIndex];
             }
 
-            newMap += '<g class="map-russia-district" data-id="' + districtID + '">';
+            newMap += '<g class="map-russia-district" data-id="' + districtID + '" data-title="' + districtTitle + '">';
             for (var j = 0; j < russiaRegions.length; j++) {
                 var curRegion = russiaRegions[j];
                 if (curRegion.district == districtID) {

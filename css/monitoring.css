@@ -179,7 +179,7 @@
 }
 
 .cube {width:624px; height:624px; position:relative; margin:126px auto 0 auto; perspective:1248px; perspective-origin:50% 312px; transform:scale(0.75, 0.75)}
-.cube-container {width:624px; height:624px; position:relative; transition:transform 50ms linear; transform-style:preserve-3d; transform:rotateX(-70deg) rotateY(10deg)}
+.cube-container {width:624px; height:624px; position:relative; transition:transform 50ms linear; transform-style:preserve-3d; transform:rotateX(-90deg) rotateY(0deg)}
 
 @media screen and (max-width:1139px) {
     .cube {width:350px; height:350px; margin-top:65px; perspective:700px; perspective-origin:50% 175px}
@@ -369,8 +369,10 @@
 .window-map-legend-list .map-russia-legend-item {padding:0 0 0 53px}
 .window-map-legend-list .map-russia-legend-item-color {width:43px; height:29px}
 
-.map-window {display:none; position:absolute; z-index:99; left:0; width:442px; margin:30px 0 0 -221px; background:#fff; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); padding:40px 30px; box-sizing:border-box}
-.map-window::before {content:""; display:block; position:absolute; left:50%; top:-11px; margin-left:-11px; border-bottom:11px solid #fff; border-left:11px solid transparent; border-right:11px solid transparent}
+.map-window {display:none; position:absolute; z-index:99; left:0; width:442px; margin:30px 0 0 -221px}
+.map-window::before {content:""; display:block; position:fixed; left:0; top:0; right:0; bottom:0; background:url(../images/blank.gif)}
+.map-window::after {content:""; display:block; position:absolute; left:50%; top:-11px; margin-left:-11px; border-bottom:11px solid #fff; border-left:11px solid transparent; border-right:11px solid transparent}
+.map-window-inner {position:relative; background:#fff; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); padding:40px 30px; box-sizing:border-box}
 .map-window-title {font:14px/19px HelveticaNeueCyrMedium, sans-serif; color:#121212; letter-spacing:0.04em}
 .map-window-info {padding:13px 0 0 0}
 .map-window-info::after {content:""; display:block; clear:both}
@@ -397,7 +399,7 @@
     .map-window-title {font-size:16px}
     .map-window-info-chart-item {margin:0 0 0 23px}
     .map-window-info-chart-item:first-child {margin:0}
-    .map-window-close {display:block; position:absolute; right:13px; top:12px; width:35px; height:35px; background:#fff url(../images/window-close-mobile.png) no-repeat center}
+    .map-window-close {display:block; position:absolute; right:13px; top:12px; width:35px; height:35px; background:#fff url(../images/window-close-mobile.png) no-repeat center; cursor:pointer}
 }
 
 .face-2-title-regions {display:none}
