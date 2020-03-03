@@ -544,9 +544,13 @@ $(window).on('load resize scroll', function() {
     } else {
         $('.up-link').removeClass('visible');
     }
-    var curDiff = $(window).scrollTop() + $(window).height() - $('footer').offset().top - 60;
-    if (curDiff > 0) {
-        $('.up-link').css({'margin-bottom': curDiff});
+    if ($('footer').offset()) {
+        var curDiff = $(window).scrollTop() + $(window).height() - $('footer').offset().top - 60;
+        if (curDiff > 0) {
+            $('.up-link').css({'margin-bottom': curDiff});
+        } else {
+            $('.up-link').css({'margin-bottom': 0});
+        }
     } else {
         $('.up-link').css({'margin-bottom': 0});
     }

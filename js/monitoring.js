@@ -590,13 +590,48 @@ $(document).ready(function() {
             e.preventDefault();
         });
 
-        $('body').on('click', '.face-2-type a', function(e) {
+        $('.face-2-type-current').click(function(e) {
+            $(this).parent().toggleClass('open');
+        });
+
+        $(document).click(function(e) {
+            if ($(e.target).parents().filter('.face-2-type').length == 0) {
+                $('.face-2-type').removeClass('open');
+            }
+        });
+
+        $('.face-2-type ul li a').click(function(e) {
             var curLi = $(this).parent();
             if (!curLi.hasClass('active')) {
-                $('.face-2-type li.active').removeClass('active');
+                $('.face-2-type ul li.active').removeClass('active');
                 curLi.addClass('active');
+                $('.face-2-type-current').html($(this).html());
                 face2Redraw();
             }
+            $('.face-2-type').removeClass('open');
+            e.preventDefault();
+        });
+
+        $('.face-2-year-current').click(function(e) {
+            $(this).parent().toggleClass('open');
+        });
+
+        $(document).click(function(e) {
+            if ($(e.target).parents().filter('.face-2-year').length == 0) {
+                $('.face-2-year').removeClass('open');
+            }
+        });
+
+        $('.face-2-year ul li a').click(function(e) {
+            var curLi = $(this).parent();
+            if (!curLi.hasClass('active')) {
+                $('.face-2-year ul li.active').removeClass('active');
+                curLi.addClass('active');
+                $('.face-2-year-current').html($(this).html());
+                $('.face-2-year-text').html($(this).html());
+                face2Redraw();
+            }
+            $('.face-2-year').removeClass('open');
             e.preventDefault();
         });
 
@@ -657,7 +692,7 @@ $(document).ready(function() {
             $('.map-window-info-chart').html('');
 
             var curType = $('.face-2-type li.active').attr('data-type');
-            var curYear = $('.face-2-year').html();
+            var curYear = $('.face-2-year-text').html();
 
             var curMax = 0;
 
@@ -754,7 +789,7 @@ $(document).ready(function() {
             $('.map-window-info-chart').html('');
 
             var curType = $('.face-2-type li.active').attr('data-type');
-            var curYear = $('.face-2-year').html();
+            var curYear = $('.face-2-year-text').html();
 
             var curMax = 0;
 
@@ -827,7 +862,7 @@ $(document).ready(function() {
             $('.map-region[data-id="' + curID + '"]').show();
             var curType = $('.face-2-type li.active').attr('data-type');
             var curSort = $('.map-russia-sort-type-list li.active').attr('data-sortType');
-            var curYear = $('.face-2-year').html();
+            var curYear = $('.face-2-year-text').html();
             var curData = [];
             for (var i = 0; i < face2dataRegions.length; i++) {
                 var curRegionID = face2dataRegions[i].id;
@@ -904,7 +939,6 @@ $(document).ready(function() {
                 if (curSort == 'value100') {
                     curValue = parseFloat(curData[i].value100.replace(/ /g, '').replace(/,/g, '.'));
                 }
-                console.log(curRatingsArray);
                 for (var c = 0; c < curRatingsArray.length; c++) {
                     if (curValue >= curRatingsArray[c][0] && curValue < curRatingsArray[c][1]) {
                         curColorIndex = c;
@@ -1020,7 +1054,7 @@ $(document).ready(function() {
             $('.face-2-table-head').eq(0).html('Субъект РФ');
             var curID = $(this).attr('data-id');
             if ($('.map-window').length == 0) {
-                $('body').append('<div class="map-window">' +
+                $('body').append('<div class="map-window"><div class="map-window-inner">' +
                                         '<div class="map-window-title"></div>' +
                                         '<div class="map-window-info">' +
                                             '<div class="map-window-info-item">' +
@@ -1035,7 +1069,7 @@ $(document).ready(function() {
                                         '<div class="map-window-info-chart-title">Фактическое и прогнозное<br /> число статей, тыс. ед.</div>' +
                                         '<div class="map-window-info-chart"></div>' +
                                         '<div class="map-window-info-link"><a href="#" class="btn-med" data-id="">Перейти на карту ФО</a></div>' +
-                                     '</div>');
+                                     '</div></div>');
             }
             $('.map-window-info-link a').attr('data-id', curID).trigger('click');
             e.preventDefault();
@@ -1052,13 +1086,25 @@ $(document).ready(function() {
             }
         });
 
-        $('body').on('click', '.face-3-type a', function(e) {
+        $('.face-3-type-current').click(function(e) {
+            $(this).parent().toggleClass('open');
+        });
+
+        $(document).click(function(e) {
+            if ($(e.target).parents().filter('.face-3-type').length == 0) {
+                $('.face-3-type').removeClass('open');
+            }
+        });
+
+        $('.face-3-type ul li a').click(function(e) {
             var curLi = $(this).parent();
             if (!curLi.hasClass('active')) {
-                $('.face-3-type li.active').removeClass('active');
+                $('.face-3-type ul li.active').removeClass('active');
                 curLi.addClass('active');
+                $('.face-3-type-current').html($(this).html());
                 face3Redraw();
             }
+            $('.face-3-type').removeClass('open');
             e.preventDefault();
         });
 
@@ -1084,13 +1130,48 @@ $(document).ready(function() {
             e.preventDefault();
         });
 
-        $('body').on('click', '.face-4-type a', function(e) {
+        $('.face-4-type-current').click(function(e) {
+            $(this).parent().toggleClass('open');
+        });
+
+        $(document).click(function(e) {
+            if ($(e.target).parents().filter('.face-4-type').length == 0) {
+                $('.face-4-type').removeClass('open');
+            }
+        });
+
+        $('.face-4-type ul li a').click(function(e) {
             var curLi = $(this).parent();
             if (!curLi.hasClass('active')) {
-                $('.face-4-type li.active').removeClass('active');
+                $('.face-4-type ul li.active').removeClass('active');
                 curLi.addClass('active');
+                $('.face-4-type-current').html($(this).html());
                 face4Redraw();
             }
+            $('.face-4-type').removeClass('open');
+            e.preventDefault();
+        });
+
+        $('.face-4-year-current').click(function(e) {
+            $(this).parent().toggleClass('open');
+        });
+
+        $(document).click(function(e) {
+            if ($(e.target).parents().filter('.face-4-year').length == 0) {
+                $('.face-4-year').removeClass('open');
+            }
+        });
+
+        $('.face-4-year ul li a').click(function(e) {
+            var curLi = $(this).parent();
+            if (!curLi.hasClass('active')) {
+                $('.face-4-year ul li.active').removeClass('active');
+                curLi.addClass('active');
+                $('.face-4-year-current').html($(this).html());
+                $('.face-4-year-text').html($(this).html());
+                face4Redraw();
+            }
+            $('.face-4-year').removeClass('open');
             e.preventDefault();
         });
 
@@ -1254,7 +1335,7 @@ $(window).on('load', function() {
 function face2Redraw() {
     var curType = $('.face-2-type li.active').attr('data-type');
     var curSort = $('.map-russia-sort-type-list li.active').attr('data-sortType');
-    var curYear = $('.face-2-year').html();
+    var curYear = $('.face-2-year-text').html();
     var curData = null;
     for (var i = 0; i < face2dataDistricts.length; i++) {
         if (face2dataDistricts[i].type == curType && face2dataDistricts[i].year == curYear) {
@@ -1429,6 +1510,7 @@ function face3Redraw() {
 
 function face4Redraw() {
     var curType = $('.face-4-type li.active').attr('data-type');
+    var curYear = $('.face-4-year-text').html();
     var curLetter = $('.face-4-letter li.active').attr('data-letter');
     $('.face-4-title-icon').html('<img src="' + $('.face-4-letter li.active').attr('data-icon') + '" alt="" />');
     $('.face-4-title-text span').html(curLetter);
@@ -1436,7 +1518,7 @@ function face4Redraw() {
 
     var curData = null;
     for (var i = 0; i < face4data.length; i++) {
-        if (face4data[i].type == curType && face4data[i].letter == curLetter) {
+        if (face4data[i].type == curType && face4data[i].letter == curLetter && face4data[i].year == curYear) {
             curData = face4data[i].data;
         }
     }
