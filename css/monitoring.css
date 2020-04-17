@@ -153,10 +153,10 @@
 .monitoring-by-types-cell {display:table-cell; vertical-align:middle; text-align:center; color:#000; font:28px/28px HelveticaNeueCyrMedium, sans-serif; border-left:1px solid #e0e0e0; border-bottom:1px solid #e0e0e0; padding:20px 0}
 
 .cube-menu {font:12px/18px HelveticaNeueCyrMedium, sans-serif; text-transform:uppercase; letter-spacing:0.04em; padding:10px 0 0 0; position:relative; z-index:20}
-.cube-menu ul {margin:0 0 -18px 0; padding:0; list-style:none; text-align:justify}
-.cube-menu ul::after {content:""; display:inline-block; vertical-align:top; width:100%}
-.cube-menu ul li {display:inline-block; vertical-align:top; margin:0; padding:0}
+.cube-menu ul {margin:0 0 -18px 0; padding:0; list-style:none; display:table}
+.cube-menu ul li {display:table-cell; vertical-align:top; margin:0; padding:0 0 0 70px}
 .cube-menu ul li::before {display:none}
+.cube-menu ul li:first-child {padding:0}
 .cube-menu ul li a {display:block; color:#a6a6a6; text-align:left; text-decoration:none; position:relative}
 .cube-menu ul li a:hover {color:#fe6600}
 .cube-menu ul li.active a {color:#fe6600}
@@ -166,7 +166,7 @@
 @media screen and (max-width:1139px) {
     .cube-menu {font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; margin:-30px 0 0 -10px; padding:0}
     .cube-menu .slick-list {overflow:visible !important}
-    .cube-menu ul {margin:0}
+    .cube-menu ul {margin:0; display:block}
     .cube-menu ul li {float:none; display:inline-block; vertical-align:top; margin:0; padding:0 0 0 10px}
     .cube-menu ul.slick-initialized .slick-slide {display:inline-block}
     .cube-menu ul li a {float:none; display:inline-block; color:#404040; padding:15px; border:1px solid #fff0e6; border-radius:4px; background:#fff0e6; box-sizing:border-box; font-size:11px; line-height:16px; letter-spacing:0.04em}
@@ -178,7 +178,7 @@
     .cube-menu .no-mobile {display:none}
 }
 
-.cube {width:624px; height:624px; position:relative; margin:126px auto 0 auto; perspective:1248px; perspective-origin:50% 312px; transform:scale(0.75, 0.75)}
+.cube {width:624px; height:624px; position:relative; margin:126px auto 0 auto; perspective:1248px; perspective-origin:50% 312px; transform:scale(0.75, 0.75); backface-visibility:hidden}
 .cube-container {width:624px; height:624px; position:relative; transition:transform 50ms linear; transform-style:preserve-3d; transform:rotateX(-90deg) rotateY(0deg)}
 
 @media screen and (max-width:1139px) {
@@ -732,3 +732,76 @@
 
 .map-window-opened .wrapper {-webkit-filter:blur(8px); -moz-filter:blur(8px); -o-filter:blur(8px); -ms-filter:blur(8px); filter:blur(8px)}
 .map-window-opened footer {-webkit-filter:blur(8px); -moz-filter:blur(8px); -o-filter:blur(8px); -ms-filter:blur(8px); filter:blur(8px)}
+
+.face-4-container-cube-3 .face-4-year {margin:0}
+.face-4-container-cube-3 .face-4-letter-current {max-width:300px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.face-4-container-cube-3 .face-4-letter ul {width:300px; white-space:normal}
+.face-4-container-cube-3 .face-4-letter.open ul {left:auto; right:-20px}
+
+@media screen and (max-width:1139px) {
+    .face-4-container-cube-3 .face-4-letter {margin-right:20px}
+    .face-4-container-cube-3 .face-4-letter-current {max-width:200px}
+    .face-4-container-cube-3 .face-4-letter ul {width:200px}
+}
+
+.face-4-cube-3-content {position:relative; margin:22px auto 0 auto; width:352px; height:352px}
+.face-4-cube-3-hints {position:absolute; left:0; top:0; right:0; bottom:0; pointer-events:none; font-size:14px; line-height:14px; font-family:HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#393939; white-space:nowrap}
+.face-4-cube-3-content canvas {position:relative}
+
+@media screen and (max-width:1139px) {
+    .face-4-cube-3-content {margin:0 auto; width:200px; height:200px}
+    .face-4-cube-3-hints {font-size:12px; line-height:12px}
+}
+
+.face4-cube-3-list {padding:24px 0 0 0}
+.face4-cube-3-list .face3-list-item {padding:0 0 20px 0}
+
+@media screen and (max-width:1139px) {
+    .face4-cube-3-list {padding:62px 0 0 0}
+}
+
+#chartjs-tooltip-face-4-cube-3 {opacity:0; position:absolute; background:#fff; color:#121212; font-size:14px; line-height:14px; width:254px; padding:20px 20px 20px 20px; letter-spacing:0.04em; box-sizing:border-box; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); transition:all 0.1s ease; pointer-events:none; transform:translate(-50%, 0)}
+#chartjs-tooltip-face-4-cube-3::before {content:""; display:block; position:absolute; left:50%; top:-11px; width:0; height:0; border-bottom:11px solid #fff; border-left:11px solid transparent; border-right:11px solid transparent; margin-left:-11px}
+#chartjs-tooltip-face-4-cube-3 span {display:block; color:#fe6600; font-family:HelveticaNeueCyrMedium, sans-serif; margin:10px 0 0 0}
+
+.cube-face-4-cube-3 .cube-face-title {font-weight:normal}
+.cube-face-4-cube-3 .face-4-title {font:18px/18px HelveticaNeueCyr, sans-serif; color:#121212; letter-spacing:0.04em; padding-top:14px; min-height:50px}
+
+@media screen and (max-width:1139px) {
+    .cube-face-4-cube-3 .cube-face-title {font-weight:300; letter-spacing:0.08em; opacity:0.7}
+    .cube-face-4-cube-3 .face-4-title {font-size:12px; line-height:14px; padding-top:12px; min-height:36px}
+}
+
+@media screen and (max-width:1139px) {
+    .cube-face-4-cube-3 .face-4-container {height:auto; width:auto; overflow:visible; position:static}
+}
+
+.cube-face-4-cube-3 .cube-face-download a {font-family:HelveticaNeueCyrLight, sans-serif}
+
+.face4-cube-3-summ {padding:0 0 32px 0; color:#121212; font:14px/14px HelveticaNeueCyrLight, sans-serif; letter-spacing:0.04em}
+
+.face-4-cube-3-detail {display:none; position:absolute; right:40px; bottom:40px}
+.cube-face.active .face-4-cube-3-detail.visible {display:block}
+.face-4-cube-3-detail .btn-med {padding:0 15px; height:36px; line-height:36px; font-size:12px; font-family:HelveticaNeueCyrLight, sans-serif}
+
+@media screen and (max-width:1139px) {
+    .face-4-cube-3-detail {right:auto; left:0; bottom:-56px}
+}
+
+.face-4-cube-3-back {display:none; position:absolute; right:40px; bottom:40px}
+.cube-face.active .face-4-cube-3-back.visible {display:block}
+.face-4-cube-3-back .btn-med {padding:0 15px; height:36px; line-height:36px; font-size:12px; font-family:HelveticaNeueCyrLight, sans-serif}
+
+@media screen and (max-width:1139px) {
+    .face-4-cube-3-back {right:auto; left:0; bottom:-56px}
+}
+
+.cub-face-2-cube-3 .face-2-table-head a::after {display:none}
+.cub-face-2-cube-3 .face-2-table-value span {color:#fe6600}
+.cub-face-2-cube-3 .face-2-notice {display:none; margin:0 0 44px 0; font:14px/23px HelveticaNeueCyrLight, sans-serif; letter-spacing:0.04em}
+.cub-face-2-cube-3 .face-2-notice.visible {display:block}
+.cub-face-2-cube-3 .face-2-notice span {color:#fe6600}
+.cub-face-2-cube-3 .map-window-info-item-value span {color:#fe6600}
+.map-window-info-notice {display:none; font:12px/14px HelveticaNeueCyrLight, sans-serif; letter-spacing:0.04em; margin:20px 0 0 0}
+.map-window-info-notice.visible {display:block}
+.map-window-info-notice span {color:#fe6600}
