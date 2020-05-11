@@ -178,7 +178,7 @@
     .cube-menu .no-mobile {display:none}
 }
 
-.cube {width:624px; height:624px; position:relative; margin:126px auto 0 auto; perspective:1248px; perspective-origin:50% 312px; transform:scale(0.75, 0.75); backface-visibility:hidden}
+.cube {width:624px; height:624px; position:relative; margin:126px auto 0 auto; perspective:1248px; perspective-origin:50% 312px; transform:scale(0.75, 0.75); backface-visibility:hidden; z-index:10}
 .cube-container {width:624px; height:624px; position:relative; transition:transform 50ms linear; transform-style:preserve-3d; transform:rotateX(-90deg) rotateY(0deg)}
 
 @media screen and (max-width:1139px) {
@@ -727,8 +727,6 @@
     .cube-formula-legend-item-title-add-bottom:first-child {padding:16px 0 0 0; margin:0}
     .window-formula-info-mobile {width:460px; padding:30px 94px 30px 30px; box-sizing:border-box; font:12px/18px HelveticaNeueCyrLight, sans-serif; letter-spacing:0.04em; color:#121212}
 }
-
-.wrapper:hover {z-index:1}
 
 .map-window-opened .wrapper {-webkit-filter:blur(8px); -moz-filter:blur(8px); -o-filter:blur(8px); -ms-filter:blur(8px); filter:blur(8px)}
 .map-window-opened footer {-webkit-filter:blur(8px); -moz-filter:blur(8px); -o-filter:blur(8px); -ms-filter:blur(8px); filter:blur(8px)}
