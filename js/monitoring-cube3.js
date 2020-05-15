@@ -988,6 +988,28 @@ $(document).ready(function() {
             windowPosition();
         });
 
+        $('.face-3-group-year-current').click(function(e) {
+            $(this).parent().toggleClass('open');
+        });
+
+        $(document).click(function(e) {
+            if ($(e.target).parents().filter('.face-3-group-year').length == 0) {
+                $('.face-3-group-year').removeClass('open');
+            }
+        });
+
+        $('.face-3-group-year ul li a').click(function(e) {
+            var curLi = $(this).parent();
+            if (!curLi.hasClass('active')) {
+                $('.face-3-group-year ul li.active').removeClass('active');
+                curLi.addClass('active');
+                $('.face-3-group-year-current').html($(this).html());
+                face3GroupRedraw();
+            }
+            $('.face-3-group-year').removeClass('open');
+            e.preventDefault();
+        });
+
     }
 
 });
@@ -997,11 +1019,20 @@ $(window).on('load', function() {
     if ($('.cube').length > 0) {
 
         face2Redraw();
-        face3Redraw();
         face4Redraw();
 
         $('.cube-face').eq(0).addClass('active');
         $('.cube').css({'margin-bottom': $('.cube-face').eq(0).find('.cube-face-footer').outerHeight()});
+
+        face3GroupRedraw();
+    }
+
+});
+
+$(window).on('resize', function() {
+
+    if ($('.cube').length > 0) {
+        face3GroupRedraw();
     }
 
 });
@@ -1249,11 +1280,31 @@ function face4Redraw() {
             curSumm += Number(curData[i].value);
         }
 
+        for (var i = 0; i < curData.length; i++) {
+            var curValue = (Number(curData[i].value) / curSumm * 100).toFixed(1);
+            values.push(curValue);
+        }
+
+        var summValues = 0;
+        var maxIndex = -1;
+        var maxValue = 0;
+        for (var i = 0; i < values.length; i++) {
+            if (maxValue < values[i]) {
+                maxValue = values[i];
+                maxIndex = i;
+            }
+            summValues += Number(values[i]);
+        }
+        if (summValues > 100) {
+            values[maxIndex] = (values[maxIndex] - (summValues - 100)).toFixed(1);
+        } else if (summValues < 100) {
+            values[maxIndex] = (Number(values[maxIndex]) + (100 - summValues)).toFixed(1);
+        }
+
         var curFull = 0;
         for (var i = 0; i < curData.length; i++) {
             labels.push(curData[i].title + ', ' + String(curData[i].value).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '&nbsp;чел.');
-            var curValue = Math.round(Number(curData[i].value) / curSumm * 100);
-            values.push(curValue);
+            var curValue = values[i];
             newHTML += '<div class="face3-list-item"><div class="face3-list-item-inner"><div class="face3-list-item-icon"><div class="face3-list-item-icon-inner" style="background-color:' + colors[i] + '"></div></div><div class="face3-list-item-title">' + curData[i].title + ', ' + String(curData[i].value).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + ' чел. (' + curValue + '%)</div></div></div>';
             if (curValue >= 2) {
                 $('.face-4-cube-3-hints').append('<div class="face-3-hints-item" style="transform:rotate(' + ((curFull + curValue / 2) / 100 * 360) + 'deg)"><span style="transform:translate(-50%, 0) rotate(-' + ((curFull + curValue / 2) / 100 * 360) + 'deg)">' + curValue + '%</span></div>');
@@ -1298,3 +1349,122 @@ $(window).on('load resize', function() {
         });
     }
 });
+
+function face3GroupRedraw() {
+    var curYear = $('.face-3-group-year li.active').attr('data-year');
+    var curData = null;
+    for (var i = 0; i < face3groupdata.length; i++) {
+        if (face3groupdata[i].year == curYear) {
+            curData = face3groupdata[i].data;
+        }
+    }
+    $('.face-3-group-hints').html('');
+    if (curData !== null) {
+        var newHTML = '';
+        var labels = [];
+        var values = [];
+        var colors = cubeColors3Group[0];
+
+        var curFull = 0;
+        var curGroup = 0;
+        var linearHTML = '';
+        var linearIndex = 0;
+        var linearcolors = cubeColors3Group[1];
+        var groupFull = 0.00;
+        for (var i = 0; i < curData.length; i++) {
+            if (curData[i].group == true) {
+                curGroup += Number(curData[i].value);
+            }
+        }
+        if (curGroup > 0) {
+            $('.face-3-group-second').addClass('visible');
+            $('.face-3-group-second-line-1').addClass('visible');
+            $('.face-3-group-second-line-2').addClass('visible');
+            $('.face-3-group-content').removeClass('without-second');
+            for (var i = 0; i < curData.length; i++) {
+                if (curData[i].group == true) {
+                    var curHeight = (Number(curData[i].value) / curGroup).toFixed(2) * 100;
+                    linearHTML += '<div class="face-3-group-second-item" style="bottom:' + groupFull + '%; height:' + curHeight + '%">' +
+                                    '<div class="face-3-group-second-item-bg" style="background:' + linearcolors[linearIndex] + '"></div>' +
+                                    '<div class="face-3-group-second-item-title">' + curData[i].value + '%</div>' +
+                                    '<div class="face-3-group-second-item-hint">' + curData[i].title + '<span>' + curData[i].value + '%</span></div>' +
+                                  '</div>';
+                    groupFull += curHeight;
+                    linearIndex++;
+                }
+            }
+            $('.face-3-group-second').html(linearHTML);
+
+            var newAngle = curGroup / 100 * Math.PI;
+        } else {
+            $('.face-3-group-content').addClass('without-second');
+            $('.face-3-group-second').removeClass('visible');
+            $('.face-3-group-second-line-1').removeClass('visible');
+            $('.face-3-group-second-line-2').removeClass('visible');
+        }
+
+        for (var i = 0; i < curData.length; i++) {
+            if (curData[i].group != true) {
+                labels.push(curData[i].title);
+                values.push(curData[i].value);
+                newHTML += '<div class="face3-group-list-item"><div class="face3-group-list-item-inner"><div class="face3-group-list-item-icon"><div class="face3-group-list-item-icon-inner" style="background-color:' + colors[i] + '"></div></div><div class="face3-group-list-item-title">' + curData[i].title + ' <span>(' + curData[i].value + '%)</span></div></div></div>';
+                if (Number(curData[i].value) >= 2) {
+                    $('.face-3-group-hints').append('<div class="face-3-group-hints-item" style="transform:rotate(' + (90 + ((curFull + curData[i].value / 2) / 100 * 360)) + 'deg)"><span style="transform:translate(-50%, 0) rotate(-' + (90 + ((curFull + curData[i].value / 2) / 100 * 360)) + 'deg)">' + curData[i].value + '%</span></div>');
+                }
+                curFull += Number(curData[i].value);
+            }
+        }
+
+        if (curGroup > 0) {
+            newHTML += '<hr />';
+            linearIndex = 0;
+            for (var i = 0; i < curData.length; i++) {
+                if (curData[i].group == true) {
+                    newHTML += '<div class="face3-group-list-item"><div class="face3-group-list-item-inner"><div class="face3-group-list-item-icon"><div class="face3-group-list-item-icon-inner" style="background-color:' + linearcolors[linearIndex] + '"></div></div><div class="face3-group-list-item-title">' + curData[i].title + ' <span>(' + curData[i].value + '%)</span></div></div></div>';
+                    linearIndex++;
+                }
+            }
+
+            values.push(curGroup);
+            $('.face-3-group-hints').append('<div class="face-3-group-hints-item" style="transform:rotate(' + (90 + ((curFull + curGroup) / 100 * 360)) + 'deg)"><span style="transform:translate(-50%, 0) rotate(-' + (90 + ((curFull + curGroup) / 100 * 360)) + 'deg)">' + curGroup + '%</span></div>');
+            curFull += curGroup;
+
+            face3GroupConfig.options.rotation = newAngle;
+        }
+
+        face3GroupConfig.data.labels = labels;
+        face3GroupConfig.data.datasets[0].data = values;
+        face3GroupConfig.data.datasets[0].backgroundColor = colors;
+
+        myChartFace3Group.update();
+
+        if (curGroup > 0) {
+            var lineAngle = (curGroup / 100 * 360 / 2) * Math.PI / 180;
+            var line1Start = [Math.ceil($('.face-3-group-content').width() * Math.cos(lineAngle)), Math.ceil(($('.face-3-group-content').height() / 2)) - Math.ceil(($('.face-3-group-content').height() / 2) * Math.sin(lineAngle))];
+            var line2Start = [Math.ceil($('.face-3-group-content').width() * Math.cos(lineAngle)), Math.ceil(($('.face-3-group-content').height() / 2)) + Math.ceil(($('.face-3-group-content').height() / 2) * Math.sin(lineAngle))];
+            var line1End = [Number($('.face-3-group-second').css('left').replace(/px/, '')), Number($('.face-3-group-second').css('top').replace(/px/, ''))];
+            var line2End = [Number($('.face-3-group-second').css('left').replace(/px/, '')), Number($('.face-3-group-second').css('top').replace(/px/, '')) + $('.face-3-group-second').height()];
+
+            function angle_point(a, b, c) {
+                var x1 = a[0] - b[0];
+                var x2 = c[0] - b[0];
+                var y1 = a[1] - b[1];
+                var y2 = c[1] - b[1];
+
+                var d1 = Math.sqrt(x1 * x1 + y1 * y1);
+                var d2 = Math.sqrt(x2 * x2 + y2 * y2);
+                return Math.acos((x1 * x2 + y1 * y2) / (d1 * d2)) * 180 / Math.PI;
+            }
+
+            var line1Width = Math.sqrt(Math.pow((line1End[0] - line1Start[0]), 2) + Math.pow((line1End[1] - line1Start[1]), 2));
+            var line1Angle = -angle_point([line1End[0], line1End[1]], [line1Start[0], line1Start[1]], [line1End[0], line1Start[1]]);
+            $('.face-3-group-second-line-1').css({'left': line1Start[0], 'top': line1Start[1], 'width': line1Width, 'transform': 'rotate(' + line1Angle + 'deg)'});
+
+            var line2Width = Math.sqrt(Math.pow((line2End[0] - line2Start[0]), 2) + Math.pow((line2End[1] - line2Start[1]), 2));
+            var line2Angle = angle_point([line2End[0], line2End[1]], [line2Start[0], line2Start[1]], [line2End[0], line2Start[1]]);
+            $('.face-3-group-second-line-2').css({'left': line2Start[0], 'top': line2Start[1], 'width': line2Width, 'transform': 'rotate(' + line2Angle + 'deg)'});
+        }
+
+        $('.face3-group-list').html(newHTML);
+    }
+}

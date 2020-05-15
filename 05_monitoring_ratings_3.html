@@ -188,6 +188,11 @@
                                         ['#90d7cf', '#669caa', '#4e7b95']
                         ];
 
+                        var cubeColors3Group = [
+                                        ['#4e7b95', '#669caa', '#90d7cf'],
+                                        ['#4aa177', '#74e1ac']
+                        ];
+
                         var cubeFlags = [
                                             {
                                                 'country'   : 'Китай',
@@ -5192,163 +5197,98 @@
                                 <div class="cube-face-title">Декомпозиция по секторам деятельности</div>
 
                                 <div class="cube-face-footer">
-                                    <div class="face3-list">
+                                    <div class="face3-group-list">
                                     </div>
                                     <div class="cube-face-download"><a href="#"><span>xls</span>Скачать данные в Excel</a></div>
                                 </div>
 
-                                <div class="face-3-header">
-                                    <div class="face-3-type">
-                                        <div class="face-3-type-current">Web of Science</div>
+                                <div class="face-3-group-header">
+                                    <div class="face-3-group-year">
+                                        <div class="face-3-group-year-current">2018</div>
                                         <ul>
-                                            <li class="active" data-type="WoS"><a href="#">Web of Science</a></li>
-                                            <li data-type="Scopus"><a href="#">Scopus</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="face-3-year">
-                                        <div class="face-3-year-current">2018</div>
-                                        <ul>
+                                            <li data-year="2016"><a href="#">2016</a></li>
                                             <li data-year="2017"><a href="#">2017</a></li>
                                             <li class="active" data-year="2018"><a href="#">2018</a></li>
                                         </ul>
                                     </div>
                                 </div>
 
-                                <div class="face-3-content">
-                                    <div class="face-3-hints"></div>
-                                    <canvas id="canvas-face-3" width="352" height="352"></canvas>
-                                    <div id="chartjs-tooltip"></div>
+                                <div class="face-3-group-content">
+                                    <div class="face-3-group-second-line-1"></div>
+                                    <div class="face-3-group-second-line-2"></div>
+                                    <div class="face-3-group-hints"></div>
+                                    <canvas id="canvas-face-3-group" width="300" height="300"></canvas>
+                                    <div id="chartjs-tooltip-3-group"></div>
+                                    <div class="face-3-group-second"></div>
                                 </div>
 
                                 <script>
-                                    var face3data = [
+                                    var face3groupdata = [
                                                         {
-                                                            'type'  : 'WoS',
+                                                            'year'  : '2016',
+                                                            'data'  : [
+                                                                            {
+                                                                                'title' : 'Организации предпринимательского сектора',
+                                                                                'value' : '60'
+                                                                            },
+                                                                            {
+                                                                                'title' : 'Организации государственного сектора',
+                                                                                'value' : '40'
+                                                                            }
+                                                            ]
+                                                        },
+
+                                                        {
                                                             'year'  : '2017',
                                                             'data'  : [
                                                                             {
+                                                                                'title' : 'Организации предпринимательского сектора',
+                                                                                'value' : '70'
+                                                                            },
+                                                                            {
+                                                                                'title' : 'Организации государственного сектора',
+                                                                                'value' : '22'
+                                                                            },
+                                                                            {
                                                                                 'title' : 'Образовательные организации высшего образования',
-                                                                                'value' : '54'
+                                                                                'value' : '6',
+                                                                                'group' : true
                                                                             },
                                                                             {
-                                                                                'title' : 'Научные организации Минобрнауки России',
-                                                                                'value' : '34'
-                                                                            },
-                                                                            {
-                                                                                'title' : 'Другие научные организации',
-                                                                                'value' : '5'
-                                                                            },
-                                                                            {
-                                                                                'title' : 'Прочие организации',
-                                                                                'value' : '3'
-                                                                            },
-                                                                            {
-                                                                                'title' : 'Научные организации Минздрав России',
-                                                                                'value' : '2'
-                                                                            },
-                                                                            {
-                                                                                'title' : 'НИЦ "Курчатовский институт"',
-                                                                                'value' : '2'
+                                                                                'title' : 'Некоммерческие организации',
+                                                                                'value' : '2',
+                                                                                'group' : true
                                                                             }
                                                             ]
                                                         },
 
                                                         {
-                                                            'type'  : 'Scopus',
-                                                            'year'  : '2017',
-                                                            'data'  : [
-                                                                            {
-                                                                                'title' : 'Образовательные организации высшего образования',
-                                                                                'value' : '53'
-                                                                            },
-                                                                            {
-                                                                                'title' : 'Научные организации Минобрнауки России',
-                                                                                'value' : '32'
-                                                                            },
-                                                                            {
-                                                                                'title' : 'Прочие организации',
-                                                                                'value' : '6'
-                                                                            },
-                                                                            {
-                                                                                'title' : 'Другие научные организации',
-                                                                                'value' : '5'
-                                                                            },
-                                                                            {
-                                                                                'title' : 'Научные организации Минздрав России',
-                                                                                'value' : '3'
-                                                                            },
-                                                                            {
-                                                                                'title' : 'НИЦ "Курчатовский институт"',
-                                                                                'value' : '1'
-                                                                            }
-                                                            ]
-                                                        },
-
-                                                        {
-                                                            'type'  : 'WoS',
                                                             'year'  : '2018',
                                                             'data'  : [
                                                                             {
-                                                                                'title' : 'Образовательные организации высшего образования',
-                                                                                'value' : '53'
+                                                                                'title' : 'Организации предпринимательского сектора',
+                                                                                'value' : '73.18'
                                                                             },
                                                                             {
-                                                                                'title' : 'Научные организации Минобрнауки России',
-                                                                                'value' : '33'
+                                                                                'title' : 'Организации государственного сектора',
+                                                                                'value' : '25.21'
                                                                             },
-                                                                            {
-                                                                                'title' : 'Прочие организации',
-                                                                                'value' : '8'
-                                                                            },
-                                                                            {
-                                                                                'title' : 'Другие научные организации',
-                                                                                'value' : '4'
-                                                                            },
-                                                                            {
-                                                                                'title' : 'Научные организации Минздрав России',
-                                                                                'value' : '1'
-                                                                            },
-                                                                            {
-                                                                                'title' : 'НИЦ "Курчатовский институт"',
-                                                                                'value' : '1'
-                                                                            }
-                                                            ]
-                                                        },
-
-                                                        {
-                                                            'type'  : 'Scopus',
-                                                            'year'  : '2018',
-                                                            'data'  : [
                                                                             {
                                                                                 'title' : 'Образовательные организации высшего образования',
-                                                                                'value' : '53'
+                                                                                'value' : '1.56',
+                                                                                'group' : true
                                                                             },
                                                                             {
-                                                                                'title' : 'Научные организации Минобрнауки России',
-                                                                                'value' : '31'
-                                                                            },
-                                                                            {
-                                                                                'title' : 'Прочие организации',
-                                                                                'value' : '7'
-                                                                            },
-                                                                            {
-                                                                                'title' : 'Другие научные организации',
-                                                                                'value' : '5'
-                                                                            },
-                                                                            {
-                                                                                'title' : 'Научные организации Минздрав России',
-                                                                                'value' : '3'
-                                                                            },
-                                                                            {
-                                                                                'title' : 'НИЦ "Курчатовский институт"',
-                                                                                'value' : '1'
+                                                                                'title' : 'Некоммерческие организации',
+                                                                                'value' : '0.05',
+                                                                                'group' : true
                                                                             }
                                                             ]
                                                         }
                                     ];
 
                                     Chart.defaults.global.tooltips.custom = function(tooltip) {
-                                        var tooltipEl = document.getElementById('chartjs-tooltip');
+                                        var tooltipEl = document.getElementById('chartjs-tooltip-3-group');
 
                                         if (tooltip.opacity === 0) {
                                             tooltipEl.style.opacity = 0;
@@ -5387,12 +5327,16 @@
                                         var positionY = this._chart.canvas.offsetTop;
                                         var positionX = this._chart.canvas.offsetLeft;
 
-                                        tooltipEl.style.opacity = 1;
+                                        if (tooltip.body.map(getBody)[0][0].indexOf('undefined') == -1) {
+                                            tooltipEl.style.opacity = 1;
+                                        } else {
+                                            tooltipEl.style.opacity = 0;
+                                        }
                                         tooltipEl.style.left = positionX + tooltip.caretX + 'px';
                                         tooltipEl.style.top = positionY + tooltip.caretY + 'px';
                                     };
 
-                                    var face3Config = {
+                                    var face3GroupConfig = {
                                         type: 'pie',
                                         data: {
                                             labels: [],
@@ -5425,8 +5369,8 @@
                                         }
                                     };
 
-                                    var ctxFace3 = document.getElementById('canvas-face-3').getContext('2d');
-                                    var myChartFace3 = new Chart(ctxFace3, face3Config);
+                                    var ctxFace3Group = document.getElementById('canvas-face-3-group').getContext('2d');
+                                    var myChartFace3Group = new Chart(ctxFace3Group, face3GroupConfig);
                                 </script>
                             </div>
                             <!-- cube face END -->

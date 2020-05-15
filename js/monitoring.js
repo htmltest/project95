@@ -139,25 +139,57 @@ $(document).ready(function() {
         $('.monitoring-map-inner svg').html(newMap);
         $('.monitoring-map-list').html('');
 
+        var nullNotice = false;
         for (var i = 0; i < russiaDistricts.length; i++) {
             var disctrictID = russiaDistricts[i].id;
             var newHTML = '<table><thead><tr><th colspan="2">' + russiaDistricts[i].title + '</th></tr></thead><tbody>';
-            for (var j = 0; j < face2dataDistricts.length; j++) {
-                if (curYear == face2dataDistricts[j].year) {
-                    var curType = face2dataDistricts[j].type;
-                    var curData = face2dataDistricts[j].data;
+            for (var j = 0; j < russiaDataDistricts.length; j++) {
+                if (curYear == russiaDataDistricts[j].year) {
+                    var curType = russiaDataDistricts[j].type;
+                    var curData = russiaDataDistricts[j].data;
                     for (var k = 0; k < curData.length; k++) {
                         if (curData[k].district == disctrictID) {
-                            var curValue = parseInt(curData[k].value.replace(/ /g, ''));
-                            var curValue100 = parseFloat(curData[k].value100.replace(/ /g, '').replace(/,/g, '.'));
-                            newHTML += '<tr><td>Число научных статей ' + curType + ', ед.</td><td>' + String(curValue).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</td></tr>';
-                            newHTML += '<tr><td>Число научных статей на 100 исследователей ' + curType + ', ед.</td><td>' + String(curValue100).replace(/\./g, ',') + '</td></tr>';
+                            var curDistrictData = curData[k].data;
+                            for (var m = 0; m < curDistrictData.length; m++) {
+                                var curValueType = russiaDataTypes[m];
+                                switch(curValueType.type) {
+                                    case 'integer':
+                                        if (curDistrictData[m] !== null) {
+                                            var curValue = parseInt(curDistrictData[m].replace(/ /g, ''));
+                                            newHTML += '<tr><td>' + curValueType.title + '</td><td>' + String(curValue).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</td></tr>';
+                                        } else {
+                                            nullNotice = true;
+                                            newHTML += '<tr><td>' + curValueType.title + '</td><td>' + russiaDataNull.value + '<span>*</span></td></tr>';
+                                        }
+                                        break;
+                                    case 'float':
+                                        if (curDistrictData[m] !== null) {
+                                            var curValue = parseFloat(curDistrictData[m].replace(/ /g, '').replace(/,/g, '.'));
+                                            newHTML += '<tr><td>' + curValueType.title + '</td><td>' + String(curValue).replace(/\./g, ',') + '</td></tr>';
+                                        } else {
+                                            nullNotice = true;
+                                            newHTML += '<tr><td>' + curValueType.title + '</td><td>' + russiaDataNull.value + '<span>*</span></td></tr>';
+                                        }
+                                        break;
+                                    default:
+                                        if (curDistrictData[m] !== null) {
+                                            newHTML += '<tr><td>' + curValueType.title + '</td><td>' + curDistrictData[m] + '</td></tr>';
+                                        } else {
+                                            nullNotice = true;
+                                            newHTML += '<tr><td>' + curValueType.title + '</td><td>' + russiaDataNull.value + '<span>*</span></td></tr>';
+                                        }
+                                }
+                            }
                         }
                     }
                 }
             }
             newHTML += '</tbody></table>';
             $('.monitoring-map-list').append(newHTML);
+        }
+
+        if (nullNotice) {
+            $('.monitoring-map-list').append('<div class="monitoring-map-list-notice"><span>*</span>' + russiaDataNull.notice + '</div>');
         }
     }
 
@@ -191,9 +223,9 @@ $(document).ready(function() {
             var windowData = null;
 
             var regionID = $(this).attr('data-id');
-            for (var i = 0; i < face2dataRegions.length; i++) {
-                if (face2dataRegions[i].id == regionID) {
-                    windowData = face2dataRegions[i].values;
+            for (var i = 0; i < russiaDataRegions.length; i++) {
+                if (russiaDataRegions[i].id == regionID) {
+                    windowData = russiaDataRegions[i].values;
                 }
             }
 
@@ -202,19 +234,49 @@ $(document).ready(function() {
             var newHTML = '<div class="monitoring-map-list-window"><table><thead><tr><th colspan="2">' + $(this).attr('data-title') + '</th></tr></thead><tbody>';
             if (windowData != null) {
 
+                var nullNotice = false;
                 for (var i = 0; i < windowData.length; i++) {
-                    var curType = windowData[i].type;
-                    var curData = windowData[i].data;
-                    for (var j = 0; j < curData.length; j++) {
-                        if (curYear == curData[j].year) {
-                            var curValue = parseInt(curData[j].value.replace(/ /g, ''));
-                            var curValue100 = parseFloat(curData[j].value100.replace(/ /g, '').replace(/,/g, '.'));
-                            newHTML += '<tr><td>Число научных статей ' + curType + ', ед.</td><td>' + String(curValue).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</td></tr>';
-                            newHTML += '<tr><td>Число научных статей на 100 исследователей ' + curType + ', ед.</td><td>' + String(curValue100).replace(/\./g, ',') + '</td></tr>';
+                    if (curYear == windowData[i].year) {
+                        var curRegionData = windowData[i].data;
+                        for (var m = 0; m < curRegionData.length; m++) {
+                            var curValueType = russiaDataTypes[m];
+                            switch(curValueType.type) {
+                                case 'integer':
+                                    if (curRegionData[m] !== null) {
+                                        var curValue = parseInt(curRegionData[m].replace(/ /g, ''));
+                                        newHTML += '<tr><td>' + curValueType.title + '</td><td>' + String(curValue).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</td></tr>';
+                                    } else {
+                                        nullNotice = true;
+                                        newHTML += '<tr><td>' + curValueType.title + '</td><td>' + russiaDataNull.value + '<span>*</span></td></tr>';
+                                    }
+                                    break;
+                                case 'float':
+                                    if (curRegionData[m] !== null) {
+                                        var curValue = parseFloat(curRegionData[m].replace(/ /g, '').replace(/,/g, '.'));
+                                        newHTML += '<tr><td>' + curValueType.title + '</td><td>' + String(curValue).replace(/\./g, ',') + '</td></tr>';
+                                    } else {
+                                        nullNotice = true;
+                                        newHTML += '<tr><td>' + curValueType.title + '</td><td>' + russiaDataNull.value + '<span>*</span></td></tr>';
+                                    }
+                                    break;
+                                default:
+                                    if (curRegionData[m] !== null) {
+                                        newHTML += '<tr><td>' + curValueType.title + '</td><td>' + curRegionData[m] + '</td></tr>';
+                                    } else {
+                                        nullNotice = true;
+                                        newHTML += '<tr><td>' + curValueType.title + '</td><td>' + russiaDataNull.value + '<span>*</span></td></tr>';
+                                    }
+                            }
                         }
                     }
                 }
-                newHTML += '</tbody></table></div>';
+                newHTML += '</tbody></table>';
+
+                if (nullNotice) {
+                    newHTML += '<div class="monitoring-map-list-notice"><span>*</span>' + russiaDataNull.notice + '</div>';
+                }
+
+                newHTML += '</div>';
 
             }
 
