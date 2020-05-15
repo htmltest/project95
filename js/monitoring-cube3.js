@@ -1426,7 +1426,7 @@ function face3GroupRedraw() {
             }
 
             values.push(curGroup);
-            $('.face-3-group-hints').append('<div class="face-3-group-hints-item" style="transform:rotate(' + (90 + ((curFull + curGroup) / 100 * 360)) + 'deg)"><span style="transform:translate(-50%, 0) rotate(-' + (90 + ((curFull + curGroup) / 100 * 360)) + 'deg)">' + curGroup + '%</span></div>');
+            $('.face-3-group-hints').append('<div class="face-3-group-hints-item" style="transform:rotate(' + (90 + ((curFull + curGroup) / 100 * 360)) + 'deg)"><span style="transform:translate(-50%, 0) rotate(-' + (90 + ((curFull + curGroup) / 100 * 360)) + 'deg)">' + curGroup.toFixed(1) + '%</span></div>');
             curFull += curGroup;
 
             face3GroupConfig.options.rotation = newAngle;
