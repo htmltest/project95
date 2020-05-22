@@ -688,6 +688,10 @@
 .cube-formula-8 {display:inline-block; vertical-align:top; color:#fe6600; font-size:26px; line-height:26px; letter-spacing:0.04em; text-align:left; padding:0 0 0 7px}
 .cube-formula-8-2 {padding:13px 0 0 0}
 .cube-formula-9 {display:inline-block; vertical-align:top; color:#121212; font-size:50px; line-height:50px; letter-spacing:0.04em; padding:9px 0 0 16px}
+.cube-formula-4-summ {display:inline-block; margin:-32px 0}
+.cube-formula-4-summ-top {font-size:26px; line-height:26px; letter-spacing:0.04em; text-align:center; color:#fe6600}
+.cube-formula-4-summ-middle {font-size:80px; line-height:80px; letter-spacing:0.04em; text-align:center; color:#121212}
+.cube-formula-4-summ-bottom {font-size:26px; line-height:26px; letter-spacing:0.04em; text-align:center; color:#fe6600}
 
 @media screen and (max-width:1139px) {
     .cube-formula {padding:128px 0 0 0}
@@ -702,6 +706,10 @@
     .cube-formula-8 {font-size:16px; line-height:24px; padding:0 0 0 2px}
     .cube-formula-8-2 {padding:0; margin:-3px 0 0 0}
     .cube-formula-9 {font-size:24px; line-height:36px; padding:6px 0 0 5px}
+    .cube-formula-4-summ {margin:-18px 0}
+    .cube-formula-4-summ-top {font-size:16px; line-height:24px}
+    .cube-formula-4-summ-middle {font-size:34px; line-height:34px}
+    .cube-formula-4-summ-bottom {font-size:16px; line-height:24px}
 }
 
 .cube-formula-legend {text-align:center; font-size:0; line-height:0; letter-spacing:-1px; padding:45px 0 0 0}
@@ -842,6 +850,7 @@
 .face-3-group-hints {position:absolute; left:0; top:0; right:0; bottom:0; pointer-events:none; font-size:14px; line-height:14px; font-family:HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#393939; white-space:nowrap}
 .face-3-group-hints-item {position:absolute; left:50%; top:50%; width:0; height:0}
 .face-3-group-hints-item span {display:block; position:absolute; left:0; top:-195px}
+.face-3-group-content.without-second .face-3-group-hints-item span {top:-215px}
 .face-3-group-content canvas {position:relative}
 
 @media screen and (max-width:1139px) {
@@ -849,6 +858,7 @@
     .face-3-group-content.without-second {margin:50px auto 0 auto; width:200px; height:200px}
     .face-3-group-hints {font-size:12px; line-height:12px}
     .face-3-group-hints-item span {top:-125px}
+    .face-3-group-content.without-second .face-3-group-hints-item span {top:-135px}
 }
 
 .face-3-group-second {position:absolute; left:409px; top:0; width:68px; height:300px; visibility:hidden}

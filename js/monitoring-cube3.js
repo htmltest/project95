@@ -1408,13 +1408,12 @@ function face3GroupRedraw() {
                 labels.push(curData[i].title);
                 values.push(curData[i].value);
                 newHTML += '<div class="face3-group-list-item"><div class="face3-group-list-item-inner"><div class="face3-group-list-item-icon"><div class="face3-group-list-item-icon-inner" style="background-color:' + colors[i] + '"></div></div><div class="face3-group-list-item-title">' + curData[i].title + ' <span>(' + curData[i].value + '%)</span></div></div></div>';
-                if (Number(curData[i].value) >= 2) {
-                    $('.face-3-group-hints').append('<div class="face-3-group-hints-item" style="transform:rotate(' + (90 + ((curFull + curData[i].value / 2) / 100 * 360)) + 'deg)"><span style="transform:translate(-50%, 0) rotate(-' + (90 + ((curFull + curData[i].value / 2) / 100 * 360)) + 'deg)">' + curData[i].value + '%</span></div>');
-                }
+                $('.face-3-group-hints').append('<div class="face-3-group-hints-item" style="transform:rotate(' + (90 + ((curFull + curData[i].value / 2) / 100 * 360)) + 'deg)"><span style="transform:translate(-50%, 0) rotate(-' + (90 + ((curFull + curData[i].value / 2) / 100 * 360)) + 'deg)">' + curData[i].value + '%</span></div>');
                 curFull += Number(curData[i].value);
             }
         }
 
+        face3GroupConfig.options.rotation = 0;
         if (curGroup > 0) {
             newHTML += '<hr />';
             linearIndex = 0;
