@@ -902,3 +902,98 @@
     .face3-group-list-item {padding:0 0 16px 0}
     .face3-group-list-item-title {line-height:19px; padding:0 0 0 13px}
 }
+
+.face3-list-39-sectors {column-count:1; padding:0}
+.face-39-sectors-container {margin:110px 30px 0 30px}
+.face-39-sectors-content {display:table; width:100%}
+.face-39-sectors-item {display:table-cell; vertical-align:top; padding:0 10px; text-align:center}
+.face-39-sectors-item-icon {height:278px; position:relative}
+.face-39-sectors-item-icon svg {position:absolute; left:50%; bottom:0; width:auto; height:100%; transform:translateX(-50%)}
+.face-39-sectors-item-value {padding:43px 0 0 0; font:13px/14px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#393939}
+.face-39-sectors-window {display:none; position:absolute; z-index:2; left:50%; top:50%; width:200px; text-align:left; background:#fff; box-sizing:border-box; padding:21px 20px 11px 20px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); margin:50px 0 0 -100px; pointer-events:none}
+.face-39-sectors-window::before {content:""; display:block; position:absolute; left:50%; top:-5px; margin-left:-12.5px; width:25px; height:25px; background:#fff; transform:rotate(45deg)}
+.face-39-sectors-item-icon:hover .face-39-sectors-window {display:block}
+.face-39-sectors-window-title {font-size:14px; line-height:14px; letter-spacing:0.04em; color:#121212}
+.face-39-sectors-window-value {margin:5px 0 0 0; font:14px/14px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#fe6600}
+
+@media screen and (max-width:1139px) {
+    .face-39-sectors-container {margin:52px 20px 0 20px}
+    .face-39-sectors-item {padding:0 5px}
+    .face-39-sectors-item-icon {height:154px}
+    .face-39-sectors-item-value {padding:20px 0 0 0}
+}
+
+.face-39-ratio-container .face-1-chart-point.active {cursor:default; pointer-events:none}
+.face-39-ratio-container .face-1-chart-point em::after {display:none}
+.face-39-ratio-container .face-1-chart-graph {top:30px; bottom:350px}
+.face-39-ratio-container .face-1-chart-labels {bottom:110px}
+.face-39-ratio-container .face-1-chart-year strong {display:block; height:18px; text-decoration:none; color:#262626; border-radius:5px; background:rgba(255, 220, 197, 0.67); font-weight:normal}
+.face-39-ratio-container .face-1-chart-point span {font-size:12.5px}
+.face-39-ratio-container .face-1-chart-icons {position:absolute; left:0; right:0; bottom:153px; height:140px; width:100px; white-space:nowrap}
+.face-39-ratio-container .face-1-chart-icon {position:absolute; bottom:0; top:0; font-size:0; line-height:140px; width:42px}
+.face-39-ratio-container .face-1-chart-icon-summ {position:absolute; right:50%; margin-right:-13px; bottom:0}
+.face-39-ratio-container .face-1-chart-icon-summ svg {display:inline-block; height:100%; vertical-align:top}
+.face-39-ratio-container .face-1-chart-icon-count {position:absolute; left:50%; bottom:0}
+.face-39-ratio-container .face-1-chart-icon-count svg {display:inline-block; height:100%; vertical-align:top}
+.face-39-ratio-container .face-1-chart-point em {font-style:normal; position:absolute}
+
+.face3-list-39-ratio {column-count:1; padding:0 0 20px 0}
+.face3-list-39-ratio .face3-list-item {padding:0 0 20px 0}
+
+.face-39-ratio-window {display:block; position:fixed; z-index:99; width:160px; text-align:left; background:#fff; box-sizing:border-box; padding:21px 20px 11px 20px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); margin:10px 0 0 -80px; pointer-events:none}
+.face-39-ratio-window::before {content:""; display:block; position:absolute; left:50%; top:-5px; margin-left:-12.5px; width:25px; height:25px; background:#fff; transform:rotate(45deg)}
+.face-39-ratio-window-title {font-size:14px; line-height:14px; letter-spacing:0.04em; color:#121212}
+.face-39-ratio-window-value {margin:5px 0 0 0; font:14px/14px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#fe6600}
+
+@media screen and (max-width:1139px) {
+    .face-39-ratio-container .face-1-container {margin:0}
+    .face-39-ratio-container .face-1-chart-graph {top:30px; bottom:180px}
+    .face-39-ratio-container .face-1-chart-point span {font-size:9px; line-height:11px}
+    .face-39-ratio-container .face-1-chart-labels {bottom:22px}
+    .face-39-ratio-container .face-1-chart-year strong {height:13px}
+    .face-39-ratio-container .face-1-chart-icons {bottom:50px; height:110px; width:80px}
+    .face-39-ratio-window {margin-top:-10px}
+}
+
+.face-39-candidates-container .face-1-content {height:507px}
+.face-39-candidates-container .face-1-chart-point.active {cursor:default; pointer-events:none}
+.face-39-candidates-container .face-1-chart-point em::after {display:none}
+.face-39-candidates-container .face-1-chart-graph {top:60px; bottom:350px}
+.face-39-candidates-container .face-1-chart-labels {bottom:110px}
+.face-39-candidates-container .face-1-chart-year strong {display:block; height:18px; text-decoration:none; color:#262626; border-radius:5px; background:rgba(255, 220, 197, 0.67); font-weight:normal}
+.face-39-candidates-container .face-1-chart-point span {font-size:12.5px; color:#393939; opacity:1}
+.face-39-candidates-container .face-1-chart-icons {position:absolute; left:0; right:0; bottom:153px; height:140px; width:100px; white-space:nowrap}
+.face-39-candidates-container .face-1-chart-icon {position:absolute; bottom:0; top:0; font-size:0; line-height:140px; width:42px}
+.face-39-candidates-container .face-1-chart-icon-summ {position:absolute; right:50%; margin-right:-13px; bottom:0}
+.face-39-candidates-container .face-1-chart-icon-summ svg {display:inline-block; height:100%; vertical-align:top}
+.face-39-candidates-container .face-1-chart-icon-count {position:absolute; left:50%; bottom:0}
+.face-39-candidates-container .face-1-chart-icon-count svg {display:inline-block; height:100%; vertical-align:top}
+.face-39-candidates-container .face-1-chart-point em {font-style:normal; display:block}
+
+.face-39-candidates-window {display:block; position:fixed; z-index:99; width:280px; text-align:left; background:#fff; box-sizing:border-box; padding:21px 20px 11px 20px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); margin:10px 0 0 -140px; pointer-events:none}
+.face-39-candidates-window-summ {width:160px; margin-left:-80px}
+.face-39-candidates-window::before {content:""; display:block; position:absolute; left:50%; top:-5px; margin-left:-12.5px; width:25px; height:25px; background:#fff; transform:rotate(45deg)}
+.face-39-candidates-window-title {font-size:14px; line-height:14px; letter-spacing:0.04em; color:#121212}
+.face-39-candidates-window-value {margin:5px 0 0 0; font:14px/14px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#fe6600}
+
+@media screen and (max-width:1139px) {
+    .face-39-candidates-container .face-1-content {height:290px}
+    .face-39-candidates-container .face-1-container {margin:0}
+    .face-39-candidates-container .face-1-chart-graph {top:60px; bottom:100px}
+    .face-39-candidates-container .face-1-chart-point span {font-size:9px; line-height:11px}
+    .face-39-candidates-container .face-1-chart-labels {bottom:0}
+    .face-39-candidates-container .face-1-chart-year strong {height:13px}
+    .face-39-candidates-container .face-1-chart-icons {bottom:30px; height:110px; width:80px}
+    .face-39-candidates-window {margin-top:-10px}
+}
+
+@media screen and (max-width:1139px) {
+    .cube39science {margin-top:106px}
+}
+
+.cube39science .cube-face-title {font-weight:normal}
+
+@media screen and (max-width:1139px) {
+    .cube39science .cube-face:nth-child(3) .cube-face-title {font-weight:normal; letter-spacing:0.04em; opacity:1}
+    
+}
