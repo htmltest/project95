@@ -170,12 +170,20 @@
                             <li class="active"><a href="#">Ретроспектива<br /> и план</a></li>
                             <li><a href="#">Декомпозиция<br /> по регионам</a></li>
                             <li><a href="#">Декомпозиция<br /> по секторам<br class="no-mobile" /> деятельности</a></li>
-                            <li><a href="#">Декомпозиция<br class="no-mobile"/> по видам<br class="on-mobile" /> экономической<br class="no-mobile" /> деятельности</a></li>
+                            <li><a href="#">Декомпозиция<br class="no-mobile" /> по типам<br /> организаций и ФОИВ</a></li>
                             <li><a href="#">Инструменты,<br class="no-mobile" /> влияющие<br class="on-mobile" /> на<br class="no-mobile" /> достижение значения показателя</a></li>
                             <li><a href="#">Методика<br class="no-mobile" /> расчета<br /> показателя</a></li>
                         </ul>
                     </div>
                     <!-- cube menu END -->
+
+                    <script>
+
+                        var cubeColors = [
+                                        ['#4e7b95', '#5c8ea1', '#669caa', '#6fa9b2', '#79b8bb', '#83c5c4', '#90d7cf'],
+                                        ['#307956', '#3f9069', '#4aa177', '#54b184', '#5fc192', '#6bd4a1', '#78e7b2']
+                        ];
+                    </script>
 
                     <!-- cube -->
                     <div class="cube cube39science">
@@ -567,11 +575,432 @@
                             <!-- cube face END -->
 
                             <!-- cube face -->
-                            <div class="cube-face cube-face-4-cube-3">
+                            <div class="cube-face">
 
-                                <div class="cube-face-title"></div>
+                                <div class="cube-face-title">
+                                    <span class="cube-face-3-new-title-parent">Декомпозиция по типам организаций</span>
+                                    <span class="cube-face-3-new-title-inner">Декомпозиция образовательных организаций высшего образования по ФОИВ</span>
+                                    <span class="cube-face-3-new-title-inner">Декомпозиция научных организаций по ФОИВ</span>
+                                </div>
 
-                                <div class="cube-face-footer"></div>
+                                <div class="cube-face-footer">
+                                    <div class="face3-new-list">
+                                    </div>
+                                    <div class="cube-face-download"><a href="#"><span>xls</span>Скачать данные в Excel</a></div>
+                                </div>
+
+                                <div class="face-3-new-header">
+                                    <div class="face-3-new-type">
+                                        <div class="face-3-new-type-current">Web of Science</div>
+                                        <ul>
+                                            <li class="active" data-type="WoS"><a href="#">Web of Science</a></li>
+                                            <li data-type="Scopus"><a href="#">Scopus</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="face-3-new-year">
+                                        <div class="face-3-new-year-current">2018</div>
+                                        <ul>
+                                            <li data-year="2017"><a href="#">2017</a></li>
+                                            <li class="active" data-year="2018"><a href="#">2018</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="face-3-new-back"><a href="#">Вернуться</a></div>
+                                </div>
+
+                                <div class="face-3-new-content">
+                                    <div class="face-3-new-hints"></div>
+                                    <canvas id="canvas-face-3-new" width="352" height="352"></canvas>
+                                    <div id="chartjs-tooltip-3-new"></div>
+                                </div>
+
+                                <script>
+                                    var face3dataNew = [
+                                                        {
+                                                            'type'  : 'WoS',
+                                                            'year'  : '2017',
+                                                            'data'  : [
+                                                                            {
+                                                                                'title' : 'Образовательные организации высшего образования',
+                                                                                'value' : '54.5',
+                                                                                'inner' : [
+                                                                                            {
+                                                                                                'title' : 'Вузы Минобрнауки России',
+                                                                                                'value' : '67.6'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Вузы Минздрав России',
+                                                                                                'value' : '4.1'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'МГУ им. М.В. Ломоносова',
+                                                                                                'value' : '11.4'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'СПбГУ',
+                                                                                                'value' : '6.5'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'НИУ ВШЭ',
+                                                                                                'value' : '4.3'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Другие вузы',
+                                                                                                'value' : '6.1'
+                                                                                            }
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                'title' : 'Научные организации',
+                                                                                'value' : '42.2',
+                                                                                'inner' : [
+                                                                                            {
+                                                                                                'title' : 'Научные организации Минобрнауки России',
+                                                                                                'value' : '80.4'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Научные организации Минздрав России',
+                                                                                                'value' : '4.0'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'НИЦ "Курчатовский институт"',
+                                                                                                'value' : '3.6'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Объединенный институт ядерных исследований',
+                                                                                                'value' : '3.0'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Другие научные организации',
+                                                                                                'value' : '9'
+                                                                                            }
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                'title' : 'Прочие организации',
+                                                                                'value' : '3.3'
+                                                                            }
+                                                            ]
+                                                        },
+
+                                                        {
+                                                            'type'  : 'Scopus',
+                                                            'year'  : '2017',
+                                                            'data'  : [
+                                                                            {
+                                                                                'title' : 'Образовательные организации высшего образования',
+                                                                                'value' : '53.2',
+                                                                                'inner' : [
+                                                                                            {
+                                                                                                'title' : 'Вузы Минобрнауки России',
+                                                                                                'value' : '66.2'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Вузы Минздрав России',
+                                                                                                'value' : '8.5'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'МГУ им. М.В. Ломоносова',
+                                                                                                'value' : '11.1'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'СПбГУ',
+                                                                                                'value' : '5.9'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'НИУ ВШЭ',
+                                                                                                'value' : '3.4'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Другие вузы',
+                                                                                                'value' : '4.9'
+                                                                                            }
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                'title' : 'Научные организации',
+                                                                                'value' : '41.5',
+                                                                                'inner' : [
+                                                                                            {
+                                                                                                'title' : 'Научные организации Минобрнауки России',
+                                                                                                'value' : '77.3'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Научные организации Минздрав России',
+                                                                                                'value' : '7.1'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'НИЦ "Курчатовский институт"',
+                                                                                                'value' : '3.3'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Объединенный институт ядерных исследований',
+                                                                                                'value' : '2.7'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Другие научные организации',
+                                                                                                'value' : '9.6'
+                                                                                            }
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                'title' : 'Прочие организации',
+                                                                                'value' : '5.3'
+                                                                            }
+                                                            ]
+                                                        },
+
+                                                        {
+                                                            'type'  : 'WoS',
+                                                            'year'  : '2018',
+                                                            'data'  : [
+                                                                            {
+                                                                                'title' : 'Образовательные организации высшего образования',
+                                                                                'value' : '53.6',
+                                                                                'inner' : [
+                                                                                            {
+                                                                                                'title' : 'Вузы Минобрнауки России',
+                                                                                                'value' : '67.5'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Вузы Минздрав России',
+                                                                                                'value' : '4.6'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'МГУ им. М.В. Ломоносова',
+                                                                                                'value' : '11'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'СПбГУ',
+                                                                                                'value' : '6.2'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'НИУ ВШЭ',
+                                                                                                'value' : '4.1'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Другие вузы',
+                                                                                                'value' : '6.6'
+                                                                                            }
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                'title' : 'Научные организации',
+                                                                                'value' : '41.6',
+                                                                                'inner' : [
+                                                                                            {
+                                                                                                'title' : 'Научные организации Минобрнауки России',
+                                                                                                'value' : '82.3'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Научные организации Минздрав России',
+                                                                                                'value' : '3.3'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'НИЦ "Курчатовский институт"',
+                                                                                                'value' : '3.3'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Объединенный институт ядерных исследований',
+                                                                                                'value' : '3'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Другие научные организации',
+                                                                                                'value' : '8.1'
+                                                                                            }
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                'title' : 'Прочие организации',
+                                                                                'value' : '4.8'
+                                                                            }
+                                                            ]
+                                                        },
+
+                                                        {
+                                                            'type'  : 'Scopus',
+                                                            'year'  : '2018',
+                                                            'data'  : [
+                                                                            {
+                                                                                'title' : 'Образовательные организации высшего образования',
+                                                                                'value' : '53.3',
+                                                                                'inner' : [
+                                                                                            {
+                                                                                                'title' : 'Вузы Минобрнауки России',
+                                                                                                'value' : '65.7'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Вузы Минздрав России',
+                                                                                                'value' : '9.5'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'МГУ им. М.В. Ломоносова',
+                                                                                                'value' : '10.2'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'СПбГУ',
+                                                                                                'value' : '5.4'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'НИУ ВШЭ',
+                                                                                                'value' : '3.2'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Другие вузы',
+                                                                                                'value' : '6'
+                                                                                            }
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                'title' : 'Научные организации',
+                                                                                'value' : '40.5',
+                                                                                'inner' : [
+                                                                                            {
+                                                                                                'title' : 'Научные организации Минобрнауки России',
+                                                                                                'value' : '78.1'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Научные организации Минздрав России',
+                                                                                                'value' : '6.8'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'НИЦ "Курчатовский институт"',
+                                                                                                'value' : '3.1'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Объединенный институт ядерных исследований',
+                                                                                                'value' : '2.7'
+                                                                                            },
+
+                                                                                            {
+                                                                                                'title' : 'Другие научные организации',
+                                                                                                'value' : '9.3'
+                                                                                            }
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                'title' : 'Прочие организации',
+                                                                                'value' : '6.2'
+                                                                            }
+                                                            ]
+                                                        }
+                                    ];
+                                    Chart.defaults.global.tooltips.custom = function(tooltip) {
+                                        var tooltipEl = document.getElementById('chartjs-tooltip-3-new');
+
+                                        if (tooltip.opacity === 0) {
+                                            tooltipEl.style.opacity = 0;
+                                            return;
+                                        }
+
+                                        tooltipEl.classList.remove('above', 'below', 'no-transform');
+                                        if (tooltip.yAlign) {
+                                            tooltipEl.classList.add(tooltip.yAlign);
+                                        } else {
+                                            tooltipEl.classList.add('no-transform');
+                                        }
+
+                                        function getBody(bodyItem) {
+                                            return bodyItem.lines;
+                                        }
+
+                                        if (tooltip.body) {
+                                            var titleLines = tooltip.title || [];
+                                            var bodyLines = tooltip.body.map(getBody);
+
+                                            var innerHtml = '';
+
+                                            titleLines.forEach(function(title) {
+                                                innerHtml += title;
+                                            });
+
+                                            bodyLines.forEach(function(body, i) {
+                                                var newBody = body[0].replace(':', '<span>') + '%</span>';
+                                                innerHtml += newBody;
+                                            });
+
+                                            tooltipEl.innerHTML = innerHtml;
+                                        }
+
+                                        var positionY = this._chart.canvas.offsetTop;
+                                        var positionX = this._chart.canvas.offsetLeft;
+
+                                        tooltipEl.style.opacity = 1;
+                                        tooltipEl.style.left = positionX + tooltip.caretX + 'px';
+                                        tooltipEl.style.top = positionY + tooltip.caretY + 'px';
+                                    };
+
+                                    var face3ConfigNew = {
+                                        type: 'pie',
+                                        data: {
+                                            labels: [],
+                                            datasets: [{
+                                                label: '#',
+                                                data: [],
+                                                backgroundColor: [],
+                                                borderWidth: 0
+                                            }]
+                                        },
+                                        options: {
+                                            layout: {
+                                                padding: {
+                                                    left: 0,
+                                                    right: 0,
+                                                    top: 0,
+                                                    bottom: 0
+                                                }
+                                            },
+                                            responsive: true,
+                                            legend: {
+                                                position: 'none',
+                                            },
+                                            tooltips: {
+                                                enabled: false
+                                            },
+                                            title: {
+                                                display: false
+                                            }
+                                        }
+                                    };
+
+                                    var ctxFace3New = document.getElementById('canvas-face-3-new').getContext('2d');
+                                    var myChartFace3New = new Chart(ctxFace3New, face3ConfigNew);
+                                </script>
 
                             </div>
                             <!-- cube face END -->

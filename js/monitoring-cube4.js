@@ -135,6 +135,143 @@ $(document).ready(function() {
             e.preventDefault();
         });
 
+        $('.face-3-new-type-current').click(function(e) {
+            $(this).parent().toggleClass('open');
+        });
+
+        $(document).click(function(e) {
+            if ($(e.target).parents().filter('.face-3-new-type').length == 0) {
+                $('.face-3-new-type').removeClass('open');
+            }
+        });
+
+        $('.face-3-new-type ul li a').click(function(e) {
+            var curLi = $(this).parent();
+            if (!curLi.hasClass('active')) {
+                $('.face-3-new-type ul li.active').removeClass('active');
+                curLi.addClass('active');
+                $('.face-3-new-type-current').html($(this).html());
+                face3RedrawNew();
+            }
+            $('.face-3-new-type').removeClass('open');
+            e.preventDefault();
+        });
+
+        $('.face-3-new-year-current').click(function(e) {
+            $(this).parent().toggleClass('open');
+        });
+
+        $(document).click(function(e) {
+            if ($(e.target).parents().filter('.face-3-new-year').length == 0) {
+                $('.face-3-new-year').removeClass('open');
+            }
+        });
+
+        $('.face-3-new-year ul li a').click(function(e) {
+            var curLi = $(this).parent();
+            if (!curLi.hasClass('active')) {
+                $('.face-3-new-year ul li.active').removeClass('active');
+                curLi.addClass('active');
+                $('.face-3-new-year-current').html($(this).html());
+                face3RedrawNew();
+            }
+            $('.face-3-new-year').removeClass('open');
+            e.preventDefault();
+        });
+
+        $('#canvas-face-3-new').click(function(evt) {
+            if (!$('.face-3-new-back').hasClass('visible')) {
+                var activePoint = myChartFace3New.getElementAtEvent(evt)[0];
+                var curIndex = activePoint._index;
+
+                var curType = $('.face-3-new-type li.active').attr('data-type');
+                var curYear = $('.face-3-new-year li.active').attr('data-year');
+                var curData = null;
+                for (var i = 0; i < face3dataNew.length; i++) {
+                    if (face3dataNew[i].type == curType && face3dataNew[i].year == curYear) {
+                        curData = face3dataNew[i].data;
+                    }
+                }
+                if (curData !== null) {
+                    if (curData[curIndex].inner !== undefined) {
+                        $('.face-3-new-back').addClass('visible');
+                        $('.face-3-new-back').data('parentIndex', curIndex);
+                        $('.cube-face-3-new-title-parent').hide();
+                        $('.cube-face-3-new-title-inner').eq(curIndex).show();
+                        $('#chartjs-tooltip-3-new').css({'opacity': 0});
+                        $('#canvas-face-3-new').css({'cursor': 'default'});
+                        face3RedrawNew();
+                    }
+                }
+            }
+        });
+
+        $('#canvas-face-3-new').mouseover(function(evt) {
+            if (!$('.face-3-new-back').hasClass('visible')) {
+                var activePoint = myChartFace3New.getElementAtEvent(evt)[0];
+                if (activePoint !== undefined) {
+                    var curIndex = activePoint._index;
+
+                    var curType = $('.face-3-new-type li.active').attr('data-type');
+                    var curYear = $('.face-3-new-year li.active').attr('data-year');
+                    var curData = null;
+                    for (var i = 0; i < face3dataNew.length; i++) {
+                        if (face3dataNew[i].type == curType && face3dataNew[i].year == curYear) {
+                            curData = face3dataNew[i].data;
+                        }
+                    }
+                    if (curData !== null) {
+                        if (curData[curIndex].inner !== undefined) {
+                            $(this).css({'cursor': 'pointer'});
+                        } else {
+                            $(this).css({'cursor': 'default'});
+                        }
+                    }
+                }
+            } else {
+                $(this).css({'cursor': 'default'});
+            }
+        });
+
+        $('#canvas-face-3-new').mousemove(function(evt) {
+            if (!$('.face-3-new-back').hasClass('visible')) {
+                var activePoint = myChartFace3New.getElementAtEvent(evt)[0];
+                if (activePoint !== undefined) {
+                    var curIndex = activePoint._index;
+
+                    var curType = $('.face-3-new-type li.active').attr('data-type');
+                    var curYear = $('.face-3-new-year li.active').attr('data-year');
+                    var curData = null;
+                    for (var i = 0; i < face3dataNew.length; i++) {
+                        if (face3dataNew[i].type == curType && face3dataNew[i].year == curYear) {
+                            curData = face3dataNew[i].data;
+                        }
+                    }
+                    if (curData !== null) {
+                        if (curData[curIndex].inner !== undefined) {
+                            $(this).css({'cursor': 'pointer'});
+                        } else {
+                            $(this).css({'cursor': 'default'});
+                        }
+                    }
+                }
+            } else {
+                $(this).css({'cursor': 'default'});
+            }
+        });
+
+        $('#canvas-face-3-new').mouseout(function(e) {
+            $(this).css({'cursor': 'default'});
+        });
+
+        $('.face-3-new-back a').click(function(e) {
+            $('.face-3-new-back').removeClass('visible');
+            $('.face-3-new-back').data('parentIndex', null);
+            face3RedrawNew();
+            $('.cube-face-3-new-title-inner').hide();
+            $('.cube-face-3-new-title-parent').show();
+            e.preventDefault();
+        });
     }
 
 });
@@ -177,6 +314,7 @@ $(window).on('load resize', function() {
     face1RatioRedraw();
     face1CandidatesRedraw();
     face3SectorsRedraw();
+    face3RedrawNew();
 });
 
 function face1RatioRedraw() {
@@ -611,5 +749,48 @@ function face3SectorsRedraw() {
         }
 
         $('.face-39-sectors-content').html(newHTML);
+    }
+}
+
+function face3RedrawNew() {
+    var curType = $('.face-3-new-type li.active').attr('data-type');
+    var curYear = $('.face-3-new-year li.active').attr('data-year');
+    var curData = null;
+    for (var i = 0; i < face3dataNew.length; i++) {
+        if (face3dataNew[i].type == curType && face3dataNew[i].year == curYear) {
+            curData = face3dataNew[i].data;
+        }
+    }
+    $('.face-3-new-hints').html('');
+    if (curData !== null) {
+        if ($('.face-3-new-back').hasClass('visible')) {
+            var parentIndex = Number($('.face-3-new-back').data('parentIndex'));
+            curData = curData[parentIndex].inner;
+        }
+
+        var newHTML = '';
+        var labels = [];
+        var values = [];
+        var colors = cubeColors[$('.face-3-new-type li').index($('.face-3-new-type li.active'))];
+
+        var curFull = 0;
+        for (var i = 0; i < curData.length; i++) {
+            labels.push(curData[i].title);
+            values.push(curData[i].value);
+            newHTML += '<div class="face3-new-list-item"><div class="face3-new-list-item-inner"><div class="face3-new-list-item-icon"><div class="face3-new-list-item-icon-inner" style="background-color:' + colors[i] + '"></div></div><div class="face3-new-list-item-title">' + curData[i].title + ' <span>(' + curData[i].value + '%)</span></div></div></div>';
+            if (Number(curData[i].value) >= 2) {
+                $('.face-3-new-hints').append('<div class="face-3-new-hints-item" style="transform:rotate(' + ((curFull + curData[i].value / 2) / 100 * 360) + 'deg)"><span style="transform:translate(-50%, 0) rotate(-' + ((curFull + curData[i].value / 2) / 100 * 360) + 'deg)">' + curData[i].value + '%</span></div>');
+            }
+            curFull += Number(curData[i].value);
+        }
+
+        face3ConfigNew.data.labels = labels;
+        face3ConfigNew.data.datasets[0].data = values;
+        face3ConfigNew.data.datasets[0].backgroundColor = colors;
+
+        myChartFace3New.update();
+
+        $('.face3-new-list').html(newHTML);
+        $('.cube').css({'margin-bottom': $('.cube-face.active').find('.cube-face-footer').outerHeight()});
     }
 }
