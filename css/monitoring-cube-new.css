@@ -1,0 +1,73 @@
+.cube-menu {font:12px/18px HelveticaNeueCyrMedium, sans-serif; text-transform:uppercase; letter-spacing:0.04em; padding:10px 0 0 0; position:relative; z-index:20}
+.cube-menu ul {margin:0 0 -18px 0; padding:0; list-style:none; display:table}
+.cube-menu ul li {display:table-cell; vertical-align:top; margin:0; padding:0 0 0 70px}
+.cube-menu ul li::before {display:none}
+.cube-menu ul li:first-child {padding:0}
+.cube-menu ul li a {display:block; color:#a6a6a6; text-align:left; text-decoration:none; position:relative}
+.cube-menu ul li a:hover {color:#fe6600}
+.cube-menu ul li.active a {color:#fe6600}
+.cube-menu ul li.active a::after {content:""; display:block; position:absolute; left:0; bottom:-14px; right:0; height:3px; background:#fe6600; pointer-events:none}
+.cube-menu .on-mobile {display:none}
+
+@media screen and (max-width:1139px) {
+    .cube-menu {font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; margin:-30px 0 0 -10px; padding:0}
+    .cube-menu .slick-list {overflow:visible !important}
+    .cube-menu ul {margin:0; display:block}
+    .cube-menu ul li {float:none; display:inline-block; vertical-align:top; margin:0; padding:0 0 0 10px}
+    .cube-menu ul.slick-initialized .slick-slide {display:inline-block}
+    .cube-menu ul li a {float:none; display:inline-block; color:#404040; padding:15px; border:1px solid #fff0e6; border-radius:4px; background:#fff0e6; box-sizing:border-box; font-size:11px; line-height:16px; letter-spacing:0.04em}
+    .cube-menu ul li a:hover {color:#404040}
+    .cube-menu ul li.active a {color:#404040}
+    .cube-menu ul li.active a {border-color:#fe6600}
+    .cube-menu ul li.active a::after {display:none}
+    .cube-menu .on-mobile {display:block}
+    .cube-menu .no-mobile {display:none}
+}
+
+.cube {width:624px; height:624px; position:relative; margin:126px auto 0 auto; perspective:1248px; perspective-origin:50% 312px; transform:scale(0.75, 0.75); backface-visibility:hidden; z-index:10}
+.cube-container {width:624px; height:624px; position:relative; transition:transform 50ms linear; transform-style:preserve-3d; transform:rotateX(-90deg) rotateY(0deg)}
+
+@media screen and (max-width:1139px) {
+    .cube {width:350px; height:350px; margin-top:65px; perspective:700px; perspective-origin:50% 175px}
+    .cube-container {width:350px; height:350px}
+}
+
+.cube-face {width:624px; height:624px; background:#f2f2f2; position:absolute; left:0; top:0; box-sizing:border-box; border:1px solid #e5e5e5; pointer-events:none}
+.cube-face.active {pointer-events:auto}
+.cube-face:nth-child(1) {transform:rotateX(90deg) translateZ(312px)}
+.cube-face:nth-child(2) {transform:translateZ(312px)}
+.cube-face:nth-child(3) {transform:rotateY(90deg) translateZ(312px)}
+.cube-face:nth-child(4) {transform:rotateY(180deg) translateZ(312px)}
+.cube-face:nth-child(5) {transform:rotateY(270deg) translateZ(312px)}
+.cube-face:nth-child(6) {transform:rotateX(270deg) translateZ(312px)}
+
+@media screen and (max-width:1139px) {
+    .cube-face {width:350px; height:350px}
+    .cube-face:nth-child(1) {transform:rotateX(90deg) translateZ(175px); z-index:6}
+    .cube-face:nth-child(2) {transform:translateZ(175px); z-index:5}
+    .cube-face:nth-child(3) {transform:rotateY(90deg) translateZ(175px); z-index:4}
+    .cube-face:nth-child(4) {transform:rotateY(180deg) translateZ(175px); z-index:3}
+    .cube-face:nth-child(5) {transform:rotateY(270deg) translateZ(175px); z-index:2}
+    .cube-face:nth-child(6) {transform:rotateX(270deg) translateZ(175px); z-index:1}
+    .cube-face.active {z-index:10}
+}
+
+.cube-face-title {visibility:hidden; position:absolute; left:0; bottom:100%; margin-bottom:26px; right:0; color:#121212; font-size:18px; line-height:18px; letter-spacing:0.04em; font-weight:bold}
+.cube-face.active .cube-face-title {visibility:visible}
+
+@media screen and (max-width:1139px) {
+    .cube-face-title {font-size:16px; line-height:16px; margin-bottom:6px}
+}
+
+.cube-face-footer {visibility:hidden; position:absolute; left:0; top:100%; margin-top:26px; right:0}
+.cube-face.active .cube-face-footer {visibility:visible}
+
+.window-monitoring {background:rgba(0, 0, 0, 0.2)}
+.window-monitoring .window-content {border:1px solid #d7d7d7; box-shadow:none}
+.window-monitoring .window-close {right:30px; top:30px; width:15px; height:15px; background:none}
+.window-monitoring .window-close::before {content:""; display:block; position:absolute; left:-2px; top:6px; right:-2px; height:3px; background:#fe6600; transform:rotate(-45deg)}
+.window-monitoring .window-close::after {content:""; display:block; position:absolute; left:-2px; top:6px; right:-2px; height:3px; background:#fe6600; transform:rotate(45deg)}
+
+@media screen and (max-width:1139px) {
+    .window-monitoring .window-close {right:20px; top:20px; box-shadow:none; border-radius:0}
+}
