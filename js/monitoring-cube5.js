@@ -153,6 +153,7 @@ $(window).on('load resize', function() {
     }
 
     faceEGISURedraw();
+    face16_1_Redraw();
 
 });
 
@@ -226,6 +227,205 @@ function faceEGISURedraw() {
 
     $(window).on('scroll', function() {
         $('.face-egisu-window').remove();
+    });
+
+}
+
+function face16_1_Redraw() {
+    var face1Labels = [];
+    var face1DataActually = [];
+    var face1DataForecast = [];
+
+    $('.face-16-1-container .face-1-chart-graph').html('');
+    $('.face-16-1-container .face-1-chart-labels').html('');
+    $('.face-16-1-container .face-1-chart-icons').html('');
+
+    var itemWidth = 110;
+    if ($(window).width() < 1140) {
+        itemWidth = 80;
+    }
+
+    var itemMargin = 55;
+    if ($(window).width() < 1140) {
+        itemMargin = 40;
+    }
+
+    for (var i = 0; i < faceData16_1.length; i++) {
+        var curData = faceData16_1[i];
+        face1Labels.push(curData.year);
+
+        if (curData.type == 'actually') {
+            face1DataActually.push(Number(curData.ratio));
+            face1DataForecast.push(null);
+        } else {
+            face1DataActually.push(null);
+            face1DataForecast.push(Number(curData.ratio));
+        }
+    }
+
+    $('.face-16-1-container .face-1-chart').width(face1Labels.length * itemWidth + itemMargin);
+
+    var minPlace = 9999;
+    var maxPlace = 0;
+    var curScroll = 0;
+
+    for (var i = 0; i < face1DataActually.length; i++) {
+        if (face1DataActually[i] != null) {
+            if (face1DataActually[i] < minPlace) {
+                minPlace = face1DataActually[i];
+            }
+            if (face1DataActually[i] > maxPlace) {
+                maxPlace = face1DataActually[i];
+            }
+        }
+    }
+
+    for (var i = 0; i < face1DataForecast.length; i++) {
+        if (face1DataForecast[i] != null) {
+            if (face1DataForecast[i] < minPlace) {
+                minPlace = face1DataForecast[i];
+            }
+            if (face1DataForecast[i] > maxPlace) {
+                maxPlace = face1DataForecast[i];
+            }
+        }
+    }
+
+    function angle_point(a, b, c) {
+        var x1 = a[0] - b[0];
+        var x2 = c[0] - b[0];
+        var y1 = a[1] - b[1];
+        var y2 = c[1] - b[1];
+
+        var d1 = Math.sqrt(x1 * x1 + y1 * y1);
+        var d2 = Math.sqrt(x2 * x2 + y2 * y2);
+        return Math.acos((x1 * x2 + y1 * y2) / (d1 * d2)) * 180 / Math.PI;
+    }
+
+    var curLastActually = -1;
+    for (var i = 0; i < face1DataActually.length; i++) {
+        if (face1DataActually[i] != null) {
+            curLastActually++;
+            var curX = (i * itemWidth) + itemMargin;
+            curScroll = curX;
+            var curY = ((face1DataActually[i] - maxPlace) / (minPlace - maxPlace)) * $('.face-16-1-container .face-1-chart-graph').height();
+            if (face1DataActually[i - 1] != null) {
+                var prevX = ((i - 1) * itemWidth) + itemMargin;
+                var prevY = ((face1DataActually[i - 1] - maxPlace) / (minPlace - maxPlace)) * $('.face-16-1-container .face-1-chart-graph').height();
+                var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+                var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+                if (curY < prevY) {
+                    curAngle = -curAngle;
+                }
+                $('.face-16-1-container .face-1-chart-graph').append('<div class="face-1-chart-line active" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+            }
+            $('.face-16-1-container .face-1-chart-graph').append('<div class="face-1-chart-point active" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong>' + face1DataActually[i] + '<em>&nbsp;%</em></strong></span></div>');
+        }
+    }
+
+    var curLastForecast = -1;
+    for (var i = 0; i < face1DataForecast.length; i++) {
+        if (face1DataForecast[i] != null) {
+            if (curLastForecast < 0) {
+                curLastForecast = i;
+            }
+            var curX = (i * itemWidth) + itemMargin;
+            var curY = ((face1DataForecast[i] - maxPlace) / (minPlace - maxPlace)) * $('.face-16-1-container .face-1-chart-graph').height();
+            if (face1DataForecast[i - 1] != null) {
+                var prevX = ((i - 1) * itemWidth) + itemMargin;
+                var prevY = ((face1DataForecast[i - 1] - maxPlace) / (minPlace - maxPlace)) * $('.face-16-1-container .face-1-chart-graph').height();
+                var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+                var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+                if (curY < prevY) {
+                    curAngle = -curAngle;
+                }
+                $('.face-16-1-container .face-1-chart-graph').append('<div class="face-1-chart-line" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+            }
+            $('.face-16-1-container .face-1-chart-graph').append('<div class="face-1-chart-point" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong>' + face1DataForecast[i] + '<em>&nbsp;%</em></strong></span></div>');
+        }
+    }
+
+    var curX = (curLastForecast * itemWidth) + itemMargin;
+    var curY = ((face1DataForecast[curLastForecast] - maxPlace) / (minPlace - maxPlace)) * $('.face-16-1-container .face-1-chart-graph').height();
+    var prevX = ((curLastActually) * itemWidth) + itemMargin;
+    var prevY = ((face1DataActually[curLastActually] - maxPlace) / (minPlace - maxPlace)) * $('.face-16-1-container .face-1-chart-graph').height();
+    var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+    var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+    if (curY < prevY) {
+        curAngle = -curAngle;
+    }
+    $('.face-16-1-container .face-1-chart-graph').append('<div class="face-1-chart-line" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+
+    for (var i = 0; i < face1Labels.length; i++) {
+        if (face1DataActually[i] != null) {
+            $('.face-16-1-container .face-1-chart-labels').append('<div class="face-1-chart-year" style="left:' + (i * itemWidth + itemMargin) + 'px"><strong>' + face1Labels[i] + '</strong></div>');
+        } else {
+            $('.face-16-1-container .face-1-chart-labels').append('<div class="face-1-chart-year" style="left:' + (i * itemWidth + itemMargin) + 'px"><span>' + face1Labels[i] + '</span></div>');
+        }
+    }
+
+    var maxSumm = 0;
+
+    for (var i = 0; i < faceData16_1.length; i++) {
+        var curData = faceData16_1[i];
+
+        if (curData.type == 'actually') {
+            if (maxSumm < Number(curData.summ)) {
+                maxSumm = Number(curData.summ);
+            }
+        }
+    }
+
+    for (var i = 0; i < faceData16_1.length; i++) {
+        var curData = faceData16_1[i];
+
+        if (curData.type == 'actually') {
+            $('.face-16-1-container .face-1-chart-icons').append('<div class="face-1-chart-icon" style="left:' + (i * itemWidth + itemMargin) + 'px">' +
+                                                                        '<div class="face-1-chart-icon-summ" data-summ="' + curData.summ + '" style="height:' + (Number(curData.summ) / maxSumm * 100) + '%"><div class="face-1-chart-icon-summ-inner"></div></div>' +
+                                                                        '<div class="face-1-chart-icon-count" data-count="' + curData.count + '" style="height:' + ((Number(curData.count) / Number(curData.summ)) / (Number(curData.summ) / maxSumm) * 100) + '%"><div class="face-1-chart-icon-count-inner"></div></div>' +
+                                                                    '</div>');
+        }
+    }
+
+    $('.face-16-1-container').mCustomScrollbar({
+        axis: 'x',
+        setLeft: '-' + (curScroll - $('.face-16-1-container').width() / 2) + 'px',
+        scrollButtons: {
+            enable: true
+        },
+        callbacks: {
+            onScrollStart: function() {
+                $('.face-39-ratio-window').remove();
+            }
+        }
+    });
+
+    $('.face-16-1-container .face-1-chart-icon-summ').on('mouseover', function(e) {
+        $('.face-16-1-window').remove();
+        var curItem = $(this);
+        var curX = curItem.offset().left + curItem.width() / 2 - $(window).scrollLeft();
+        var curY = curItem.offset().top + curItem.height() / 2 - $(window).scrollTop();
+        $('body').append('<div class="face-39-ratio-window" style="left:' + curX + 'px; top:' + curY + 'px"><div class="face-39-ratio-window-title">Всего статей</div><div class="face-39-ratio-window-value">' + curItem.attr('data-summ') + ' тыс.</div></div>');
+    });
+
+    $('.face-16-1-container .face-1-chart-icon-summ').on('mouseout', function(e) {
+        $('.face-39-ratio-window').remove();
+    });
+
+    $('.face-16-1-container .face-1-chart-icon-count').on('mouseover', function(e) {
+        $('.face-39-ratio-window').remove();
+        var curItem = $(this);
+        var curX = curItem.offset().left + curItem.width() / 2 - $(window).scrollLeft();
+        var curY = curItem.offset().top + curItem.height() / 2 - $(window).scrollTop();
+        $('body').append('<div class="face-39-ratio-window" style="left:' + curX + 'px; top:' + curY + 'px"><div class="face-39-ratio-window-title">Российские статьи</div><div class="face-39-ratio-window-value">' + curItem.attr('data-count') + ' тыс.</div></div>');
+    });
+
+    $('.face-16-1-container .face-1-chart-icon-count').on('mouseout', function(e) {
+        $('.face-39-ratio-window').remove();
+    });
+
+    $(window).on('scroll', function() {
+        $('.face-39-ratio-window').remove();
     });
 
 }
