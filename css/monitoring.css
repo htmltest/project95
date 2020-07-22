@@ -1313,8 +1313,8 @@ canvas {user-select:none}
 .face-22-2-container .mCSB_horizontal {bottom:20px}
 
 @media screen and (max-width:1139px) {
-    .face-22-2-container .face-1-content {height:350px; padding:0 0 0 40px}
-    .face-22-2-container .face-1-chart {height:350px}
+    .face-22-2-container .face-1-content {height:349px; padding:0 0 0 40px}
+    .face-22-2-container .face-1-chart {height:349px}
     .face-22-2-container .face-1-container {margin:0}
     .face-22-2-container .face-1-chart-graph {top:30px; bottom:250px}
     .face-22-2-container .face-1-chart-point span {font-size:9px; line-height:11px}
@@ -1356,4 +1356,62 @@ canvas {user-select:none}
     .face-24-1-container .face-1-chart-icon-summ {margin-right:0}
     .face-24-1-container .face-1-chart-icon-count {margin-left:0}
     .face-24-1-container .face-1-chart-icon svg {width:30px; margin:0 auto -4px auto}
+}
+
+.face-14-1-container .face-1-chart-point.active {cursor:default; pointer-events:none}
+.face-14-1-container .face-1-chart-point em::after {display:none}
+.face-14-1-container .face-1-chart-graph {top:30px; bottom:150px}
+.face-14-1-container .face-1-chart-labels {bottom:75px}
+.face-14-1-container .face-1-chart-year strong {display:block; height:18px; text-decoration:none; color:#262626; border-radius:5px; background:rgba(255, 220, 197, 0.67); font-weight:normal}
+.face-14-1-container .face-1-chart-point span {font-size:12.5px}
+.face-14-1-container .face-1-chart-point em {font-style:normal; position:absolute}
+.face-14-1-ctrl {margin:21px 0 26px 0; text-transform:uppercase; font:12px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em}
+.face-14-1-ctrl::after {content:""; display:block; clear:both}
+.face-14-1-year {float:left; position:relative; font-size:12px}
+.face-14-1-year.open {z-index:9999}
+.face-14-1-year-current {display:inline-block; vertical-align:top; color:#757575; transition:all 0.2s; cursor:pointer; padding:0 19px 0 0; position:relative}
+.face-14-1-year-current::after {content:""; display:block; position:absolute; right:0; top:50%; width:11px; height:8px; background:url(../images/map-russia-sort-type.svg) no-repeat; margin-top:-4px}
+.face-14-1-year-current:hover {color:#fe6600}
+.face-14-1-year ul {margin:0; padding:5px 0; list-style:none; display:none; z-index:9999; position:absolute; left:-20px; top:100%; white-space:nowrap; background:#fff; border:1px solid #e6e6e6; box-sizing:border-box}
+.face-14-1-year.open ul {display:block}
+.face-14-1-year ul li {margin:0; padding:5px 20px; color:#a6a6a6; cursor:pointer}
+.face-14-1-year ul li::before {display:none}
+.face-14-1-year ul li a {color:#a6a6a6; text-decoration:none}
+.face-14-1-year ul li a:hover {color:#fe6600}
+.face-14-1-year ul li.active a {color:#2f2f2f}
+.face-14-1-list {margin:26px 0 19px 0; width:811px; display:table; border-bottom:1px solid #e6e6e6}
+.face-14-1-list-row {display:table-row}
+.face-14-1-list-icon {display:table-cell; vertical-align:top; width:24px; line-height:0; border-top:1px solid #e6e6e6; padding:21px 0}
+.face-14-1-list-icon img {display:block; max-width:24px; width:24px}
+.face-14-1-list-eng {display:table-cell; vertical-align:top; font:14px/21px HelveticaNeueCyrLight, sans-serif; letter-spacing:0; border-top:1px solid #e6e6e6; padding:24px 0 24px 30px; text-transform:uppercase; color:#000}
+.face-14-1-list-rus {display:table-cell; vertical-align:top; font:14px/21px HelveticaNeueCyrLight, sans-serif; letter-spacing:0; border-top:1px solid #e6e6e6; padding:24px 20px 24px 30px; color:#000}
+.face-14-1-list-places {display:table-cell; vertical-align:top; font-size:0; line-height:0; letter-spacing:-1px; border-top:1px solid #e6e6e6; padding:15px 0; white-space:nowrap; width:460px}
+.face-14-1-list-country {display:inline-block; vertical-align:top; width:36px; margin:0 0 0 10px; position:relative}
+.face-14-1-list-country:hover {z-index:1}
+.face-14-1-list-country img {display:block; width:36px; max-width:36px}
+.face-14-1-list-country span {display:none; position:absolute; left:35px; top:0; white-space:nowrap; background:#fff; border:1px solid #ededed; box-shadow:-4px 4px 10px rgba(57, 57, 57, 0.15); padding:0 11px; font-size:14px; line-height:32px; height:34px; box-sizing:border-box; letter-spacing:0.04em; color:#121212}
+.face-14-1-list-country:hover span {display:block}
+.face-14-1-list-country span::before {content:""; display:block; width:10px; height:10px; background:#fff; border-top:1px solid #ededed; border-left:1px solid #ededed; transform:rotate(-45deg); position:absolute; left:-6px; top:50%; margin-top:-5px}
+.face-14-1-comment {margin:19px 0 26px 0; max-width:550px; font-size:12px; line-height:16px; color:#393939}
+
+@media screen and (max-width:1139px) {
+    .face-14-1-container .face-1-container {margin:0}
+    .face-14-1-container .face-1-chart-graph {top:30px; bottom:60px}
+    .face-14-1-container .face-1-chart-point span {font-size:9px; line-height:11px}
+    .face-14-1-container .face-1-chart-labels {bottom:22px}
+    .face-14-1-container .face-1-chart-year strong {height:13px}
+
+    .face-14-1-ctrl {font:14px/18px HelveticaNeueCyr, sans-serif}
+    .face-14-1-list {margin:20px 0 15px 0; width:auto; display:block}
+    .face-14-1-list-row {display:block; border-top:1px solid #e6e6e6; position:relative; padding:20px 0 16px 0}
+    .face-14-1-list-row::after {content:""; display:block; clear:both}
+    .face-14-1-list-icon {display:block; padding:0; position:absolute; left:0; top:12px; width:34px; border:none}
+    .face-14-1-list-icon img {width:34px; max-width:34px}
+    .face-14-1-list-eng {float:left; width:60%; box-sizing:border-box; display:block; padding:0 20px 0 56px; border:none; font-size:16px; line-height:19px}
+    .face-14-1-list-rus {float:left; width:40%; box-sizing:border-box; display:block; padding:0; border:none; font-size:16px; line-height:19px}
+    .face-14-1-comment {margin:15px 0 26px 0; font-size:10px; line-height:13px}
+    .face-14-1-list-places {display:block; float:left; width:100%; border:none; padding:20 0 0 0}
+    .face-14-1-list-country {width:28px; margin:0 0 0 8px}
+    .face-14-1-list-country:first-child {margin:0}
+    .face-14-1-list-country img {width:28px; max-width:28px}
 }
