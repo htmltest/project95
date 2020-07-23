@@ -153,6 +153,7 @@ $(window).on('load resize', function() {
     }
 
     face15_2_Redraw();
+    face15_3_Redraw();
 
 });
 
@@ -245,4 +246,80 @@ function face15_2_Redraw() {
     svgContent += ' L ' + (itemWidth / 2) + ' ' + itemHeight;
     svgContent += ' Z" fill="url(#face-15-2-gradient)"/>';
     $('.face-15-2-graph svg').html(svgContent);
+}
+
+function face15_3_Redraw() {
+    var face1Labels = [];
+
+    $('.face-15-3-container .face-1-chart-labels').html('');
+    $('.face-15-3-container .face-1-chart-icons').html('');
+
+    var itemWidth = 84;
+    if ($(window).width() < 1140) {
+        itemWidth = 84;
+    }
+
+    var itemMargin = 62;
+    if ($(window).width() < 1140) {
+        itemMargin = 30;
+    }
+
+    for (var i = 0; i < faceData15_3.length; i++) {
+        var curData = faceData15_3[i];
+        face1Labels.push(curData.year);
+    }
+
+    $('.face-15-3-container .face-1-chart').width(face1Labels.length * (itemWidth + itemMargin) + itemMargin);
+
+    for (var i = 0; i < face1Labels.length; i++) {
+        $('.face-15-3-container .face-1-chart-labels').append('<div class="face-1-chart-year" style="left:' + (i * (itemWidth + itemMargin) + itemMargin) + 'px"><strong>' + face1Labels[i] + '</strong></div>');
+    }
+
+    var maxSumm = 0;
+
+    for (var i = 0; i < faceData15_3.length; i++) {
+        var curData = faceData15_3[i];
+
+        if (maxSumm < Number(curData.app)) {
+            maxSumm = Number(curData.app);
+        }
+    }
+
+    for (var i = 0; i < faceData15_3.length; i++) {
+        var curData = faceData15_3[i];
+
+        $('.face-15-3-container .face-1-chart-icons').append('<div class="face-1-chart-icon" style="left:' + (i * (itemWidth + itemMargin) + itemMargin) + 'px">' +
+                                                                    '<div class="face-1-chart-icon-base" style="height:' + (Number(curData.base) / maxSumm * 100) + '%"><div class="face-1-chart-icon-base-inner"><div class="face-1-chart-icon-value">' +  String(curData.base).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</div></div></div>' +
+                                                                    '<div class="face-1-chart-icon-app" style="height:' + (Number(curData.app) / maxSumm * 100) + '%"><div class="face-1-chart-icon-app-inner"><div class="face-1-chart-icon-value">' +  String(curData.app).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</div></div></div>' +
+                                                                '</div>');
+    }
+
+    $('.face-15-3-container .face-1-chart-icon-base').each(function() {
+        var curBar = $(this);
+        var curHeight = curBar.height();
+        curBar.find('.face-1-chart-icon-base-inner').append('<svg width="37" height="12" viewBox="0 0 37 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32.2374 2.17872C28.5573 0.733884 23.5061 0 18.3467 0H18.1121C13.2955 0 8.71331 0.688017 5.19551 1.94938C1.49732 3.27955 0.1804 4.77025 0 5.4124C0.03608 5.52706 0.0541188 5.66467 0.0721588 5.80227C0.414918 6.49029 1.804 7.91219 5.24964 9.12768C8.82155 10.389 13.4759 11.1 18.3467 11.1C23.5061 11.1 28.3769 10.3432 32.0751 8.94422C36.08 7.43058 36.982 5.84814 37 5.50413C36.9459 5.11426 36.0439 3.64649 32.2374 2.17872Z" /></svg>');
+        var countBlocks = Math.floor(curHeight - 12) / 14;
+        for (var i = 0; i < countBlocks; i++) {
+            curBar.find('.face-1-chart-icon-base-inner').append('<svg width="37" height="14" viewBox="0 0 37 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M33.1311 2.322C29.0623 3.94663 23.7585 4.79427 18.1458 4.79427C11.5341 4.79427 4.32302 3.49927 0 0.650268L0.0908198 7.45491C0.0908198 7.47846 0.0908198 7.47845 0.0908198 7.502C0.0908198 7.85518 0.87187 9.43273 4.72263 10.9632C8.35543 12.3995 13.2597 13.2 18.5091 13.2C23.7403 13.2 28.6446 12.3759 32.3319 10.8925C36.1826 9.33854 37 7.71391 37 7.38427V0.25C35.7649 1.09764 34.4752 1.804 33.1311 2.322Z" /></svg>');
+        }
+    });
+
+    $('.face-15-3-container .face-1-chart-icon-app').each(function() {
+        var curBar = $(this);
+        var curHeight = curBar.height();
+        curBar.find('.face-1-chart-icon-app-inner').append('<svg width="37" height="12" viewBox="0 0 37 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32.2374 2.17872C28.5573 0.733884 23.5061 0 18.3467 0H18.1121C13.2955 0 8.71331 0.688017 5.19551 1.94938C1.49732 3.27955 0.1804 4.77025 0 5.4124C0.03608 5.52706 0.0541188 5.66467 0.0721588 5.80227C0.414918 6.49029 1.804 7.91219 5.24964 9.12768C8.82155 10.389 13.4759 11.1 18.3467 11.1C23.5061 11.1 28.3769 10.3432 32.0751 8.94422C36.08 7.43058 36.982 5.84814 37 5.50413C36.9459 5.11426 36.0439 3.64649 32.2374 2.17872Z" /></svg>');
+        var countBlocks = Math.floor(curHeight - 12) / 14;
+        for (var i = 0; i < countBlocks; i++) {
+            curBar.find('.face-1-chart-icon-app-inner').append('<svg width="37" height="14" viewBox="0 0 37 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M33.1311 2.322C29.0623 3.94663 23.7585 4.79427 18.1458 4.79427C11.5341 4.79427 4.32302 3.49927 0 0.650268L0.0908198 7.45491C0.0908198 7.47846 0.0908198 7.47845 0.0908198 7.502C0.0908198 7.85518 0.87187 9.43273 4.72263 10.9632C8.35543 12.3995 13.2597 13.2 18.5091 13.2C23.7403 13.2 28.6446 12.3759 32.3319 10.8925C36.1826 9.33854 37 7.71391 37 7.38427V0.25C35.7649 1.09764 34.4752 1.804 33.1311 2.322Z" /></svg>');
+        }
+    });
+
+    $('.face-15-3-container').mCustomScrollbar('destroy');
+    $('.face-15-3-container').mCustomScrollbar({
+        axis: 'x',
+        scrollButtons: {
+            enable: true
+        }
+    });
+
 }
