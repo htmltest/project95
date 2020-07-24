@@ -155,6 +155,7 @@ $(window).on('load resize', function() {
     face15_2_Redraw();
     face15_3_Redraw();
     face25_2_Redraw();
+    face26_3_Redraw();
 
 });
 
@@ -376,4 +377,119 @@ function face25_2_Redraw() {
             }
         });
     }
+}
+
+$(document).ready(function() {
+
+    $('.face-26-3-type-current').click(function(e) {
+        $(this).parent().toggleClass('open');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.face-26-3-type').length == 0) {
+            $('.face-26-3-type').removeClass('open');
+        }
+    });
+
+    $('.face-26-3-type ul li a').click(function(e) {
+        var curLi = $(this).parent();
+        if (!curLi.hasClass('active')) {
+            $('.face-26-3-type ul li.active').removeClass('active');
+            curLi.addClass('active');
+            $('.face-26-3-type-current').html($(this).html());
+            face26_3_Redraw();
+        }
+        $('.face-26-3-type').removeClass('open');
+        e.preventDefault();
+    });
+
+});
+
+function face26_3_Redraw() {
+    $('.face-26-3-list').html('');
+    var listNames = [];
+    for (var i = 0; i < faceData26_2[0].data.length; i++) {
+        $('.face-26-3-list').append('<div class="face-26-3-list-item"><span style="background:' + faceData26_2Colors[i] + '"></span>' + faceData26_2[0].data[i].name + '</div>');
+    }
+    $('.cube').css({'margin-bottom': $('.cube-face.active').find('.cube-face-footer').outerHeight()});
+
+    var curType = $('.face-26-3-type li.active').attr('data-type');
+
+    var curMax = 0;
+
+    for (var i = 0; i < faceData26_2.length; i++) {
+        if (faceData26_2[i].type == curType) {
+            var curSumm = 0;
+            for (var j = 0; j < faceData26_2[i].data.length; j++) {
+                curSumm += Number(faceData26_2[i].data[j].summ);
+            }
+            if (curMax < curSumm) {
+                curMax = curSumm;
+            }
+        }
+    }
+
+    var scaleCount = Math.ceil(curMax / 1000);
+    $('.face-26-3-scale').html('');
+    for (var i = 0; i < scaleCount; i++) {
+        $('.face-26-3-scale').append('<div class="face-26-3-scale-item" style="bottom:' + (i * (100 / scaleCount)) + '%"><span>' + String(i * 1000).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</span></div>');
+    }
+    $('.face-26-3-scale').append('<div class="face-26-3-scale-item" style="bottom:100%"><span>' + String(scaleCount * 1000).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</span></div>');
+
+    $('.face-26-3-graph').html('');
+    for (var i = 0; i < faceData26_2.length; i++) {
+        if (faceData26_2[i].type == curType) {
+            var curSumm = 0;
+            for (var j = 0; j < faceData26_2[i].data.length; j++) {
+                curSumm += Number(faceData26_2[i].data[j].summ);
+            }
+            newHTML = '<div class="face-26-3-graph-item">' +
+                            '<div class="face-26-3-graph-item-bar">' +
+                                '<div class="face-26-3-graph-item-bar-container" data-id="' + i + '" style="height:' + (curSumm / curMax * 100) + '%">';
+            for (var j = 0; j < faceData26_2[i].data.length; j++) {
+                newHTML +=          '<div class="face-26-3-graph-item-bar-item" style="background:' + faceData26_2Colors[j] + '; height:' + (Number(faceData26_2[i].data[j].summ) / curSumm * 100) + '%"></div>';
+            }
+            newHTML +=          '</div>' +
+                            '</div>' +
+                            '<div class="face-26-3-graph-item-year">' + faceData26_2[i].year + '</div>' +
+                      '</div>';
+            $('.face-26-3-graph').append(newHTML);
+        }
+    }
+
+    $('.face-26-3-content').mCustomScrollbar('destroy');
+    $('.face-26-3-content').mCustomScrollbar({
+        axis: 'x',
+        callbacks: {
+            onScrollStart: function() {
+                $('.face-26-3-window').remove();
+            }
+        }
+    });
+
+    $('.face-26-3-graph-item-bar-container').on('mouseover', function(e) {
+        $('.face-26-3-window').remove();
+        var curItem = $(this);
+        var curX = curItem.offset().left + curItem.width() / 2 - $(window).scrollLeft();
+        var curY = curItem.offset().top + curItem.height() / 2 - $(window).scrollTop();
+        var curID = Number(curItem.attr('data-id'));
+        var newHTML = '';
+        for (var i = 0; i < faceData26_2[curID].data.length; i++) {
+            newHTML += '<div class="face-26-3-window-item">' + faceData26_2[curID].data[i].name + ' <span>' + String(faceData26_2[curID].data[i].summ).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</span></div>';
+        }
+        var typeTitle = 'Экспорт';
+        if (curType == 'import') {
+            typeTitle = 'Импорт';
+        }
+        $('body').append('<div class="face-26-3-window" style="left:' + curX + 'px; top:' + curY + 'px"><div class="face-26-3-window-title">' + typeTitle + '</div><div class="face-26-3-window-list">' + newHTML + '</div></div>');
+    });
+
+    $('.face-26-3-graph-item-bar-container').on('mouseout', function(e) {
+        $('.face-26-3-window').remove();
+    });
+
+    $(window).on('scroll', function() {
+        $('.face-26-3-window').remove();
+    });
+
 }

@@ -1544,3 +1544,77 @@ canvas {user-select:none}
     .face-25-2-item {padding:0 0 0 35px}
     .face-25-2-item span {left:5px}
 }
+
+.face-26-3-list {font:14px/19px HelveticaNeueCyrLight, sans-serif; color:#121212; letter-spacing:0.04em; margin:0 0 30px 0}
+.face-26-3-list-item {margin:20px 0 0 0; padding:0 0 0 32px; position:relative}
+.face-26-3-list-item:first-child {margin:0}
+.face-26-3-list-item span {display:block; position:absolute; left:0; top:50%; margin-top:-9.5px; width:19px; height:19px; border-radius:50%}
+
+@media screen and (max-width:1139px) {
+    .face-26-3-list-item {margin:14px 0 0 0}
+}
+
+.face-26-3-header {padding:27px 30px 0 30px; text-transform:uppercase; font:12.5px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; text-transform:uppercase}
+.face-26-3-header::after {content:""; display:block; clear:both}
+
+.face-26-3-type {float:left; position:relative}
+.face-26-3-type.open {z-index:9999}
+.face-26-3-type-current {display:inline-block; vertical-align:top; color:#757575; transition:all 0.2s; cursor:pointer; padding:0 19px 0 0; position:relative}
+.face-26-3-type-current::after {content:""; display:block; position:absolute; right:0; top:50%; width:11px; height:8px; background:url(../images/map-russia-sort-type.svg) no-repeat; margin-top:-4px}
+.face-26-3-type-current:hover {color:#fe6600}
+.face-26-3-type ul {margin:0; padding:5px 0; list-style:none; display:none; z-index:9999; position:absolute; left:-20px; top:100%; white-space:nowrap; background:#fff; border:1px solid #e6e6e6; box-sizing:border-box}
+.face-26-3-type.open ul {display:block}
+.face-26-3-type ul li {margin:0; padding:0; color:#a6a6a6; cursor:pointer}
+.face-26-3-type ul li::before {display:none}
+.face-26-3-type ul li a {color:#a6a6a6; text-decoration:none; display:block; padding:5px 20px}
+.face-26-3-type ul li a:hover {color:#fe6600}
+.face-26-3-type ul li.active a {color:#2f2f2f}
+
+@media screen and (max-width:1139px) {
+    .face-26-3-header {padding:20px 0 0 20px; font:9px/18px HelveticaNeueCyr, sans-serif}
+}
+
+.face-26-3-container {position:relative; padding:100px 0 0 90px; height:465px}
+
+@media screen and (max-width:1139px) {
+    .face-26-3-container {padding:13px 0 0 54px; height:298px}
+}
+
+.face-26-3-scale {position:absolute; left:0; top:70px; bottom:85px; width:90px; border-right:1px solid #d3d3d3}
+.face-26-3-scale-item {position:absolute; right:0; width:10px; height:2px; background:#fe6600; font:11px/11px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#000}
+.face-26-3-scale-item span {position:absolute; right:21px; top:50%; transform:translateY(-50%); white-space:nowrap}
+.face-26-3-content {position:absolute; left:90px; top:100px; bottom:0; right:0; overflow:auto}
+.face-26-3-graph {display:inline-block; vertical-align:top; height:465px; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; position:relative; padding:0 40px 0 0}
+.face-26-3-graph-item {display:inline-block; height:100%; vertical-align:top; position:relative; width:57px; margin:0 0 0 40px}
+.face-26-3-graph-item-year {position:absolute; left:0; bottom:44px; right:0; font:11px/31px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#000; text-align:center}
+.face-26-3-graph-item-bar {position:absolute; left:0; bottom:85px; right:0; top:0}
+.face-26-3-graph-item-bar-container {position:absolute; left:0; bottom:0; right:0}
+
+@media screen and (max-width:1139px) {
+    .face-26-3-scale {top:13px; bottom:54px; width:54px}
+    .face-26-3-scale-item {width:6px; font:8px/8px HelveticaNeueCyrMedium, sans-serif}
+    .face-26-3-scale-item span {right:11px}
+    .face-26-3-content {left:54px; top:13px}
+    .face-26-3-content .mCSB_scrollTools.mCSB_scrollTools_horizontal {height:6px}
+    .face-26-3-content .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {margin:0; height:6px}
+    .face-26-3-content .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {margin:0; height:6px}
+    .face-26-3-graph {padding:0 17px 0 0; height:299px}
+    .face-26-3-graph-item {width:33px; margin:0 0 0 17px}
+    .face-26-3-graph-item-year {bottom:22px; font-size:8px; line-height:12px}
+    .face-26-3-graph-item-bar {bottom:54px}
+    .face-26-3-graph-item-bar-container {cursor:pointer}
+}
+
+.face-26-3-window {display:block; position:fixed; z-index:99; text-align:left; background:#fff; box-sizing:border-box; padding:20px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); margin:10px 0 0 -76px; pointer-events:none}
+.face-26-3-window::before {content:""; display:block; position:absolute; left:76px; top:-5px; margin-left:-12.5px; width:25px; height:25px; background:#fff; transform:rotate(45deg)}
+.face-26-3-window-title {font:14px/14px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#121212; position:relative; z-index:99}
+.face-26-3-window-list {margin:7px 0 0 0; font-size:14px; line-height:25px; letter-spacing:0.04em; position:relative; z-index:99}
+.face-26-3-window-item {padding:0 0 0 13px; position:relative}
+.face-26-3-window-item::before {content:""; display:block; position:absolute; left:0; top:10px; width:4px; height:4px; background:#fe6600}
+.face-26-3-window-item span {color:#fe6600; font-family:HelveticaNeueCyrMedium, sans-serif}
+
+@media screen and (max-width:1139px) {
+    .face-26-3-window {left:50% !important; top:50% !important; width:300px; margin:0 0 0 -150px; transform:translateY(-50%)}
+    .face-26-3-window::before {display:none}
+    .face-26-3-window::after {content:""; display:block; position:fixed; z-index:98; left:-9999px; top:-9999px; right:-9999px; bottom:-9999px; background:rgba(255, 255, 255, 0.5); pointer-events:none}
+}
