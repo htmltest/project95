@@ -997,7 +997,7 @@
 .cube39science .cube-face-title {font-weight:normal}
 
 @media screen and (max-width:1139px) {
-    .cube39science .cube-face:nth-child(3) .cube-face-title {font-weight:normal; letter-spacing:0.04em; opacity:1}
+    .cube39science .cube-face:nth-child(3) .cube-face-title {font-weight:normal; font-family:HelveticaNeueCyrLight, sans-serif; letter-spacing:0.04em; opacity:1}
 
 }
 
@@ -1500,4 +1500,47 @@ canvas {user-select:none}
     .face-15-3-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {margin:0; height:6px}
     .face-15-3-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {margin:0; height:6px}
     .face-15-3-container .face-1-chart-icon-value {font-size:9.5px}
+}
+
+.face-25-2-container {height:622px}
+
+@media screen and (max-width:1139px) {
+    .face-25-2-container {height:348px; width:353px; overflow:auto; position:relative}
+}
+
+.face-25-2-header {padding:27px 30px 0 30px; text-transform:uppercase; font:12.5px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; text-transform:uppercase}
+.face-25-2-header::after {content:""; display:block; clear:both}
+
+.face-25-2-year {float:left; position:relative}
+.face-25-2-year.open {z-index:9999}
+.face-25-2-year-current {display:inline-block; vertical-align:top; color:#757575; transition:all 0.2s; cursor:pointer; padding:0 19px 0 0; position:relative}
+.face-25-2-year-current::after {content:""; display:block; position:absolute; right:0; top:50%; width:11px; height:8px; background:url(../images/map-russia-sort-type.svg) no-repeat; margin-top:-4px}
+.face-25-2-year-current:hover {color:#fe6600}
+.face-25-2-year ul {margin:0; padding:5px 0; list-style:none; display:none; z-index:9999; position:absolute; left:-20px; top:100%; white-space:nowrap; background:#fff; border:1px solid #e6e6e6; box-sizing:border-box}
+.face-25-2-year.open ul {display:block}
+.face-25-2-year ul li {margin:0; padding:0; color:#a6a6a6; cursor:pointer}
+.face-25-2-year ul li::before {display:none}
+.face-25-2-year ul li a {color:#a6a6a6; text-decoration:none; display:block; padding:5px 20px}
+.face-25-2-year ul li a:hover {color:#fe6600}
+.face-25-2-year ul li.active a {color:#2f2f2f}
+
+@media screen and (max-width:1139px) {
+    .face-25-2-header {padding:20px 0 0 20px; font:9px/18px HelveticaNeueCyr, sans-serif}
+}
+
+.face-25-2-list {font-size:14px; line-height:18px; font-family:HelveticaNeueCyrLight, sans-serif; color:#121212; margin:0 30px; position:relative; overflow:auto; max-height:543px; letter-spacing:0.04em}
+.face-25-2-list .mCSB_inside > .mCSB_container {margin-right:0}
+.face-25-2-item {margin:18px 30px 0 0; padding:0 0 0 30px; position:relative}
+.face-25-2-item span {position:absolute; left:0; top:0; font-family:HelveticaNeueCyr, sans-serif; white-space:nowrap}
+
+@media screen and (max-width:1139px) {
+    .face-25-2-list {max-height:284px; margin:0 0 0 20px}
+    .face-25-2-container .mCSB_vertical {right:5px}
+    .face-25-2-container .mCSB_scrollTools a + .mCSB_draggerContainer {margin:0}
+    .face-25-2-container .mCSB_scrollTools a {display:none !important}
+    .face-25-2-container .mCSB_scrollTools.mCSB_scrollTools_vertical {width:6px}
+    .face-25-2-container .mCSB_scrollTools.mCSB_scrollTools_vertical .mCSB_draggerRail {margin:0; width:6px}
+    .face-25-2-container .mCSB_scrollTools.mCSB_scrollTools_vertical .mCSB_dragger .mCSB_dragger_bar {margin:0; width:6px}
+    .face-25-2-item {padding:0 0 0 35px}
+    .face-25-2-item span {left:5px}
 }
