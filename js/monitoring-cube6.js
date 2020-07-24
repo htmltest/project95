@@ -156,6 +156,7 @@ $(window).on('load resize', function() {
     face15_3_Redraw();
     face25_2_Redraw();
     face26_3_Redraw();
+    face18_1_Redraw();
 
 });
 
@@ -492,4 +493,54 @@ function face26_3_Redraw() {
         $('.face-26-3-window').remove();
     });
 
+}
+
+function face18_1_Redraw() {
+    var curMax = 0;
+    for (var i = 0; i < faceData18_1.length; i++) {
+        if (faceData18_1[i].actually !== undefined) {
+            if (curMax < Number(faceData18_1[i].actually)) {
+                curMax = Number(faceData18_1[i].actually);
+            }
+        }
+        if (faceData18_1[i].forecast !== undefined) {
+            if (curMax < Number(faceData18_1[i].forecast)) {
+                curMax = Number(faceData18_1[i].forecast);
+            }
+        }
+    }
+    var newHTML = '';
+    for (var i = 0; i < faceData18_1.length; i++) {
+        var classBoth = '';
+        if (faceData18_1[i].actually !== undefined && faceData18_1[i].forecast !== undefined) {
+            if ((Number(faceData18_1[i].actually) >= 100 && Number(faceData18_1[i].forecast) >= 100) || (Number(faceData18_1[i].actually) < 100 && Number(faceData18_1[i].forecast) < 100)) {
+                classBoth = ' both';
+            }
+        }
+        newHTML +=  '<div class="face-18-1-graph-item' + classBoth + '">';
+        if (faceData18_1[i].actually !== undefined) {
+            var classToBottom = '';
+            if (Number(faceData18_1[i].actually) < 100) {
+                classToBottom = ' to-bottom';
+            }
+            newHTML +=  '<div class="face-18-1-graph-item-actually' + classToBottom + '" style="height:' + (Number(faceData18_1[i].actually) / curMax * 100) + '%"><div class="face-18-1-graph-item-actually-value">' + faceData18_1[i].actually + '%</div></div>';
+        }
+        if (faceData18_1[i].forecast !== undefined) {
+            var classToBottom = '';
+            if (Number(faceData18_1[i].forecast) < 100) {
+                classToBottom = ' to-bottom';
+            }
+            newHTML +=  '<div class="face-18-1-graph-item-forecast' + classToBottom + '" style="height:' + (Number(faceData18_1[i].forecast) / curMax * 100) + '%"><div class="face-18-1-graph-item-forecast-value">' + faceData18_1[i].forecast + '%</div></div>';
+        }
+        newHTML +=      '<div class="face-18-1-graph-item-year">' + faceData18_1[i].year + '</div>';
+        newHTML +=  '</div>';
+    }
+    $('.face-18-1-graph').mCustomScrollbar('destroy');
+    $('.face-18-1-graph-inner').html(newHTML);
+    $('.face-18-1-graph').mCustomScrollbar({
+        axis: 'x',
+        scrollButtons: {
+            enable: true
+        }
+    });
 }
