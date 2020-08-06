@@ -157,6 +157,7 @@ $(window).on('load resize', function() {
     face25_2_Redraw();
     face26_3_Redraw();
     face18_1_Redraw();
+    face18_2_Redraw();
 
 });
 
@@ -543,4 +544,69 @@ function face18_1_Redraw() {
             enable: true
         }
     });
+}
+
+$(document).ready(function() {
+
+    $('.face-18-2-year-current').click(function(e) {
+        $(this).parent().toggleClass('open');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.face-18-2-year').length == 0) {
+            $('.face-18-2-year').removeClass('open');
+        }
+    });
+
+    $('.face-18-2-year ul li a').click(function(e) {
+        var curLi = $(this).parent();
+        if (!curLi.hasClass('active')) {
+            $('.face-18-2-year ul li.active').removeClass('active');
+            curLi.addClass('active');
+            $('.face-18-2-year-current').html($(this).html());
+            $('.face-18-2-year-text').html($(this).html());
+            face18_2_Redraw();
+        }
+        $('.face-18-2-year').removeClass('open');
+        e.preventDefault();
+    });
+
+});
+
+function face18_2_Redraw() {
+    var curYear = $('.face-18-2-year-text').html();
+
+    var curData = null;
+    for (var i = 0; i < faceData18_2.length; i++) {
+        if (faceData18_2[i].year == curYear) {
+            curData = faceData18_2[i].list;
+        }
+    }
+    if (curData !== null) {
+        curData.sort(function(a, b) {
+            if (Number(a.value) < Number(b.value)) {
+                return 1;
+            }
+            if (Number(a.value) > Number(b.value)) {
+                return -1;
+            }
+            return 0;
+        });
+        var newHTML = '';
+        for (var i = 0; i < curData.length; i++) {
+            newHTML +=  '<div class="face-18-2-item">' +
+                            '<div class="face-18-2-item-title">' + curData[i].title + '</div>' +
+                            '<div class="face-18-2-item-value">' + String(curData[i].value).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</div>' +
+                        '</div>';
+        }
+
+        $('.face-18-2-list').mCustomScrollbar('destroy');
+        $('.face-18-2-list-content').html(newHTML);
+        $('.face-18-2-list').mCustomScrollbar({
+            axis: 'y',
+            scrollButtons: {
+                enable: true
+            }
+        });
+    }
 }
