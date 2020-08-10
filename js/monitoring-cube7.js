@@ -153,6 +153,7 @@ $(window).on('load resize', function() {
     }
 
     face31_1_Redraw();
+    face23_1_Redraw();
 });
 
 function face31_1_Redraw() {
@@ -295,6 +296,135 @@ function face31_1_Redraw() {
 
     $(window).on('scroll', function() {
         $('.face-31-1-ratio-window').remove();
+    });
+
+}
+
+function face23_1_Redraw() {
+    $('.face-23-1-list').html('');
+    var listNames = [];
+    for (var i = 0; i < faceData23_1[0].data.length; i++) {
+        $('.face-23-1-list').append('<div class="face-23-1-list-item"><span style="background:' + face23_1_Colors[i] + '"></span>' + faceData23_1[0].data[i].name + '</div>');
+    }
+    $('.cube').css({'margin-bottom': $('.cube-face.active').find('.cube-face-footer').outerHeight()});
+
+    var curMax = 0;
+
+    for (var i = 0; i < faceData23_1.length; i++) {
+        if (typeof(faceData23_1[i].summ) !== 'undefined') {
+            if (curMax < Number(faceData23_1[i].summ)) {
+                curMax = Number(faceData23_1[i].summ);
+            }
+        }
+        if (typeof(faceData23_1[i].forecast) !== 'undefined') {
+            if (curMax < Number(faceData23_1[i].forecast)) {
+                curMax = Number(faceData23_1[i].forecast);
+            }
+        }
+    }
+
+    var scaleStep = Math.floor(curMax / 4 / 1000) * 1000;
+    var scaleCount = Math.ceil(curMax / scaleStep) + 1;
+    var scaleMax = scaleCount * 1000;
+
+    $('.face-23-1-scale').html('');
+    for (var i = 0; i < scaleCount; i++) {
+        $('.face-23-1-scale').append('<div class="face-23-1-scale-item" style="bottom:' + (i * (100 / scaleCount)) + '%"><span>' + String(i * scaleStep).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</span></div>');
+    }
+    $('.face-23-1-scale').append('<div class="face-23-1-scale-item" style="bottom:100%"><span>' + String(scaleCount * scaleStep).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</span></div>');
+
+    $('.face-23-1-graph').html('');
+    for (var i = 0; i < faceData23_1.length; i++) {
+        if (typeof(faceData23_1[i].summ) !== 'undefined') {
+            newHTML = '<div class="face-23-1-graph-item">' +
+                            '<div class="face-23-1-graph-item-bar">' +
+                                '<div class="face-23-1-graph-item-bar-container" data-id="' + i + '" style="height:' + (Number(faceData23_1[i].summ) / scaleMax * 100) + '%">';
+            var subSumm = 0;
+            for (var j = 0; j < faceData23_1[i].data.length; j++) {
+                newHTML +=          '<div class="face-23-1-graph-item-bar-item" style="background:' + face23_1_Colors[j] + '; bottom:' + (subSumm / Number(faceData23_1[i].summ) * 100) + '%; height:' + (Number(faceData23_1[i].data[j].summ) / Number(faceData23_1[i].summ) * 100) + '%"></div>';
+                subSumm += Number(faceData23_1[i].data[j].summ);
+            }
+            newHTML +=          '</div>' +
+                            '</div>' +
+                            '<div class="face-23-1-graph-item-year">' + faceData23_1[i].year + '</div>' +
+                      '</div>';
+            $('.face-23-1-graph').append(newHTML);
+        } else {
+            newHTML = '<div class="face-23-1-graph-item">' +
+                            '<div class="face-23-1-graph-item-year">' + faceData23_1[i].year + '</div>' +
+                      '</div>';
+            $('.face-23-1-graph').append(newHTML);
+        }
+    }
+
+    var itemWidth = 57;
+    if ($(window).width() < 1140) {
+        itemWidth = 33;
+    }
+
+    var itemMargin = 40;
+    if ($(window).width() < 1140) {
+        itemMargin = 17;
+    }
+
+    function angle_point(a, b, c) {
+        var x1 = a[0] - b[0];
+        var x2 = c[0] - b[0];
+        var y1 = a[1] - b[1];
+        var y2 = c[1] - b[1];
+
+        var d1 = Math.sqrt(x1 * x1 + y1 * y1);
+        var d2 = Math.sqrt(x2 * x2 + y2 * y2);
+        return Math.acos((x1 * x2 + y1 * y2) / (d1 * d2)) * 180 / Math.PI;
+    }
+
+    for (var i = 0; i < faceData23_1.length; i++) {
+        if (typeof(faceData23_1[i].forecast) != 'undefined') {
+            var curX = i * (itemWidth + itemMargin) + itemMargin + itemWidth / 2;
+            var curY = $('.face-23-1-graph-item-bar').eq(0).height() - ((faceData23_1[i].forecast / scaleMax) * $('.face-23-1-graph-item-bar').eq(0).height());
+            if (typeof(faceData23_1[i - 1].forecast) != 'undefined') {
+                var prevX = (i - 1) * (itemWidth + itemMargin) + itemMargin + itemWidth / 2;
+                var prevY = $('.face-23-1-graph-item-bar').eq(0).height() - ((faceData23_1[i - 1].forecast / scaleMax) * $('.face-23-1-graph-item-bar').eq(0).height());
+                var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+                var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+                if (curY < prevY) {
+                    curAngle = -curAngle;
+                }
+                $('.face-23-1-graph').append('<div class="face-1-chart-line" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+            }
+            $('.face-23-1-graph').append('<div class="face-1-chart-point" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong>' + String(faceData23_1[i].forecast).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</strong></span></div>');
+        }
+    }
+
+    $('.face-23-1-content').mCustomScrollbar('destroy');
+    $('.face-23-1-content').mCustomScrollbar({
+        axis: 'x',
+        callbacks: {
+            onScrollStart: function() {
+                $('.face-23-1-window').remove();
+            }
+        }
+    });
+
+    $('.face-23-1-graph-item-bar-container').on('mouseover', function(e) {
+        $('.face-23-1-window').remove();
+        var curItem = $(this);
+        var curX = curItem.offset().left + curItem.width() / 2 - $(window).scrollLeft();
+        var curY = curItem.offset().top + curItem.height() / 2 - $(window).scrollTop();
+        var curID = Number(curItem.attr('data-id'));
+        var newHTML = '';
+        for (var i = 0; i < faceData23_1[curID].data.length; i++) {
+            newHTML += '<div class="face-23-1-window-item">' + faceData23_1[curID].data[i].name + ' <span>' + String(faceData23_1[curID].data[i].summ).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</span></div>';
+        }
+        $('body').append('<div class="face-23-1-window" style="left:' + curX + 'px; top:' + curY + 'px"><div class="face-23-1-window-title">Количество зарегистрированных распоряжений: <span>' + String(faceData23_1[curID].summ).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</span></div><div class="face-23-1-window-list-title">Из них:</div><div class="face-23-1-window-list">' + newHTML + '</div></div>');
+    });
+
+    $('.face-23-1-graph-item-bar-container').on('mouseout', function(e) {
+        $('.face-23-1-window').remove();
+    });
+
+    $(window).on('scroll', function() {
+        $('.face-23-1-window').remove();
     });
 
 }
