@@ -1718,8 +1718,8 @@ canvas {user-select:none}
 .face-31-1-ratio-container .face-1-chart-point span {font-size:12.5px}
 .face-31-1-ratio-container .face-1-chart-icons {position:absolute; left:0; right:0; bottom:153px; height:140px; width:100px; white-space:nowrap}
 .face-31-1-ratio-container .face-1-chart-icon {position:absolute; bottom:0; top:0; font-size:0; line-height:140px; width:42px}
-.face-31-1-ratio-container .face-1-chart-icon-summ {position:absolute; left:50%; bottom:0}
-.face-31-1-ratio-container .face-1-chart-icon-summ svg {display:inline-block; height:100%; vertical-align:top; transform:translateX(-50%)}
+.face-31-1-ratio-container .face-1-chart-icon-summ {position:absolute; left:0; right:0; bottom:0}
+.face-31-1-ratio-container .face-1-chart-icon-summ svg {display:inline-block; height:100%; vertical-align:top; position:relative; left:50%; transform:translateX(-50%)}
 .face-31-1-ratio-container .face-1-chart-point em {font-style:normal}
 
 .face3-list-31-1-ratio {column-count:1; padding:0 0 20px 0}
