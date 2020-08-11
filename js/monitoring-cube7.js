@@ -155,6 +155,7 @@ $(window).on('load resize', function() {
     face31_1_Redraw();
     face23_1_Redraw();
     face23_2_Redraw();
+    face2Redraw();
 });
 
 function face31_1_Redraw() {
@@ -551,4 +552,657 @@ function face23_2_Redraw() {
         $('.face-23-2-graph-inner').append('<div class="face-1-chart-point face-1-chart-point-3" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong>' + faceData23_2[i].summ3 + ' ед.</strong></span></div>');
     }
 
+}
+
+$(document).ready(function() {
+
+    $('.face-2-type-current').click(function(e) {
+        $(this).parent().toggleClass('open');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.face-2-type').length == 0) {
+            $('.face-2-type').removeClass('open');
+        }
+    });
+
+    $('.face-2-type ul li a').click(function(e) {
+        var curLi = $(this).parent();
+        if (!curLi.hasClass('active')) {
+            $('.face-2-type ul li.active').removeClass('active');
+            curLi.addClass('active');
+            $('.face-2-type-current').html($(this).html());
+            face2Redraw();
+        }
+        $('.face-2-type').removeClass('open');
+        e.preventDefault();
+    });
+
+    $('.face-2-year-current').click(function(e) {
+        $(this).parent().toggleClass('open');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.face-2-year').length == 0) {
+            $('.face-2-year').removeClass('open');
+        }
+    });
+
+    $('.face-2-year ul li a').click(function(e) {
+        var curLi = $(this).parent();
+        if (!curLi.hasClass('active')) {
+            $('.face-2-year ul li.active').removeClass('active');
+            curLi.addClass('active');
+            $('.face-2-year-current').html($(this).html());
+            $('.face-2-year-text').html($(this).html());
+            face2Redraw();
+        }
+        $('.face-2-year').removeClass('open');
+        e.preventDefault();
+    });
+
+    if ($(window).width() > 1139) {
+        $('body').on('mouseenter', '.map-russia-district, .map-region-item', function(e) {
+            $('.monitoring-map-region-hint').remove();
+            $('body').append('<div class="monitoring-map-region-hint">' + $(this).attr('data-title') + '</div>');
+            var curLeft = e.pageX;
+            var curTop = e.pageY;
+            $('.monitoring-map-region-hint').css({'left': curLeft, 'top': curTop});
+        });
+
+        $('body').on('mousemove', '.map-russia-district, .map-region-item', function(e) {
+            var curLeft = e.pageX;
+            var curTop = e.pageY;
+            $('.monitoring-map-region-hint').css({'left': curLeft, 'top': curTop});
+        });
+
+        $('body').on('mouseleave', '.map-russia-district, .map-region-item', function(e) {
+            $('.monitoring-map-region-hint').remove();
+        });
+    }
+
+    $('body').on('click', '.map-russia-district', function(e) {
+        $('.monitoring-map-region-hint').remove();
+        if ($('.map-window').length == 0) {
+            $('body').append('<div class="map-window map-window-29-2"><div class="map-window-inner">' +
+                                    '<div class="map-window-title"></div>' +
+                                    '<div class="map-window-info">' +
+                                        '<div class="map-window-info-item">' +
+                                            '<div class="map-window-info-item-title">Техническая<br /> вооруженность,<br /> тыс. руб./чел</div>' +
+                                            '<div class="map-window-info-item-value map-window-info-item-value-1"></div>' +
+                                        '</div>' +
+                                        '<div class="map-window-info-item">' +
+                                            '<div class="map-window-info-item-title">Стоимость машин и<br /> оборудования в возрасте<br /> до 5 лет, тыс. руб.</div>' +
+                                            '<div class="map-window-info-item-value map-window-info-item-value-2"></div>' +
+                                        '</div>' +
+                                        '<div class="map-window-info-item">' +
+                                            '<div class="map-window-info-item-title">Исследователи в<br /> эквиваленте полной<br /> занятости, чел.</div>' +
+                                            '<div class="map-window-info-item-value map-window-info-item-value-3"></div>' +
+                                        '</div>' +
+                                    '</div>' +
+                                    '<div class="map-window-info-chart-title">Динамика технической<br /> вооруженности, тыс. руб./чел</div>' +
+                                    '<div class="map-window-info-chart"></div>' +
+                                    '<div class="map-window-info-link"><a href="#" class="btn-med" data-id="">Перейти на карту ФО</a></div>' +
+                                    '<div class="map-window-close"></div>' +
+                                 '</div></div>');
+        }
+        var curLeft = e.pageX;
+        var curTop = e.pageY;
+        $('.map-window').css({'left': curLeft, 'top': curTop});
+        $('.map-window').removeClass('map-window-region');
+        var districtID = $(this).attr('data-id');
+        var districtTitle = '';
+        for (var i = 0; i < russiaDistricts.length; i++) {
+            if (russiaDistricts[i].id == districtID) {
+                districtTitle = russiaDistricts[i].title;
+            }
+        }
+        $('.map-window-title').html(districtTitle);
+        $('.map-window-info-link a').attr('data-id', districtID);
+        $('.map-window-info-chart').html('');
+
+        var curType = $('.face-2-type li.active').attr('data-type');
+        var curYear = $('.face-2-year-text').html();
+
+        var curMax = 0;
+
+        for (var i = 0; i < face2dataDistricts.length; i++) {
+            if (face2dataDistricts[i].type == curType) {
+                var curData = face2dataDistricts[i].data;
+                for (var j = 0; j < curData.length; j++) {
+                    if (curData[j].district == districtID) {
+                        var curValue = parseInt(curData[j].value.replace(/ /g, ''));
+                        if (typeof (curData[j].value100) != 'undefined') {
+                            var curValue100 = parseFloat(curData[j].value100.replace(/ /g, '').replace(/,/g, '.'));
+                        } else {
+                            var curValue100 = 0;
+                        }
+                        if (face2dataDistricts[i].year == curYear) {
+                            $('.map-window-info-item-value-1').html(String(curValue).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 '));
+                            $('.map-window-info-item-value-2').html(String(curValue100).replace(/\./g, ','));
+                            $('.map-window-info-item-value-3').html(String(curValue100).replace(/\./g, ','));
+                        }
+                        var predictClass = '';
+                        if (typeof (face2dataDistricts[i].predict) != 'undefined' && face2dataDistricts[i].predict) {
+                            predictClass = 'map-window-info-chart-item-predict';
+                        }
+                        if (curMax < curValue) {
+                            curMax = curValue;
+                        }
+                        $('.map-window-info-chart').append('<div class="map-window-info-chart-item ' + predictClass + '">' +
+                                                                '<div class="map-window-info-chart-item-value">' + String(curValue).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</div>' +
+                                                                '<div class="map-window-info-chart-item-bar"></div>' +
+                                                                '<div class="map-window-info-chart-item-year">' + face2dataDistricts[i].year + '</div>' +
+                                                           '</div>');
+                    }
+                }
+            }
+        }
+        $('.map-window-info-chart-item').each(function() {
+            var curItem = $(this);
+            curItem.find('.map-window-info-chart-item-bar').css({'height': parseInt(curItem.find('.map-window-info-chart-item-value').html().replace(/ /g, '')) / curMax * 108 + 'px'});
+        });
+
+        var newWidth = $('.map-window-info-chart-item').length * 56 + 30;
+        if (newWidth < 350) {
+            newWidth = 350;
+        }
+        $('.map-window').css({'width': newWidth, 'margin-left': -newWidth / 2});
+
+        $('.map-window').show();
+        $('html').addClass('map-window-opened');
+    });
+
+    $('body').on('click', '.map-window-close', function() {
+        $('.map-window').hide();
+        $('html').removeClass('map-window-opened');
+    });
+
+    $('body').on('click', '.map-region-item', function(e) {
+        $('.monitoring-map-region-hint').remove();
+        if ($('.map-window').length == 0) {
+            $('body').append('<div class="map-window map-window-29-2"><div class="map-window-inner">' +
+                                    '<div class="map-window-title"></div>' +
+                                    '<div class="map-window-info">' +
+                                        '<div class="map-window-info-item">' +
+                                            '<div class="map-window-info-item-title">Техническая<br /> вооруженность,<br /> тыс. руб./чел</div>' +
+                                            '<div class="map-window-info-item-value map-window-info-item-value-1"></div>' +
+                                        '</div>' +
+                                        '<div class="map-window-info-item">' +
+                                            '<div class="map-window-info-item-title">Стоимость машин и<br /> оборудования в возрасте<br /> до 5 лет, тыс. руб.</div>' +
+                                            '<div class="map-window-info-item-value map-window-info-item-value-2"></div>' +
+                                        '</div>' +
+                                        '<div class="map-window-info-item">' +
+                                            '<div class="map-window-info-item-title">Исследователи в<br /> эквиваленте полной<br /> занятости, чел.</div>' +
+                                            '<div class="map-window-info-item-value map-window-info-item-value-3"></div>' +
+                                        '</div>' +
+                                    '</div>' +
+                                    '<div class="map-window-info-chart-title">Динамика технической<br /> вооруженности, тыс. руб./чел</div>' +
+                                    '<div class="map-window-info-chart"></div>' +
+                                    '<div class="map-window-info-link"><a href="#" class="btn-med" data-id="">Перейти на карту ФО</a></div>' +
+                                    '<div class="map-window-close"></div>' +
+                                 '</div></div>');
+        }
+        var curLeft = e.pageX;
+        var curTop = e.pageY;
+        if (curLeft === undefined) {
+            curLeft = $(this).offset().left;
+        }
+        if (curTop === undefined) {
+            curTop = $(this).offset().top;
+        }
+        $('.map-window').css({'left': curLeft, 'top': curTop});
+        $('.map-window').addClass('map-window-region');
+        var regionID = $(this).attr('data-id');
+        var regionTitle = '';
+        for (var i = 0; i < russiaRegions.length; i++) {
+            if (russiaRegions[i].id == regionID) {
+                regionTitle = russiaRegions[i].title;
+            }
+        }
+        $('.map-window-title').html(regionTitle);
+        $('.map-window-info-chart').html('');
+
+        var curType = $('.face-2-type li.active').attr('data-type');
+        var curYear = $('.face-2-year-text').html();
+
+        var curMax = 0;
+
+        for (var i = 0; i < face2dataRegions.length; i++) {
+            if (face2dataRegions[i].id == regionID) {
+                var curData = face2dataRegions[i].values;
+                for (var j = 0; j < curData.length; j++) {
+                    if (curData[j].type == curType) {
+                        for (var k = 0; k < curData[j].data.length; k++) {
+                            var curValues = curData[j].data[k];
+
+                            var curValue = parseInt(curValues.value.replace(/ /g, ''));
+                            if (typeof (curValues.value100) != 'undefined') {
+                                var curValue100 = parseFloat(curValues.value100.replace(/ /g, '').replace(/,/g, '.'));
+                            } else {
+                                var curValue100 = 0;
+                            }
+
+                            if (curValues.year == curYear) {
+                                $('.map-window-info-item-value-1').html(String(curValue).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 '));
+                                $('.map-window-info-item-value-2').html(String(curValue100).replace(/\./g, ','));
+                                $('.map-window-info-item-value-3').html(String(curValue100).replace(/\./g, ','));
+                            }
+                            var predictClass = '';
+                            if (typeof (curValues.predict) != 'undefined' && curValues.predict) {
+                                predictClass = 'map-window-info-chart-item-predict';
+                            }
+                            if (curMax < curValue) {
+                                curMax = curValue;
+                            }
+                            $('.map-window-info-chart').append('<div class="map-window-info-chart-item ' + predictClass + '">' +
+                                                                    '<div class="map-window-info-chart-item-value">' + String(curValue).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</div>' +
+                                                                    '<div class="map-window-info-chart-item-bar"></div>' +
+                                                                    '<div class="map-window-info-chart-item-year">' + curValues.year + '</div>' +
+                                                               '</div>');
+                        }
+                    }
+                }
+            }
+        }
+        $('.map-window-info-chart-item').each(function() {
+            var curItem = $(this);
+            curItem.find('.map-window-info-chart-item-bar').css({'height': parseInt(curItem.find('.map-window-info-chart-item-value').html().replace(/ /g, '')) / curMax * 108 + 'px'});
+        });
+
+        var newWidth = $('.map-window-info-chart-item').length * 56 + 30;
+        if (newWidth < 350) {
+            newWidth = 350;
+        }
+        $('.map-window').css({'width': newWidth, 'margin-left': -newWidth / 2});
+
+        $('.map-window').show();
+        $('html').addClass('map-window-opened');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.map-window-inner').length == 0 && !$(e.target).hasClass('map-window-inner') && $(e.target).parents().filter('.map-russia-district').length == 0 && $(e.target).parents().filter('.face-2-table-name-region').length == 0 && !$(e.target).hasClass('map-russia-district') && !$(e.target).hasClass('face-2-table-name-region') && $(e.target).parents().filter('.map-region-item').length == 0 && !$(e.target).hasClass('map-region-item')) {
+            $('.map-window').hide();
+            $('html').removeClass('map-window-opened');
+        }
+    });
+
+    $('body').on('click', '.map-window-info-link a', function(e) {
+        var curID = $(this).attr('data-id');
+        $('.face-2-back').addClass('visible').attr('data-id', curID);
+        $('.face-2-title-russia').css({'display': 'none'});
+        $('.face-2-title-regions').css({'display': 'inline'});
+        $('.map-window').hide();
+        $('.map-russia').hide();
+        $('html').removeClass('map-window-opened');
+        $('.map-region[data-id="' + curID + '"]').show();
+        var curType = $('.face-2-type li.active').attr('data-type');
+        var curSort = $('.map-russia-sort-type-list li.active').attr('data-sortType');
+        var curYear = $('.face-2-year-text').html();
+        var curData = [];
+        for (var i = 0; i < face2dataRegions.length; i++) {
+            var curRegionID = face2dataRegions[i].id;
+            var curDiscrictID = -1;
+            for (var j = 0; j < russiaRegions.length; j++) {
+                if (curRegionID == russiaRegions[j].id && russiaRegions[j].district == curID) {
+                    curDiscrictID = russiaRegions[j].district;
+                }
+            }
+            if (curDiscrictID > -1) {
+                for (var j = 0; j < face2dataRegions[i].values.length; j++) {
+                    if (face2dataRegions[i].values[j].type == curType) {
+                        for (var k = 0; k < face2dataRegions[i].values[j].data.length; k++) {
+                            if (face2dataRegions[i].values[j].data[k].year == curYear) {
+                                curData.push({
+                                                'id'        : curRegionID,
+                                                'value'     : face2dataRegions[i].values[j].data[k].value,
+                                                'value100'  : face2dataRegions[i].values[j].data[k].value100
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        var activeValue = ' active';
+        var activeValue100 = '';
+        $('.face-2-table-head').eq(1).addClass('active');
+        $('.face-2-table-head').eq(2).removeClass('active');
+
+        if (curSort == 'value') {
+            curData.sort(face2SortCount);
+        } else {
+            curData.sort(face2SortCount100);
+            var activeValue = '';
+            var activeValue100 = ' active';
+            $('.face-2-table-head').eq(2).addClass('active');
+            $('.face-2-table-head').eq(1).removeClass('active');
+        }
+
+        var newMap = '';
+        $('.face-2-table-row').remove();
+        for (var i = 0; i < curData.length; i++) {
+            var regionID = curData[i].id;
+            var regionTitle = '';
+            for (var r = 0; r < russiaRegions.length; r++) {
+                if (russiaRegions[r].id == regionID) {
+                    regionTitle = russiaRegions[r].title;
+                }
+            }
+
+            var curRatingsArray = [];
+            for (var c = 0; c < mapColorsRegions.length; c++) {
+                if (curID == mapColorsRegions[c].id) {
+                    if (curType == 'WoS') {
+                        if (curSort == 'value') {
+                            curRatingsArray = mapColorsRegions[c].WoS.value;
+                        } else {
+                            curRatingsArray = mapColorsRegions[c].WoS.value100;
+                        }
+                    } else {
+                        if (curSort == 'value') {
+                            curRatingsArray = mapColorsRegions[c].Scopus.value;
+                        } else {
+                            curRatingsArray = mapColorsRegions[c].Scopus.value100;
+                        }
+                    }
+                }
+            }
+
+            var curColorIndex = -1;
+            var curValue = parseInt(curData[i].value.replace(/ /g, ''));
+            if (curSort == 'value100') {
+                curValue = parseFloat(curData[i].value100.replace(/ /g, '').replace(/,/g, '.'));
+            }
+            for (var c = 0; c < curRatingsArray.length; c++) {
+                if (curValue >= curRatingsArray[c][0] && curValue < curRatingsArray[c][1]) {
+                    curColorIndex = c;
+                }
+            }
+
+            if (curType == 'WoS') {
+                var curColor = mapColors[0][curColorIndex];
+            } else {
+                var curColor = mapColors[1][curColorIndex];
+            }
+
+            newMap += '<g class="map-region-item" data-id="' + regionID + '" data-title="' + regionTitle + '">';
+            for (var j = 0; j < russiaRegions.length; j++) {
+                var curRegion = russiaRegions[j];
+                if (curRegion.id == regionID) {
+                    newMap += '<g style="fill:' + curColor + '">' + curRegion.svg + '</g>';
+                }
+            }
+            newMap += '</g>';
+            var regionTitle = '';
+            for (var j = 0; j < russiaRegions.length; j++) {
+                if (russiaRegions[j].id == regionID) {
+                    regionTitle = russiaRegions[j].title;
+                }
+            }
+            $('.face-2-table').append('<div class="face-2-table-row">' +
+                                        '<div class="face-2-table-name">' +
+                                            '<a href="#" class="face-2-table-name-region" data-id="' + regionID + '">' +
+                                                '<div class="face-2-table-name-color" style="background:' + curColor + '"></div>' +
+                                                regionTitle +
+                                            '</a>' +
+                                        '</div>' +
+                                        '<div class="face-2-table-value' + activeValue + '">' + String(curData[i].value).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</div>' +
+                                        '<div class="face-2-table-value' + activeValue100 + '">' + String(curData[i].value100).replace(/\./g, ',') + '</div>' +
+                                      '</div>');
+        }
+        $('.map-region[data-id="' + curID + '"] svg').html(newMap);
+        $('.cube').css({'margin-bottom': $('.cube-face.active').find('.cube-face-footer').outerHeight()});
+
+        var legendHTML = '';
+        if (curType == 'WoS') {
+            var legendColors = mapColors[0];
+        } else {
+            var legendColors = mapColors[1];
+        }
+        for (var ra = 0; ra < curRatingsArray.length; ra++) {
+            var legendText = '';
+            if (curRatingsArray[ra][0] == 0) {
+                legendText = 'до ' + String(curRatingsArray[ra][1]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+            } else if (curRatingsArray[ra][1] == Infinity) {
+                legendText = 'более ' + String(curRatingsArray[ra][0]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+            } else {
+                legendText = 'от ' + String(curRatingsArray[ra][0]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + ' до ' + String(curRatingsArray[ra][1]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+            }
+            legendHTML += '<div class="map-russia-legend-item"><div class="map-russia-legend-item-color" style="background:' + legendColors[ra] + '"></div>' + legendText + '</div>';
+        }
+
+        $('.map-russia-legend').html(legendHTML);
+
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.face-2-table-name-region', function(e) {
+        var curID = $(this).attr('data-id');
+        $('.map-region-item[data-id="' + curID + '"]').trigger('click');
+        $('html, body').animate({'scrollTop': $('.map-region .map-region-item[data-id="' + curID + '"]').offset().top});
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.face-2-back a', function(e) {
+        $('.face-2-table-head').eq(0).html('Федеральный<br />округ');
+        $('.face-2-back').removeClass('visible').removeAttr('data-id');
+        $('.face-2-title-russia').css({'display': 'inline'});
+        $('.face-2-title-regions').css({'display': 'none'});
+        $('.map-window').hide();
+        $('.map-region').hide();
+        $('.map-russia').show();
+        $('html').removeClass('map-window-opened');
+        face2Redraw();
+        $('.cube').css({'margin-bottom': $('.cube-face.active').find('.cube-face-footer').outerHeight()});
+        e.preventDefault();
+    });
+
+    $('.map-russia-sort-type-current').click(function(e) {
+        $(this).parent().toggleClass('open');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.map-russia-sort-type').length == 0) {
+            $('.map-russia-sort-type').removeClass('open');
+        }
+    });
+
+    $('.map-russia-sort-type-list ul li').click(function(e) {
+        var curLi = $(this);
+        if (!curLi.hasClass('active')) {
+            $('.map-russia-sort-type-list ul li.active').removeClass('active');
+            curLi.addClass('active');
+            $('.map-russia-sort-type-current').html(curLi.html());
+            face2Redraw();
+        }
+        $('.map-russia-sort-type').removeClass('open');
+    });
+
+    $('body').on('click', '.face-2-table-head a', function(e) {
+        var curIndex = $('.face-2-table-head a').index($(this));
+        $('.map-russia-sort-type-list ul li').eq(curIndex).trigger('click');
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.face-2-table-name-link', function(e) {
+        $('.face-2-table-head').eq(0).html('Субъект РФ');
+        var curID = $(this).attr('data-id');
+        if ($('.map-window').length == 0) {
+            $('body').append('<div class="map-window map-window-29-2"><div class="map-window-inner">' +
+                                    '<div class="map-window-title"></div>' +
+                                    '<div class="map-window-info">' +
+                                        '<div class="map-window-info-item">' +
+                                            '<div class="map-window-info-item-title">Техническая<br /> вооруженность,<br /> тыс. руб./чел</div>' +
+                                            '<div class="map-window-info-item-value map-window-info-item-value-1"></div>' +
+                                        '</div>' +
+                                        '<div class="map-window-info-item">' +
+                                            '<div class="map-window-info-item-title">Стоимость машин и<br /> оборудования в возрасте<br /> до 5 лет, тыс. руб.</div>' +
+                                            '<div class="map-window-info-item-value map-window-info-item-value-2"></div>' +
+                                        '</div>' +
+                                        '<div class="map-window-info-item">' +
+                                            '<div class="map-window-info-item-title">Исследователи в<br /> эквиваленте полной<br /> занятости, чел.</div>' +
+                                            '<div class="map-window-info-item-value map-window-info-item-value-3"></div>' +
+                                        '</div>' +
+                                    '</div>' +
+                                    '<div class="map-window-info-chart-title">Динамика технической<br /> вооруженности, тыс. руб./чел</div>' +
+                                    '<div class="map-window-info-chart"></div>' +
+                                    '<div class="map-window-info-link"><a href="#" class="btn-med" data-id="">Перейти на карту ФО</a></div>' +
+                                 '</div></div>');
+        }
+        $('.map-window-info-link a').attr('data-id', curID).trigger('click');
+        e.preventDefault();
+    });
+
+    $('.map-russia').mCustomScrollbar({
+        axis: 'x'
+    });
+
+    $('.face-2-table-wrap').mCustomScrollbar({
+        axis: 'x',
+        scrollButtons: {
+            enable: true
+        }
+    });
+
+});
+
+function face2Redraw() {
+    var curType = $('.face-2-type li.active').attr('data-type');
+    var curSort = $('.map-russia-sort-type-list li.active').attr('data-sortType');
+    var curYear = $('.face-2-year-text').html();
+    var curData = null;
+    for (var i = 0; i < face2dataDistricts.length; i++) {
+        if (face2dataDistricts[i].type == curType && face2dataDistricts[i].year == curYear) {
+            curData = face2dataDistricts[i].data;
+        }
+    }
+    if (curData !== null) {
+        var activeValue = ' active';
+        var activeValue100 = '';
+        $('.face-2-table-head').eq(1).addClass('active');
+        $('.face-2-table-head').eq(2).removeClass('active');
+
+        if (curSort == 'value') {
+            curData.sort(face2SortCount);
+        } else {
+            curData.sort(face2SortCount100);
+            var activeValue = '';
+            var activeValue100 = ' active';
+            $('.face-2-table-head').eq(2).addClass('active');
+            $('.face-2-table-head').eq(1).removeClass('active');
+        }
+        var newMap = '';
+        $('.face-2-table-row').remove();
+
+        var curRatingsArray = [];
+        if (curType == 'WoS') {
+            if (curSort == 'value') {
+                curRatingsArray = mapColorsDistrictsValueWoS;
+            } else {
+                curRatingsArray = mapColorsDistrictsValue100WoS;
+            }
+        } else {
+            if (curSort == 'value') {
+                curRatingsArray = mapColorsDistrictsValueScopus;
+            } else {
+                curRatingsArray = mapColorsDistrictsValue100Scopus;
+            }
+        }
+
+        var legendHTML = '';
+        if (curType == 'WoS') {
+            var legendColors = mapColors[0];
+        } else {
+            var legendColors = mapColors[1];
+        }
+        for (var ra = 0; ra < curRatingsArray.length; ra++) {
+            var legendText = '';
+            if (curRatingsArray[ra][0] == 0) {
+                legendText = 'до ' + String(curRatingsArray[ra][1]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+            } else if (curRatingsArray[ra][1] == Infinity) {
+                legendText = 'более ' + String(curRatingsArray[ra][0]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+            } else {
+                legendText = 'от ' + String(curRatingsArray[ra][0]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + ' до ' + String(curRatingsArray[ra][1]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+            }
+            legendHTML += '<div class="map-russia-legend-item"><div class="map-russia-legend-item-color" style="background:' + legendColors[ra] + '"></div>' + legendText + '</div>';
+        }
+
+        $('.map-russia-legend').html(legendHTML);
+
+        for (var i = 0; i < curData.length; i++) {
+            var districtID = curData[i].district;
+            var districtTitle = '';
+            for (var r = 0; r < russiaDistricts.length; r++) {
+                if (russiaDistricts[r].id == districtID) {
+                    districtTitle = russiaDistricts[r].title;
+                }
+            }
+
+            var curColorIndex = -1;
+            var curValue = parseInt(curData[i].value.replace(/ /g, ''));
+            if (curSort == 'value100') {
+                curValue = parseFloat(curData[i].value100.replace(/ /g, '').replace(/,/g, '.'));
+            }
+            for (var c = 0; c < curRatingsArray.length; c++) {
+                if (curValue >= curRatingsArray[c][0] && curValue < curRatingsArray[c][1]) {
+                    curColorIndex = c;
+                }
+            }
+
+            if (curType == 'WoS') {
+                var curColor = mapColors[0][curColorIndex];
+            } else {
+                var curColor = mapColors[1][curColorIndex];
+            }
+
+            newMap += '<g class="map-russia-district" data-id="' + districtID + '" data-title="' + districtTitle + '">';
+            for (var j = 0; j < russiaRegions.length; j++) {
+                var curRegion = russiaRegions[j];
+                if (curRegion.district == districtID) {
+                    newMap += '<g style="fill:' + curColor + '">' + curRegion.svg + '</g>';
+                }
+            }
+            newMap += '</g>';
+            var districtTitle = '';
+            for (var j = 0; j < russiaDistricts.length; j++) {
+                if (russiaDistricts[j].id == districtID) {
+                    districtTitle = russiaDistricts[j].title;
+                }
+            }
+            $('.face-2-table').append('<div class="face-2-table-row">' +
+                                        '<div class="face-2-table-name">' +
+                                            '<a href="#" class="face-2-table-name-link" data-id="' + districtID + '">' +
+                                                '<div class="face-2-table-name-color" style="background:' + curColor + '"></div>' +
+                                                '<div class="face-2-table-name-text">' + districtTitle + '</div>' +
+                                            '</a>' +
+                                        '</div>' +
+                                        '<div class="face-2-table-value' + activeValue + '">' + String(curData[i].value).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</div>' +
+                                        '<div class="face-2-table-value' + activeValue100 + '">' + String(curData[i].value100).replace(/\./g, ',') + '</div>' +
+                                      '</div>');
+        }
+        $('.map-russia svg').html(newMap);
+    }
+
+    if ($('.face-2-back').hasClass('visible')) {
+        var curID = $('.face-2-back').attr('data-id');
+        $('.map-window-info-link a').attr('data-id', curID).trigger('click');
+    }
+}
+
+function face2SortCount(a, b) {
+    var value1 = parseInt(a.value.replace(/ /g, ''));
+    var value2 = parseInt(b.value.replace(/ /g, ''));
+    if (value1 > value2) return -1;
+    if (value1 == value2) return 0;
+    if (value1 < value2) return 1;
+}
+
+function face2SortCount100(a, b) {
+    var value1 = parseFloat(a.value100.replace(/ /g, '').replace(/,/g, '.'));
+    var value2 = parseFloat(b.value100.replace(/ /g, '').replace(/,/g, '.'));
+    if (value1 > value2) return -1;
+    if (value1 == value2) return 0;
+    if (value1 < value2) return 1;
 }

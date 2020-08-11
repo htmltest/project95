@@ -1854,3 +1854,15 @@ canvas {user-select:none}
     .face-23-2-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {margin:0; height:6px}
     .face-23-2-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {margin:0; height:6px}
 }
+
+.map-window-29-2 {width:500px !important; margin:30px 0 0 -250px !important}
+.map-window-29-2 .map-window-info-item {padding-left:20px}
+.map-window-29-2 .map-window-info-item:first-child {padding-left:0}
+
+@media screen and (max-width:1139px) {
+    .map-window-29-2 {width:auto !important; margin:0 !important}
+    .map-window-29-2 .map-window-info-item {float:none; display:table; width:100%; border-top:1px solid #e8e8e8; padding:0}
+    .map-window-29-2 .map-window-info-item:first-child {border-top:none}
+    .map-window-29-2 .map-window-info-item-title {display:table-cell; vertical-align:middle; padding:10px 0}
+    .map-window-29-2 .map-window-info-item-value {display:table-cell; vertical-align:middle; padding:10px 0; text-align:right; white-space:nowrap}
+}
