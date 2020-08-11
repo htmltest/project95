@@ -1799,3 +1799,58 @@ canvas {user-select:none}
     .face-23-1-window::before {display:none}
     .face-23-1-window::after {content:""; display:block; position:fixed; z-index:98; left:-9999px; top:-9999px; right:-9999px; bottom:-9999px; background:rgba(255, 255, 255, 0.5); pointer-events:none}
 }
+
+.face-23-2-container {position:relative; height:546px; top:31px; margin:0 40px}
+.face-23-2-scale-left {position:absolute; left:0; width:32px; height:471px; border-right:1px solid #d3d3d3; background:#f2f2f2; z-index:3}
+.face-23-2-scale-left::before {content:""; display:block; position:absolute; left:0; bottom:-30px; top:0; right:0; background:#f2f2f2}
+.face-23-2-scale-left-item {position:absolute; right:20px; transform:translateY(50%); font:11px/11px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626; white-space:nowrap}
+.face-23-2-scale-left-item::before {content:""; display:block; position:absolute; right:-20px; top:50%; width:10px; height:2px; background:#fe6600; margin-top:-1px}
+.face-23-2-scale-left-item:nth-child(even)::before {background:#4f7b96}
+.face-23-2-scale-right {position:absolute; right:0; width:28px; height:471px; border-left:1px solid #d3d3d3; background:#f2f2f2; z-index:3}
+.face-23-2-scale-right::before {content:""; display:block; position:absolute; left:0; bottom:-30px; right:0; top:0; background:#f2f2f2}
+.face-23-2-scale-right-inner {position:absolute; left:0; top:160px; right:0; bottom:0}
+.face-23-2-scale-right-item {position:absolute; left:20px; transform:translateY(50%); font:11px/11px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626; white-space:nowrap}
+.face-23-2-scale-right-item::before {content:""; display:block; position:absolute; left:-20px; top:50%; width:10px; height:2px; background:#eb2121; margin-top:-1px}
+.face-23-2-graph {font-size:0; line-height:0; letter-spacing:0; height:546px; overflow:auto; position:relative}
+.face-23-2-graph .mCSB_container {overflow:visible}
+.face-23-2-graph svg {display:block; position:absolute; left:40px; bottom:0; height:471px}
+.face-23-2-graph-inner {display:inline-block; vertical-align:top; padding:0 30px 0 40px; white-space:nowrap; position:relative}
+.face-23-2-graph-item {display:inline-block; vertical-align:top; width:86px; height:471px; position:relative}
+.face-23-2-graph-item-year {position:absolute; left:50%; white-space:nowrap; bottom:-32px; transform:translateX(-50%); font:11px/11px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626}
+.face-23-2-graph .face-1-chart-point {margin-left:-8.5px}
+.face-23-2-graph .face-1-chart-point:hover {z-index:3}
+.face-23-2-graph .face-1-chart-point span {display:none}
+.face-23-2-graph .face-1-chart-point span::before {content:""; display:block; width:10px; height:10px; background:#fff; position:absolute; left:50%; bottom:-4px; transform:rotate(45deg); margin-left:-5px}
+.face-23-2-graph .face-1-chart-point:hover span {display:block; font-size:11px; line-height:28px; height:28px; bottom:13px; padding:0 6px; background:#fff; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); opacity:1}
+.face-23-2-graph .face-1-chart-line {margin-left:0; border-top-style:solid}
+.face-23-2-graph .face-1-chart-point-1 {border-color:#fe6600}
+.face-23-2-graph .face-1-chart-point-1 span {color:#fe6600}
+.face-23-2-graph .face-1-chart-line-1 {border-color:#fe6600}
+.face-23-2-graph .face-1-chart-point-2 {border-color:#4f7b96}
+.face-23-2-graph .face-1-chart-point-2 span {color:#4f7b96}
+.face-23-2-graph .face-1-chart-line-2 {border-color:#4f7b96}
+.face-23-2-graph .face-1-chart-point-3 {border-color:#eb2121}
+.face-23-2-graph .face-1-chart-point-3 span {color:#eb2121}
+.face-23-2-graph .face-1-chart-line-3 {border-color:#eb2121}
+
+@media screen and (max-width:1139px) {
+    .face-23-2-container {height:328px; top:20px; margin:0}
+    .face-23-2-scale-left {left:0; width:35px; height:284px}
+    .face-23-2-scale-left-item {right:10px; font-size:8px; line-height:8px}
+    .face-23-2-scale-left-item::before {right:-10px; width:6px}
+    .face-23-2-scale-right {width:35px; height:284px}
+    .face-23-2-scale-right-inner {top:62px}
+    .face-23-2-scale-right-item {left:10px; font-size:8px; line-height:8px}
+    .face-23-2-scale-right-item::before {left:-10px; width:6px}
+    .face-23-2-graph {height:328px}
+    .face-23-2-graph-inner {padding:0 40px}
+    .face-23-2-graph-item {width:52px; height:284px}
+    .face-23-2-graph-item-year {bottom:-23px; font-size:8px; line-height:12px}
+    .face-23-2-graph .face-1-chart-point {cursor:pointer}
+    .face-23-2-container .mCSB_scrollTools.mCSB_scrollTools_horizontal a + .mCSB_draggerContainer {margin:0}
+    .face-23-2-container .mCSB_scrollTools.mCSB_scrollTools_horizontal a {display:none !important}
+    .face-23-2-container .mCSB_horizontal {bottom:0}
+    .face-23-2-container .mCSB_scrollTools.mCSB_scrollTools_horizontal {height:6px}
+    .face-23-2-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {margin:0; height:6px}
+    .face-23-2-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {margin:0; height:6px}
+}

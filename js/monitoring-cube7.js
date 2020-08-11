@@ -154,6 +154,7 @@ $(window).on('load resize', function() {
 
     face31_1_Redraw();
     face23_1_Redraw();
+    face23_2_Redraw();
 });
 
 function face31_1_Redraw() {
@@ -426,5 +427,128 @@ function face23_1_Redraw() {
     $(window).on('scroll', function() {
         $('.face-23-1-window').remove();
     });
+
+}
+
+function face23_2_Redraw() {
+
+    var curMaxSumm = 0;
+    var curMaxSumm3 = 0;
+
+    for (var i = 0; i < faceData23_2.length; i++) {
+        var curData = faceData23_2[i];
+        if (Number(curData.summ1) > curMaxSumm) {
+            curMaxSumm = Number(curData.summ1);
+        }
+        if (Number(curData.summ2) > curMaxSumm) {
+            curMaxSumm = Number(curData.summ2);
+        }
+        if (Number(curData.summ3) > curMaxSumm3) {
+            curMaxSumm3 = Number(curData.summ3);
+        }
+    }
+
+    var countSumm = Math.ceil(curMaxSumm / 200) + 2;
+    var countSumm3 = Math.ceil(curMaxSumm3 / 2) + 2;
+    var summMax = (countSumm - 1) * 200;
+    var summ3Max = (countSumm3 - 1) * 2;
+
+    var scaleLeftHTML = '';
+    for (var i = 0; i < countSumm; i++) {
+        scaleLeftHTML += '<div class="face-23-2-scale-left-item" style="bottom:' + (i / (countSumm - 1) * 100) + '%">' + (i * 200) + '</div>';
+    }
+    $('.face-23-2-scale-left').html(scaleLeftHTML);
+
+    var scaleRightHTML = '';
+    for (var i = 0; i < countSumm3; i++) {
+        scaleRightHTML += '<div class="face-23-2-scale-right-item" style="bottom:' + (i / (countSumm3 - 1) * 100) + '%">' + (i * 2) + '</div>';
+    }
+    $('.face-23-2-scale-right-inner').html(scaleRightHTML);
+
+    var graphHTML = '';
+    for (var i = 0; i < faceData23_2.length; i++) {
+        var curData = faceData23_2[i];
+
+        graphHTML +=    '<div class="face-23-2-graph-item">';
+        graphHTML +=        '<div class="face-23-2-graph-item-year">' + curData.year + '</div>';
+        graphHTML +=    '</div>';
+    }
+    $('.face-23-2-graph-inner').html(graphHTML);
+
+    $('.face-23-2-graph').mCustomScrollbar('destroy');
+    $('.face-23-2-graph').mCustomScrollbar({
+        axis: 'x',
+        scrollButtons: {
+            enable: true
+        }
+    });
+
+    var itemWidth = 86;
+    var itemHeight = 471;
+    var itemHeight3 = 311;
+    if ($(window).width() < 1140) {
+        itemWidth = 52;
+        itemHeight = 284;
+        itemHeight3 = 222;
+    }
+
+    function angle_point(a, b, c) {
+        var x1 = a[0] - b[0];
+        var x2 = c[0] - b[0];
+        var y1 = a[1] - b[1];
+        var y2 = c[1] - b[1];
+
+        var d1 = Math.sqrt(x1 * x1 + y1 * y1);
+        var d2 = Math.sqrt(x2 * x2 + y2 * y2);
+        return Math.acos((x1 * x2 + y1 * y2) / (d1 * d2)) * 180 / Math.PI;
+    }
+
+    for (var i = 0; i < faceData23_2.length; i++) {
+        var curX = i * itemWidth + itemWidth / 2 + 40;
+        var curY = itemHeight - ((faceData23_2[i].summ1 / summMax) * itemHeight);
+        if (i > 0) {
+            var prevX = (i - 1) * itemWidth + itemWidth / 2 + 40;
+            var prevY = itemHeight - ((faceData23_2[i - 1].summ1 / summMax) * itemHeight);
+            var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+            var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+            if (curY < prevY) {
+                curAngle = -curAngle;
+            }
+            $('.face-23-2-graph-inner').append('<div class="face-1-chart-line face-1-chart-line-1" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+        }
+        $('.face-23-2-graph-inner').append('<div class="face-1-chart-point face-1-chart-point-1" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong>' + faceData23_2[i].summ1 + ' ед.</strong></span></div>');
+    }
+
+    for (var i = 0; i < faceData23_2.length; i++) {
+        var curX = i * itemWidth + itemWidth / 2 + 40;
+        var curY = itemHeight - ((faceData23_2[i].summ2 / summMax) * itemHeight);
+        if (i > 0) {
+            var prevX = (i - 1) * itemWidth + itemWidth / 2 + 40;
+            var prevY = itemHeight - ((faceData23_2[i - 1].summ2 / summMax) * itemHeight);
+            var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+            var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+            if (curY < prevY) {
+                curAngle = -curAngle;
+            }
+            $('.face-23-2-graph-inner').append('<div class="face-1-chart-line face-1-chart-line-2" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+        }
+        $('.face-23-2-graph-inner').append('<div class="face-1-chart-point face-1-chart-point-2" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong>' + faceData23_2[i].summ2 + ' ед.</strong></span></div>');
+    }
+
+    for (var i = 0; i < faceData23_2.length; i++) {
+        var curX = i * itemWidth + itemWidth / 2 + 40;
+        var curY = itemHeight - ((faceData23_2[i].summ3 / summ3Max) * itemHeight3);
+        if (i > 0) {
+            var prevX = (i - 1) * itemWidth + itemWidth / 2 + 40;
+            var prevY = itemHeight - ((faceData23_2[i - 1].summ3 / summ3Max) * itemHeight3);
+            var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+            var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+            if (curY < prevY) {
+                curAngle = -curAngle;
+            }
+            $('.face-23-2-graph-inner').append('<div class="face-1-chart-line face-1-chart-line-3" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+        }
+        $('.face-23-2-graph-inner').append('<div class="face-1-chart-point face-1-chart-point-3" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong>' + faceData23_2[i].summ3 + ' ед.</strong></span></div>');
+    }
 
 }
