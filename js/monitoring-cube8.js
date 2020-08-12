@@ -153,6 +153,8 @@ $(window).on('load resize', function() {
     }
 
     face27_1_Redraw();
+    face27_4_Redraw();
+    face27_5_Redraw();
 
 });
 
@@ -486,4 +488,176 @@ function face14_1_RedrawFooter() {
 
         $('.cube').css({'margin-bottom': $('.cube-face.active').find('.cube-face-footer').outerHeight()});
     }
+}
+
+function face27_4_Redraw() {
+
+    var curMaxSumm = 0;
+
+    for (var i = 0; i < faceData27_4.length; i++) {
+        var curData = faceData27_4[i];
+        if (Number(curData.summ1) > curMaxSumm) {
+            curMaxSumm = Number(curData.summ1);
+        }
+        if (Number(curData.summ2) > curMaxSumm) {
+            curMaxSumm = Number(curData.summ2);
+        }
+    }
+
+    var countSumm = Math.ceil(curMaxSumm / 100) + 2;
+    var summMax = (countSumm - 1) * 100;
+
+    var scaleLeftHTML = '';
+    for (var i = 0; i < countSumm; i++) {
+        scaleLeftHTML += '<div class="face-27-4-scale-left-item" style="bottom:' + (i / (countSumm - 1) * 100) + '%">' + (i * 100) + '</div>';
+    }
+    $('.face-27-4-scale-left').html(scaleLeftHTML);
+
+    var graphHTML = '';
+    for (var i = 0; i < faceData27_4.length; i++) {
+        var curData = faceData27_4[i];
+
+        graphHTML +=    '<div class="face-27-4-graph-item">';
+        graphHTML +=        '<div class="face-27-4-graph-item-year">' + curData.year + '</div>';
+        graphHTML +=    '</div>';
+    }
+    $('.face-27-4-graph-inner').html(graphHTML);
+
+    $('.face-27-4-graph').mCustomScrollbar('destroy');
+    $('.face-27-4-graph').mCustomScrollbar({
+        axis: 'x',
+        scrollButtons: {
+            enable: true
+        }
+    });
+
+    var itemWidth = 86;
+    var itemHeight = 471;
+    if ($(window).width() < 1140) {
+        itemWidth = 52;
+        itemHeight = 284;
+    }
+
+    function angle_point(a, b, c) {
+        var x1 = a[0] - b[0];
+        var x2 = c[0] - b[0];
+        var y1 = a[1] - b[1];
+        var y2 = c[1] - b[1];
+
+        var d1 = Math.sqrt(x1 * x1 + y1 * y1);
+        var d2 = Math.sqrt(x2 * x2 + y2 * y2);
+        return Math.acos((x1 * x2 + y1 * y2) / (d1 * d2)) * 180 / Math.PI;
+    }
+
+    for (var i = 0; i < faceData27_4.length; i++) {
+        var curX = i * itemWidth + itemWidth / 2 + 40;
+        var curY = itemHeight - ((faceData27_4[i].summ1 / summMax) * itemHeight);
+        if (i > 0) {
+            var prevX = (i - 1) * itemWidth + itemWidth / 2 + 40;
+            var prevY = itemHeight - ((faceData27_4[i - 1].summ1 / summMax) * itemHeight);
+            var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+            var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+            if (curY < prevY) {
+                curAngle = -curAngle;
+            }
+            $('.face-27-4-graph-inner').append('<div class="face-1-chart-line face-1-chart-line-1" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+        }
+        $('.face-27-4-graph-inner').append('<div class="face-1-chart-point face-1-chart-point-1" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong>' + faceData27_4[i].summ1 + '</strong></span></div>');
+    }
+
+    for (var i = 0; i < faceData27_4.length; i++) {
+        var curX = i * itemWidth + itemWidth / 2 + 40;
+        var curY = itemHeight - ((faceData27_4[i].summ2 / summMax) * itemHeight);
+        if (i > 0) {
+            var prevX = (i - 1) * itemWidth + itemWidth / 2 + 40;
+            var prevY = itemHeight - ((faceData27_4[i - 1].summ2 / summMax) * itemHeight);
+            var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+            var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+            if (curY < prevY) {
+                curAngle = -curAngle;
+            }
+            $('.face-27-4-graph-inner').append('<div class="face-1-chart-line face-1-chart-line-2" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+        }
+        $('.face-27-4-graph-inner').append('<div class="face-1-chart-point face-1-chart-point-2" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong>' + faceData27_4[i].summ2 + '</strong></span></div>');
+    }
+
+}
+
+function face27_5_Redraw() {
+    var face1Labels = [];
+    var face1DataActually = [];
+
+    $('.face-27-5-ratio-container .face-1-chart-labels').html('');
+    $('.face-27-5-ratio-container .face-1-chart-icons').html('');
+
+    var itemWidth = 122;
+    if ($(window).width() < 1140) {
+        itemWidth = 82;
+    }
+
+    for (var i = 0; i < faceData27_5.length; i++) {
+        var curData = faceData27_5[i];
+        face1Labels.push(curData.year);
+
+        face1DataActually.push(Number(curData.summ));
+    }
+
+    $('.face-27-5-ratio-container .face-1-chart').width(face1Labels.length * itemWidth + itemWidth);
+
+    for (var i = 0; i < face1Labels.length; i++) {
+        $('.face-27-5-ratio-container .face-1-chart-labels').append('<div class="face-1-chart-year" style="left:' + (i * itemWidth + itemWidth /2) + 'px"><strong>' + face1Labels[i] + '</strong></div>');
+    }
+
+    var maxSumm = 0;
+
+    for (var i = 0; i < faceData27_5.length; i++) {
+        var curData = faceData27_5[i];
+
+        if (curData.summ != null && maxSumm < Number(curData.summ)) {
+            maxSumm = Number(curData.summ);
+        }
+    }
+
+    for (var i = 0; i < faceData27_5.length; i++) {
+        var curData = faceData27_5[i];
+
+        if (curData.summ != null) {
+            $('.face-27-5-ratio-container .face-1-chart-icons').append('<div class="face-1-chart-icon" style="left:' + (i * itemWidth + itemWidth / 2) + 'px">' +
+                                                                        '<div class="face-1-chart-icon-summ" data-summ="' + curData.summ + '" style="height:' + (Number(curData.summ) / maxSumm * 100) + '%"><svg width="71" height="142" viewBox="0 0 71 142" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M21.9081 6.19913L27.3399 8.61058L29.7757 9.69452L35.8652 12.3983L41.9548 9.69452L44.3906 8.61058L45.6085 8.07471V14.7245H48.0443V6.99077L49.8224 6.19913L35.8652 0L21.9081 6.19913ZM47.0857 25.1954C47.0857 31.4859 41.9862 36.5854 35.6957 36.5854C29.4052 36.5854 24.3057 31.4859 24.3057 25.1954C24.3057 20.948 26.6305 17.2437 30.077 15.2854L29.9782 15.2385V10.9701L35.648 13.4058L41.3178 10.9701V15.2385L41.2708 15.2608C44.7413 17.2125 47.0857 20.9302 47.0857 25.1954ZM35.695 45.8574L42.3409 40.0701C43.2881 40.2266 44.2354 40.3988 45.1826 40.5711L45.1827 40.5711L45.1828 40.5711L45.1833 40.5712C49.7393 41.9949 53.7258 43.9882 57.1428 46.8357C57.997 47.6899 58.5665 48.8289 58.8513 49.9679L61.3027 60.3866L61.3202 60.3962L70.7312 100.421H58.5877C56.4573 113.733 51.7792 140.67 50.1103 141.914C49.967 142.02 49.8112 142.026 49.6451 141.942H38.6341H32.9391H22.0089C21.8591 142.018 21.7176 142.021 21.5862 141.942H21.5491V141.918L21.5437 141.914C19.8748 140.67 15.1967 113.733 13.0663 100.421H0.922852L4.48817 85.2575C4.51791 85.0583 4.57075 84.8656 4.62111 84.6921L4.74866 84.1496L4.74882 84.1379L8.49 68.2379L10.3338 60.3962L10.3353 60.3954L12.7218 50.2527C13.0066 49.1137 13.5761 47.9747 14.4303 47.1204C17.8473 44.2729 21.8338 41.9949 26.3898 40.8559C27.3179 40.6028 28.246 40.3747 29.174 40.179L35.695 45.8574Z" fill="#4F7096"/></svg></div>' +
+                                                                    '</div>');
+        } else {
+            $('.face-27-5-ratio-container .face-1-chart-icons').append('<div class="face-1-chart-icon" style="left:' + (i * itemWidth + itemWidth / 2) + 'px">' +
+                                                                        '<div class="face-1-chart-icon-summ-not">н/д</div>' +
+                                                                    '</div>');
+        }
+    }
+
+    $('.face-27-5-ratio-container').mCustomScrollbar({
+        axis: 'x',
+        scrollButtons: {
+            enable: true
+        },
+        callbacks: {
+            onScrollStart: function() {
+                $('.face-27-5-ratio-window').remove();
+            }
+        }
+    });
+
+    $('.face-27-5-ratio-container .face-1-chart-icon-summ').on('mouseover', function(e) {
+        $('.face-27-5-ratio-window').remove();
+        var curItem = $(this);
+        var curX = curItem.offset().left + curItem.width() / 2 - $(window).scrollLeft();
+        var curY = curItem.offset().top + curItem.height() / 2 - $(window).scrollTop();
+        $('body').append('<div class="face-27-5-ratio-window" style="left:' + curX + 'px; top:' + curY + 'px"><div class="face-39-ratio-window-title">Количество стипендий</div><div class="face-27-5-ratio-window-value">' + curItem.attr('data-summ') + '</div></div>');
+    });
+
+    $('.face-27-5-ratio-container .face-1-chart-icon-summ').on('mouseout', function(e) {
+        $('.face-27-5-ratio-window').remove();
+    });
+
+    $(window).on('scroll', function() {
+        $('.face-27-5-ratio-window').remove();
+    });
+
 }

@@ -1897,3 +1897,79 @@ canvas {user-select:none}
     .face-27-1-container .face-1-chart-icons {bottom:30px; height:130px; width:80px}
     .face-27-1-container .face-1-chart-icon-summ {margin-right:0}
 }
+
+.face-27-4-container {position:relative; height:546px; top:31px; margin:0 40px}
+.face-27-4-scale-left {position:absolute; left:0; width:32px; height:471px; border-right:1px solid #d3d3d3; background:#f2f2f2; z-index:3}
+.face-27-4-scale-left::before {content:""; display:block; position:absolute; left:0; bottom:-30px; top:0; right:0; background:#f2f2f2}
+.face-27-4-scale-left-item {position:absolute; right:20px; transform:translateY(50%); font:11px/11px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626; white-space:nowrap}
+.face-27-4-scale-left-item::before {content:""; display:block; position:absolute; right:-20px; top:50%; width:10px; height:2px; background:#fe6600; margin-top:-1px}
+.face-27-4-graph {font-size:0; line-height:0; letter-spacing:0; height:546px; overflow:auto; position:relative}
+.face-27-4-graph .mCSB_container {overflow:visible}
+.face-27-4-graph svg {display:block; position:absolute; left:40px; bottom:0; height:471px}
+.face-27-4-graph-inner {display:inline-block; vertical-align:top; padding:0 30px 0 40px; white-space:nowrap; position:relative}
+.face-27-4-graph-item {display:inline-block; vertical-align:top; width:86px; height:471px; position:relative}
+.face-27-4-graph-item::before {content:""; display:block; position:absolute; left:50%; top:0; bottom:0; width:1px; background:#e4e4e4}
+.face-27-4-graph-item-year {position:absolute; left:50%; white-space:nowrap; bottom:-32px; transform:translateX(-50%); font:11px/11px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626}
+.face-27-4-graph .face-1-chart-point {margin-left:-8.5px}
+.face-27-4-graph .face-1-chart-point:hover {z-index:3}
+.face-27-4-graph .face-1-chart-line {margin-left:0; border-top-style:solid}
+.face-27-4-graph .face-1-chart-point-1 {border-color:#3779a8}
+.face-27-4-graph .face-1-chart-point-1 span {color:#393939}
+.face-27-4-graph .face-1-chart-line-1 {border-color:#3779a8}
+.face-27-4-graph .face-1-chart-point-2 {border-color:#91d9d0}
+.face-27-4-graph .face-1-chart-point-2 span {color:#393939}
+.face-27-4-graph .face-1-chart-line-2 {border-color:#91d9d0}
+
+@media screen and (max-width:1139px) {
+    .face-27-4-container {height:328px; top:20px; margin:0}
+    .face-27-4-scale-left {left:0; width:35px; height:284px}
+    .face-27-4-scale-left-item {right:10px; font-size:8px; line-height:8px}
+    .face-27-4-scale-left-item::before {right:-10px; width:6px}
+    .face-27-4-graph {height:328px}
+    .face-27-4-graph-inner {padding:0 40px}
+    .face-27-4-graph-item {width:52px; height:284px}
+    .face-27-4-graph-item-year {bottom:-23px; font-size:8px; line-height:12px}
+    .face-27-4-graph .face-1-chart-point {cursor:pointer}
+    .face-27-4-container .mCSB_scrollTools.mCSB_scrollTools_horizontal a + .mCSB_draggerContainer {margin:0}
+    .face-27-4-container .mCSB_scrollTools.mCSB_scrollTools_horizontal a {display:none !important}
+    .face-27-4-container .mCSB_horizontal {bottom:0}
+    .face-27-4-container .mCSB_scrollTools.mCSB_scrollTools_horizontal {height:6px}
+    .face-27-4-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {margin:0; height:6px}
+    .face-27-4-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {margin:0; height:6px}
+}
+
+.face-27-5-ratio-container {margin:25px 40px 0 40px}
+.face-27-5-ratio-container .face-1-chart-labels {bottom:110px}
+.face-27-5-ratio-container .face-1-chart-year strong {display:block; width:42px; margin:0 auto; height:18px; text-decoration:none; color:#262626; border-radius:5px; background:rgba(255, 220, 197, 0.67); font-weight:normal}
+.face-27-5-ratio-container .face-1-chart-point span {font-size:12.5px}
+.face-27-5-ratio-container .face-1-chart-icons {position:absolute; left:0; right:0; bottom:153px; height:212px; width:100px; white-space:nowrap}
+.face-27-5-ratio-container .face-1-chart-icon {position:absolute; bottom:0; top:0; font-size:0; line-height:212px; width:42px}
+.face-27-5-ratio-container .face-1-chart-icon-summ {position:absolute; left:0; right:0; bottom:0}
+.face-27-5-ratio-container .face-1-chart-icon-summ svg {display:inline-block; height:100%; vertical-align:top; width:auto; position:relative; left:50%; transform:translateX(-50%)}
+.face-27-5-ratio-container .face-1-chart-icon-summ-not {position:absolute; left:0; right:0; bottom:0; font-size:14px; line-height:21px; text-align:center}
+
+.face3-list-27-5-ratio {column-count:1; padding:0 0 20px 0}
+.face3-list-27-5-ratio .face3-list-item {padding:0 0 20px 0}
+
+.face-27-5-ratio-window {display:block; position:fixed; z-index:99; width:160px; text-align:left; background:#fff; box-sizing:border-box; padding:21px 20px 11px 20px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); margin:10px 0 0 -80px; pointer-events:none}
+.face-27-5-ratio-window::before {content:""; display:block; position:absolute; left:50%; top:-5px; margin-left:-12.5px; width:25px; height:25px; background:#fff; transform:rotate(45deg)}
+.face-27-5-ratio-window-title {font-size:14px; line-height:14px; letter-spacing:0.04em; color:#121212}
+.face-27-5-ratio-window-value {margin:5px 0 0 0; font:14px/14px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#fe6600}
+
+@media screen and (max-width:1139px) {
+    .face-27-5-ratio-container {margin:25px 0 0 0; height:323px}
+    .face-27-5-ratio-container .face-1-container {margin:0}
+    .face-27-5-ratio-container .face-1-content {height:323px}
+    .face-27-5-ratio-container .face-1-chart-labels {bottom:22px}
+    .face-27-5-ratio-container .face-1-chart-year {width:42px}
+    .face-27-5-ratio-container .face-1-chart-year strong {height:13px; width:32px}
+    .face-27-5-ratio-container .face-1-chart-icons {bottom:50px; height:110px; width:80px}
+    .face-27-5-ratio-container .face-1-chart-icon-summ {cursor:pointer}
+    .face-27-5-ratio-window {margin-top:-10px}
+    .face-27-5-ratio-container .mCSB_scrollTools.mCSB_scrollTools_horizontal a + .mCSB_draggerContainer {margin:0}
+    .face-27-5-ratio-container .mCSB_scrollTools.mCSB_scrollTools_horizontal a {display:none !important}
+    .face-27-5-ratio-container .mCSB_horizontal {bottom:0}
+    .face-27-5-ratio-container .mCSB_scrollTools.mCSB_scrollTools_horizontal {height:6px}
+    .face-27-5-ratio-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {margin:0; height:6px}
+    .face-27-5-ratio-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {margin:0; height:6px}
+}
