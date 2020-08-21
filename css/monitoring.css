@@ -2116,3 +2116,40 @@ canvas {user-select:none}
     .face-28-2-window .mCSB_scrollTools.mCSB_scrollTools_vertical .mCSB_draggerRail {margin:0; width:6px}
     .face-28-2-window .mCSB_scrollTools.mCSB_scrollTools_vertical .mCSB_dragger .mCSB_dragger_bar {margin:0; width:6px}
 }
+
+.face-36-1-container .face-1-chart-point.active {cursor:default; pointer-events:none}
+.face-36-1-container .face-1-chart-point em::after {display:none}
+.face-36-1-container .face-1-chart-graph {top:30px; bottom:350px}
+.face-36-1-container .face-1-chart-labels {bottom:60px}
+.face-36-1-container .face-1-chart-year {width:82px}
+.face-36-1-container .face-1-chart-year strong {display:block; width:42px; margin:0 auto; height:18px; text-decoration:none; color:#262626; border-radius:5px; background:rgba(255, 220, 197, 0.67); font-weight:normal}
+.face-36-1-container .face-1-chart-point span {font-size:12.5px}
+.face-36-1-container .face-1-chart-icons {position:absolute; left:0; right:0; bottom:93px; height:140px; width:100px; white-space:nowrap}
+.face-36-1-container .face-1-chart-icon {position:absolute; bottom:0; top:0; font-size:0; line-height:140px; width:82px}
+.face-36-1-container .face-1-chart-icon-summ {position:absolute; left:50%; margin-left:-17.5px; bottom:0; line-height:0; width:35px}
+.face-36-1-container .face-1-chart-icon-summ-inner {position:absolute; left:0; bottom:0; right:0}
+.face-36-1-container .face-1-chart-point {margin-left:-8px}
+.face-36-1-container .face-1-chart-line {margin-left:0}
+.face-36-1-container .face-1-chart-icon svg {display:block; margin:2px auto 0 auto}
+.face-36-1-container .face-1-chart-icon svg:first-child {margin:0 auto 11px auto}
+.face-36-1-container .face-1-chart-icon-summ path {fill:#4f7b96}
+.face-36-1-ratio-window {width:70px; margin-left:-35px; padding:0; text-align:center}
+.face-36-1-ratio-window .face-39-ratio-window-value {margin:0; line-height:45px; color:#121212; position:relative}
+
+@media screen and (max-width:1139px) {
+    .face-36-1-container .face-1-container {margin:0}
+    .face-36-1-container .face-1-chart-graph {top:30px; bottom:200px}
+    .face-36-1-container .face-1-chart-point span {font-size:9px; line-height:11px}
+    .face-36-1-container .face-1-chart-labels {bottom:22px}
+    .face-36-1-container .face-1-chart-year {width:52px}
+    .face-36-1-container .face-1-chart-year strong {width:32px}
+    .face-36-1-container .face-1-chart-year strong {height:13px}
+    .face-36-1-container .face-1-chart-icons {bottom:50px; height:110px; width:52px}
+    .face-36-1-container .face-1-chart-icon {width:52px}
+    .face-36-1-ratio-window {width:37px; margin-left:-18px}
+    .face-36-1-ratio-window .face-39-ratio-window-value {line-height:35px}
+    .face-36-1-container .face-1-chart-point {margin-left:-8px}
+    .face-36-1-container .face-1-chart-line {margin-left:0}
+    .face-36-1-container .face-1-content {height:290px}
+    .face-36-1-container .face-1-chart {height:290px}
+}

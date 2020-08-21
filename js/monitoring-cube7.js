@@ -157,6 +157,7 @@ $(window).on('load resize', function() {
     face23_2_Redraw();
     face2Redraw();
     face28_2_Redraw();
+    face36_1_Redraw();
 });
 
 function face31_1_Redraw() {
@@ -1469,4 +1470,170 @@ function face28_2_Redraw() {
         var curID = $('.face-28-2-back').attr('data-id');
         $('.map-russia-district-28-2[data-id="' + curID + '"]').trigger('click');
     }
+}
+
+function face36_1_Redraw() {
+    var face1Labels = [];
+    var face1DataActually = [];
+    var face1DataForecast = [];
+
+    $('.face-36-1-container .face-1-chart-graph').html('');
+    $('.face-36-1-container .face-1-chart-labels').html('');
+    $('.face-36-1-container .face-1-chart-icons').html('');
+
+    var itemWidth = 82;
+    if ($(window).width() < 1140) {
+        itemWidth = 52;
+    }
+
+    for (var i = 0; i < faceData36_1.length; i++) {
+        var curData = faceData36_1[i];
+        face1Labels.push(curData.year);
+
+        if (curData.type == 'actually') {
+            if (curData.summ !== undefined) {
+                face1DataActually.push(Number(curData.summ));
+            } else {
+                face1DataActually.push(null);
+            }
+            if (curData.summf !== undefined) {
+                face1DataForecast.push(Number(curData.summf));
+            } else {
+                face1DataForecast.push(null);
+            }
+        } else {
+            face1DataActually.push(null);
+            face1DataForecast.push(Number(curData.summf));
+        }
+    }
+    
+    $('.face-36-1-container .face-1-chart').width(face1Labels.length * itemWidth);
+
+    var minPlace = 9999;
+    var maxPlace = 0;
+    var curScroll = 0;
+
+    for (var i = 0; i < face1DataForecast.length; i++) {
+        if (face1DataForecast[i] != null) {
+            if (face1DataForecast[i] < minPlace) {
+                minPlace = face1DataForecast[i];
+            }
+            if (face1DataForecast[i] > maxPlace) {
+                maxPlace = face1DataForecast[i];
+            }
+        }
+    }
+
+    function angle_point(a, b, c) {
+        var x1 = a[0] - b[0];
+        var x2 = c[0] - b[0];
+        var y1 = a[1] - b[1];
+        var y2 = c[1] - b[1];
+
+        var d1 = Math.sqrt(x1 * x1 + y1 * y1);
+        var d2 = Math.sqrt(x2 * x2 + y2 * y2);
+        return Math.acos((x1 * x2 + y1 * y2) / (d1 * d2)) * 180 / Math.PI;
+    }
+
+    var curLastActually = -1;
+    for (var i = 0; i < face1DataActually.length; i++) {
+        if (face1DataActually[i] != null) {
+            curLastActually++;
+            var curX = (i * itemWidth) + itemWidth / 2;
+            curScroll = curX;
+        }
+    }
+
+    var curLastForecast = -1;
+    for (var i = 0; i < face1DataForecast.length; i++) {
+        if (face1DataForecast[i] != null) {
+            if (curLastForecast < 0) {
+                curLastForecast = i;
+            }
+            var curX = i * itemWidth + itemWidth / 2;
+            var curY = ((face1DataForecast[i] - maxPlace) / (minPlace - maxPlace)) * $('.face-36-1-container .face-1-chart-graph').height();
+            if (face1DataForecast[i - 1] != null) {
+                var prevX = (i - 1) * itemWidth + itemWidth / 2;
+                var prevY = ((face1DataForecast[i - 1] - maxPlace) / (minPlace - maxPlace)) * $('.face-36-1-container .face-1-chart-graph').height();
+                var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+                var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+                if (curY < prevY) {
+                    curAngle = -curAngle;
+                }
+                $('.face-36-1-container .face-1-chart-graph').append('<div class="face-1-chart-line" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+            }
+            $('.face-36-1-container .face-1-chart-graph').append('<div class="face-1-chart-point" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong>' + face1DataForecast[i] + '</strong></span></div>');
+        }
+    }
+
+    for (var i = 0; i < face1Labels.length; i++) {
+        if (face1DataActually[i] != null) {
+            $('.face-36-1-container .face-1-chart-labels').append('<div class="face-1-chart-year" style="left:' + (i * itemWidth) + 'px"><strong>' + face1Labels[i] + '</strong></div>');
+        } else {
+            $('.face-36-1-container .face-1-chart-labels').append('<div class="face-1-chart-year" style="left:' + (i * itemWidth) + 'px"><span>' + face1Labels[i] + '</span></div>');
+        }
+    }
+
+    var maxSumm = 0;
+
+    for (var i = 0; i < faceData36_1.length; i++) {
+        var curData = faceData36_1[i];
+
+        if (curData.type == 'actually') {
+            if (maxSumm < Number(curData.summ)) {
+                maxSumm = Number(curData.summ);
+            }
+        }
+    }
+
+    for (var i = 0; i < faceData36_1.length; i++) {
+        var curData = faceData36_1[i];
+
+        if (curData.type == 'actually') {
+            $('.face-36-1-container .face-1-chart-icons').append('<div class="face-1-chart-icon" style="left:' + (i * itemWidth) + 'px">' +
+                                                                        '<div class="face-1-chart-icon-summ" data-summ="' + curData.summ + '" style="height:' + (Number(curData.summ) / maxSumm * 100) + '%"><div class="face-1-chart-icon-summ-inner"></div></div>' +
+                                                                    '</div>');
+        }
+    }
+
+    $('.face-36-1-container .face-1-chart-icon-summ').each(function() {
+        var curBar = $(this);
+        var curHeight = curBar.height();
+        curBar.find('.face-1-chart-icon-summ-inner').append('<svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.51907 8.58292V23.2203H12.7667V8.58292H9.51907ZM14.8776 0.0695912L28.7494 7.63184C28.9814 7.77102 29.0742 8.07258 28.935 8.30455C28.8422 8.49013 28.6799 8.58292 28.4943 8.58292H23.4605V23.2203H24.7132C25.4091 23.2203 25.989 23.777 25.989 24.4729V25.7256H27.2416C27.9375 25.7256 28.4943 26.3055 28.4943 27.0014V28.254H0.75057V27.0014C0.75057 26.3055 1.3073 25.7256 2.00321 25.7256H3.27905V24.4729C3.27905 23.777 3.83578 23.2203 4.53169 23.2203H5.78434V8.58292H0.75057C0.472205 8.58292 0.240234 8.35095 0.240234 8.07258C0.240234 7.86381 0.35622 7.67823 0.541796 7.60864L14.3905 0.0695912C14.5296 -0.0231971 14.7152 -0.0231971 14.8776 0.0695912ZM19.7258 8.58292H16.4782V23.2203H19.7258V8.58292Z" /></svg>');
+        var countBlocks = Math.floor(curHeight - 40) / 15;
+        for (var i = 0; i < countBlocks; i++) {
+            curBar.find('.face-1-chart-icon-summ-inner').append('<svg width="35" height="13" viewBox="0 0 35 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M35 13L35 10.5625C32.9262 10.5625 31.2284 8.80453 31.2284 6.5C31.2284 4.19546 32.9262 2.4375 35 2.4375L35 -2.86102e-06L6.18535 -3.41966e-07C2.74929 -4.1576e-08 -8.78416e-07 2.9521 -5.68248e-07 6.5C-2.58081e-07 10.0479 2.74929 13 6.18535 13L35 13ZM30.2227 10.5625L6.18535 10.5625C4.11151 10.5625 2.4138 8.80454 2.41379 6.5C2.41379 4.19547 4.11151 2.4375 6.18535 2.4375L30.2227 2.4375C29.3574 3.56009 28.8147 4.96064 28.8147 6.5C28.8147 8.03575 29.3611 9.44113 30.2227 10.5625Z" /></svg>');
+        }
+    });
+
+    $('.face-36-1-container').mCustomScrollbar('destroy');
+    $('.face-36-1-container').mCustomScrollbar({
+        axis: 'x',
+        setLeft: '-' + (curScroll - $('.face-36-1-container').width() / 2) + 'px',
+        scrollButtons: {
+            enable: true
+        },
+        callbacks: {
+            onScrollStart: function() {
+                $('.face-36-ratio-window').remove();
+            }
+        }
+    });
+
+    $('.face-36-1-container .face-1-chart-icon-summ').on('mouseover', function(e) {
+        $('.face-39-1-window').remove();
+        var curItem = $(this);
+        var curX = curItem.offset().left + curItem.width() / 2 - $(window).scrollLeft();
+        var curY = curItem.offset().top + curItem.height() / 2 - $(window).scrollTop();
+        $('body').append('<div class="face-39-ratio-window face-36-1-ratio-window" style="left:' + curX + 'px; top:' + curY + 'px"><div class="face-39-ratio-window-value">' + String(curItem.attr('data-summ')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</div></div>');
+    });
+
+    $('.face-36-1-container .face-1-chart-icon-summ').on('mouseout', function(e) {
+        $('.face-39-ratio-window').remove();
+    });
+
+    $(window).on('scroll', function() {
+        $('.face-39-ratio-window').remove();
+    });
+
 }
