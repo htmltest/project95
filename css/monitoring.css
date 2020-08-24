@@ -2153,3 +2153,152 @@ canvas {user-select:none}
     .face-36-1-container .face-1-content {height:290px}
     .face-36-1-container .face-1-chart {height:290px}
 }
+
+.face-30-1-container .face-1-chart-point.active {cursor:default; pointer-events:none}
+.face-30-1-container .face-1-chart-point em::after {display:none}
+.face-30-1-container .face-1-chart-graph {top:30px; bottom:400px}
+.face-30-1-container .face-1-chart-labels {bottom:60px}
+.face-30-1-container .face-1-chart-year {width:147px; text-align:center}
+.face-30-1-container .face-1-chart-year strong {display:block; margin:0 auto; width:42px; height:18px; text-decoration:none; color:#262626; border-radius:5px; background:rgba(255, 220, 197, 0.67); font-weight:normal}
+.face-30-1-container .face-1-chart-point span {font-size:12.5px}
+.face-30-1-container .face-1-chart-icons {position:absolute; left:0; right:0; bottom:103px; height:290px; width:100px; white-space:nowrap}
+.face-30-1-container .face-1-chart-icon {position:absolute; bottom:0; top:0; font-size:0; line-height:290px; width:0}
+.face-30-1-container .face-1-chart-icon-plants {position:absolute; right:50%; margin-right:5px; bottom:0; line-height:0; width:34px}
+.face-30-1-container .face-1-chart-icon-plants-inner {position:absolute; left:0; bottom:0; right:0}
+.face-30-1-container .face-1-chart-icon-animals {position:absolute; left:50%; margin-left:5px; bottom:0; line-height:0; width:38px}
+.face-30-1-container .face-1-chart-icon-animals-inner {position:absolute; left:0; bottom:0; right:0}
+.face-30-1-container .face-1-chart-point {margin-left:-8.5px}
+.face-30-1-container .face-1-chart-point:hover {z-index:3}
+.face-30-1-container .face-1-chart-line {margin-left:-8.5px}
+.face-30-1-container .face-1-chart-point em {font-style:normal; position:absolute}
+.face-30-1-container .face-1-chart-icon-plants svg {display:block; margin:7px auto 0 auto}
+.face-30-1-container .face-1-chart-icon-animals svg {display:block; margin:12px auto 0 auto}
+.face-30-1-container .face-1-chart-icon-plants path {fill:#63c56d}
+.face-30-1-container .face-1-chart-icon-animals path {fill:#763c1c}
+.face-30-1-ratio-window {width:auto; margin-left:0; transform:translateX(-50%); text-align:center; padding:0 24px; line-height:45px}
+.face-30-1-ratio-window .face-39-ratio-window-title {display:inline; font-family:HelveticaNeueCyrLight, sans-serif; position:relative}
+.face-30-1-ratio-window .face-39-ratio-window-value {display:inline; margin:0 0 0 10px; color:#fe6600; font-family:HelveticaNeueCyr, sans-serif; position:relative}
+
+@media screen and (max-width:1139px) {
+    .face-30-1-container .face-1-container {margin:0}
+    .face-30-1-container .face-1-chart-graph {top:30px; bottom:200px}
+    .face-30-1-container .face-1-chart-point span {font-size:9px; line-height:11px}
+    .face-30-1-container .face-1-chart-labels {bottom:22px}
+    .face-30-1-container .face-1-chart-year strong {height:13px}
+    .face-30-1-container .face-1-chart-icons {bottom:50px; height:200px; line-height:200px; width:80px}
+    .face-30-1-container .face-1-chart-icon {height:200px}
+    .face-30-1-container .face-1-chart-year {width:105px}
+    .face-30-1-container .face-1-chart-icon-plants {margin-right:3px; width:28px}
+    .face-30-1-container .face-1-chart-icon-animals {margin-left:3px; width:31px}
+    .face-30-1-container .face-1-chart-icon-plants svg {width:28px; height:auto; margin:6px auto 0 auto}
+    .face-30-1-container .face-1-chart-icon-animals svg {width:31px; height:auto; margin:10px auto 0 auto}
+    .face-30-1-ratio-window {margin-top:30px}
+}
+
+.face-30-2-container {height:624px; overflow:auto; position:relative}
+.face-30-2-container .mCSB_scrollTools a + .mCSB_draggerContainer {margin:0}
+.face-30-2-container .mCSB_inside > .mCSB_container {margin:0}
+.face-30-2-container .mCSB_scrollTools a {display:none !important}
+.face-30-2-container .mCSB_scrollTools.mCSB_scrollTools_vertical {width:6px; right:0}
+.face-30-2-container .mCSB_scrollTools.mCSB_scrollTools_vertical .mCSB_draggerRail {margin:0; width:6px}
+.face-30-2-container .mCSB_scrollTools.mCSB_scrollTools_vertical .mCSB_dragger .mCSB_dragger_bar {margin:0; width:6px}
+
+@media screen and (max-width:1139px) {
+    .face-30-2-container {height:348px}
+}
+
+.face-30-2-header {padding:40px 0 0 30px; text-transform:uppercase; font:12.5px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em}
+.face-30-2-header::after {content:""; display:block; clear:both}
+
+.face-30-2-year {float:left; position:relative}
+.face-30-2-year.open {z-index:9999}
+.face-30-2-year-current {display:inline-block; vertical-align:top; color:#757575; transition:all 0.2s; cursor:pointer; padding:0 19px 0 0; position:relative}
+.face-30-2-year-current::after {content:""; display:block; position:absolute; right:0; top:50%; width:11px; height:8px; background:url(../images/map-russia-sort-type.svg) no-repeat; margin-top:-4px}
+.face-30-2-year-current:hover {color:#fe6600}
+.face-30-2-year ul {margin:0; padding:5px 0; list-style:none; display:none; z-index:9999; position:absolute; left:-20px; top:100%; white-space:nowrap; background:#fff; border:1px solid #e6e6e6; box-sizing:border-box}
+.face-30-2-year.open ul {display:block}
+.face-30-2-year ul li {margin:0; padding:0; color:#a6a6a6; cursor:pointer}
+.face-30-2-year ul li::before {display:none}
+.face-30-2-year ul li a {color:#a6a6a6; text-decoration:none; display:block; padding:5px 20px}
+.face-30-2-year ul li a:hover {color:#fe6600}
+.face-30-2-year ul li.active a {color:#2f2f2f}
+
+@media screen and (max-width:1139px) {
+    .face-30-2-header {padding:20px 0 0 20px; font:9px/18px HelveticaNeueCyr, sans-serif}
+}
+
+.face-30-2-list {font-size:16px; line-height:16px; color:#121212; padding:5px 0 0 60px; letter-spacing:0.04em}
+.face-30-2-item {display:table; position:relative}
+.face-30-2-item-title {display:table-cell; padding:20px 0 0 0; vertical-align:middle; text-align:left; width:230px}
+.face-30-2-item-line {display:table-cell; vertical-align:middle; padding:20px 0 0 0}
+.face-30-2-item-line-inner {height:11px; background:#63c56d; width:0}
+.face-30-2-item-value {display:table-cell; vertical-align:middle; padding:20px 0 0 20px}
+
+@media screen and (max-width:1139px) {
+    .face-30-2-list {font-size:12px; line-height:12px; color:#000; padding:0 0 0 20px}
+    .face-30-2-item-line {padding:7px 0}
+    .face-30-2-item-line-inner {height:7px}
+    .face-30-2-item-title {width:160px; padding:7px 0}
+    .face-30-2-item-value {padding:7px 10px; white-space:nowrap}
+}
+
+.face-30-4-container {position:relative; height:546px; top:31px; margin:0 40px}
+.face-30-4-scale-left {position:absolute; left:0; width:32px; height:471px; border-right:1px solid #d3d3d3; background:#f2f2f2; z-index:3}
+.face-30-4-scale-left::before {content:""; display:block; position:absolute; left:0; bottom:-30px; top:0; right:0; background:#f2f2f2}
+.face-30-4-scale-left-item {position:absolute; right:20px; transform:translateY(50%); font:11px/11px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626; white-space:nowrap}
+.face-30-4-scale-left-item::before {content:""; display:block; position:absolute; right:-20px; top:50%; width:10px; height:2px; background:#fe6600; margin-top:-1px}
+.face-30-4-graph {font-size:0; line-height:0; letter-spacing:0; height:546px; overflow:auto; position:relative}
+.face-30-4-graph .mCSB_container {overflow:visible}
+.face-30-4-graph svg {display:block; position:absolute; left:40px; bottom:0; height:471px}
+.face-30-4-graph-inner {display:inline-block; vertical-align:top; padding:0 30px 0 40px; white-space:nowrap; position:relative}
+.face-30-4-graph-item {display:inline-block; vertical-align:top; width:86px; height:471px; position:relative}
+.face-30-4-graph-item-year {position:absolute; left:50%; white-space:nowrap; bottom:-32px; transform:translateX(-50%); font:11px/11px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626}
+.face-30-4-graph .face-1-chart-point {margin-left:-8.5px}
+.face-30-4-graph .face-1-chart-point:hover {z-index:3}
+.face-30-4-graph .face-1-chart-line {margin-left:0; border-top-style:solid}
+.face-30-4-graph .face-1-chart-point-1 {border-color:#fe6600}
+.face-30-4-graph .face-1-chart-point-1 span {color:#fe6600}
+.face-30-4-graph .face-1-chart-line-1 {border-color:#fe6600}
+.face-30-4-graph .face-1-chart-point-2 {border-color:#4f7b96}
+.face-30-4-graph .face-1-chart-point-2 span {color:#4f7b96}
+.face-30-4-graph .face-1-chart-line-2 {border-color:#4f7b96}
+
+@media screen and (max-width:1139px) {
+    .face-30-4-container {height:328px; top:20px; margin:0}
+    .face-30-4-scale-left {left:0; width:35px; height:284px}
+    .face-30-4-scale-left-item {right:10px; font-size:8px; line-height:8px}
+    .face-30-4-scale-left-item::before {right:-10px; width:6px}
+    .face-30-4-graph {height:328px}
+    .face-30-4-graph-inner {padding:0 40px}
+    .face-30-4-graph-item {width:52px; height:284px}
+    .face-30-4-graph-item-year {bottom:-23px; font-size:8px; line-height:12px}
+    .face-30-4-graph .face-1-chart-point {cursor:pointer}
+    .face-30-4-container .mCSB_scrollTools.mCSB_scrollTools_horizontal a + .mCSB_draggerContainer {margin:0}
+    .face-30-4-container .mCSB_scrollTools.mCSB_scrollTools_horizontal a {display:none !important}
+    .face-30-4-container .mCSB_horizontal {bottom:0}
+    .face-30-4-container .mCSB_scrollTools.mCSB_scrollTools_horizontal {height:6px}
+    .face-30-4-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {margin:0; height:6px}
+    .face-30-4-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {margin:0; height:6px}
+}
+
+.face-30-4-type {position:absolute; right:40px; top:40px; text-transform:uppercase; font:12.5px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em}
+.face-30-4-type.open {z-index:9999}
+.face-30-4-type-current {display:inline-block; vertical-align:top; color:#757575; transition:all 0.2s; cursor:pointer; padding:0 19px 0 0; position:relative}
+.face-30-4-type-current::after {content:""; display:block; position:absolute; right:0; top:50%; width:11px; height:8px; background:url(../images/map-russia-sort-type.svg) no-repeat; margin-top:-4px}
+.face-30-4-type-current:hover {color:#fe6600}
+.face-30-4-type ul {margin:0; padding:5px 0; list-style:none; display:none; z-index:9999; position:absolute; left:-20px; top:100%; white-space:nowrap; background:#fff; border:1px solid #e6e6e6; box-sizing:border-box}
+.face-30-4-type.open ul {display:block}
+.face-30-4-type ul li {margin:0; padding:0; color:#a6a6a6; cursor:pointer}
+.face-30-4-type ul li::before {display:none}
+.face-30-4-type ul li a {color:#a6a6a6; text-decoration:none; display:block; padding:5px 20px}
+.face-30-4-type ul li a:hover {color:#fe6600}
+.face-30-4-type ul li.active a {color:#2f2f2f}
+
+@media screen and (max-width:1139px) {
+    .face-30-4-type {right:20px; top:20px; font:9px/18px HelveticaNeueCyr, sans-serif}
+}
+
+.face-30-4-ratio-window {width:auto; margin-left:4px; margin-top:20px; transform:translateX(-50%); text-align:left; padding:12px 24px 16px 24px; line-height:25px}
+.face-30-4-ratio-window .face-39-ratio-window-title {font-family:HelveticaNeueCyrMedium, sans-serif; position:relative; color:#000; line-height:25px}
+.face-30-4-ratio-window .face-39-ratio-window-value {margin:0; font-family:HelveticaNeueCyrLight, sans-serif; position:relative; color:#000; line-height:25px}
+.face-30-4-ratio-window .face-39-ratio-window-value span {color:#fe6600; font-family:HelveticaNeueCyrMedium, sans-serif}

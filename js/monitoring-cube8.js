@@ -155,6 +155,9 @@ $(window).on('load resize', function() {
     face27_1_Redraw();
     face27_4_Redraw();
     face27_5_Redraw();
+    face30_1_Redraw();
+    face30_2_Redraw();
+    face30_4_Redraw();
 
 });
 
@@ -658,6 +661,484 @@ function face27_5_Redraw() {
 
     $(window).on('scroll', function() {
         $('.face-27-5-ratio-window').remove();
+    });
+
+}
+
+function face30_1_Redraw() {
+    var face1Labels = [];
+    var face1DataActually = [];
+    var face1DataForecast = [];
+
+    $('.face-30-1-container .face-1-chart-graph').html('');
+    $('.face-30-1-container .face-1-chart-labels').html('');
+    $('.face-30-1-container .face-1-chart-icons').html('');
+
+    var itemWidth = 147;
+    if ($(window).width() < 1140) {
+        itemWidth = 105;
+    }
+
+    var curLastActually = -1;
+    var curLastForecast = -1;
+
+    for (var i = 0; i < faceData30_1.length; i++) {
+        var curData = faceData30_1[i];
+        face1Labels.push(curData.year);
+
+        if (curData.type == 'actually') {
+            if (curData.rate !== undefined) {
+                face1DataActually.push(parseFloat(curData.rate));
+                curLastActually = i;
+            } else {
+                face1DataActually.push(null);
+            }
+            if (curData.ratef !== undefined) {
+                face1DataForecast.push(parseFloat(curData.ratef));
+            } else {
+                face1DataForecast.push(null);
+            }
+        } else {
+            face1DataActually.push(null);
+            face1DataForecast.push(parseFloat(curData.ratef));
+            if (curLastForecast < 0) {
+                curLastForecast = i;
+            }
+        }
+    }
+
+    $('.face-30-1-container .face-1-chart').width(face1Labels.length * itemWidth);
+
+    var minPlace = 9999;
+    var maxPlace = 0;
+    var curScroll = 0;
+
+    for (var i = 0; i < face1DataActually.length; i++) {
+        if (face1DataActually[i] != null) {
+            if (face1DataActually[i] < minPlace) {
+                minPlace = face1DataActually[i];
+            }
+            if (face1DataActually[i] > maxPlace) {
+                maxPlace = face1DataActually[i];
+            }
+        }
+    }
+
+    for (var i = 0; i < face1DataForecast.length; i++) {
+        if (face1DataForecast[i] != null) {
+            if (face1DataForecast[i] < minPlace) {
+                minPlace = face1DataForecast[i];
+            }
+            if (face1DataForecast[i] > maxPlace) {
+                maxPlace = face1DataForecast[i];
+            }
+        }
+    }
+
+    function angle_point(a, b, c) {
+        var x1 = a[0] - b[0];
+        var x2 = c[0] - b[0];
+        var y1 = a[1] - b[1];
+        var y2 = c[1] - b[1];
+
+        var d1 = Math.sqrt(x1 * x1 + y1 * y1);
+        var d2 = Math.sqrt(x2 * x2 + y2 * y2);
+        return Math.acos((x1 * x2 + y1 * y2) / (d1 * d2)) * 180 / Math.PI;
+    }
+
+    for (var i = 0; i < face1DataActually.length; i++) {
+        if (face1DataActually[i] != null) {
+            var curX = i * itemWidth + itemWidth / 2;
+            curScroll = curX;
+            var curY = ((face1DataActually[i] - maxPlace) / (minPlace - maxPlace)) * $('.face-30-1-container .face-1-chart-graph').height();
+            if (face1DataActually[i - 1] != null) {
+                var prevX = (i - 1) * itemWidth + itemWidth / 2;
+                var prevY = ((face1DataActually[i - 1] - maxPlace) / (minPlace - maxPlace)) * $('.face-30-1-container .face-1-chart-graph').height();
+                var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+                var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+                if (curY < prevY) {
+                    curAngle = -curAngle;
+                }
+                $('.face-30-1-container .face-1-chart-graph').append('<div class="face-1-chart-line active" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+            }
+            $('.face-30-1-container .face-1-chart-graph').append('<div class="face-1-chart-point active" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong>' + (face1DataActually[i]).toFixed(1) + '</strong></span></div>');
+        }
+    }
+
+    var secondForecast = false;
+    for (var i = 0; i < face1DataForecast.length; i++) {
+        if (face1DataForecast[i] != null) {
+            if (secondForecast) {
+                var curX = i * itemWidth + itemWidth / 2;
+                var curY = ((face1DataForecast[i] - maxPlace) / (minPlace - maxPlace)) * $('.face-30-1-container .face-1-chart-graph').height();
+                if (face1DataForecast[i - 1] != null && face1DataForecast[i - 2] != null) {
+                    var prevX = (i - 1) * itemWidth + itemWidth / 2;
+                    var prevY = ((face1DataForecast[i - 1] - maxPlace) / (minPlace - maxPlace)) * $('.face-30-1-container .face-1-chart-graph').height();
+                    var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+                    var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+                    if (curY < prevY) {
+                        curAngle = -curAngle;
+                    }
+                    $('.face-30-1-container .face-1-chart-graph').append('<div class="face-1-chart-line" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+                }
+                $('.face-30-1-container .face-1-chart-graph').append('<div class="face-1-chart-point" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong>' + (face1DataForecast[i]).toFixed(1) + '</strong></span></div>');
+            } else {
+                secondForecast = true;
+            }
+        }
+    }
+
+    var curX = curLastForecast * itemWidth + itemWidth / 2;
+    var curY = ((face1DataForecast[curLastForecast] - maxPlace) / (minPlace - maxPlace)) * $('.face-30-1-container .face-1-chart-graph').height();
+    var prevX = curLastActually * itemWidth + itemWidth / 2;
+    var prevY = ((face1DataActually[curLastActually] - maxPlace) / (minPlace - maxPlace)) * $('.face-30-1-container .face-1-chart-graph').height();
+    var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+    var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+    if (curY < prevY) {
+        curAngle = -curAngle;
+    }
+    $('.face-30-1-container .face-1-chart-graph').append('<div class="face-1-chart-line" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+
+    for (var i = 0; i < face1Labels.length; i++) {
+        if (face1DataActually[i] != null || i == 0) {
+            $('.face-30-1-container .face-1-chart-labels').append('<div class="face-1-chart-year" style="left:' + (i * itemWidth) + 'px"><strong>' + face1Labels[i] + '</strong></div>');
+        } else {
+            $('.face-30-1-container .face-1-chart-labels').append('<div class="face-1-chart-year" style="left:' + (i * itemWidth) + 'px"><span>' + face1Labels[i] + '</span></div>');
+        }
+    }
+
+    var maxPlants = 0;
+
+    for (var i = 0; i < faceData30_1.length; i++) {
+        var curData = faceData30_1[i];
+
+        if (curData.type == 'actually') {
+            if (maxPlants < Number(curData.plants)) {
+                maxPlants = Number(curData.plants);
+            }
+        }
+    }
+
+    var maxAnimals = 0;
+
+    for (var i = 0; i < faceData30_1.length; i++) {
+        var curData = faceData30_1[i];
+
+        if (curData.type == 'actually') {
+            if (maxAnimals < Number(curData.animals)) {
+                maxAnimals = Number(curData.animals);
+            }
+        }
+    }
+
+    for (var i = 0; i < faceData30_1.length; i++) {
+        var curData = faceData30_1[i];
+
+        if (curData.type == 'actually') {
+            $('.face-30-1-container .face-1-chart-icons').append('<div class="face-1-chart-icon" style="left:' + (i * itemWidth + itemWidth / 2) + 'px">' +
+                                                                        '<div class="face-1-chart-icon-plants" data-plants="' + curData.plants + '" style="height:' + (Number(curData.plants) / maxPlants * 100) + '%"><div class="face-1-chart-icon-plants-inner"></div></div>' +
+                                                                        '<div class="face-1-chart-icon-animals" data-animals="' + curData.animals + '" style="height:' + (Number(curData.animals) / 1.5 / maxAnimals * 100) + '%"><div class="face-1-chart-icon-animals-inner"></div></div>' +
+                                                                    '</div>');
+        }
+    }
+
+    $('.face-30-1-container .face-1-chart-icon-plants').each(function() {
+        var curBar = $(this);
+        var curHeight = curBar.height();
+        var countBlocks = Math.floor(curHeight / 41);
+        for (var i = 0; i < countBlocks; i++) {
+            curBar.find('.face-1-chart-icon-plants-inner').append('<svg width="34" height="28" viewBox="0 0 34 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.53711 2.84508C1.62452 7.04094 2.02132 13.8752 2.25932 16.4039C11.1877 5.34012 24.5426 5.87666 24.5426 5.87666C24.5426 5.87666 5.61162 12.6697 0.0514598 26.2918C-0.387653 27.3671 2.11174 28.7656 2.68216 27.4943C4.38471 23.7059 6.75715 20.8647 6.75715 20.8647C10.2574 22.2272 16.3124 23.824 20.604 20.6649C26.3045 16.4683 25.7218 7.16542 33.8595 2.63584C35.7603 1.57827 17.9086 -2.84386 8.53711 2.84508Z" /></svg>');
+        }
+    });
+
+    $('.face-30-1-container .face-1-chart-icon-animals').each(function() {
+        var curBar = $(this);
+        var curHeight = curBar.height();
+        var countBlocks = Math.floor(curHeight / 35);
+        for (var i = 0; i < countBlocks; i++) {
+            curBar.find('.face-1-chart-icon-animals-inner').append('<svg width="38" height="23" viewBox="0 0 38 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.3872 13.3279L13.6724 14.7228L11.8856 16.9345V18.3001C11.8856 18.5558 11.6825 18.7628 11.4317 18.7628C11.1809 18.7628 10.9778 18.5554 10.9778 18.3001V16.9474H9.81118V18.3001C9.81118 18.5558 9.60767 18.7628 9.35729 18.7628C9.10691 18.7628 8.9034 18.5554 8.9034 18.3001V16.9474H7.55102L8.31356 23H6.8324L5.37911 16.9535L5.35209 16.0199L7.3872 13.3279ZM20.1425 14.8282L19.1132 22.9996H20.5943L22.1219 16.2971L21.3505 14.8273L20.1425 14.8282ZM38 14.5261L34.2891 14.5385L27.6982 1.62558C27.1873 0.626646 26.174 0 25.0686 0H2.375C1.06316 0.000430389 0 1.08458 0 2.42137V13.9209H1.18771V2.42137C1.18771 1.75427 1.72056 1.21068 2.37542 1.21068V6.69557L2.96907 10.8944L2.37542 14.5261L2.96907 22.9996H4.4536V15.7368L7.0262 12.3186L14.2508 13.9209L22.013 13.9192L23.5697 16.947L24.1963 22.9996H25.6808V13.9209L34.1417 22.9996H35.3788C35.9252 22.9996 36.3685 22.5481 36.3685 21.9907V16.1904L38 14.5261Z" /></svg>');
+        }
+    });
+
+    $('.face-30-1-container').mCustomScrollbar('destroy');
+    $('.face-30-1-container').mCustomScrollbar({
+        axis: 'x',
+        setLeft: '-' + (curScroll - $('.face-30-1-container').width() / 2) + 'px',
+        scrollButtons: {
+            enable: true
+        },
+        callbacks: {
+            onScrollStart: function() {
+                $('.face-39-ratio-window').remove();
+            }
+        }
+    });
+
+    $('.face-30-1-container .face-1-chart-icon-plants').on('mouseover', function(e) {
+        $('.face-39-1-window').remove();
+        var curItem = $(this);
+        var curX = curItem.offset().left + curItem.width() / 2 - $(window).scrollLeft();
+        var curY = curItem.offset().top + curItem.height() / 2 - $(window).scrollTop();
+        $('body').append('<div class="face-39-ratio-window face-30-1-ratio-window" style="left:' + curX + 'px; top:' + curY + 'px"><div class="face-39-ratio-window-title">Растения</div><div class="face-39-ratio-window-value">' + String(curItem.attr('data-plants')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</div></div>');
+    });
+
+    $('.face-30-1-container .face-1-chart-icon-plants').on('mouseout', function(e) {
+        $('.face-39-ratio-window').remove();
+    });
+
+    $('.face-30-1-container .face-1-chart-icon-animals').on('mouseover', function(e) {
+        $('.face-39-ratio-window').remove();
+        var curItem = $(this);
+        var curX = curItem.offset().left + curItem.width() / 2 - $(window).scrollLeft();
+        var curY = curItem.offset().top + curItem.height() / 2 - $(window).scrollTop();
+        $('body').append('<div class="face-39-ratio-window face-30-1-ratio-window" style="left:' + curX + 'px; top:' + curY + 'px"><div class="face-39-ratio-window-title">Животные</div><div class="face-39-ratio-window-value">' + String(curItem.attr('data-animals')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</div></div>');
+    });
+
+    $('.face-30-1-container .face-1-chart-icon-animals').on('mouseout', function(e) {
+        $('.face-39-ratio-window').remove();
+    });
+
+    $(window).on('scroll', function() {
+        $('.face-39-ratio-window').remove();
+    });
+
+}
+
+$(document).ready(function() {
+    $('.face-30-2-year-current').click(function(e) {
+        $(this).parent().toggleClass('open');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.face-30-2-year').length == 0) {
+            $('.face-30-2-year').removeClass('open');
+        }
+    });
+
+    $('.face-30-2-year ul li a').click(function(e) {
+        var curLi = $(this).parent();
+        if (!curLi.hasClass('active')) {
+            $('.face-30-2-year ul li.active').removeClass('active');
+            curLi.addClass('active');
+            $('.face-30-2-year-current').html($(this).html());
+            $('.face-30-2-year-text').html($(this).html());
+            face30_2_Redraw();
+        }
+        $('.face-30-2-year').removeClass('open');
+        e.preventDefault();
+    });
+
+    $('.face-30-2-container').mCustomScrollbar({
+        axis: 'y'
+    });
+
+});
+
+function face30_2_Redraw() {
+    var curYear = $('.face-30-2-year-text').html();
+
+    var curData = null;
+    for (var i = 0; i < faceData30_2.length; i++) {
+        if (faceData30_2[i].year == curYear) {
+            curData = faceData30_2[i].data;
+        }
+    }
+    if (curData !== null) {
+        $('.face-30-2-list').each(function() {
+            var maxWidthLine = 225;
+            if ($(window).width() < 1140) {
+                maxWidthLine = 97;
+            }
+
+            var maxValue = 0;
+            for (var i = 0; i < curData.length; i++) {
+                var curValue = Math.round(parseInt(curData[i].value));
+                if (maxValue < curValue) {
+                    maxValue = curValue;
+                }
+            }
+
+            var newHTML = '<div class="face-30-2-list-inner">';
+
+            for (var i = 0; i < curData.length; i++) {
+                var curItem = curData[i];
+                var curValue = Math.round(parseInt(curItem.value));
+                var curWidth = curValue / maxValue * maxWidthLine + 1;
+
+                newHTML += '<div class="face-30-2-item">' +
+                                '<div class="face-30-2-item-title">' + curItem.title + '</div>' +
+                                '<div class="face-30-2-item-line"><div class="face-30-2-item-line-inner" style="width:' + curWidth + 'px"></div></div>' +
+                                '<div class="face-30-2-item-value">' + String(curItem.value).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</div>' +
+                           '</div>';
+
+            }
+            $('.face-30-2-list').html(newHTML);
+        });
+    }
+}
+
+$(document).ready(function() {
+    $('.face-30-4-type-current').click(function(e) {
+        $(this).parent().toggleClass('open');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.face-30-4-type').length == 0) {
+            $('.face-30-4-type').removeClass('open');
+        }
+    });
+
+    $('.face-30-4-type ul li a').click(function(e) {
+        var curLi = $(this).parent();
+        if (!curLi.hasClass('active')) {
+            $('.face-30-4-type ul li.active').removeClass('active');
+            curLi.addClass('active');
+            $('.face-30-4-type-current').html($(this).html());
+            face30_4_Redraw();
+        }
+        $('.face-30-4-type').removeClass('open');
+        e.preventDefault();
+    });
+
+});
+
+function face30_4_Redraw() {
+    var curType = $('.face-30-4-type ul li.active').attr('data-type');
+
+    var curData = null;
+    for (var i = 0; i < faceData30_4.length; i++) {
+        if (faceData30_4[i].type == curType) {
+            curData = faceData30_4[i].data;
+        }
+    }
+
+    var curMaxSumm = 0;
+
+    for (var i = 0; i < curData.length; i++) {
+        var curDataItem = curData[i];
+        if (Number(curDataItem.plants) > curMaxSumm) {
+            curMaxSumm = Number(curDataItem.plants);
+        }
+        if (Number(curDataItem.animals) > curMaxSumm) {
+            curMaxSumm = Number(curDataItem.animals);
+        }
+    }
+
+    var countSumm = Math.ceil(curMaxSumm / 1000) + 2;
+    var summMax = (countSumm - 1) * 1000;
+
+    var scaleLeftHTML = '';
+    for (var i = 0; i < countSumm; i++) {
+        scaleLeftHTML += '<div class="face-30-4-scale-left-item" style="bottom:' + (i / (countSumm - 1) * 100) + '%">' + (i * 1000) + '</div>';
+    }
+    $('.face-30-4-scale-left').html(scaleLeftHTML);
+
+    var graphHTML = '';
+    for (var i = 0; i < curData.length; i++) {
+        var curDataItem = curData[i];
+
+        graphHTML +=    '<div class="face-30-4-graph-item">';
+        graphHTML +=        '<div class="face-30-4-graph-item-year">' + curDataItem.year + '</div>';
+        graphHTML +=    '</div>';
+    }
+    $('.face-30-4-graph-inner').html(graphHTML);
+
+    $('.face-30-4-graph').mCustomScrollbar('destroy');
+    $('.face-40-4-graph').mCustomScrollbar({
+        axis: 'x',
+        scrollButtons: {
+            enable: true
+        },
+        callbacks: {
+            onScrollStart: function() {
+                $('.face-39-ratio-window').remove();
+            }
+        }
+    });
+
+    var itemWidth = 86;
+    var itemHeight = 471;
+    if ($(window).width() < 1140) {
+        itemWidth = 52;
+        itemHeight = 284;
+    }
+
+    function angle_point(a, b, c) {
+        var x1 = a[0] - b[0];
+        var x2 = c[0] - b[0];
+        var y1 = a[1] - b[1];
+        var y2 = c[1] - b[1];
+
+        var d1 = Math.sqrt(x1 * x1 + y1 * y1);
+        var d2 = Math.sqrt(x2 * x2 + y2 * y2);
+        return Math.acos((x1 * x2 + y1 * y2) / (d1 * d2)) * 180 / Math.PI;
+    }
+
+    for (var i = 0; i < curData.length; i++) {
+        var curX = i * itemWidth + itemWidth / 2 + 40;
+        var curY = itemHeight - ((curData[i].plants / summMax) * itemHeight);
+        if (i > 0) {
+            var prevX = (i - 1) * itemWidth + itemWidth / 2 + 40;
+            var prevY = itemHeight - ((curData[i - 1].plants / summMax) * itemHeight);
+            var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+            var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+            if (curY < prevY) {
+                curAngle = -curAngle;
+            }
+            $('.face-30-4-graph-inner').append('<div class="face-1-chart-line face-1-chart-line-1" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+        }
+        $('.face-30-4-graph-inner').append('<div class="face-1-chart-point face-1-chart-point-1" style="left:' + curX + 'px; top:' + curY + 'px" data-id="' + i + '" data-type="plants"></div>');
+    }
+
+    for (var i = 0; i < curData.length; i++) {
+        var curX = i * itemWidth + itemWidth / 2 + 40;
+        var curY = itemHeight - ((curData[i].animals / summMax) * itemHeight);
+        if (i > 0) {
+            var prevX = (i - 1) * itemWidth + itemWidth / 2 + 40;
+            var prevY = itemHeight - ((curData[i - 1].animals / summMax) * itemHeight);
+            var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+            var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+            if (curY < prevY) {
+                curAngle = -curAngle;
+            }
+            $('.face-30-4-graph-inner').append('<div class="face-1-chart-line face-1-chart-line-2" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+        }
+        $('.face-30-4-graph-inner').append('<div class="face-1-chart-point face-1-chart-point-2" style="left:' + curX + 'px; top:' + curY + 'px" data-id="' + i + '" data-type="animals"></div>');
+    }
+
+    $('.face-30-4-container .face-1-chart-point').on('mouseenter', function(e) {
+        $('.face-39-1-window').remove();
+        var curItem = $(this);
+        var curX = curItem.offset().left + curItem.width() / 2 - $(window).scrollLeft();
+        var curY = curItem.offset().top + curItem.height() / 2 - $(window).scrollTop();
+
+        var curID = Number(curItem.attr('data-id'));
+
+        var curPointType = $('.face-30-4-type ul li.active').attr('data-type');
+
+        var curPointData = null;
+        for (var i = 0; i < faceData30_4.length; i++) {
+            if (faceData30_4[i].type == curPointType) {
+                curPointData = faceData30_4[i].data[curID];
+            }
+        }
+
+        var curText =   '<div class="face-39-ratio-window-title">' + curPointData.year + '</div>';
+        if (curItem.attr('data-type') == 'plants') {
+            curText +=  '<div class="face-39-ratio-window-value">По растениям <span>' + String(curPointData.plants).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</span></div>';
+        } else {
+            curText +=  '<div class="face-39-ratio-window-value">По животным <span>' + String(curPointData.animals).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</span></div>';
+        }
+
+        $('body').append('<div class="face-39-ratio-window face-30-4-ratio-window" style="left:' + curX + 'px; top:' + curY + 'px">' + curText + '</div>');
+    });
+
+    $('.face-30-4-container .face-1-chart-point').on('mouseleave', function(e) {
+        $('.face-39-ratio-window').remove();
+    });
+
+    $(window).on('scroll', function() {
+        $('.face-39-ratio-window').remove();
     });
 
 }
