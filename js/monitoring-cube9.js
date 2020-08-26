@@ -152,7 +152,22 @@ $(window).on('load resize', function() {
         });
     }
 
+    $('.cube-with-big-titles').each(function() {
+        var maxHeight = 0;
+        $('.cube-face-title').each(function() {
+            if ($(this).height() > maxHeight) {
+                maxHeight = $(this).height();
+            }
+        });
+        var curDiff = 70;
+        if ($(window).width() < 1140) {
+            curDiff = 20;
+        }
+        $('.cube-with-big-titles').css({'margin-top': maxHeight + curDiff});
+    });
+
     face35_2_Redraw();
+    face39_2_Redraw();
 
 });
 
@@ -278,4 +293,329 @@ function face35_2_Redraw() {
         $('.face-35-2-list').html(htmlList);
 
     }
+}
+
+$(document).ready(function() {
+
+    $('.face-39-2-year-current').click(function(e) {
+        $(this).parent().toggleClass('open');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.face-39-2-year').length == 0) {
+            $('.face-39-2-year').removeClass('open');
+        }
+    });
+
+    $('.face-39-2-year ul li a').click(function(e) {
+        var curLi = $(this).parent();
+        if (!curLi.hasClass('active')) {
+            $('.face-39-2-year ul li.active').removeClass('active');
+            curLi.addClass('active');
+            $('.face-39-2-year-current').html($(this).html());
+            $('.face-39-2-year-text').html($(this).html());
+            face39_2_Redraw();
+        }
+        $('.face-39-2-year').removeClass('open');
+        e.preventDefault();
+    });
+
+    $('body').on('mouseenter', '.map-russia-39-2-district', function(e) {
+        $('.monitoring-map-region-hint').remove();
+        if ($(window).width() > 1139) {
+            $('body').append('<div class="monitoring-map-region-hint">' + $(this).attr('data-title') + '</div>');
+            var curLeft = e.pageX;
+            var curTop = e.pageY;
+            $('.monitoring-map-region-hint').css({'left': curLeft, 'top': curTop});
+        }
+    });
+
+    $('body').on('mousemove', '.map-russia-39-2-district', function(e) {
+        var curLeft = e.pageX;
+        var curTop = e.pageY;
+        $('.monitoring-map-region-hint').css({'left': curLeft, 'top': curTop});
+    });
+
+    $('body').on('mouseleave', '.map-russia-39-2-district', function(e) {
+        $('.monitoring-map-region-hint').remove();
+    });
+
+    $('body').on('click', '.face-39-2-table-head a', function(e) {
+        if (!$(this).parent().hasClass('active')) {
+            $('.face-39-2-table-head.active').removeClass('active');
+            $(this).parent().addClass('active');
+            face39_2_Redraw();
+        }
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.map-russia-39-2-district, .face-39-2-table-name-link', function(e) {
+        var districtID = $(this).attr('data-id');
+        var curYear = $('.face-39-2-year-text').html();
+        var curData = null;
+        for (var i = 0; i < faceData39_2.length; i++) {
+            if (faceData39_2[i].year == curYear) {
+                for (var j = 0; j < faceData39_2[i].data.length; j++) {
+                    if (faceData39_2[i].data[j].id == districtID) {
+                        curData = faceData39_2[i].data[j];
+                    }
+                }
+            }
+        }
+        if (curData !== null) {
+
+            $('html').addClass('window-open');
+
+            if ($('.window').length > 0) {
+                $('.window').remove();
+            }
+            $('body').append('<div class="window window-monitoring"><div class="window-loading"></div></div>');
+
+            var districtTitle = '';
+            for (var r = 0; r < russiaDistricts.length; r++) {
+                if (russiaDistricts[r].id == districtID) {
+                    districtTitle = russiaDistricts[r].title;
+                }
+            }
+            if (districtID == '0') {
+                districtTitle = 'Российская Федерация';
+            }
+
+            var maxSumm = 0;
+            if (parseFloat(curData.summ1) > maxSumm) {
+                maxSumm = parseFloat(curData.summ1);
+            }
+            if (parseFloat(curData.summ2) > maxSumm) {
+                maxSumm = parseFloat(curData.summ2);
+            }
+            if (parseFloat(curData.summ3) > maxSumm) {
+                maxSumm = parseFloat(curData.summ3);
+            }
+            if (parseFloat(curData.summ4) > maxSumm) {
+                maxSumm = parseFloat(curData.summ4);
+            }
+            if (parseFloat(curData.summ5) > maxSumm) {
+                maxSumm = parseFloat(curData.summ5);
+            }
+            var countLines = Math.ceil(maxSumm / 10) + 1;
+            maxSumm = countLines * 10;
+
+            var windowHTML   =  '<div class="window-39-2">';
+            windowHTML      +=      '<div class="window-39-2-title">' + districtTitle + ', ' + curYear + '</div>';
+            windowHTML      +=      '<div class="window-39-2-scale">';
+            windowHTML      +=          '<div class="window-39-2-scale-item"><span>0</span></div>';
+            for (var i = 0; i < countLines; i++) {
+                windowHTML      +=      '<div class="window-39-2-scale-item" style="left:' + ((i + 1) / countLines* 100) + '%"><span>' + ((i + 1) * 10) + '%</span></div>';
+            }
+            windowHTML      +=      '</div>';
+
+            windowHTML      +=      '<div class="window-39-2-list">';
+
+            windowHTML      +=          '<div class="window-39-2-item">';
+            windowHTML      +=              '<div class="window-39-2-item-title">Программы ВО (бакалавриат, специалитет, магистратура)</div>';
+            windowHTML      +=              '<div class="window-39-2-item-values">';
+            for (var i = 0; i < countLines; i++) {
+                windowHTML      +=              '<div class="window-39-2-item-values-sep" style="left:' + ((i + 1) / countLines* 100) + '%"></div>';
+            }
+            windowHTML      +=                  '<div class="window-39-2-item-value" style="width:' + (parseFloat(curData.summ1) / maxSumm * 100) + '%"><span>' + curData.summ1 + '%</span></div>';
+            windowHTML      +=              '</div>';
+            windowHTML      +=          '</div>';
+
+            windowHTML      +=          '<div class="window-39-2-item">';
+            windowHTML      +=              '<div class="window-39-2-item-title">Подготовка квалифицированных рабочих, служащих</div>';
+            windowHTML      +=              '<div class="window-39-2-item-values">';
+            for (var i = 0; i < countLines; i++) {
+                windowHTML      +=              '<div class="window-39-2-item-values-sep" style="left:' + ((i + 1) / countLines* 100) + '%"></div>';
+            }
+            windowHTML      +=                  '<div class="window-39-2-item-value" style="width:' + (parseFloat(curData.summ2) / maxSumm * 100) + '%"><span>' + curData.summ2 + '%</span></div>';
+            windowHTML      +=              '</div>';
+            windowHTML      +=          '</div>';
+
+            windowHTML      +=          '<div class="window-39-2-item">';
+            windowHTML      +=              '<div class="window-39-2-item-title">Подготовка специалистов среднего звена</div>';
+            windowHTML      +=              '<div class="window-39-2-item-values">';
+            for (var i = 0; i < countLines; i++) {
+                windowHTML      +=              '<div class="window-39-2-item-values-sep" style="left:' + ((i + 1) / countLines* 100) + '%"></div>';
+            }
+            windowHTML      +=                  '<div class="window-39-2-item-value" style="width:' + (parseFloat(curData.summ3) / maxSumm * 100) + '%"><span>' + curData.summ3 + '%</span></div>';
+            windowHTML      +=              '</div>';
+            windowHTML      +=          '</div>';
+
+            windowHTML      +=          '<div class="window-39-2-item">';
+            windowHTML      +=              '<div class="window-39-2-item-title">Профессиональное обучение</div>';
+            windowHTML      +=              '<div class="window-39-2-item-values">';
+            for (var i = 0; i < countLines; i++) {
+                windowHTML      +=              '<div class="window-39-2-item-values-sep" style="left:' + ((i + 1) / countLines* 100) + '%"></div>';
+            }
+            windowHTML      +=                  '<div class="window-39-2-item-value" style="width:' + (parseFloat(curData.summ4) / maxSumm * 100) + '%"><span>' + curData.summ4 + '%</span></div>';
+            windowHTML      +=              '</div>';
+            windowHTML      +=          '</div>';
+
+            windowHTML      +=          '<div class="window-39-2-item">';
+            windowHTML      +=              '<div class="window-39-2-item-title">Дополнительные профессиональные программы</div>';
+            windowHTML      +=              '<div class="window-39-2-item-values">';
+            for (var i = 0; i < countLines; i++) {
+                windowHTML      +=              '<div class="window-39-2-item-values-sep" style="left:' + ((i + 1) / countLines* 100) + '%"></div>';
+            }
+            windowHTML      +=                  '<div class="window-39-2-item-value" style="width:' + (parseFloat(curData.summ5) / maxSumm * 100) + '%"><span>' + curData.summ5 + '%</span></div>';
+            windowHTML      +=              '</div>';
+            windowHTML      +=          '</div>';
+
+            windowHTML      +=      '</div>';
+            windowHTML      +=  '</div>';
+
+            $('.window').append('<div class="window-container window-container-load"><div class="window-content">' + windowHTML + '<a href="#" class="window-close"></a></div></div>')
+
+            $('.window-container').removeClass('window-container-load');
+            windowPosition();
+        }
+
+        e.preventDefault();
+    });
+
+    $('.map-russia-39-2').mCustomScrollbar({
+        axis: 'x'
+    });
+
+    $('.face-39-2-table-wrap').mCustomScrollbar({
+        axis: 'x',
+        scrollButtons: {
+            enable: true
+        }
+    });
+
+});
+
+function face39_2_Redraw() {
+    var newMap = '';
+    $('.face-39-2-table-row').remove();
+
+    for (var i = 0; i < russiaDistricts.length; i++) {
+        var districtID = russiaDistricts[i].id;
+        var districtTitle = russiaDistricts[i].title;
+        newMap += '<g class="map-russia-39-2-district" data-id="' + districtID + '" data-title="' + districtTitle + '">';
+        for (var j = 0; j < russiaRegions.length; j++) {
+            var curRegion = russiaRegions[j];
+            if (curRegion.district == districtID) {
+                newMap += '<g>' + curRegion.svg + '</g>';
+            }
+        }
+        newMap += '</g>';
+    }
+    $('.map-russia-39-2 svg').html(newMap);
+
+    var curYear = $('.face-39-2-year-text').html();
+    var curData = null;
+    for (var i = 0; i < faceData39_2.length; i++) {
+        if (faceData39_2[i].year == curYear) {
+            curData = faceData39_2[i].data;
+        }
+    }
+    if (curData !== null) {
+        var activeCol1 = '';
+        var activeCol2 = '';
+        var activeCol3 = '';
+        var activeCol4 = '';
+        var activeCol5 = '';
+        var curIndexSort = $('.face-39-2-table-head').index($('.face-39-2-table-head.active')) - 1;
+        switch (curIndexSort) {
+            case 0:
+                curData.sort(face39_2Sort_1);
+                activeCol1 = ' active';
+                break;
+            case 1:
+                curData.sort(face39_2Sort_2);
+                activeCol2 = ' active';
+                break;
+            case 2:
+                curData.sort(face39_2Sort_3);
+                activeCol3 = ' active';
+                break;
+            case 3:
+                curData.sort(face39_2Sort_4);
+                activeCol4 = ' active';
+                break;
+            case 4:
+                curData.sort(face39_2Sort_5);
+                activeCol5 = ' active';
+                break;
+        }
+
+        for (var i = 0; i < curData.length; i++) {
+            var districtID = curData[i].id;
+            var districtTitle = '';
+            for (var r = 0; r < russiaDistricts.length; r++) {
+                if (russiaDistricts[r].id == districtID) {
+                    districtTitle = russiaDistricts[r].title.replace(' федеральный округ', '');
+                }
+            }
+            var russiaClass = '';
+            if (districtID == '0') {
+                districtTitle = 'Россия';
+                russiaClass = ' russia';
+            }
+
+            $('.face-39-2-table').append('<div class="face-39-2-table-row' + russiaClass + '">' +
+                                            '<div class="face-39-2-table-name">' +
+                                                '<a href="#" class="face-39-2-table-name-link" data-id="' + districtID + '">' + districtTitle + '</a>' +
+                                            '</div>' +
+                                            '<div class="face-39-2-table-value' + activeCol1 + '">' + curData[i].summ1 + '%</div>' +
+                                            '<div class="face-39-2-table-value' + activeCol2 + '">' + curData[i].summ2 + '%</div>' +
+                                            '<div class="face-39-2-table-value' + activeCol3 + '">' + curData[i].summ3 + '%</div>' +
+                                            '<div class="face-39-2-table-value' + activeCol4 + '">' + curData[i].summ4 + '%</div>' +
+                                            '<div class="face-39-2-table-value' + activeCol5 + '">' + curData[i].summ5 + '%</div>' +
+                                          '</div>');
+        }
+        $('.face-39-2-table-fixed').css({'width': $('.face-39-2-table-wrap .face-39-2-table-name').eq(0).outerWidth()});
+    }
+}
+
+function face39_2Sort_1(a, b) {
+    var value1 = parseFloat(a.summ1);
+    var value2 = parseFloat(b.summ1);
+    if (a.id == '0') return -1;
+    if (b.id == '0') return 1;
+    if (value1 > value2) return -1;
+    if (value1 == value2) return 0;
+    if (value1 < value2) return 1;
+}
+
+function face39_2Sort_2(a, b) {
+    var value1 = parseFloat(a.summ2);
+    var value2 = parseFloat(b.summ2);
+    if (a.id == '0') return -1;
+    if (b.id == '0') return 1;
+    if (value1 > value2) return -1;
+    if (value1 == value2) return 0;
+    if (value1 < value2) return 1;
+}
+
+function face39_2Sort_3(a, b) {
+    var value1 = parseFloat(a.summ3);
+    var value2 = parseFloat(b.summ3);
+    if (a.id == '0') return -1;
+    if (b.id == '0') return 1;
+    if (value1 > value2) return -1;
+    if (value1 == value2) return 0;
+    if (value1 < value2) return 1;
+}
+
+function face39_2Sort_4(a, b) {
+    var value1 = parseFloat(a.summ4);
+    var value2 = parseFloat(b.summ4);
+    if (a.id == '0') return -1;
+    if (b.id == '0') return 1;
+    if (value1 > value2) return -1;
+    if (value1 == value2) return 0;
+    if (value1 < value2) return 1;
+}
+
+function face39_2Sort_5(a, b) {
+    var value1 = parseFloat(a.summ5);
+    var value2 = parseFloat(b.summ5);
+    if (a.id == '0') return -1;
+    if (b.id == '0') return 1;
+    if (value1 > value2) return -1;
+    if (value1 == value2) return 0;
+    if (value1 < value2) return 1;
 }
