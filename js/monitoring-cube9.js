@@ -168,6 +168,7 @@ $(window).on('load resize', function() {
 
     face35_2_Redraw();
     face39_2_Redraw();
+    face34_4_Redraw();
 
 });
 
@@ -618,4 +619,163 @@ function face39_2Sort_5(a, b) {
     if (value1 > value2) return -1;
     if (value1 == value2) return 0;
     if (value1 < value2) return 1;
+}
+
+$(document).ready(function() {
+    $('.face-34-4-type-current').click(function(e) {
+        $(this).parent().toggleClass('open');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.face-34-4-type').length == 0) {
+            $('.face-34-4-type').removeClass('open');
+        }
+    });
+
+    $('.face-34-4-type ul li a').click(function(e) {
+        var curLi = $(this).parent();
+        if (!curLi.hasClass('active')) {
+            $('.face-34-4-type ul li.active').removeClass('active');
+            curLi.addClass('active');
+            $('.face-34-4-type-current').html($(this).html());
+            face34_4_Redraw();
+        }
+        $('.face-34-4-type').removeClass('open');
+        e.preventDefault();
+    });
+
+});
+
+function face34_4_Redraw() {
+    var curType = $('.face-34-4-type li.active').attr('data-type');
+
+    var curData = null;
+    for (var i = 0; i < faceData34_4.length; i++) {
+        if (faceData34_4[i].title == curType) {
+            curData = faceData34_4[i].data;
+        }
+    }
+    
+    var face1Labels = [];
+    var face1DataActually = [];
+
+    $('.face-34-4-container .face-1-chart-graph').html('');
+    $('.face-34-4-container .face-1-chart-labels').html('');
+    $('.face-34-4-container .face-1-chart-icons').html('');
+
+    var itemWidth = 84;
+
+    var itemMargin = 62;
+
+    for (var i = 0; i < curData.length; i++) {
+        var curDataItem = curData[i];
+        face1Labels.push(curDataItem.year);
+        face1DataActually.push(parseFloat(curDataItem.ratio));
+    }
+
+    $('.face-34-4-container .face-1-chart').width(face1Labels.length * (itemWidth + itemMargin));
+
+    var minPlace = 9999;
+    var maxPlace = 0;
+
+    for (var i = 0; i < face1DataActually.length; i++) {
+        if (face1DataActually[i] != null) {
+            if (face1DataActually[i] < minPlace) {
+                minPlace = face1DataActually[i];
+            }
+            if (face1DataActually[i] > maxPlace) {
+                maxPlace = face1DataActually[i];
+            }
+        }
+    }
+
+    function angle_point(a, b, c) {
+        var x1 = a[0] - b[0];
+        var x2 = c[0] - b[0];
+        var y1 = a[1] - b[1];
+        var y2 = c[1] - b[1];
+
+        var d1 = Math.sqrt(x1 * x1 + y1 * y1);
+        var d2 = Math.sqrt(x2 * x2 + y2 * y2);
+        return Math.acos((x1 * x2 + y1 * y2) / (d1 * d2)) * 180 / Math.PI;
+    }
+
+    var curLastActually = -1;
+    for (var i = 0; i < face1DataActually.length; i++) {
+        if (face1DataActually[i] != null) {
+            curLastActually++;
+            var curX = (i * (itemWidth + itemMargin)) + itemMargin / 2 - 8;
+            var curY = ((face1DataActually[i] - maxPlace) / (minPlace - maxPlace)) * $('.face-34-4-container .face-1-chart-graph').height();
+            if (face1DataActually[i - 1] != null) {
+                var prevX = ((i - 1) * (itemWidth + itemMargin)) + itemMargin / 2 - 8;
+                var prevY = ((face1DataActually[i - 1] - maxPlace) / (minPlace - maxPlace)) * $('.face-34-4-container .face-1-chart-graph').height();
+                var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+                var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+                if (curY < prevY) {
+                    curAngle = -curAngle;
+                }
+                $('.face-34-4-container .face-1-chart-graph').append('<div class="face-1-chart-line active" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+            }
+            $('.face-34-4-container .face-1-chart-graph').append('<div class="face-1-chart-point active" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong>' + parseFloat(face1DataActually[i]).toFixed(1) + '<em>&nbsp;%</em></strong></span></div>');
+        }
+    }
+
+    for (var i = 0; i < face1Labels.length; i++) {
+        if (face1DataActually[i] != null) {
+            $('.face-34-4-container .face-1-chart-labels').append('<div class="face-1-chart-year" style="left:' + (i * (itemWidth + itemMargin)) + 'px"><strong>' + face1Labels[i] + '</strong></div>');
+        } else {
+            $('.face-34-4-container .face-1-chart-labels').append('<div class="face-1-chart-year" style="left:' + (i * (itemWidth + itemMargin)) + 'px"><span>' + face1Labels[i] + '</span></div>');
+        }
+    }
+
+    var maxSumm = 0;
+
+    for (var i = 0; i < curData.length; i++) {
+        var curDataItem = curData[i];
+
+        if (maxSumm < parseFloat(curDataItem.summ1)) {
+            maxSumm = parseFloat(curDataItem.summ1);
+        }
+
+        if (maxSumm < parseFloat(curDataItem.summ2)) {
+            maxSumm = parseFloat(curDataItem.summ2);
+        }
+    }
+
+    for (var i = 0; i < curData.length; i++) {
+        var curDataItem = curData[i];
+
+        $('.face-34-4-container .face-1-chart-icons').append('<div class="face-1-chart-icon" style="left:' + (i * (itemWidth + itemMargin)) + 'px">' +
+                                                                    '<div class="face-1-chart-icon-count" style="height:' + (parseFloat(curDataItem.summ1) / maxSumm * 100) + '%"><div class="face-1-chart-icon-count-inner"><div class="face-1-chart-icon-value">' + parseFloat(curDataItem.summ1).toFixed(1) + '</div></div></div>' +
+                                                                    '<div class="face-1-chart-icon-summ" style="height:' + (parseFloat(curDataItem.summ2) / maxSumm * 100) + '%"><div class="face-1-chart-icon-summ-inner"><div class="face-1-chart-icon-value">' + parseFloat(curDataItem.summ2).toFixed(1) + '</div></div></div>' +
+                                                                '</div>');
+    }
+
+    $('.face-34-4-container .face-1-chart-icon-count').each(function() {
+        var curBar = $(this);
+        var curHeight = curBar.height();
+        curBar.find('.face-1-chart-icon-count-inner').append('<svg width="37" height="12" viewBox="0 0 37 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32.2374 2.17872C28.5573 0.733884 23.5061 0 18.3467 0H18.1121C13.2955 0 8.71331 0.688017 5.19551 1.94938C1.49732 3.27955 0.1804 4.77025 0 5.4124C0.03608 5.52706 0.0541188 5.66467 0.0721588 5.80227C0.414918 6.49029 1.804 7.91219 5.24964 9.12768C8.82155 10.389 13.4759 11.1 18.3467 11.1C23.5061 11.1 28.3769 10.3432 32.0751 8.94422C36.08 7.43058 36.982 5.84814 37 5.50413C36.9459 5.11426 36.0439 3.64649 32.2374 2.17872Z" /></svg>');
+        var countBlocks = Math.floor(curHeight - 12) / 14;
+        for (var i = 0; i < countBlocks; i++) {
+            curBar.find('.face-1-chart-icon-count-inner').append('<svg width="37" height="14" viewBox="0 0 37 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M33.1311 2.322C29.0623 3.94663 23.7585 4.79427 18.1458 4.79427C11.5341 4.79427 4.32302 3.49927 0 0.650268L0.0908198 7.45491C0.0908198 7.47846 0.0908198 7.47845 0.0908198 7.502C0.0908198 7.85518 0.87187 9.43273 4.72263 10.9632C8.35543 12.3995 13.2597 13.2 18.5091 13.2C23.7403 13.2 28.6446 12.3759 32.3319 10.8925C36.1826 9.33854 37 7.71391 37 7.38427V0.25C35.7649 1.09764 34.4752 1.804 33.1311 2.322Z" /></svg>');
+        }
+    });
+
+    $('.face-34-4-container .face-1-chart-icon-summ').each(function() {
+        var curBar = $(this);
+        var curHeight = curBar.height();
+        curBar.find('.face-1-chart-icon-summ-inner').append('<svg width="37" height="12" viewBox="0 0 37 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32.2374 2.17872C28.5573 0.733884 23.5061 0 18.3467 0H18.1121C13.2955 0 8.71331 0.688017 5.19551 1.94938C1.49732 3.27955 0.1804 4.77025 0 5.4124C0.03608 5.52706 0.0541188 5.66467 0.0721588 5.80227C0.414918 6.49029 1.804 7.91219 5.24964 9.12768C8.82155 10.389 13.4759 11.1 18.3467 11.1C23.5061 11.1 28.3769 10.3432 32.0751 8.94422C36.08 7.43058 36.982 5.84814 37 5.50413C36.9459 5.11426 36.0439 3.64649 32.2374 2.17872Z" /></svg>');
+        var countBlocks = Math.floor(curHeight - 12) / 14;
+        for (var i = 0; i < countBlocks; i++) {
+            curBar.find('.face-1-chart-icon-summ-inner').append('<svg width="37" height="14" viewBox="0 0 37 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M33.1311 2.322C29.0623 3.94663 23.7585 4.79427 18.1458 4.79427C11.5341 4.79427 4.32302 3.49927 0 0.650268L0.0908198 7.45491C0.0908198 7.47846 0.0908198 7.47845 0.0908198 7.502C0.0908198 7.85518 0.87187 9.43273 4.72263 10.9632C8.35543 12.3995 13.2597 13.2 18.5091 13.2C23.7403 13.2 28.6446 12.3759 32.3319 10.8925C36.1826 9.33854 37 7.71391 37 7.38427V0.25C35.7649 1.09764 34.4752 1.804 33.1311 2.322Z" /></svg>');
+        }
+    });
+
+    $('.face-34-4-container').mCustomScrollbar('destroy');
+    $('.face-34-4-container').mCustomScrollbar({
+        axis: 'x',
+        scrollButtons: {
+            enable: true
+        }
+    });
 }
