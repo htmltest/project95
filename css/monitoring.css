@@ -1609,38 +1609,37 @@ canvas {user-select:none}
 }
 
 .face-18-1-container {position:relative; height:577px; margin:0 40px}
-.face-18-1-scale {position:absolute; left:0; top:121px; height:382px; width:30px; border-right:1px solid #d3d3d3; background:#f2f2f2; z-index:1}
-.face-18-1-scale::before {content:""; display:block; width:10px; height:3px; position:absolute; right:-1px; top:50%; transform:translateY(-50%); background:#fe6600}
-.face-18-1-scale span {display:block; position:absolute; right:19px; top:50%; font:11px/11px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626; transform:translateY(-50%)}
+.face-18-1-scale {position:absolute; left:0; top:168px; height:301px; width:30px; border-right:1px solid #d3d3d3; background:#f2f2f2; z-index:1}
+.face-18-1-scale::before {content:""; display:block; width:10px; height:3px; position:absolute; right:-1px; top:69px; background:#fe6600}
+.face-18-1-scale span {display:block; position:absolute; right:19px; top:100%; font:11px/11px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626; transform:translateY(-50%)}
+.face-18-1-scale span+span {top:69px}
 .face-18-1-graph {position:absolute; left:0; top:0; right:0; height:577px; overflow:auto}
-.face-18-1-graph-inner {display:inline-block; vertical-align:top; height:382px; position:relative; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; padding:0 0 0 30px; margin:121px 0 0 0}
-.face-18-1-graph-inner::before {content:""; display:block; position:absolute; left:0; top:50%; right:0; border-top:1px dashed #a5a5a5}
-.face-18-1-graph-item {display:inline-block; vertical-align:top; height:191px; width:42px; margin:0 0 0 22px; position:relative}
-.face-18-1-graph-item:first-child {margin:0 0 0 30px}
+.face-18-1-graph-inner {display:inline-block; vertical-align:top; height:331px; position:relative; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; padding:0 0 0 30px; margin:168px 0 0 0}
+.face-18-1-graph-inner::before {content:""; display:block; position:absolute; left:0; top:71px; right:0; border-top:1px dashed #f00}
+.face-18-1-graph-item {display:inline-block; vertical-align:top; height:230px; width:42px; margin:71px 0 0 22px; position:relative}
+.face-18-1-graph-item:first-child {margin-left:30px}
 .face-18-1-graph-item-actually {position:absolute; left:50%; bottom:0; margin-left:-10px; width:20px; background:#4f7b96}
 .face-18-1-graph-item.both .face-18-1-graph-item-actually {margin-left:-20px}
-.face-18-1-graph-item-actually.to-bottom {bottom:auto; top:100%}
 .face-18-1-graph-item-actually-value {position:absolute; left:50%; bottom:100%; margin-bottom:12px; transform:translateX(-50%); font:11px/11px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626}
 .face-18-1-graph-item.both .face-18-1-graph-item-actually-value {margin-left:-10px}
-.face-18-1-graph-item-actually.to-bottom .face-18-1-graph-item-actually-value {bottom:auto; top:100%; margin-bottom:0; margin-top:12px}
-.face-18-1-graph-item-forecast {position:absolute; left:50%; bottom:0; margin-left:-10px; width:20px; background:url(../images/cube-face-18-1-forecast.svg)}
+.face-18-1-graph-item-forecast {position:absolute; left:50%; bottom:0; margin-left:-10px; width:20px; background:url(../images/cube-face-18-1-forecast.svg) left bottom}
 .face-18-1-graph-item.both .face-18-1-graph-item-forecast {margin-left:0}
-.face-18-1-graph-item-forecast.to-bottom {bottom:auto; top:100%}
 .face-18-1-graph-item-forecast-value {position:absolute; left:50%; bottom:100%; margin-bottom:12px; transform:translateX(-50%); font:11px/11px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626}
 .face-18-1-graph-item.both .face-18-1-graph-item-forecast-value {margin-left:10px}
-.face-18-1-graph-item-forecast.to-bottom .face-18-1-graph-item-forecast-value {bottom:auto; top:100%; margin-bottom:0; margin-top:12px}
-.face-18-1-graph-item-year {position:absolute; left:0; bottom:-9px; right:0; height:18px; background:#fbe3d4; border-radius:5px; text-align:center; font:11px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626}
+.face-18-1-graph-item-year {position:absolute; left:0; bottom:-30px; right:0; height:18px; background:#fbe3d4; border-radius:5px; text-align:center; font:11px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626}
 
 @media screen and (max-width:1139px) {
     .face-18-1-container {height:348px; margin:0}
-    .face-18-1-scale {left:0; top:20px; height:284px; width:40px}
-    .face-18-1-scale::before {width:6px; height:2px}
-    .face-18-1-scale::after {content:""; display:block; position:absolute; left:0; top:-20px; right:0; height:20px; background:#f2f2f2}
-    .face-18-1-scale span {right:10px; font:8px/8px HelveticaNeueCyr, sans-serif}
+    .face-18-1-scale {left:0; top:20px; height:254px; width:40px}
+    .face-18-1-scale::before {width:6px; height:2px; top:92px}
+    .face-18-1-scale::after {content:""; display:block; position:absolute; left:0; top:-20px; right:0; height:340px; background:#f2f2f2}
+    .face-18-1-scale span {right:10px; font:8px/8px HelveticaNeueCyr, sans-serif; z-index:2}
+    .face-18-1-scale span+span {top:92px}
     .face-18-1-graph {height:348px}
-    .face-18-1-graph-inner {height:284px; padding:0 40px; margin:20px 0 0 0}
-    .face-18-1-graph-item {height:122px; width:32px; margin:20px 0 0 20px}
-    .face-18-1-graph-item:first-child {margin:20px 0 0 20px}
+    .face-18-1-graph-inner {height:359px; padding:0 40px; margin:20px 0 0 0}
+    .face-18-1-graph-inner::before {top:93px}
+    .face-18-1-graph-item {height:167px; width:32px; margin:93px 0 0 20px}
+    .face-18-1-graph-item:first-child {margin:93px 0 0 20px}
     .face-18-1-graph-item-actually {margin-left:-8px; width:16px}
     .face-18-1-graph-item.both .face-18-1-graph-item-actually {margin-left:-16px}
     .face-18-1-graph-item-forecast {margin-left:-8px; width:16px; background-size:100%}
