@@ -497,21 +497,41 @@ function face26_3_Redraw() {
 }
 
 function face18_1_Redraw() {
-    var curMax = 100;
+    var curMax = 0;
+    for (var i = 0; i < faceData18_1.length; i++) {
+        if (faceData18_1[i].actually !== undefined) {
+            if (curMax < Number(faceData18_1[i].actually)) {
+                curMax = Number(faceData18_1[i].actually);
+            }
+        }
+        if (faceData18_1[i].forecast !== undefined) {
+            if (curMax < Number(faceData18_1[i].forecast)) {
+                curMax = Number(faceData18_1[i].forecast);
+            }
+        }
+    }
     var newHTML = '';
     for (var i = 0; i < faceData18_1.length; i++) {
         var classBoth = '';
         if (faceData18_1[i].actually !== undefined && faceData18_1[i].forecast !== undefined) {
-            classBoth = ' both';
+            if ((Number(faceData18_1[i].actually) >= 100 && Number(faceData18_1[i].forecast) >= 100) || (Number(faceData18_1[i].actually) < 100 && Number(faceData18_1[i].forecast) < 100)) {
+                classBoth = ' both';
+            }
         }
         newHTML +=  '<div class="face-18-1-graph-item' + classBoth + '">';
         if (faceData18_1[i].actually !== undefined) {
             var classToBottom = '';
-            newHTML +=  '<div class="face-18-1-graph-item-actually" style="height:' + (Number(faceData18_1[i].actually) / curMax * 100) + '%"><div class="face-18-1-graph-item-actually-value">' + faceData18_1[i].actually + '%</div></div>';
+            if (Number(faceData18_1[i].actually) < 100) {
+                classToBottom = ' to-bottom';
+            }
+            newHTML +=  '<div class="face-18-1-graph-item-actually' + classToBottom + '" style="height:' + (Number(faceData18_1[i].actually) / curMax * 100) + '%"><div class="face-18-1-graph-item-actually-value">' + faceData18_1[i].actually + '%</div></div>';
         }
         if (faceData18_1[i].forecast !== undefined) {
             var classToBottom = '';
-            newHTML +=  '<div class="face-18-1-graph-item-forecast" style="height:' + (Number(faceData18_1[i].forecast) / curMax * 100) + '%"><div class="face-18-1-graph-item-forecast-value">' + faceData18_1[i].forecast + '%</div></div>';
+            if (Number(faceData18_1[i].forecast) < 100) {
+                classToBottom = ' to-bottom';
+            }
+            newHTML +=  '<div class="face-18-1-graph-item-forecast' + classToBottom + '" style="height:' + (Number(faceData18_1[i].forecast) / curMax * 100) + '%"><div class="face-18-1-graph-item-forecast-value">' + faceData18_1[i].forecast + '%</div></div>';
         }
         newHTML +=      '<div class="face-18-1-graph-item-year">' + faceData18_1[i].year + '</div>';
         newHTML +=  '</div>';
