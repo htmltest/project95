@@ -1973,7 +1973,6 @@ canvas {user-select:none}
     .face-27-5-ratio-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {margin:0; height:6px}
 }
 
-
 .map-russia-28-2 {position:relative; margin:90px 35px 0 35px}
 .map-russia-28-2-inner {position:relative; display:inline-block}
 .map-russia-28-2 svg {display:block; margin:0 auto}
@@ -2521,4 +2520,150 @@ canvas {user-select:none}
     .face-34-4-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {margin:0; height:6px}
     .face-34-4-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {margin:0; height:6px}
     .face-34-4-container .face-1-chart-icon-value {font-size:9.5px}
+}
+
+.map-russia-42-2 {position:relative; margin:90px 35px 0 35px}
+.map-russia-42-2-inner {position:relative; display:inline-block}
+.map-russia-42-2 svg {display:block; margin:0 auto}
+.map-russia-42-2 .map-russia-district-42-2 {stroke:#f2f2f2; transition:all 0.2s; cursor:pointer}
+.map-russia-42-2 .map-russia-district-42-2.disabled {cursor:default}
+.map-russia-42-2 .map-russia-district-42-2:hover {opacity:0.9}
+.map-russia-42-2 .map-russia-district-42-2.disabled:hover {opacity:1}
+
+@media screen and (max-width:1139px) {
+    .map-russia-42-2 {margin:38px 0 0 0; height:295px; overflow:auto}
+    .map-russia-42-2-inner {position:relative; margin:0 20px}
+    .map-russia-42-2 svg {width:440px; height:250px}
+}
+
+.map-region-42-2-wrapper {position:absolute; left:0; top:0; right:0; bottom:0; overflow:hidden; display:none}
+.map-region-42-2 {position:relative; display:none; width:100%; height:100%}
+.map-region-42-2-inner {position:relative; display:block; width:622px; height:622px; cursor:pointer; left:0; top:0}
+.map-region-42-2 svg {display:block; margin:0 auto; position:relative}
+.map-region-42-2 .map-region-item-42-2 {stroke:#f2f2f2; transition:all 0.2s; cursor:pointer}
+.map-region-42-2 .map-region-item-42-2.disabled {cursor:default}
+.map-region-42-2 .map-region-item-42-2:hover {opacity:0.9}
+.map-region-42-2 .map-region-item-42-2.disabled:hover {opacity:1}
+
+.map-region-42-2.zoom {transform:scale(3)}
+
+@media screen and (max-width:1139px) {
+    .map-region-42-2 {padding:0; margin:20px 0 0 0; height:295px}
+    .map-region-42-2-inner {margin:0 20px}
+    .map-region-42-2 svg {width:440px; height:250px; margin:0}
+}
+
+.map-russia-legend-icon-42-2 {display:none}
+
+.map-russia-legend-42-2 {position:absolute; bottom:40px; right:0; width:94px; font:12px/24px HelveticaNeueCyrLight, sans-serif; letter-spacing:0.04em; color:#121212}
+.map-russia-legend-42-2.invisible {display:none}
+.map-russia-legend-42-2-item {padding:0 0 0 47px; position:relative}
+.map-russia-legend-42-2-item-color {position:absolute; left:0; top:0; width:36px; height:24px}
+
+@media screen and (max-width:1139px) {
+    .map-russia-legend-icon-42-2 {display:block; position:absolute; right:20px; bottom:20px; width:21px; height:21px; background:#fff url(../images/cube-info.svg) no-repeat center; cursor:pointer; border-radius:50%}
+    .map-russia-legend-icon-42-2.invisible {display:none}
+    .map-russia-legend-42-2 {display:none}
+}
+
+.face-42-2-header {padding:37px 43px 0 43px; text-transform:uppercase; font:12.5px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; position:relative; z-index:1}
+
+.face-42-2-back {float:right; text-transform:uppercase; visibility:hidden; opacity:0; transition:all 0.2s}
+.face-42-2-back.visible {visibility:visible; opacity:1}
+.face-42-2-back a {display:block; position:relative; padding:0 0 0 18px; color:#757575; text-decoration:none}
+.face-42-2-back a:hover {color:#fe6600}
+.face-42-2-back a::before {content:""; display:block; width:8px; height:11px; background:url(../images/monitoring-russia-back.svg) no-repeat; position:absolute; left:0; top:50%; margin-top:-6px}
+
+@media screen and (max-width:1139px) {
+    .face-42-2-header {padding:20px 20px 0 20px; font:9px/18px HelveticaNeueCyr, sans-serif}
+}
+
+.face-42-2-zoom {position:absolute; left:30px; top:30px; width:40px; display:none; z-index:2}
+.face-42-2-zoom.visible {display:block}
+.face-42-2-zoom a {display:block; width:40px; height:40px; position:relative; background:#fff; border:1px solid #e0e0e0}
+.face-42-2-zoom a.disabled {opacity:0.5; cursor:default; pointer-events:none}
+.face-42-2-zoom a:hover {z-index:1; border-color:#fe6600}
+.face-42-2-zoom a+a {margin-top:-1px}
+.face-42-2-zoom a.face-42-2-zoom-inc::before {content:""; display:block; position:absolute; left:50%; top:50%; width:2.4px; height:19.3px; background:#fe6600; transform:translate(-50%, -50%)}
+.face-42-2-zoom a.face-42-2-zoom-inc::after {content:""; display:block; position:absolute; left:50%; top:50%; width:19.3px; height:2.4px; background:#fe6600; transform:translate(-50%, -50%)}
+.face-42-2-zoom a.face-42-2-zoom-dec::after {content:""; display:block; position:absolute; left:50%; top:50%; width:19.3px; height:2.4px; background:#fe6600; transform:translate(-50%, -50%)}
+
+@media screen and (max-width:1139px) {
+    .face-42-2-zoom {left:10px; top:10px; width:27px}
+    .face-42-2-zoom a {width:27px; height:27px}
+    .face-42-2-zoom a.face-42-2-zoom-inc::before {width:1.62px; height:12.98px}
+    .face-42-2-zoom a.face-42-2-zoom-inc::after {width:12.98px; height:1.62px}
+    .face-42-2-zoom a.face-42-2-zoom-dec::after {width:12.98px; height:1.62px}
+}
+
+.map-russia-42-2-point {position:absolute}
+.map-russia-42-2-point-value {display:block; position:absolute; left:-25px; bottom:-12px; width:55px; height:63px; background:url(../images/map-russia-28-2-point.svg) no-repeat; text-align:center; padding:20px 4px 0 0; font:13px/13px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#000; pointer-events:none; box-sizing:border-box}
+.map-region-42-2.zoom .map-russia-42-2-point {display:none}
+
+@media screen and (max-width:1139px) {
+    .map-russia-42-2-point-value {left:-21px; bottom:-12px; width:46px; height:52px; background:url(../images/map-russia-28-2-point-mobile.svg) no-repeat; padding:17px 4px 0 0; font:11px/11px HelveticaNeueCyrMedium, sans-serif}
+}
+
+.map-region-42-2 .map-russia-42-2-point-value {cursor:pointer; pointer-events:auto; z-index:3}
+.map-region-42-2 .map-russia-42-2-point-value:hover {z-index:4}
+
+.map-region-42-2-point {position:absolute; cursor:pointer; z-index:3}
+.map-region-42-2-point:hover {z-index:4}
+.map-region-42-2-point-value {display:block; position:absolute; left:-17px; bottom:-13px; width:38px; height:38px; background:url(../images/map-region-28-2-point.svg) no-repeat; box-sizing:border-box}
+
+.map-region-42-2-1 svg {left:-150px; top:-805px}
+.map-region-42-2-2 svg {left:-50px; top:-5px}
+.map-region-42-2-2.zoom svg {width:2496px; height:1418px}
+.map-region-42-2-3 svg {left:100px; top:-655px}
+.map-region-42-2-4 svg {left:-50px; top:-1805px}
+.map-region-42-2-5 svg {left:-200px; top:-555px}
+.map-region-42-2-6 svg {left:-150px; top:-105px}
+.map-region-42-2-7 svg {left:-150px; top:-5px}
+.map-region-42-2-8 svg {left:-250px; top:95px}
+
+@media screen and (max-width:1139px) {
+    .map-region-42-2-1 svg {left:-75px; top:-475px; width:1760px; height:1000px}
+    .map-region-42-2-2 svg {left:-50px; top:-75px; width:880px; height:500px}
+    .map-region-42-2-3 svg {left:0; top:-650px; width:1760px; height:1000px}
+    .map-region-42-2-4 svg {left:0; top:-950px; width:2200px; height:1250px}
+    .map-region-42-2-5 svg {left:-125px; top:-400px; width:1320px; height:750px}
+    .map-region-42-2-6 svg {left:-150px; top:-175px; width:880px; height:500px}
+    .map-region-42-2-7 svg {left:-50px; top:-25px}
+    .map-region-42-2-8 svg {left:-150px; top:0}
+}
+
+.map-region-42-2-point {display:none}
+.map-region-42-2.zoom .map-region-42-2-point {display:block; transform:scale(0.33)}
+
+.face-42-2-window {position:absolute; z-index:99; margin:38px 0 0 -57px}
+.face-42-2-window-inner {position:relative; width:693px; background:#fff; padding:27px 44px 38px 30px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); box-shadow:border-box}
+.face-42-2-window-inner::before {content:""; display:block; position:absolute; left:62px; top:-5px; width:25px; height:25px; transform:rotate(45deg); background:#fff}
+.face-42-2-window-close {display:block; position:absolute; width:26px; height:26px; background:#f2f2f2; border-radius:50%; right:10px; top:10px}
+.face-42-2-window-close svg {display:block; position:absolute; left:50%; top:50%; transform:translate(-50%, -50%)}
+.face-42-2-window-close rect {fill:#424242}
+.face-42-2-window-row {margin:15px 0 0 0}
+.face-42-2-window-row:first-child {margin:0}
+.face-42-2-window-row::after {content:""; display:block; clear:both}
+.face-42-2-window-row-title {float:left; width:90px; font:14px/18px HelveticaNeueCyr, sans-serif; letter-spacing:0.04em; color:#121212}
+.face-42-2-window-row-value {margin:0 0 0 92px; font:14px/18px HelveticaNeueCyrLight, sans-serif; letter-spacing:0.04em; color:#121212}
+
+@media screen and (max-width:1139px) {
+    .face-42-2-window {position:fixed; z-index:99; margin:0; left:0 !important; top:0 !important; right:0; bottom:0}
+    .face-42-2-window-bg {position:absolute; left:0; top:0; right:0; bottom:0; background:rgba(0, 0, 0, 0.2); cursor:pointer}
+    .face-42-2-window-inner {position:absolute; width:410px; left:50%; top:50%; height:510px; margin:-255px 0 0 -205px; background:#fff; padding:0; box-shadow:none; overflow:auto}
+    .face-42-2-window-inner::before {display:none}
+    .face-42-2-window-close {right:20px; top:20px; width:15px; height:15px; border-radius:none; background:none}
+    .face-42-2-window-close svg {width:15px; height:15px}
+    .face-42-2-window-close rect {fill:#fe6600}
+    .face-42-2-window-row {margin:0; padding:0 30px 30px 30px}
+    .face-42-2-window-row:first-child {padding-top:40px}
+    .face-42-2-window-row::after {content:""; display:block; clear:both}
+    .face-42-2-window-row-title {float:none; width:auto; font:16px/16px HelveticaNeueCyrMedium, sans-serif}
+    .face-42-2-window-row-value {margin:8px 0 0 0}
+    .face-42-2-window .mCSB_scrollTools a + .mCSB_draggerContainer {margin:0}
+    .face-42-2-window .mCSB_inside > .mCSB_container {margin:0}
+    .face-42-2-window .mCSB_scrollTools a {display:none !important}
+    .face-42-2-window .mCSB_scrollTools.mCSB_scrollTools_vertical {width:6px; right:0}
+    .face-42-2-window .mCSB_scrollTools.mCSB_scrollTools_vertical .mCSB_draggerRail {margin:0; width:6px}
+    .face-42-2-window .mCSB_scrollTools.mCSB_scrollTools_vertical .mCSB_dragger .mCSB_dragger_bar {margin:0; width:6px}
 }
