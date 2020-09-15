@@ -639,9 +639,30 @@
 }
 
 .face-5-container {padding:20px}
-.face-5-content {height:582px; overflow:auto; position:relative}
+
+.face-5-header {text-transform:uppercase; font:12.5px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; text-transform:uppercase}
+.face-5-header::after {content:""; display:block; clear:both}
+
+.face-5-year {float:left; position:relative}
+.face-5-year.open {z-index:9999}
+.face-5-year-current {display:inline-block; vertical-align:top; color:#757575; transition:all 0.2s; cursor:pointer; padding:0 19px 0 0; position:relative}
+.face-5-year-current::after {content:""; display:block; position:absolute; right:0; top:50%; width:11px; height:8px; background:url(../images/map-russia-sort-type.svg) no-repeat; margin-top:-4px}
+.face-5-year-current:hover {color:#fe6600}
+.face-5-year ul {margin:0; padding:5px 0; list-style:none; display:none; z-index:9999; position:absolute; left:-20px; top:100%; white-space:nowrap; background:#fff; border:1px solid #e6e6e6; box-sizing:border-box}
+.face-5-year.open ul {display:block}
+.face-5-year ul li {margin:0; padding:0; color:#a6a6a6; cursor:pointer}
+.face-5-year ul li::before {display:none}
+.face-5-year ul li a {color:#a6a6a6; text-decoration:none; display:block; padding:5px 20px}
+.face-5-year ul li a:hover {color:#fe6600}
+.face-5-year ul li.active a {color:#2f2f2f}
+
+@media screen and (max-width:1139px) {
+    .face-5-header {padding:20px 0 0 20px; font:9px/18px HelveticaNeueCyr, sans-serif}
+}
+
+.face-5-content {height:564px; overflow:auto; position:relative}
 .face-5-list {width:570px; font-size:16px; line-height:21px; color:#121212}
-.face-5-item {margin:17px 0; display:table}
+.face-5-item {margin:17px 0; display:table; width:100%}
 .face-5-item-title {display:table-cell; vertical-align:middle; text-align:right; width:220px}
 .face-5-item-info {display:table-cell; vertical-align:middle; width:64px}
 .face-5-item-info-container {width:26px; height:26px; position:relative; margin:0 0 0 10px}
@@ -658,21 +679,32 @@
 @media screen and (min-width:1140px) {
     .face-5-item-info-container:hover .face-5-item-info-content {display:block}
 }
-.face-5-item-line {display:table-cell; vertical-align:middle}
-.face-5-item-line-inner {height:11px; background:#fe6600; width:0}
-.face-5-item-value {display:table-cell; vertical-align:middle; padding:0 0 0 10px}
+.face-5-item-line {display:table-cell; vertical-align:middle; position:relative}
+.face-5-item-line-inner {height:4px; width:0}
+.face-5-item-line-inner+.face-5-item-line-inner {margin:4px 0 0 0}
+.face-5-item-line-popup-template {display:none}
+.face-5-item-line-popup {display:block; position:absolute; margin-top:10px; pointer-events:none; white-space:nowrap; font-size:16px; line-height:24px; padding:19px 25px 18px 25px; background:#fff; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); z-index:20}
+.face-5-item-line-popup::before {content:""; display:block; position:absolute; left:50%; top:-8px; width:25px; height:25px; background:#fff; margin-left:-12.5px; transform:rotate(45deg)}
+.face-5-item-line-popup-line {margin:4px 0 0 0}
+.face-5-item-line-popup-line:first-child {margin:0}
 
 @media screen and (max-width:1139px) {
     .face-5-container {padding:0; width:353px}
-    .face-5-content {height:348px}
+    .face-5-content {height:310px}
     .face-5-list {width:340px; font-size:12px; line-height:16px}
     .face-5-item {margin:15px 0}
-    .face-5-item-title {width:126px}
+    .face-5-item-title {width:146px; padding-left:20px}
     .face-5-item-info {width:54px}
     .face-5-container .mCSB_buttonUp {display:none !important}
     .face-5-container .mCSB_buttonDown {display:none !important}
     .face-5-container .mCSB_scrollTools a + .mCSB_draggerContainer {margin:0}
+    .face-5-item-line {cursor:pointer}
 }
+
+.cube-face-5-legend {padding:0 0 44px 0; font-size:14px; line-height:19px; color:#121212; font-family:HelveticaNeueCyrLight, sans-serif}
+.cube-face-5-legend-item {margin:14px 0 0 0; padding:0 0 0 33px; position:relative}
+.cube-face-5-legend-item:first-child {margin:0}
+.cube-face-5-legend-item-color {position:absolute; left:0; top:0; width:19px; height:19px}
 
 .cube-formula {text-align:center; font-size:0; line-height:0; letter-spacing:-1px; padding:230px 0 0 0}
 .cube-formula::after {content:""; display:block; clear:both}

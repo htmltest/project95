@@ -985,54 +985,41 @@ $(document).ready(function() {
             }
         });
 
-        $('.face-5-list').each(function() {
-            var maxWidthLine = 153;
-            if ($(window).width() < 1140) {
-                maxWidthLine = 107;
+        $('.face-5-year-current').click(function(e) {
+            $(this).parent().toggleClass('open');
+        });
+
+        $(document).click(function(e) {
+            if ($(e.target).parents().filter('.face-5-year').length == 0) {
+                $('.face-5-year').removeClass('open');
             }
+        });
 
-            var maxValue = 0;
-            for (var i = 0; i < face5data.length; i++) {
-                var curValue = parseFloat(face5data[i].value.replace(/,/, '.'));
-                if (maxValue < curValue) {
-                    maxValue = curValue;
-                }
+        $('.face-5-year ul li a').click(function(e) {
+            var curLi = $(this).parent();
+            if (!curLi.hasClass('active')) {
+                $('.face-5-year ul li.active').removeClass('active');
+                curLi.addClass('active');
+                $('.face-5-year-current').html($(this).html());
+                face5Redraw();
             }
-
-            var newHTML = '';
-
-            for (var i = 0; i < face5data.length; i++) {
-                var curItem = face5data[i];
-                var curValue = parseFloat(curItem.value.replace(/,/, '.'));
-                var curWidth = curValue / maxValue * maxWidthLine + 1;
-                var hintSize = '';
-                if (curItem.hint.length < 300) {
-                    hintSize = 'mini';
-                }
-                newHTML += '<div class="face-5-item">' +
-                                '<div class="face-5-item-title">' + curItem.title + '</div>' +
-                                '<div class="face-5-item-info">' +
-                                    '<div class="face-5-item-info-container">' +
-                                        '<div class="face-5-item-info-icon"></div>' +
-                                        '<div class="face-5-item-info-content ' + hintSize + '">' + curItem.hint + '</div>' +
-                                    '</div>' +
-                                '</div>' +
-                                '<div class="face-5-item-line"><div class="face-5-item-line-inner" style="width:' + curWidth + 'px"></div></div>' +
-                                '<div class="face-5-item-value">' + curItem.value + '</div>' +
-                           '</div>';
-            }
-
-            $('.face-5-list').html(newHTML);
+            $('.face-5-year').removeClass('open');
+            e.preventDefault();
         });
 
         $('.face-5-content').mCustomScrollbar({
             axis: 'y',
             scrollButtons: {
                 enable: true
+            },
+            callbacks: {
+                onScrollStart: function() {
+                    $('.face-5-item-line-popup').remove();
+                }
             }
         });
 
-        $('.face-5-item-info-icon').click(function(e) {
+        $('body').on('click', '.face-5-item-info-icon', function(e) {
             if ($(window).width() < 1140) {
                 $('html').addClass('window-open');
 
@@ -1048,6 +1035,15 @@ $(document).ready(function() {
                 $('.window-container').removeClass('window-container-load');
                 windowPosition();
             }
+        });
+
+        $('body').on('mouseenter', '.face-5-item-line', function(e) {
+            var curLine = $(this);
+            $('body').append('<div class="face-5-item-line-popup" style="left:' + curLine.offset().left + 'px; top:' + (curLine.offset().top + curLine.height() / 2) + 'px">' + curLine.find('.face-5-item-line-popup-template').html() + '</div>');
+        });
+
+        $('body').on('mouseleave', '.face-5-item-line', function(e) {
+            $('.face-5-item-line-popup').remove();
         });
 
         $('.cube-formula-legend-item-info-icon').click(function(e) {
@@ -1406,3 +1402,83 @@ $(window).on('load resize', function() {
         });
     }
 });
+
+$(window).on('load resize', function() {
+
+    face5Redraw();
+
+});
+
+function face5Redraw() {
+    var curYear = $('.face-5-year li.active').attr('data-year');
+
+    var firstIndexYear = 0;
+    var lastIndexYear = 0;
+    for (var j = 0; j < face5data[0].data.length; j++) {
+        if (curYear == face5data[0].data[j].year) {
+            firstIndexYear = j - 1;
+            lastIndexYear = j + 1;
+        }
+    }
+
+    $('.cube-face-5-legend').html('<div class="cube-face-5-legend-item"><div class="cube-face-5-legend-item-color" style="background:' + face5colors[0] + '"></div>' + (Number(curYear) - 1) + ' год</div>' +
+                                  '<div class="cube-face-5-legend-item"><div class="cube-face-5-legend-item-color" style="background:' + face5colors[1] + '"></div>' + curYear + ' год</div>' +
+                                  '<div class="cube-face-5-legend-item"><div class="cube-face-5-legend-item-color" style="background:' + face5colors[2] + '"></div>' + (Number(curYear) + 1) + ' год</div>');
+
+    $('.face-5-list').each(function() {
+        var maxWidthLine = 253;
+        if ($(window).width() < 1140) {
+            maxWidthLine = 107;
+        }
+
+        var maxValue = 0;
+        for (var i = 0; i < face5data.length; i++) {
+            for (var j = firstIndexYear; j <= lastIndexYear; j++) {
+                var curValue = parseFloat(face5data[i].data[j].value);
+                if (maxValue < curValue) {
+                    maxValue = curValue;
+                }
+            }
+        }
+
+        var newHTML = '';
+
+        for (var i = 0; i < face5data.length; i++) {
+            var curItem = face5data[i];
+            var hintSize = '';
+            if (curItem.hint.length < 300) {
+                hintSize = 'mini';
+            }
+            newHTML += '<div class="face-5-item">' +
+                            '<div class="face-5-item-title">' + curItem.title + '</div>' +
+                            '<div class="face-5-item-info">' +
+                                '<div class="face-5-item-info-container">' +
+                                    '<div class="face-5-item-info-icon"></div>' +
+                                    '<div class="face-5-item-info-content ' + hintSize + '">' + curItem.hint + '</div>' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="face-5-item-line">';
+            var c = 0;
+            for (var j = firstIndexYear; j <= lastIndexYear; j++) {
+                var curValue = parseFloat(face5data[i].data[j].value);
+                var curWidth = curValue / maxValue * maxWidthLine + 1;
+                newHTML +=      '<div class="face-5-item-line-inner" style="width:' + curWidth + 'px; background:' + face5colors[c] + '"></div>';
+                c++;
+            }
+
+            newHTML +=          '<div class="face-5-item-line-popup-template">';
+            var c = 0;
+            for (var j = firstIndexYear; j <= lastIndexYear; j++) {
+                var curValue = (parseFloat(face5data[i].data[j].value)).toFixed(1);
+                newHTML +=          '<div class="face-5-item-line-popup-line" style="color:' + face5colors[c] + '">' + String(curValue).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</div>';
+                c++;
+            }
+            newHTML +=          '</div>' +
+                            '</div>' +
+                       '</div>';
+        }
+
+        $('.face-5-list').html(newHTML);
+    });
+
+}
