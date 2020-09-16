@@ -1425,6 +1425,16 @@ function face5Redraw() {
                                   '<div class="cube-face-5-legend-item"><div class="cube-face-5-legend-item-color" style="background:' + face5colors[1] + '"></div>' + curYear + ' год</div>' +
                                   '<div class="cube-face-5-legend-item"><div class="cube-face-5-legend-item-color" style="background:' + face5colors[2] + '"></div>' + (Number(curYear) + 1) + ' год</div>');
 
+    face5data.sort(function(a, b) {
+        if (a.data[firstIndexYear].value == null) return 1;
+        if (b.data[firstIndexYear].value == null) return -1;
+        var value1 = parseFloat(a.data[firstIndexYear].value);
+        var value2 = parseFloat(b.data[firstIndexYear].value);
+        if (value1 < value2) return 1;
+        if (value1 > value2) return -1;
+        return 0;
+    });
+
     $('.face-5-list').each(function() {
         var maxWidthLine = 253;
         if ($(window).width() < 1140) {
@@ -1449,33 +1459,45 @@ function face5Redraw() {
             if (curItem.hint.length < 300) {
                 hintSize = 'mini';
             }
-            newHTML += '<div class="face-5-item">' +
-                            '<div class="face-5-item-title">' + curItem.title + '</div>' +
-                            '<div class="face-5-item-info">' +
-                                '<div class="face-5-item-info-container">' +
-                                    '<div class="face-5-item-info-icon"></div>' +
-                                    '<div class="face-5-item-info-content ' + hintSize + '">' + curItem.hint + '</div>' +
+            var hasValues = false;
+            for (var j = firstIndexYear; j <= lastIndexYear; j++) {
+                if (face5data[i].data[j].value !== null) {
+                    hasValues = true;
+                }
+            }
+            if (hasValues) {
+                newHTML += '<div class="face-5-item">' +
+                                '<div class="face-5-item-title">' + curItem.title + '</div>' +
+                                '<div class="face-5-item-info">' +
+                                    '<div class="face-5-item-info-container">' +
+                                        '<div class="face-5-item-info-icon"></div>' +
+                                        '<div class="face-5-item-info-content ' + hintSize + '">' + curItem.hint + '</div>' +
+                                    '</div>' +
                                 '</div>' +
-                            '</div>' +
-                            '<div class="face-5-item-line">';
-            var c = 0;
-            for (var j = firstIndexYear; j <= lastIndexYear; j++) {
-                var curValue = parseFloat(face5data[i].data[j].value);
-                var curWidth = curValue / maxValue * maxWidthLine + 1;
-                newHTML +=      '<div class="face-5-item-line-inner" style="width:' + curWidth + 'px; background:' + face5colors[c] + '"></div>';
-                c++;
-            }
+                                '<div class="face-5-item-line">';
+                var c = 0;
+                for (var j = firstIndexYear; j <= lastIndexYear; j++) {
+                    if (face5data[i].data[j].value !== null) {
+                        var curValue = parseFloat(face5data[i].data[j].value);
+                        var curWidth = curValue / maxValue * maxWidthLine + 1;
+                        newHTML +=      '<div class="face-5-item-line-inner" style="width:' + curWidth + 'px; background:' + face5colors[c] + '"></div>';
+                    }
+                    c++;
+                }
 
-            newHTML +=          '<div class="face-5-item-line-popup-template">';
-            var c = 0;
-            for (var j = firstIndexYear; j <= lastIndexYear; j++) {
-                var curValue = (parseFloat(face5data[i].data[j].value)).toFixed(1);
-                newHTML +=          '<div class="face-5-item-line-popup-line" style="color:' + face5colors[c] + '">' + String(curValue).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</div>';
-                c++;
+                newHTML +=          '<div class="face-5-item-line-popup-template">';
+                var c = 0;
+                for (var j = firstIndexYear; j <= lastIndexYear; j++) {
+                    if (face5data[i].data[j].value !== null) {
+                        var curValue = (parseFloat(face5data[i].data[j].value)).toFixed(1);
+                        newHTML +=          '<div class="face-5-item-line-popup-line" style="color:' + face5colors[c] + '">' + String(curValue).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</div>';
+                    }
+                    c++;
+                }
+                newHTML +=          '</div>' +
+                                '</div>' +
+                           '</div>';
             }
-            newHTML +=          '</div>' +
-                            '</div>' +
-                       '</div>';
         }
 
         $('.face-5-list').html(newHTML);
