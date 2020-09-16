@@ -2699,3 +2699,44 @@ canvas {user-select:none}
     .face-42-2-window .mCSB_scrollTools.mCSB_scrollTools_vertical .mCSB_draggerRail {margin:0; width:6px}
     .face-42-2-window .mCSB_scrollTools.mCSB_scrollTools_vertical .mCSB_dragger .mCSB_dragger_bar {margin:0; width:6px}
 }
+
+.face-20-1-container .face-1-content {height:624px}
+.face-20-1-container .face-1-chart {height:624px}
+.face-20-1-container .face-1-chart-point.active {cursor:default; pointer-events:none}
+.face-20-1-container .face-1-chart-point em::after {display:none}
+.face-20-1-container .face-1-chart-graph {top:68px; bottom:464px}
+.face-20-1-container .face-1-chart-labels {bottom:104px}
+.face-20-1-container .face-1-chart-year {text-align:center; width:84px}
+.face-20-1-container .face-1-chart-year strong {display:inline-block; width:42px; height:18px; text-decoration:none; color:#262626; border-radius:5px; background:rgba(255, 220, 197, 0.67); font-weight:normal}
+.face-20-1-container .face-1-chart-point span {font-size:12.5px}
+.face-20-1-container .face-1-chart-icons {position:absolute; left:0; right:0; bottom:140px; height:270px; white-space:nowrap}
+.face-20-1-container .face-1-chart-icon {position:absolute; bottom:0; top:0; font-size:0; line-height:270px; width:84px}
+.face-20-1-container .face-1-chart-icon-summ {position:absolute; left:50%; margin-left:5px; bottom:0; line-height:0; width:37px}
+.face-20-1-container .face-1-chart-icon-summ-inner {position:absolute; left:0; bottom:0; right:0}
+.face-20-1-container .face-1-chart-icon-count {position:absolute; right:50%; margin-right:5px; bottom:0; line-height:0; width:37px}
+.face-20-1-container .face-1-chart-icon-onlyone .face-1-chart-icon-count {margin-right:-18.5px}
+.face-20-1-container .face-1-chart-icon-count-inner {position:absolute; left:0; bottom:0; right:0}
+.face-20-1-container .face-1-chart-icon-value {position:absolute; left:50%; top:-20px; white-space:nowrap; transform:translateX(-50%); color:#393939; font:12.5px/14px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em}
+.face-20-1-container .face-1-chart-icon svg {display:block; margin:0 auto -2px auto}
+.face-20-1-container .face-1-chart-icon-count path {fill:#4f7b96}
+.face-20-1-container .face-1-chart-icon-summ path {fill:#91d9d0}
+.face-20-1-container .mCSB_horizontal.mCSB_inside > .mCSB_container {margin:0}
+.face-20-1-container .mCSB_horizontal {bottom:20px}
+.face-20-1-container .face-1-chart-line-2.active {border-top-color:#ff0000}
+.face-20-1-container .face-1-chart-point-2.active {background:#ff0000; border-color:#ff0000}
+
+@media screen and (max-width:1139px) {
+    .face-20-1-container .face-1-content {height:349px; padding:0 0 0 40px}
+    .face-20-1-container .face-1-chart {height:349px}
+    .face-20-1-container .face-1-container {margin:0}
+    .face-20-1-container .face-1-chart-graph {top:30px; bottom:250px}
+    .face-20-1-container .face-1-chart-point span {font-size:9px; line-height:11px}
+    .face-20-1-container .face-1-chart-labels {bottom:20px}
+    .face-20-1-container .face-1-chart-year strong {height:14px}
+    .face-20-1-container .face-1-chart-icons {bottom:50px; height:180px}
+    .face-20-1-container .mCSB_horizontal {bottom:0}
+    .face-20-1-container .mCSB_scrollTools.mCSB_scrollTools_horizontal {height:6px}
+    .face-20-1-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {margin:0; height:6px}
+    .face-20-1-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {margin:0; height:6px}
+    .face-20-1-container .face-1-chart-icon-value {font-size:9.5px}
+}
