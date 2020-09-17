@@ -167,6 +167,7 @@ $(window).on('load resize', function() {
     });
 
     face20_1_Redraw();
+    face40_2_Redraw();
 
 });
 
@@ -199,7 +200,6 @@ function face20_1_Redraw() {
             face1DataRatio.push(null);
         }
     }
-    console.log(face1DataRatio);
 
     if ($(window).width() < 1140) {
         $('.face-20-1-container .face-1-chart').width(face1Labels.length * (itemWidth + itemMargin));
@@ -352,5 +352,176 @@ function face20_1_Redraw() {
             enable: true
         }
     });
+
+}
+
+$(document).ready(function() {
+    $('.face-40-2-type-current').click(function(e) {
+        $(this).parent().toggleClass('open');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.face-40-2-type').length == 0) {
+            $('.face-40-2-type').removeClass('open');
+        }
+    });
+
+    $('.face-40-2-type ul li a').click(function(e) {
+        var curLi = $(this).parent();
+        if (!curLi.hasClass('active')) {
+            $('.face-40-2-type ul li.active').removeClass('active');
+            curLi.addClass('active');
+            $('.face-40-2-type-current').html($(this).html());
+            face40_2_Redraw();
+        }
+        $('.face-40-2-type').removeClass('open');
+        e.preventDefault();
+    });
+
+});
+
+function face40_2_Redraw() {
+    var curType = $('.face-40-2-type li.active').attr('data-type');
+    var faceData = null;
+    for (var i = 0; i < faceData40_2.length; i++) {
+        if (faceData40_2[i].type == curType) {
+            faceData = faceData40_2[i].data;
+        }
+    }
+
+    if (faceData !== null) {
+
+        var face1Labels = [];
+        var face1DataActually = [];
+
+        $('.face-40-2-container .face-1-chart-graph').html('');
+        $('.face-40-2-container .face-1-chart-labels').html('');
+        $('.face-40-2-container .face-1-chart-icons').html('');
+
+        var itemWidth = 110;
+        if ($(window).width() < 1140) {
+            itemWidth = 80;
+        }
+
+        var itemMargin = 55;
+        if ($(window).width() < 1140) {
+            itemMargin = 40;
+        }
+
+        for (var i = 0; i < faceData.length; i++) {
+            var curData = faceData[i];
+            face1Labels.push(curData.year);
+            face1DataActually.push(Number(curData.ratio));
+        }
+
+        $('.face-40-2-container .face-1-chart').width(face1Labels.length * itemWidth + itemMargin);
+
+        var minPlace = 9999;
+        var maxPlace = 0;
+
+        for (var i = 0; i < face1DataActually.length; i++) {
+            if (face1DataActually[i] < minPlace) {
+                minPlace = face1DataActually[i];
+            }
+            if (face1DataActually[i] > maxPlace) {
+                maxPlace = face1DataActually[i];
+            }
+        }
+
+        function angle_point(a, b, c) {
+            var x1 = a[0] - b[0];
+            var x2 = c[0] - b[0];
+            var y1 = a[1] - b[1];
+            var y2 = c[1] - b[1];
+
+            var d1 = Math.sqrt(x1 * x1 + y1 * y1);
+            var d2 = Math.sqrt(x2 * x2 + y2 * y2);
+            return Math.acos((x1 * x2 + y1 * y2) / (d1 * d2)) * 180 / Math.PI;
+        }
+
+        var curLastActually = -1;
+        for (var i = 0; i < face1DataActually.length; i++) {
+            if (face1DataActually[i] != null) {
+                curLastActually++;
+                var curX = (i * itemWidth) + itemMargin;
+                var curY = ((face1DataActually[i] - maxPlace) / (minPlace - maxPlace)) * $('.face-40-2-container .face-1-chart-graph').height();
+                if (face1DataActually[i - 1] != null) {
+                    var prevX = ((i - 1) * itemWidth) + itemMargin;
+                    var prevY = ((face1DataActually[i - 1] - maxPlace) / (minPlace - maxPlace)) * $('.face-40-2-container .face-1-chart-graph').height();
+                    var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+                    var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+                    if (curY < prevY) {
+                        curAngle = -curAngle;
+                    }
+                    $('.face-40-2-container .face-1-chart-graph').append('<div class="face-1-chart-line active" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+                }
+                $('.face-40-2-container .face-1-chart-graph').append('<div class="face-1-chart-point active" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong>' + face1DataActually[i] + '<em>&nbsp;%</em></strong></span></div>');
+            }
+        }
+
+        for (var i = 0; i < face1Labels.length; i++) {
+            $('.face-40-2-container .face-1-chart-labels').append('<div class="face-1-chart-year" style="left:' + (i * itemWidth + itemMargin) + 'px"><strong>' + face1Labels[i] + '</strong></div>');
+        }
+
+        var maxSumm = 0;
+
+        for (var i = 0; i < faceData.length; i++) {
+            var curData = faceData[i];
+
+            if (maxSumm < Number(curData.all)) {
+                maxSumm = Number(curData.all);
+            }
+        }
+
+        for (var i = 0; i < faceData.length; i++) {
+            var curData = faceData[i];
+
+            $('.face-40-2-container .face-1-chart-icons').append('<div class="face-1-chart-icon" style="left:' + (i * itemWidth + itemMargin) + 'px">' +
+                                                                        '<div class="face-1-chart-icon-summ" data-summ="' + curData.all + '" style="height:' + (Number(curData.all) / maxSumm * 100) + '%"><div class="face-1-chart-icon-summ-inner"></div></div>' +
+                                                                        '<div class="face-1-chart-icon-count" data-count="' + curData.summ + '" style="height:' + ((Number(curData.summ) / Number(curData.all)) / (Number(curData.all) / maxSumm) * 100) + '%"><div class="face-1-chart-icon-count-inner"></div></div>' +
+                                                                    '</div>');
+        }
+
+        $('.face-40-2-container').mCustomScrollbar('destroy');
+        $('.face-40-2-container').mCustomScrollbar({
+            axis: 'x',
+            scrollButtons: {
+                enable: true
+            },
+            callbacks: {
+                onScrollStart: function() {
+                    $('.face-39-ratio-window').remove();
+                }
+            }
+        });
+
+        $('.face-40-2-container .face-1-chart-icon-summ').on('mouseover', function(e) {
+            $('.face-39-ratio-window').remove();
+            var curItem = $(this);
+            var curX = curItem.offset().left + curItem.width() / 2 - $(window).scrollLeft();
+            var curY = curItem.offset().top + curItem.height() / 2 - $(window).scrollTop();
+            $('body').append('<div class="face-39-ratio-window" style="left:' + curX + 'px; top:' + curY + 'px"><div class="face-39-ratio-window-title">Всего программ</div><div class="face-39-ratio-window-value">' + curItem.attr('data-summ').replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</div></div>');
+        });
+
+        $('.face-40-2-container .face-1-chart-icon-summ').on('mouseout', function(e) {
+            $('.face-39-ratio-window').remove();
+        });
+
+        $('.face-40-2-container .face-1-chart-icon-count').on('mouseover', function(e) {
+            $('.face-39-ratio-window').remove();
+            var curItem = $(this);
+            var curX = curItem.offset().left + curItem.width() / 2 - $(window).scrollLeft();
+            var curY = curItem.offset().top + curItem.height() / 2 - $(window).scrollTop();
+            $('body').append('<div class="face-39-ratio-window" style="left:' + curX + 'px; top:' + curY + 'px"><div class="face-39-ratio-window-title">Прошли профессионально-общественную аккредитацию</div><div class="face-39-ratio-window-value">' + curItem.attr('data-count').replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</div></div>');
+        });
+
+        $('.face-40-2-container .face-1-chart-icon-count').on('mouseout', function(e) {
+            $('.face-39-ratio-window').remove();
+        });
+
+        $(window).on('scroll', function() {
+            $('.face-39-ratio-window').remove();
+        });
+    }
 
 }
