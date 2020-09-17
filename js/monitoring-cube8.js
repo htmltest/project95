@@ -1019,9 +1019,6 @@ function face30_4_Redraw() {
         if (Number(curDataItem.plants) > curMaxSumm) {
             curMaxSumm = Number(curDataItem.plants);
         }
-        if (Number(curDataItem.animals) > curMaxSumm) {
-            curMaxSumm = Number(curDataItem.animals);
-        }
     }
 
     var countSumm = Math.ceil(curMaxSumm / 1000) + 2;
@@ -1032,6 +1029,24 @@ function face30_4_Redraw() {
         scaleLeftHTML += '<div class="face-30-4-scale-left-item" style="bottom:' + (i / (countSumm - 1) * 100) + '%">' + (i * 1000) + '</div>';
     }
     $('.face-30-4-scale-left').html(scaleLeftHTML);
+
+    var curMaxSumm2 = 0;
+
+    for (var i = 0; i < curData.length; i++) {
+        var curDataItem = curData[i];
+        if (Number(curDataItem.animals) > curMaxSumm2) {
+            curMaxSumm2 = Number(curDataItem.animals);
+        }
+    }
+
+    var countSumm2 = Math.ceil(curMaxSumm2 / 100) + 4;
+    var summMax2 = (countSumm2 - 1) * 100;
+
+    var scaleRightHTML = '';
+    for (var i = 0; i < countSumm2; i++) {
+        scaleRightHTML += '<div class="face-30-4-scale-right-item" style="bottom:' + (i / (countSumm2 - 1) * 100) + '%">' + (i * 100) + '</div>';
+    }
+    $('.face-30-4-scale-right-inner').html(scaleRightHTML);
 
     var graphHTML = '';
     for (var i = 0; i < curData.length; i++) {
@@ -1090,12 +1105,18 @@ function face30_4_Redraw() {
         $('.face-30-4-graph-inner').append('<div class="face-1-chart-point face-1-chart-point-1" style="left:' + curX + 'px; top:' + curY + 'px" data-id="' + i + '" data-type="plants"></div>');
     }
 
+    itemHeight = $('.face-30-4-scale-right-inner').height();
+    var itemDiff = 210;
+    if ($(window).width() < 1140) {
+        itemDiff = 112;
+    }
+
     for (var i = 0; i < curData.length; i++) {
         var curX = i * itemWidth + itemWidth / 2 + 40;
-        var curY = itemHeight - ((curData[i].animals / summMax) * itemHeight);
+        var curY = itemHeight - ((curData[i].animals / summMax2) * itemHeight) + itemDiff;
         if (i > 0) {
             var prevX = (i - 1) * itemWidth + itemWidth / 2 + 40;
-            var prevY = itemHeight - ((curData[i - 1].animals / summMax) * itemHeight);
+            var prevY = itemHeight - ((curData[i - 1].animals / summMax2) * itemHeight) + itemDiff;
             var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
             var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
             if (curY < prevY) {
@@ -1127,7 +1148,7 @@ function face30_4_Redraw() {
         if (curItem.attr('data-type') == 'plants') {
             curText +=  '<div class="face-39-ratio-window-value">По растениям <span>' + String(curPointData.plants).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</span></div>';
         } else {
-            curText +=  '<div class="face-39-ratio-window-value">По животным <span>' + String(curPointData.animals).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</span></div>';
+            curText +=  '<div class="face-39-ratio-window-value face-39-ratio-window-value-2">По животным <span>' + String(curPointData.animals).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</span></div>';
         }
 
         $('body').append('<div class="face-39-ratio-window face-30-4-ratio-window" style="left:' + curX + 'px; top:' + curY + 'px">' + curText + '</div>');
@@ -1139,6 +1160,14 @@ function face30_4_Redraw() {
 
     $(window).on('scroll', function() {
         $('.face-39-ratio-window').remove();
+    });
+
+    $('.face-30-4-graph').mCustomScrollbar('destroy');
+    $('.face-30-4-graph').mCustomScrollbar({
+        axis: 'x',
+        scrollButtons: {
+            enable: true
+        }
     });
 
 }

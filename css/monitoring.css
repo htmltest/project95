@@ -2274,30 +2274,40 @@ canvas {user-select:none}
 
 .face-30-4-container {position:relative; height:546px; top:31px; margin:0 40px}
 .face-30-4-scale-left {position:absolute; left:0; width:32px; height:471px; border-right:1px solid #d3d3d3; background:#f2f2f2; z-index:3}
-.face-30-4-scale-left::before {content:""; display:block; position:absolute; left:0; bottom:-30px; top:0; right:0; background:#f2f2f2}
-.face-30-4-scale-left-item {position:absolute; right:20px; transform:translateY(50%); font:11px/11px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626; white-space:nowrap}
+.face-30-4-scale-left::before {content:""; display:block; position:absolute; left:0; bottom:-32px; top:0; right:0; background:#f2f2f2}
+.face-30-4-scale-left-item {position:absolute; right:20px; transform:translateY(50%); font:11px/20px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626; white-space:nowrap}
 .face-30-4-scale-left-item::before {content:""; display:block; position:absolute; right:-20px; top:50%; width:10px; height:2px; background:#fe6600; margin-top:-1px}
+.face-30-4-scale-right {position:absolute; top:50px; right:0; width:28px; height:421px; border-left:1px solid #d3d3d3; background:#f2f2f2; z-index:3}
+.face-30-4-scale-right::before {content:""; display:block; position:absolute; left:0; bottom:-32px; right:0; top:0; background:#f2f2f2}
+.face-30-4-scale-right-inner {position:absolute; left:0; top:160px; right:0; bottom:0}
+.face-30-4-scale-right-item {position:absolute; left:20px; transform:translateY(50%); font:11px/20px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626; white-space:nowrap}
+.face-30-4-scale-right-item::before {content:""; display:block; position:absolute; left:-20px; top:50%; width:10px; height:2px; background:#4f7b96; margin-top:-1px}
 .face-30-4-graph {font-size:0; line-height:0; letter-spacing:0; height:546px; overflow:auto; position:relative}
 .face-30-4-graph .mCSB_container {overflow:visible}
 .face-30-4-graph svg {display:block; position:absolute; left:40px; bottom:0; height:471px}
 .face-30-4-graph-inner {display:inline-block; vertical-align:top; padding:0 30px 0 40px; white-space:nowrap; position:relative}
 .face-30-4-graph-item {display:inline-block; vertical-align:top; width:86px; height:471px; position:relative}
 .face-30-4-graph-item-year {position:absolute; left:50%; white-space:nowrap; bottom:-32px; transform:translateX(-50%); font:11px/11px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626}
-.face-30-4-graph .face-1-chart-point {margin-left:-8.5px}
+.face-30-4-graph .face-1-chart-point {margin-left:-8.5px; margin-top:-8.5px}
 .face-30-4-graph .face-1-chart-point:hover {z-index:3}
-.face-30-4-graph .face-1-chart-line {margin-left:0; border-top-style:solid}
+.face-30-4-graph .face-1-chart-line {margin-left:0; border-top-style:solid; margin-top:0}
 .face-30-4-graph .face-1-chart-point-1 {border-color:#fe6600}
 .face-30-4-graph .face-1-chart-point-1 span {color:#fe6600}
 .face-30-4-graph .face-1-chart-line-1 {border-color:#fe6600}
 .face-30-4-graph .face-1-chart-point-2 {border-color:#4f7b96}
 .face-30-4-graph .face-1-chart-point-2 span {color:#4f7b96}
 .face-30-4-graph .face-1-chart-line-2 {border-color:#4f7b96}
+.face-30-4-container .mCSB_horizontal.mCSB_inside > .mCSB_container {margin:0}
 
 @media screen and (max-width:1139px) {
     .face-30-4-container {height:328px; top:20px; margin:0}
     .face-30-4-scale-left {left:0; width:35px; height:284px}
-    .face-30-4-scale-left-item {right:10px; font-size:8px; line-height:8px}
+    .face-30-4-scale-left-item {right:10px; font-size:8px; line-height:12px}
     .face-30-4-scale-left-item::before {right:-10px; width:6px}
+    .face-30-4-scale-right {width:35px; height:234px}
+    .face-30-4-scale-right-inner {top:62px}
+    .face-30-4-scale-right-item {left:10px; font-size:8px; line-height:12px}
+    .face-30-4-scale-right-item::before {left:-10px; width:6px}
     .face-30-4-graph {height:328px}
     .face-30-4-graph-inner {padding:0 40px}
     .face-30-4-graph-item {width:52px; height:284px}
@@ -2332,6 +2342,7 @@ canvas {user-select:none}
 .face-30-4-ratio-window .face-39-ratio-window-title {font-family:HelveticaNeueCyrMedium, sans-serif; position:relative; color:#000; line-height:25px}
 .face-30-4-ratio-window .face-39-ratio-window-value {margin:0; font-family:HelveticaNeueCyrLight, sans-serif; position:relative; color:#000; line-height:25px}
 .face-30-4-ratio-window .face-39-ratio-window-value span {color:#fe6600; font-family:HelveticaNeueCyrMedium, sans-serif}
+.face-30-4-ratio-window .face-39-ratio-window-value-2 span {color:#4f7b96}
 
 .face-35-2-header {padding:40px 0 0 40px; text-transform:uppercase; font:12.5px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em}
 .face-35-2-header::after {content:""; display:block; clear:both}
