@@ -502,6 +502,7 @@ nav {float:left; width:100%; }
 
 @media screen and (max-width:768px) {
     .header-submenu-2-wrap {margin:0}
+    .header-submenu-2-item {position:relative; overflow:hidden; text-overflow:ellipsis}
     .header-submenu-2-item .div {position:relative; overflow:hidden; text-overflow:ellipsis}
     .header-submenu-2-item.active a:after {display:none}
     .header-submenu-2 .slick-list:after {width:80px; background-position:right top}

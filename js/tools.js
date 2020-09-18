@@ -484,17 +484,6 @@ $(document).ready(function() {
 		});
 
 
-    $(window).on('load resize scroll', function() {
-        $('.main-splash-item, .directions-item, .tasks-item, .challenges-item, .indicators-group').each(function() {
-            var curBlock = $(this);
-            if (!curBlock.hasClass('on-scroll-visible')) {
-                if (curBlock.offset().top + curBlock.outerHeight() / 2 < $(window).scrollTop() + $(window).height()) {
-                    curBlock.addClass('on-scroll-visible');
-                }
-            }
-        });
-    });
-
 });
 
 $(window).on('load', function() {
@@ -625,6 +614,17 @@ $(window).bind('load resize', function() {
             }
         }
     }
+});
+
+$(window).on('load resize scroll', function() {
+    $('.main-splash-item, .directions-item, .tasks-item, .challenges-item, .indicators-group').each(function() {
+        var curBlock = $(this);
+        if (!curBlock.hasClass('on-scroll-visible')) {
+            if (curBlock.offset().top + curBlock.outerHeight() / 2 < $(window).scrollTop() + $(window).height()) {
+                curBlock.addClass('on-scroll-visible');
+            }
+        }
+    });
 });
 
 function initForm(curForm) {
