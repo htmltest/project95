@@ -995,20 +995,19 @@ $(document).ready(function() {
     });
 
     $('.face-42-2-zoom-inc').click(function(e) {
-        $('.face-42-2-zoom-inc').addClass('disabled');
-        $('.face-42-2-zoom-dec').removeClass('disabled');
-        $('.map-region-42-2[data-id="' + $('.face-42-2-back').attr('data-id') + '"]').addClass('zoom');
-        $('.map-russia-legend-42-2, .map-russia-legend-icon-42-2').addClass('invisible');
+        $('.map-region-42-2[data-id="' + $('.face-42-2-back').attr('data-id') + '"] .map-russia-42-2-point-value').eq(0).trigger('click');
         e.preventDefault();
     });
 
     $('body').on('click', '.map-region-42-2 .map-russia-42-2-point-value, .map-region-item-42-2:not(.disabled)', function(e) {
         if (!$('.face-42-2-zoom-inc').hasClass('disabled')) {
             var curRegion = $(this).attr('data-id');
+            var curDistrict = -1;
             var center = [];
             for (var i = 0; i < russiaRegions.length; i++) {
                 if (curRegion == russiaRegions[i].id) {
                     center = russiaRegions[i].center;
+                    curDistrict = russiaRegions[i].district;
                 }
             }
             $('.face-42-2-zoom-inc').addClass('disabled');
@@ -1024,10 +1023,16 @@ $(document).ready(function() {
             ];
 
             for (var i = 0; i < face_42_2_dataRegions.length; i++) {
-                if (curRegion == face_42_2_dataRegions[i].id) {
+                var thisDistrict = -1;
+                for (var k = 0; k < russiaRegions.length; k++) {
+                    if (face_42_2_dataRegions[i].id == russiaRegions[k].id) {
+                        thisDistrict = russiaRegions[k].district;
+                    }
+                }
+                if (curRegion == face_42_2_dataRegions[i].id || curDistrict == thisDistrict) {
                     var curValue = parseInt(face_42_2_dataRegions[i].value.replace(/ /g, ''));
                     for (var j = 0; j < curValue; j++) {
-                        $('.map-region-42-2-point[data-region="' + curRegion + '"][data-id="' + j + '"]').css({'left': face_42_2_dataRegions[i].data[j].coords[0] * curDiff + Number($('.map-region-42-2[data-id="' +  $('.face-42-2-back').attr('data-id') + '"] svg').css('left').replace('px', '')), 'top': face_42_2_dataRegions[i].data[j].coords[1] * curDiff + Number($('.map-region-42-2[data-id="' +  $('.face-42-2-back').attr('data-id') + '"] svg').css('top').replace('px', ''))});
+                        $('.map-region-42-2-point[data-region="' + face_42_2_dataRegions[i].id + '"][data-id="' + j + '"]').css({'left': face_42_2_dataRegions[i].data[j].coords[0] * curDiff + Number($('.map-region-42-2[data-id="' +  $('.face-42-2-back').attr('data-id') + '"] svg').css('left').replace('px', '')), 'top': face_42_2_dataRegions[i].data[j].coords[1] * curDiff + Number($('.map-region-42-2[data-id="' +  $('.face-42-2-back').attr('data-id') + '"] svg').css('top').replace('px', ''))});
                     }
                 }
             }
