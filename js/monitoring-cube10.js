@@ -525,3 +525,600 @@ function face40_2_Redraw() {
     }
 
 }
+
+$(document).ready(function() {
+
+    $('.face-20-2-year-current').click(function(e) {
+        $(this).parent().toggleClass('open');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.face-20-2-year').length == 0) {
+            $('.face-20-2-year').removeClass('open');
+        }
+    });
+
+    $('.face-20-2-year ul li a').click(function(e) {
+        var curLi = $(this).parent();
+        if (!curLi.hasClass('active')) {
+            $('.face-20-2-year ul li.active').removeClass('active');
+            curLi.addClass('active');
+            $('.face-20-2-year-current').html($(this).html());
+            $('.face-20-2-year-text').html($(this).html());
+            face20_2_Redraw();
+        }
+        $('.face-20-2-year').removeClass('open');
+        e.preventDefault();
+    });
+
+    if ($(window).width() > 1139) {
+        $('body').on('mouseenter', '.map-russia-district-20-2, .map-region-item-20-2', function(e) {
+            $('.monitoring-map-region-hint').remove();
+            $('body').append('<div class="monitoring-map-region-hint">' + $(this).attr('data-title') + '</div>');
+            var curLeft = e.pageX;
+            var curTop = e.pageY;
+            $('.monitoring-map-region-hint').css({'left': curLeft, 'top': curTop});
+        });
+
+        $('body').on('mousemove', '.map-russia-district-20-2, .map-region-item-20-2', function(e) {
+            var curLeft = e.pageX;
+            var curTop = e.pageY;
+            $('.monitoring-map-region-hint').css({'left': curLeft, 'top': curTop});
+        });
+
+        $('body').on('mouseleave', '.map-russia-district-20-2, .map-region-item-20-2', function(e) {
+            $('.monitoring-map-region-hint').remove();
+        });
+    }
+
+    $('body').on('click', '.map-russia-district-20-2', function(e) {
+        $('.monitoring-map-region-hint').remove();
+        if ($('.map-window-20-2').length == 0) {
+            $('body').append('<div class="map-window-20-2"><div class="map-window-inner-20-2">' +
+                                '<div class="map-window-title-20-2"></div>' +
+                                '<div class="map-window-info-20-2">' +
+                                    '<div class="map-window-info-item-20-2">' +
+                                        '<div class="map-window-info-item-title-20-2">Доля инновационной<br /> продукции, %</div>' +
+                                        '<div class="map-window-info-item-value-20-2 map-window-info-item-value-1-20-2"></div>' +
+                                    '</div>' +
+                                    '<div class="map-window-info-item-20-2 map-window-info-item-20-2-add">' +
+                                        '<div class="map-window-info-item-title-20-2">Доля инновационной продукции<br /> (товаров, услуг), созданной<br /> с использованием результатов<br /> интеллектуальной деятельности,<br /> права на которые принадлежат<br /> российским правообладателям, %</div>' +
+                                        '<div class="map-window-info-item-value-20-2 map-window-info-item-value-2-20-2"></div>' +
+                                    '</div>' +
+                                '</div>' +
+                                '<div class="map-window-info-chart-title-20-2">Динамика доли инновационной продукции, %</div>' +
+                                '<div class="map-window-info-chart-20-2"></div>' +
+                                '<div class="map-window-info-link-20-2"><a href="#" class="btn-med" data-id="">Перейти на карту ФО</a></div>' +
+                                '<div class="map-window-close-20-2"></div>' +
+                             '</div></div>');
+        }
+        var curLeft = e.pageX;
+        var curTop = e.pageY;
+        $('.map-window-20-2').css({'left': curLeft, 'top': curTop});
+        $('.map-window-20-2').removeClass('map-window-region-20-2');
+        var districtID = $(this).attr('data-id');
+        var districtTitle = '';
+        for (var i = 0; i < russiaDistricts.length; i++) {
+            if (russiaDistricts[i].id == districtID) {
+                districtTitle = russiaDistricts[i].title;
+            }
+        }
+        $('.map-window-title-20-2').html(districtTitle + ' федеральный округ');
+        $('.map-window-info-link-20-2 a').attr('data-id', districtID);
+        $('.map-window-info-chart-20-2').html('');
+
+        var curYear = $('.face-20-2-year-text').html();
+
+        var curMax = 0;
+
+        for (var i = 0; i < face_20_2_dataDistricts.length; i++) {
+            var curData = face_20_2_dataDistricts[i].data;
+            for (var j = 0; j < curData.length; j++) {
+                if (curData[j].district == districtID) {
+                    if (curMax < parseFloat(curData[j].ratio1)) {
+                        curMax = parseFloat(curData[j].ratio1);
+                    }
+                    $('.map-window-info-chart-20-2').append('<div class="map-window-info-chart-item-20-2">' +
+                                                            '<div class="map-window-info-chart-item-value-20-2">' + curData[j].ratio1 + '</div>' +
+                                                            '<div class="map-window-info-chart-item-bar-20-2"></div>' +
+                                                            '<div class="map-window-info-chart-item-year-20-2">' + face_20_2_dataDistricts[i].year + '</div>' +
+                                                       '</div>');
+                }
+                if (curYear == face_20_2_dataDistricts[i].year) {
+                    if (curData[j].district == districtID) {
+                        var curValue = curData[j].ratio1;
+                        $('.map-window-info-item-value-1-20-2').html(curValue);
+                        if (typeof (curData[j].ratio2) != 'undefined') {
+                            curValue = curData[j].ratio2;
+                            $('.map-window-info-item-value-2-20-2').html(curValue);
+                            $('.map-window-info-item-20-2-add').removeClass('invisible');
+                        } else {
+                            $('.map-window-info-item-20-2-add').addClass('invisible');
+                        }
+                    }
+                }
+            }
+        }
+
+        $('.map-window-info-chart-item-20-2').each(function() {
+            var curItem = $(this);
+            curItem.find('.map-window-info-chart-item-bar-20-2').css({'height': parseFloat(curItem.find('.map-window-info-chart-item-value-20-2').html()) / curMax * 108 + 'px'});
+        });
+
+        $('.map-window-20-2').show();
+        $('html').addClass('map-window-opened');
+    });
+
+    $('body').on('click', '.map-window-close-20-2', function() {
+        $('.map-window-20-2').hide();
+        $('html').removeClass('map-window-opened');
+    });
+
+    $('body').on('click', '.map-region-item-20-2', function(e) {
+        $('.monitoring-map-region-hint').remove();
+        if ($('.map-window-20-2').length == 0) {
+            $('body').append('<div class="map-window-20-2"><div class="map-window-inner-20-2">' +
+                                '<div class="map-window-title-20-2"></div>' +
+                                '<div class="map-window-info-20-2">' +
+                                    '<div class="map-window-info-item-20-2">' +
+                                        '<div class="map-window-info-item-title-20-2">Доля инновационной<br /> продукции, %</div>' +
+                                        '<div class="map-window-info-item-value-20-2 map-window-info-item-value-1-20-2"></div>' +
+                                    '</div>' +
+                                    '<div class="map-window-info-item-20-2 map-window-info-item-20-2-add">' +
+                                        '<div class="map-window-info-item-title-20-2">Доля инновационной продукции<br /> (товаров, услуг), созданной<br /> с использованием результатов<br /> интеллектуальной деятельности,<br /> права на которые принадлежат<br /> российским правообладателям, %</div>' +
+                                        '<div class="map-window-info-item-value-20-2 map-window-info-item-value-2-20-2"></div>' +
+                                    '</div>' +
+                                '</div>' +
+                                '<div class="map-window-info-chart-title-20-2">Динамика доли инновационной продукции, %</div>' +
+                                '<div class="map-window-info-chart-20-2"></div>' +
+                                '<div class="map-window-info-link-20-2"><a href="#" class="btn-med" data-id="">Перейти на карту ФО</a></div>' +
+                                '<div class="map-window-close-20-2"></div>' +
+                             '</div></div>');
+        }
+        var curLeft = e.pageX;
+        var curTop = e.pageY;
+        if (curLeft === undefined) {
+            curLeft = $(this).offset().left;
+        }
+        if (curTop === undefined) {
+            curTop = $(this).offset().top;
+        }
+        $('.map-window-20-2').css({'left': curLeft, 'top': curTop});
+        $('.map-window-20-2').addClass('map-window-region-20-2');
+        var regionID = $(this).attr('data-id');
+        var regionTitle = '';
+        for (var i = 0; i < russiaRegions.length; i++) {
+            if (russiaRegions[i].id == regionID) {
+                regionTitle = russiaRegions[i].title;
+            }
+        }
+        $('.map-window-title-20-2').html(regionTitle);
+        $('.map-window-info-chart-20-2').html('');
+
+        var curYear = $('.face-20-2-year-text').html();
+
+        var curMax = 0;
+
+        for (var i = 0; i < face_20_2_dataRegions.length; i++) {
+            if (face_20_2_dataRegions[i].id == regionID) {
+                var curData = face_20_2_dataRegions[i].values[0].data;
+                for (var j = 0; j < curData.length; j++) {
+                    if (curMax < parseFloat(curData[j].ratio1)) {
+                        curMax = parseFloat(curData[j].ratio1);
+                    }
+                    $('.map-window-info-chart-20-2').append('<div class="map-window-info-chart-item-20-2">' +
+                                                            '<div class="map-window-info-chart-item-value-20-2">' + curData[j].ratio1 + '</div>' +
+                                                            '<div class="map-window-info-chart-item-bar-20-2"></div>' +
+                                                            '<div class="map-window-info-chart-item-year-20-2">' + curData[j].year + '</div>' +
+                                                       '</div>');
+                    if (curData[j].year == curYear) {
+                        var curValue = curData[j].ratio1;
+                        $('.map-window-info-item-value-1-20-2').html(curValue);
+                        if (typeof (curData[j].ratio2) != 'undefined') {
+                            curValue = curData[j].ratio2;
+                            if (curData[j].ratio2 == '') {
+                                curValue = 0;
+                            }
+                            if (curData[j].ratio2 !== null) {
+                                $('.map-window-info-item-value-2-20-2').html(curValue);
+                            } else {
+                                $('.map-window-info-item-value-2-20-2').html('н/д');
+                            }
+                            $('.map-window-info-item-20-2-add').removeClass('invisible');
+                        } else {
+                            $('.map-window-info-item-20-2-add').addClass('invisible');
+                        }
+                    }
+                }
+            }
+        }
+
+        $('.map-window-info-chart-item-20-2').each(function() {
+            var curItem = $(this);
+            curItem.find('.map-window-info-chart-item-bar-20-2').css({'height': parseFloat(curItem.find('.map-window-info-chart-item-value-20-2').html()) / curMax * 108 + 'px'});
+        });
+
+        $('.map-window-20-2').show();
+        $('html').addClass('map-window-opened');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.map-window-inner-20-2').length == 0 && !$(e.target).hasClass('map-window-inner-20-2') && $(e.target).parents().filter('.map-russia-district-20-2').length == 0 && $(e.target).parents().filter('.face-20-2-table-name-region').length == 0 && !$(e.target).hasClass('map-russia-district-20-2') && !$(e.target).hasClass('face-20-2-table-name-region') && $(e.target).parents().filter('.map-region-item-20-2').length == 0 && !$(e.target).hasClass('map-region-item-20-2')) {
+            $('.map-window-20-2').hide();
+            $('html').removeClass('map-window-opened');
+        }
+    });
+
+    $('body').on('click', '.map-window-info-link-20-2 a', function(e) {
+        var curID = $(this).attr('data-id');
+        $('.face-20-2-back').addClass('visible').attr('data-id', curID);
+        $('.face-20-2-title-russia').css({'display': 'none'});
+        $('.face-20-2-title-regions').css({'display': 'inline'});
+        $('.map-window-20-2').hide();
+        $('.map-russia-20-2').hide();
+        $('html').removeClass('map-window-opened');
+        $('.map-region-20-2[data-id="' + curID + '"]').show();
+        var curSort = $('.face-20-2-table-head.active').attr('data-sortType');
+        var curYear = $('.face-20-2-year-text').html();
+        var curData = [];
+        for (var i = 0; i < face_20_2_dataRegions.length; i++) {
+            var curRegionID = face_20_2_dataRegions[i].id;
+            var curDiscrictID = -1;
+            for (var j = 0; j < russiaRegions.length; j++) {
+                if (curRegionID == russiaRegions[j].id && russiaRegions[j].district == curID) {
+                    curDiscrictID = russiaRegions[j].district;
+                }
+            }
+            if (curDiscrictID > -1) {
+                for (var j = 0; j < face_20_2_dataRegions[i].values.length; j++) {
+                    for (var k = 0; k < face_20_2_dataRegions[i].values[j].data.length; k++) {
+                        if (face_20_2_dataRegions[i].values[j].data[k].year == curYear) {
+                            var curRatio2 = face_20_2_dataRegions[i].values[j].data[k].ratio2;
+                            if (curRatio2 === null) {
+                                curRatio2 = '';
+                            }
+                            curData.push({
+                                            'id'        : curRegionID,
+                                            'ratio1'    : face_20_2_dataRegions[i].values[j].data[k].ratio1,
+                                            'ratio2'    : curRatio2
+                            });
+                        }
+                    }
+                }
+            }
+        }
+
+        var hasRatio2 = false;
+        for (var i = 0; i < curData.length; i++) {
+            if (typeof curData[i].ratio2 !== 'undefined' && curData[i].ratio2 !== null) {
+                hasRatio2 = true;
+            }
+        }
+        var classTableValue = '';
+        if (!hasRatio2) {
+            curSort = 'ratio1';
+            $('.face-20-2-table-head').eq(2).addClass('invisible');
+            classTableValue = ' invisible';
+        } else {
+            $('.face-20-2-table-head').eq(2).removeClass('invisible');
+        }
+
+        $('.face-20-2-table-head').eq(1).addClass('active');
+        $('.face-20-2-table-head').eq(2).removeClass('active');
+
+        if (curSort == 'ratio1') {
+            curData.sort(face_20_2_Sort1);
+        } else {
+            curData.sort(face_20_2_Sort2);
+            $('.face-20-2-table-head').eq(2).addClass('active');
+            $('.face-20-2-table-head').eq(1).removeClass('active');
+        }
+
+        var curRatingsArray = [];
+        for (var c = 0; c < mapColorsRegions_20_2.length; c++) {
+            if (curID == mapColorsRegions_20_2[c].id) {
+                for (var cy = 0; cy < mapColorsRegions_20_2[c].years.length; cy++) {
+                    if (curYear == mapColorsRegions_20_2[c].years[cy].year) {
+                        for (var ct = 0; ct < mapColorsRegions_20_2[c].years[cy].types.length; ct++) {
+                            if (curSort == mapColorsRegions_20_2[c].years[cy].types[ct].type) {
+                                curRatingsArray = mapColorsRegions_20_2[c].years[cy].types[ct].colors;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        var legendHTML = '';
+        for (var ra = 0; ra < curRatingsArray.length; ra++) {
+            var legendText = '';
+            if (curRatingsArray[ra][0] == 0) {
+                legendText = 'до ' + String(curRatingsArray[ra][1]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+            } else if (curRatingsArray[ra][1] == Infinity) {
+                legendText = 'более ' + String(curRatingsArray[ra][0]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+            } else {
+                legendText = 'от ' + String(curRatingsArray[ra][0]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + ' до ' + String(curRatingsArray[ra][1]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+            }
+            legendHTML += '<div class="map-russia-legend-item-20-2"><div class="map-russia-legend-item-color-20-2" style="background:' + mapColors_20_2[ra] + '"></div>' + legendText + '</div>';
+        }
+
+        $('.map-russia-legend-20-2').html(legendHTML);
+
+        var newMap = '';
+        $('.face-20-2-table-row').remove();
+        for (var i = 0; i < curData.length; i++) {
+            var regionID = curData[i].id;
+            var regionTitle = '';
+            for (var r = 0; r < russiaRegions.length; r++) {
+                if (russiaRegions[r].id == regionID) {
+                    regionTitle = russiaRegions[r].title;
+                }
+            }
+
+            var curColorIndex = -1;
+            var curValue = parseFloat(curData[i].ratio1);
+            if (curSort == 'ratio2') {
+                curValue = parseFloat(curData[i].ratio2);
+                if (curData[i].ratio2 == '') {
+                    curValue = 0;
+                }
+                if (curValue === null) {
+                    curValue = 0;
+                }
+            }
+            for (var c = 0; c < curRatingsArray.length; c++) {
+                if (curValue >= curRatingsArray[c][0] && curValue < curRatingsArray[c][1]) {
+                    curColorIndex = c;
+                }
+            }
+
+            var curColor = mapColors_20_2[curColorIndex];
+
+            newMap += '<g class="map-region-item-20-2" data-id="' + regionID + '" data-title="' + regionTitle + '">';
+            for (var j = 0; j < russiaRegions.length; j++) {
+                var curRegion = russiaRegions[j];
+                if (curRegion.id == regionID) {
+                    newMap += '<g style="fill:' + curColor + '">' + curRegion.svg + '</g>';
+                }
+            }
+            newMap += '</g>';
+            var regionTitle = '';
+            for (var j = 0; j < russiaRegions.length; j++) {
+                if (russiaRegions[j].id == regionID) {
+                    regionTitle = russiaRegions[j].title;
+                }
+            }
+            $('.face-20-2-table').append('<div class="face-20-2-table-row">' +
+                                        '<div class="face-20-2-table-name">' +
+                                            '<a href="#" class="face-20-2-table-name-region" data-id="' + regionID + '">' +
+                                                '<div class="face-20-2-table-name-color" style="background:' + curColor + '"></div>' +
+                                                regionTitle +
+                                            '</a>' +
+                                        '</div>' +
+                                        '<div class="face-20-2-table-value">' + curData[i].ratio1 + '</div>' +
+                                        '<div class="face-20-2-table-value' + classTableValue + '">' + curData[i].ratio2 + '</div>' +
+                                      '</div>');
+        }
+        $('.map-region-20-2[data-id="' + curID + '"] svg').html(newMap);
+        $('.cube').css({'margin-bottom': $('.cube-face.active').find('.cube-face-footer').outerHeight()});
+
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.face-20-2-table-name-region', function(e) {
+        var curID = $(this).attr('data-id');
+        $('.map-region-item-20-2[data-id="' + curID + '"]').trigger('click');
+        $('html, body').animate({'scrollTop': $('.map-region-20-2 .map-region-item-20-2[data-id="' + curID + '"]').offset().top});
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.face-20-2-back a', function(e) {
+        $('.face-20-2-table-head').eq(0).html('Федеральный<br />округ');
+        $('.face-20-2-back').removeClass('visible').removeAttr('data-id');
+        $('.face-20-2-title-russia').css({'display': 'inline'});
+        $('.face-20-2-title-regions').css({'display': 'none'});
+        $('.map-window-20-2').hide();
+        $('.map-region-20-2').hide();
+        $('.map-russia-20-2').show();
+        $('html').removeClass('map-window-opened');
+        face20_2_Redraw();
+        $('.cube').css({'margin-bottom': $('.cube-face.active').find('.cube-face-footer').outerHeight()});
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.face-20-2-table-head a', function(e) {
+        var curCol = $(this).parent();
+        if (!curCol.hasClass('active')) {
+            $('.face-20-2-table-head.active').removeClass('active');
+            curCol.addClass('active');
+        }
+        face20_2_Redraw();
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.face-20-2-table-name-link', function(e) {
+        $('.face-20-2-table-head').eq(0).html('Субъект РФ');
+        var curID = $(this).attr('data-id');
+        if ($('.map-window-20-2').length == 0) {
+            $('body').append('<div class="map-window-20-2"><div class="map-window-inner-20-2">' +
+                                '<div class="map-window-title-20-2"></div>' +
+                                '<div class="map-window-info-20-2">' +
+                                    '<div class="map-window-info-item-20-2">' +
+                                        '<div class="map-window-info-item-title-20-2">Доля инновационной<br /> продукции, %</div>' +
+                                        '<div class="map-window-info-item-value-20-2 map-window-info-item-value-1-20-2"></div>' +
+                                    '</div>' +
+                                    '<div class="map-window-info-item-20-2 map-window-info-item-20-2-add">' +
+                                        '<div class="map-window-info-item-title-20-2">Доля инновационной продукции<br /> (товаров, услуг), созданной<br /> с использованием результатов<br /> интеллектуальной деятельности,<br /> права на которые принадлежат<br /> российским правообладателям, %</div>' +
+                                        '<div class="map-window-info-item-value-20-2 map-window-info-item-value-2-20-2"></div>' +
+                                    '</div>' +
+                                '</div>' +
+                                '<div class="map-window-info-chart-title-20-2">Динамика доли инновационной продукции, %</div>' +
+                                '<div class="map-window-info-chart-20-2"></div>' +
+                                '<div class="map-window-info-link-20-2"><a href="#" class="btn-med" data-id="">Перейти на карту ФО</a></div>' +
+                                '<div class="map-window-close-20-2"></div>' +
+                             '</div></div>');
+        }
+        $('.map-window-info-link-20-2 a').attr('data-id', curID).trigger('click');
+        e.preventDefault();
+    });
+
+    $('.map-russia-20-2').mCustomScrollbar({
+        axis: 'x'
+    });
+
+    $('.face-20-2-table-wrap').mCustomScrollbar({
+        axis: 'x',
+        scrollButtons: {
+            enable: true
+        }
+    });
+
+    $('.map-russia-legend-icon-20-2').click(function() {
+        $('html').addClass('window-open');
+
+        if ($('.window').length > 0) {
+            $('.window').remove();
+        }
+        $('body').append('<div class="window window-map-legend-20-2"><div class="window-loading"></div></div>');
+
+        var windowHTML = '<div class="window-map-legend-inner-20-2"><div class="window-map-legend-title-20-2">Легенда</div><div class="window-map-legend-list-20-2">' + $('.map-russia-legend-20-2').html() + '</div></div>';
+
+        $('.window').html('<div class="window-container window-container-load"><div class="window-content">' + windowHTML + '<a href="#" class="window-close"></a></div></div>')
+
+        $('.window-container').removeClass('window-container-load');
+        windowPosition();
+    });
+
+});
+
+$(window).on('load resize', function() {
+    face20_2_Redraw();
+});
+
+function face20_2_Redraw() {
+    var curSort = $('.face-20-2-table-head.active').attr('data-sortType');
+    var curYear = $('.face-20-2-year-text').html();
+    var curData = null;
+    for (var i = 0; i < face_20_2_dataDistricts.length; i++) {
+        if (face_20_2_dataDistricts[i].year == curYear) {
+            curData = face_20_2_dataDistricts[i].data;
+        }
+    }
+
+    var hasRatio2 = false;
+    for (var i = 0; i < curData.length; i++) {
+        if (typeof curData[i].ratio2 !== 'undefined' && curData[i].ratio2 !== null) {
+            hasRatio2 = true;
+        }
+    }
+    var classTableValue = '';
+    if (!hasRatio2) {
+        curSort = 'ratio1';
+        $('.face-20-2-table-head').eq(2).addClass('invisible');
+        classTableValue = ' invisible';
+    } else {
+        $('.face-20-2-table-head').eq(2).removeClass('invisible');
+    }
+
+    if (curData !== null) {
+        $('.face-20-2-table-head').eq(1).addClass('active');
+        $('.face-20-2-table-head').eq(2).removeClass('active');
+
+        if (curSort == 'ratio1') {
+            curData.sort(face_20_2_Sort1);
+        } else {
+            curData.sort(face_20_2_Sort2);
+            $('.face-20-2-table-head').eq(2).addClass('active');
+            $('.face-20-2-table-head').eq(1).removeClass('active');
+        }
+        var newMap = '';
+        $('.face-20-2-table-row').remove();
+
+        var curRatingsArray = mapColorsDistricts_20_2;
+
+        var legendHTML = '';
+        for (var ra = 0; ra < curRatingsArray.length; ra++) {
+            var legendText = '';
+            if (curRatingsArray[ra][0] == 0) {
+                legendText = 'до ' + String(curRatingsArray[ra][1]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+            } else if (curRatingsArray[ra][1] == Infinity) {
+                legendText = 'более ' + String(curRatingsArray[ra][0]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+            } else {
+                legendText = 'от ' + String(curRatingsArray[ra][0]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + ' до ' + String(curRatingsArray[ra][1]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+            }
+            legendHTML += '<div class="map-russia-legend-item-20-2"><div class="map-russia-legend-item-color-20-2" style="background:' + mapColors_20_2[ra] + '"></div>' + legendText + '</div>';
+        }
+
+        $('.map-russia-legend-20-2').html(legendHTML);
+
+        for (var i = 0; i < curData.length; i++) {
+            var districtID = curData[i].district;
+            var districtTitle = '';
+            for (var r = 0; r < russiaDistricts.length; r++) {
+                if (russiaDistricts[r].id == districtID) {
+                    districtTitle = russiaDistricts[r].title;
+                }
+            }
+
+            var curColorIndex = -1;
+            var curValue = parseFloat(curData[i].ratio1.replace(/ /g, ''));
+            if (curSort == 'ratio2') {
+                curValue = parseFloat(curData[i].ratio2.replace(/ /g, '').replace(/,/g, '.'));
+            }
+            for (var c = 0; c < curRatingsArray.length; c++) {
+                if (curValue >= curRatingsArray[c][0] && curValue < curRatingsArray[c][1]) {
+                    curColorIndex = c;
+                }
+            }
+
+            var curColor = mapColors_20_2[curColorIndex];
+
+            newMap += '<g class="map-russia-district-20-2" data-id="' + districtID + '" data-title="' + districtTitle + '">';
+            for (var j = 0; j < russiaRegions.length; j++) {
+                var curRegion = russiaRegions[j];
+                if (curRegion.district == districtID) {
+                    newMap += '<g style="fill:' + curColor + '">' + curRegion.svg + '</g>';
+                }
+            }
+            newMap += '</g>';
+            var districtTitle = '';
+            for (var j = 0; j < russiaDistricts.length; j++) {
+                if (russiaDistricts[j].id == districtID) {
+                    districtTitle = russiaDistricts[j].title;
+                }
+            }
+            $('.face-20-2-table').append('<div class="face-20-2-table-row">' +
+                                        '<div class="face-20-2-table-name">' +
+                                            '<a href="#" class="face-20-2-table-name-link" data-id="' + districtID + '">' +
+                                                '<div class="face-20-2-table-name-color" style="background:' + curColor + '"></div>' +
+                                                '<div class="face-20-2-table-name-text">' + districtTitle + '</div>' +
+                                            '</a>' +
+                                        '</div>' +
+                                        '<div class="face-20-2-table-value">' + String(curData[i].ratio1).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</div>' +
+                                        '<div class="face-20-2-table-value' + classTableValue + '">' + String(curData[i].ratio2).replace(/\./g, ',') + '</div>' +
+                                      '</div>');
+        }
+        $('.map-russia-20-2 svg').html(newMap);
+    }
+
+    if ($('.face-20-2-back').hasClass('visible')) {
+        var curID = $('.face-20-2-back').attr('data-id');
+        $('.map-window-info-link-20-2 a').attr('data-id', curID).trigger('click');
+    }
+}
+
+function face_20_2_Sort1(a, b) {
+    var value1 = parseFloat(a.ratio1);
+    var value2 = parseFloat(b.ratio1);
+    if (value1 > value2) return -1;
+    if (value1 == value2) return 0;
+    if (value1 < value2) return 1;
+}
+
+function face_20_2_Sort2(a, b) {
+    var value1 = parseFloat(a.ratio2);
+    var value2 = parseFloat(b.ratio2);
+    if (value1 > value2) return -1;
+    if (value1 == value2) return 0;
+    if (value1 < value2) return 1;
+}
