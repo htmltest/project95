@@ -2957,3 +2957,99 @@ canvas {user-select:none}
     .face-20-2-table {width:500px}
     .face-20-2-table-row {font-size:12px; line-height:18px}
 }
+
+.face-48-1-container .face-1-content {height:624px}
+.face-48-1-container .face-1-chart {height:624px}
+.face-48-1-container .face-1-chart-point.active {cursor:default; pointer-events:none}
+.face-48-1-container .face-1-chart-point em::after {display:none}
+.face-48-1-container .face-1-chart-graph {top:150px; bottom:200px}
+.face-48-1-container .face-1-chart-labels {bottom:40px}
+.face-48-1-container .face-1-chart-year {text-align:center; width:60px}
+.face-48-1-container .face-1-chart-year strong {display:inline-block; width:42px; height:18px; text-decoration:none; color:#262626; border-radius:5px; background:rgba(255, 220, 197, 0.67); font-weight:normal}
+.face-48-1-container .face-1-chart-point span {font-size:12.5px}
+.face-48-1-container .mCSB_horizontal.mCSB_inside > .mCSB_container {margin:0}
+.face-48-1-container .mCSB_horizontal {bottom:20px}
+.face-48-1-container .face-1-chart-line-2.active {border-top-color:#cc1c46}
+.face-48-1-container .face-1-chart-point-2.active {background:#cc1c46; border-color:#cc1c46}
+
+@media screen and (max-width:1139px) {
+    .face-48-1-container .face-1-content {height:349px}
+    .face-48-1-container .face-1-chart {height:349px}
+    .face-48-1-container .face-1-container {margin:0}
+    .face-48-1-container .face-1-chart-graph {top:50px; bottom:100px}
+    .face-48-1-container .face-1-chart-point span {font-size:9px; line-height:11px}
+    .face-48-1-container .face-1-chart-labels {bottom:20px}
+    .face-48-1-container .face-1-chart-year {width:40px}
+    .face-48-1-container .face-1-chart-year strong {width:32px; height:14px}
+    .face-48-1-container .mCSB_horizontal {bottom:0}
+    .face-48-1-container .mCSB_scrollTools.mCSB_scrollTools_horizontal {height:6px}
+    .face-48-1-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {margin:0; height:6px}
+    .face-48-1-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {margin:0; height:6px}
+    .face-48-1-container .face-1-chart-icon-value {font-size:9.5px}
+}
+
+.face-48-3-header {padding:40px 0 0 40px; text-transform:uppercase; font:12.5px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em}
+.face-48-3-header::after {content:""; display:block; clear:both}
+
+@media screen and (max-width:1139px) {
+    .face-48-3-header {padding:20px 0 0 20px; font:9px/18px HelveticaNeueCyr, sans-serif}
+}
+
+.face-48-3-year {float:left; position:relative}
+.face-48-3-year.open {z-index:9999}
+.face-48-3-year-current {display:inline-block; vertical-align:top; color:#757575; transition:all 0.2s; cursor:pointer; padding:0 19px 0 0; position:relative}
+.face-48-3-year-current::after {content:""; display:block; position:absolute; right:0; top:50%; width:11px; height:8px; background:url(../images/map-russia-sort-type.svg) no-repeat; margin-top:-4px}
+.face-48-3-year-current:hover {color:#fe6600}
+.face-48-3-year ul {margin:0; padding:5px 0; list-style:none; display:none; z-index:9999; position:absolute; left:-20px; top:100%; white-space:nowrap; background:#fff; border:1px solid #e6e6e6; box-sizing:border-box}
+.face-48-3-year.open ul {display:block}
+.face-48-3-year ul li {margin:0; padding:0; color:#a6a6a6; cursor:pointer}
+.face-48-3-year ul li::before {display:none}
+.face-48-3-year ul li a {color:#a6a6a6; text-decoration:none; display:block; padding:5px 20px}
+.face-48-3-year ul li a:hover {color:#fe6600}
+.face-48-3-year ul li.active a {color:#2f2f2f}
+
+.face-48-3-scale {margin:0 0 0 226px; width:265px; font:11px/18px HelveticaNeueCyrMedium, sans-serif; color:#262626; letter-spacing:0.04em; white-space:nowrap}
+.face-48-3-scale-item {float:left; width:12.5%; height:18px; position:relative}
+.face-48-3-scale-item:first-child {width:0}
+.face-48-3-scale-item span {position:absolute; left:100%; top:-3px; transform:translateX(-50%)}
+.face-48-3-container {width:600px; height:545px; position:relative; overflow:auto}
+.face-48-3-list {display:table; width:492px; margin:0 0 0 40px; table-layout:fixed}
+.face-48-3-item {display:table-row}
+.face-48-3-item-title {display:table-cell; vertical-align:middle; width:226px; box-sizing:border-box; padding:8px 17px 8px 0; text-align:right; font:14px/20px HelveticaNeueCyr, sans-serif; color:#121212; letter-spacing:0.04em}
+.face-48-3-item-values {display:table-cell; vertical-align:middle; width:265px; position:relative; border-left:1px solid #e4e4e4}
+.face-48-3-item-values-sep {position:absolute; top:0; height:100%; width:1px; background:#e4e4e4}
+.face-48-3-item-values-sep:nth-child(1) {left:12.5%}
+.face-48-3-item-values-sep:nth-child(2) {left:25%}
+.face-48-3-item-values-sep:nth-child(3) {left:37.5%}
+.face-48-3-item-values-sep:nth-child(4) {left:50%}
+.face-48-3-item-values-sep:nth-child(5) {left:62.5%}
+.face-48-3-item-values-sep:nth-child(6) {left:75%}
+.face-48-3-item-values-sep:nth-child(7) {left:87.5%}
+.face-48-3-item-values-sep:nth-child(8) {left:100%}
+.face-48-3-item-value-1 {position:relative; height:14px; background:#3779a8; cursor:pointer}
+.face-48-3-item-value-2 {position:relative; height:14px; background:#fe6600; cursor:pointer}
+
+@media screen and (max-width:1139px) {
+    .face-48-3-scale {margin:0 0 0 157px; width:140px; font:10px/18px HelveticaNeueCyr, sans-serif}
+    .face-48-3-scale-item:nth-child(even) span {display:none}
+    .face-48-3-container {width:348px; height:310px}
+    .face-48-3-list {width:297px; margin:0 0 0 20px}
+    .face-48-3-item-title {width:157px; padding:7px 14px 7px 0; font-size:12px; line-height:17px}
+    .face-48-3-item-values {width:140px}
+    .face-48-3-container .mCSB_scrollTools a + .mCSB_draggerContainer {margin:0}
+    .face-48-3-container .mCSB_inside > .mCSB_container {margin:0}
+    .face-48-3-container .mCSB_scrollTools a {display:none !important}
+    .face-48-3-container .mCSB_scrollTools.mCSB_scrollTools_vertical {width:6px; right:0}
+    .face-48-3-container .mCSB_scrollTools.mCSB_scrollTools_vertical .mCSB_draggerRail {margin:0; width:6px}
+    .face-48-3-container .mCSB_scrollTools.mCSB_scrollTools_vertical .mCSB_dragger .mCSB_dragger_bar {margin:0; width:6px}
+}
+
+.face-48-3-ratio-window {width:auto; margin:10px 0 0 0; transform:translateX(-50%); text-align:left; padding:12px 25px; line-height:21px; white-space:nowrap}
+.face-48-3-ratio-window .face-39-ratio-window-title {display:inline; position:relative}
+.face-48-3-ratio-window .face-39-ratio-window-value {display:inline; margin:0 0 0 10px; position:relative}
+
+@media screen and (max-width:1139px) {
+    .face-48-3-ratio-window {padding:11px 25px 9px 25px; line-height:20px; text-align:center; width:300px; white-space:normal}
+    .face-48-3-ratio-window .face-39-ratio-window-title {display:block}
+    .face-48-3-ratio-window .face-39-ratio-window-value {display:block; margin:0}
+}
