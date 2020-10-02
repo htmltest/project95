@@ -2119,7 +2119,12 @@ canvas {user-select:none}
 .map-region-28-2-point:nth-child(9) .map-region-28-2-point-value {margin-left:20px; margin-top:-20px}
 
 .face-28-2-window {position:absolute; z-index:99; margin:38px 0 0 -57px}
-.face-28-2-window-inner {position:relative; width:693px; background:#fff; padding:27px 44px 38px 30px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); box-shadow:border-box}
+.face-28-2-window-inner {position:relative; width:693px; background:#fff; padding:27px 44px 38px 30px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); box-shadow:border-box; max-height:450px; overflow:auto}
+@media screen and (min-width:1140px) {
+    .face-28-2-window-inner.mCustomScrollbar {padding:0}
+    .face-28-2-window-inner.mCustomScrollbar .mCSB_container {padding:27px 44px 38px 30px; margin:0 !important}
+    .face-28-2-window-inner.mCustomScrollbar .mCSB_scrollTools {width:10px}
+}
 .face-28-2-window-inner::before {content:""; display:block; position:absolute; left:62px; top:-5px; width:25px; height:25px; transform:rotate(45deg); background:#fff}
 .face-28-2-window-close {display:block; position:absolute; width:26px; height:26px; background:#f2f2f2; border-radius:50%; right:10px; top:10px}
 .face-28-2-window-close svg {display:block; position:absolute; left:50%; top:50%; transform:translate(-50%, -50%)}
@@ -2133,7 +2138,7 @@ canvas {user-select:none}
 @media screen and (max-width:1139px) {
     .face-28-2-window {position:fixed; z-index:99; margin:0; left:0 !important; top:0 !important; right:0; bottom:0}
     .face-28-2-window-bg {position:absolute; left:0; top:0; right:0; bottom:0; background:rgba(0, 0, 0, 0.2); cursor:pointer}
-    .face-28-2-window-inner {position:absolute; width:410px; left:50%; top:50%; height:510px; margin:-255px 0 0 -205px; background:#fff; padding:0; box-shadow:none}
+    .face-28-2-window-inner {position:absolute; width:410px; left:50%; top:50%; height:510px; margin:-255px 0 0 -205px; background:#fff; padding:0; box-shadow:none; max-height:none}
     .face-28-2-window-inner::before {display:none}
     .face-28-2-window-close {right:20px; top:20px; width:15px; height:15px; border-radius:none; background:none}
     .face-28-2-window-close svg {width:15px; height:15px}

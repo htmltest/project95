@@ -1351,11 +1351,9 @@ $(document).ready(function() {
                                         '<a href="#" class="face-28-2-window-close"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8.94727" width="1.48861" height="12.6532" transform="rotate(45 8.94727 0)" /><rect x="10" y="8.94714" width="1.48861" height="12.6532" transform="rotate(135 10 8.94714)" /></svg></a>' +
                                     '</div>' +
                                 '</div>');
-            if ($(window).width() < 1140) {
-                $('.face-28-2-window-inner').mCustomScrollbar({
-                    axis: 'y'
-                });
-            }
+            $('.face-28-2-window-inner').mCustomScrollbar({
+                axis: 'y'
+            });
         }
     });
 
