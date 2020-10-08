@@ -1248,6 +1248,7 @@ canvas {user-select:none}
 .face-16-1-container .face-1-chart-labels {bottom:110px}
 .face-16-1-container .face-1-chart-year strong {display:block; height:18px; text-decoration:none; color:#262626; border-radius:5px; background:rgba(255, 220, 197, 0.67); font-weight:normal}
 .face-16-1-container .face-1-chart-point span {font-size:12.5px}
+.face-16-1-container .face-1-chart-point.bottom span {bottom:auto; top:20px}
 .face-16-1-container .face-1-chart-icons {position:absolute; left:0; right:0; bottom:153px; height:140px; width:100px; white-space:nowrap}
 .face-16-1-container .face-1-chart-icon {position:absolute; bottom:0; top:0; font-size:0; line-height:140px; width:42px}
 .face-16-1-container .face-1-chart-icon-summ {position:absolute; right:50%; bottom:0; line-height:0; width:32px}

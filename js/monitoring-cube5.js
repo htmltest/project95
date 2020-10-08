@@ -258,12 +258,16 @@ function face16_1_Redraw() {
         var curData = faceData16_1[i];
         face1Labels.push(curData.year);
 
-        if (curData.type == 'actually') {
+        if (typeof curData.ratio !== 'undefined') {
             face1DataActually.push(Number(curData.ratio));
-            face1DataForecast.push(null);
         } else {
             face1DataActually.push(null);
-            face1DataForecast.push(Number(curData.ratio));
+        }
+
+        if (typeof curData.ratiof !== 'undefined') {
+            face1DataForecast.push(Number(curData.ratiof));
+        } else {
+            face1DataForecast.push(null);
         }
     }
 
@@ -306,10 +310,8 @@ function face16_1_Redraw() {
         return Math.acos((x1 * x2 + y1 * y2) / (d1 * d2)) * 180 / Math.PI;
     }
 
-    var curLastActually = -1;
     for (var i = 0; i < face1DataActually.length; i++) {
         if (face1DataActually[i] != null) {
-            curLastActually++;
             var curX = (i * itemWidth) + itemMargin;
             curScroll = curX;
             var curY = ((face1DataActually[i] - maxPlace) / (minPlace - maxPlace)) * $('.face-16-1-container .face-1-chart-graph').height();
@@ -327,12 +329,8 @@ function face16_1_Redraw() {
         }
     }
 
-    var curLastForecast = -1;
     for (var i = 0; i < face1DataForecast.length; i++) {
         if (face1DataForecast[i] != null) {
-            if (curLastForecast < 0) {
-                curLastForecast = i;
-            }
             var curX = (i * itemWidth) + itemMargin;
             var curY = ((face1DataForecast[i] - maxPlace) / (minPlace - maxPlace)) * $('.face-16-1-container .face-1-chart-graph').height();
             if (face1DataForecast[i - 1] != null) {
@@ -345,20 +343,13 @@ function face16_1_Redraw() {
                 }
                 $('.face-16-1-container .face-1-chart-graph').append('<div class="face-1-chart-line" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
             }
-            $('.face-16-1-container .face-1-chart-graph').append('<div class="face-1-chart-point" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong>' + face1DataForecast[i] + '<em>&nbsp;%</em></strong></span></div>');
+            var classBottom = '';
+            if (face1DataActually[i] != null) {
+                classBottom = 'bottom';
+            }
+            $('.face-16-1-container .face-1-chart-graph').append('<div class="face-1-chart-point ' + classBottom + '" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong>' + face1DataForecast[i] + '<em>&nbsp;%</em></strong></span></div>');
         }
     }
-
-    var curX = (curLastForecast * itemWidth) + itemMargin;
-    var curY = ((face1DataForecast[curLastForecast] - maxPlace) / (minPlace - maxPlace)) * $('.face-16-1-container .face-1-chart-graph').height();
-    var prevX = ((curLastActually) * itemWidth) + itemMargin;
-    var prevY = ((face1DataActually[curLastActually] - maxPlace) / (minPlace - maxPlace)) * $('.face-16-1-container .face-1-chart-graph').height();
-    var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
-    var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
-    if (curY < prevY) {
-        curAngle = -curAngle;
-    }
-    $('.face-16-1-container .face-1-chart-graph').append('<div class="face-1-chart-line" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
 
     for (var i = 0; i < face1Labels.length; i++) {
         if (face1DataActually[i] != null) {
