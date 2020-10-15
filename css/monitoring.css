@@ -3059,3 +3059,144 @@ canvas {user-select:none}
     .face-48-3-ratio-window .face-39-ratio-window-title {display:block}
     .face-48-3-ratio-window .face-39-ratio-window-value {display:block; margin:0}
 }
+
+.face-47-2-header {padding:37px 43px 0 43px; text-transform:uppercase; font:12.5px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; position:relative; z-index:1}
+.face-47-2-header::after {content:""; display:block; clear:both}
+.face-47-2-type {float:left; position:relative}
+.face-47-2-type.open {z-index:9999}
+.face-47-2-type-current {display:inline-block; vertical-align:top; color:#757575; transition:all 0.2s; cursor:pointer; padding:0 19px 0 0; position:relative}
+.face-47-2-type-current::after {content:""; display:block; position:absolute; right:0; top:50%; width:11px; height:8px; background:url(../images/map-russia-sort-type.svg) no-repeat; margin-top:-4px}
+.face-47-2-type-current:hover {color:#fe6600}
+.face-47-2-type ul {margin:0; padding:5px 0; list-style:none; display:none; z-index:9999; position:absolute; left:-20px; top:100%; white-space:nowrap; background:#fff; border:1px solid #e6e6e6; box-sizing:border-box}
+.face-47-2-type.open ul {display:block}
+.face-47-2-type ul li {margin:0; padding:0; color:#a6a6a6}
+.face-47-2-type ul li::before {display:none}
+.face-47-2-type ul li a {display:block; color:#a6a6a6; text-decoration:none; padding:5px 20px}
+.face-47-2-type ul li a:hover {color:#fe6600}
+.face-47-2-type ul li.active a {color:#2f2f2f}
+
+.face-47-2-year {float:left; position:relative; margin:0 0 0 22px}
+.face-47-2-year.open {z-index:9999}
+.face-47-2-year-current {display:inline-block; vertical-align:top; color:#757575; transition:all 0.2s; cursor:pointer; padding:0 19px 0 0; position:relative}
+.face-47-2-year-current::after {content:""; display:block; position:absolute; right:0; top:50%; width:11px; height:8px; background:url(../images/map-russia-sort-type.svg) no-repeat; margin-top:-4px}
+.face-47-2-year-current:hover {color:#fe6600}
+.face-47-2-year ul {margin:0; padding:5px 0; list-style:none; display:none; z-index:9999; position:absolute; left:-20px; top:100%; white-space:nowrap; background:#fff; border:1px solid #e6e6e6; box-sizing:border-box}
+.face-47-2-year.open ul {display:block}
+.face-47-2-year ul li {margin:0; padding:0; color:#a6a6a6; cursor:pointer}
+.face-47-2-year ul li::before {display:none}
+.face-47-2-year ul li a {display:block; padding:5px 20px; color:#a6a6a6; text-decoration:none}
+.face-47-2-year ul li a:hover {color:#fe6600}
+.face-47-2-year ul li.active a {color:#2f2f2f}
+
+@media screen and (max-width:1139px) {
+    .face-47-2-header {padding:20px 20px 0 20px; font:9px/18px HelveticaNeueCyr, sans-serif}
+}
+
+.face-47-2-list {margin:15px 43px 0 43px; font-size:16px; line-height:26px; letter-spacing:0.04em; color:#121212; position:relative; overflow:auto}
+.face-47-2-list-inner {display:table}
+.face-47-2-list-headers {display:table-row}
+.face-47-2-list-header {display:table-cell; vertical-align:middle; font-size:14px; line-height:18px; color:#4f280f; text-align:left; padding:0 15px 20px 15px; font-family:HelveticaNeueCyrMedium, sans-serif}
+.face-47-2-item {display:table-row}
+.face-47-2-item-title {display:table-cell; vertical-align:middle; padding:10px 15px 10px 15px; white-space:nowrap}
+.face-47-2-item:last-child {font-family:HelveticaNeueCyrMedium, sans-serif}
+.face-47-2-item-icon {display:inline-block; vertical-align:middle; margin:-2px 18px 0 0; line-height:0; width:26px}
+.face-47-2-item-title span {color:#fe6600}
+.face-47-2-item-icon img {display:block; width:26px}
+.face-47-2-item-info {display:inline-block; vertical-align:middle; margin:-2px 0 0 7px; width:26px}
+.face-47-2-item-info-container {width:26px; height:26px; position:relative}
+.face-47-2-item-info-icon {display:block; width:26px; height:26px; background:#fff url(../images/cube-info.svg) no-repeat center; border-radius:50%}
+.face-47-2-item-info-content {display:none; position:fixed; width:647px; margin:17px 0 0 -267px; background:#fff; z-index:99; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); box-sizing:border-box; font:14px/21px HelveticaNeueCyrLight, sans-serif; letter-spacing:0.04em; padding:30px; white-space:normal}
+.face-47-2-item-info-content.mini {width:454px; margin-left:-214px}
+.face-47-2-item-info-content::before {content:""; display:block; position:absolute; left:269px; top:-11px; border-bottom:11px solid #fff; border-left:11px solid transparent; border-right:11px solid transparent}
+.face-47-2-item-info-content.mini::before {left:50%; margin-left:-11px}
+.face-47-2-item-info-content h5 {font:14px/21px HelveticaNeueCyrMedium, sans-serif; margin:21px 0 12px 0; padding:0}
+.face-47-2-item-info-content h5:first-child {padding:0}
+.face-47-2-item-info-content p {margin:6px 0; padding:0}
+.face-47-2-item-info-content > *:first-child {margin-top:0}
+.face-47-2-item-info-content > *:last-child {margin-bottom:0}
+@media screen and (min-width:1140px) {
+    .face-47-2-item-info-container:hover .face-47-2-item-info-content {display:block}
+}
+.face-47-2-item-value {display:table-cell; vertical-align:middle; padding:10px 15px 10px 15px; text-align:left}
+
+@media screen and (max-width:1139px) {
+    .face-47-2-list {margin:10px 0 0 0; font-size:12px; line-height:18px}
+    .face-47-2-list-header {font-size:12px; line-height:18px; padding:0 10px 4px 10px}
+    .face-47-2-item-icon {width:18px; margin-right:10px}
+    .face-47-2-item-icon img {width:18px}
+    .face-47-2-item-title {padding:8px 30px 0 20px}
+    .face-47-2-item-info {width:18px; height:18px; margin:-2px 0 0 8px}
+    .face-47-2-item-info-icon {width:18px; height:18px; background-size:5px 10px; cursor:pointer}
+    .face-47-2-item-value {padding:8px 10px 0px 10px}
+}
+
+.face-47-3-header {padding:37px 43px 0 43px; text-transform:uppercase; font:12.5px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; position:relative; z-index:1}
+.face-47-3-header::after {content:""; display:block; clear:both}
+.face-47-3-type {float:left; position:relative}
+.face-47-3-type.open {z-index:9999}
+.face-47-3-type-current {display:inline-block; vertical-align:top; color:#757575; transition:all 0.2s; cursor:pointer; padding:0 19px 0 0; position:relative}
+.face-47-3-type-current::after {content:""; display:block; position:absolute; right:0; top:50%; width:11px; height:8px; background:url(../images/map-russia-sort-type.svg) no-repeat; margin-top:-4px}
+.face-47-3-type-current:hover {color:#fe6600}
+.face-47-3-type ul {margin:0; padding:5px 0; list-style:none; display:none; z-index:9999; position:absolute; left:-20px; top:100%; white-space:nowrap; background:#fff; border:1px solid #e6e6e6; box-sizing:border-box}
+.face-47-3-type.open ul {display:block}
+.face-47-3-type ul li {margin:0; padding:0; color:#a6a6a6}
+.face-47-3-type ul li::before {display:none}
+.face-47-3-type ul li a {display:block; color:#a6a6a6; text-decoration:none; padding:5px 20px}
+.face-47-3-type ul li a:hover {color:#fe6600}
+.face-47-3-type ul li.active a {color:#2f2f2f}
+
+.face-47-3-year {float:left; position:relative; margin:0 0 0 22px}
+.face-47-3-year.open {z-index:9999}
+.face-47-3-year-current {display:inline-block; vertical-align:top; color:#757575; transition:all 0.2s; cursor:pointer; padding:0 19px 0 0; position:relative}
+.face-47-3-year-current::after {content:""; display:block; position:absolute; right:0; top:50%; width:11px; height:8px; background:url(../images/map-russia-sort-type.svg) no-repeat; margin-top:-4px}
+.face-47-3-year-current:hover {color:#fe6600}
+.face-47-3-year ul {margin:0; padding:5px 0; list-style:none; display:none; z-index:9999; position:absolute; left:-20px; top:100%; white-space:nowrap; background:#fff; border:1px solid #e6e6e6; box-sizing:border-box}
+.face-47-3-year.open ul {display:block}
+.face-47-3-year ul li {margin:0; padding:0; color:#a6a6a6; cursor:pointer}
+.face-47-3-year ul li::before {display:none}
+.face-47-3-year ul li a {display:block; padding:5px 20px; color:#a6a6a6; text-decoration:none}
+.face-47-3-year ul li a:hover {color:#fe6600}
+.face-47-3-year ul li.active a {color:#2f2f2f}
+
+@media screen and (max-width:1139px) {
+    .face-47-3-header {padding:20px 20px 0 20px; font:9px/18px HelveticaNeueCyr, sans-serif}
+}
+
+.face-47-3-list {margin:15px 20px 0 20px; font-size:16px; line-height:26px; letter-spacing:0.04em; color:#121212; position:relative; overflow:auto}
+.face-47-3-list-inner {display:table}
+.face-47-3-list-headers {display:table-row}
+.face-47-3-list-header {display:table-cell; vertical-align:middle; font-size:14px; line-height:18px; color:#4f280f; text-align:right; padding:0 10px 20px 10px; font-family:HelveticaNeueCyrMedium, sans-serif; white-space:nowrap}
+.face-47-3-item {display:table-row}
+.face-47-3-item-title {display:table-cell; vertical-align:middle; padding:10px 10px 10px 10px; white-space:nowrap}
+.face-47-3-item:last-child {font-family:HelveticaNeueCyrMedium, sans-serif}
+.face-47-3-item-icon {display:inline-block; vertical-align:middle; margin:-2px 18px 0 0; line-height:0; width:26px}
+.face-47-3-item-title span {color:#fe6600}
+.face-47-3-item-icon img {display:block; width:26px}
+.face-47-3-item-info {display:inline-block; vertical-align:middle; margin:-2px 0 0 7px; width:26px}
+.face-47-3-item-info-container {width:26px; height:26px; position:relative}
+.face-47-3-item-info-icon {display:block; width:26px; height:26px; background:#fff url(../images/cube-info.svg) no-repeat center; border-radius:50%}
+.face-47-3-item-info-content {display:none; position:fixed; width:647px; margin:17px 0 0 -267px; background:#fff; z-index:99; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); box-sizing:border-box; font:14px/21px HelveticaNeueCyrLight, sans-serif; letter-spacing:0.04em; padding:30px; white-space:normal}
+.face-47-3-item-info-content.mini {width:454px; margin-left:-214px}
+.face-47-3-item-info-content::before {content:""; display:block; position:absolute; left:269px; top:-11px; border-bottom:11px solid #fff; border-left:11px solid transparent; border-right:11px solid transparent}
+.face-47-3-item-info-content.mini::before {left:50%; margin-left:-11px}
+.face-47-3-item-info-content h5 {font:14px/21px HelveticaNeueCyrMedium, sans-serif; margin:21px 0 12px 0; padding:0}
+.face-47-3-item-info-content h5:first-child {padding:0}
+.face-47-3-item-info-content p {margin:6px 0; padding:0}
+.face-47-3-item-info-content > *:first-child {margin-top:0}
+.face-47-3-item-info-content > *:last-child {margin-bottom:0}
+@media screen and (min-width:1140px) {
+    .face-47-3-item-info-container:hover .face-47-3-item-info-content {display:block}
+}
+.face-47-3-item-value {display:table-cell; vertical-align:middle; padding:10px 10px 10px 10px; text-align:right}
+
+@media screen and (max-width:1139px) {
+    .face-47-3-list {margin:10px 0 0 10px; font-size:12px; line-height:18px}
+    .face-47-3-list-header {font-size:7px; line-height:9px; padding:0 5px 0 5px; font-family:HelveticaNeueCyr, sans-serif}
+    .face-47-3-item-icon {width:18px; margin-right:10px}
+    .face-47-3-item-icon img {width:18px}
+    .face-47-3-item-title {padding:7px 5px 0 5px}
+    .face-47-3-item-info {width:18px; height:18px; margin:-2px 0 0 8px}
+    .face-47-3-item-info-icon {width:18px; height:18px; background-size:5px 10px; cursor:pointer}
+    .face-47-3-item-value {padding:7px 5px 0px 5px}
+    .face-47-3-item:last-child {font-family:HelveticaNeueCyr, sans-serif}
+}
