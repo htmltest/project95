@@ -170,6 +170,7 @@ $(window).on('load resize', function() {
     face40_2_Redraw();
     face48_1_Redraw();
     face48_3_Redraw();
+    face46_2_Redraw();
 
 });
 
@@ -1360,4 +1361,96 @@ function face48_3_Redraw() {
         $('.face-48-3-list').html(htmlList);
 
     }
+}
+
+$(document).ready(function() {
+
+    $('.face-46-2-year-current').click(function(e) {
+        $(this).parent().toggleClass('open');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.face-46-2-year').length == 0) {
+            $('.face-46-2-year').removeClass('open');
+        }
+    });
+
+    $('.face-46-2-year ul li a').click(function(e) {
+        var curLi = $(this).parent();
+        if (!curLi.hasClass('active')) {
+            $('.face-46-2-year ul li.active').removeClass('active');
+            curLi.addClass('active');
+            $('.face-46-2-year-current').html($(this).html());
+            $('.face-46-2-year-text').html($(this).html());
+            face46_2_Redraw();
+        }
+        $('.face-46-2-year').removeClass('open');
+        e.preventDefault();
+    });
+
+});
+
+function face46_2_Redraw() {
+    var curYear = $('.face-46-2-year li.active').attr('data-year');
+
+    var curData = null;
+    for (var i = 0; i < face46_2_data.length; i++) {
+        if (face46_2_data[i].year == curYear) {
+            curData = face46_2_data[i].data;
+        }
+    }
+    var maxWidthLine = 204;
+    if ($(window).width() < 1140) {
+        maxWidthLine = 80;
+    }
+
+    var maxValue = 0;
+    for (var i = 0; i < curData.length; i++) {
+        var curValue = Math.round(parseFloat(curData[i].value.replace(/,/, '.')));
+        if (maxValue < curValue) {
+            maxValue = curValue;
+        }
+    }
+
+    var newHTML = '';
+
+    for (var i = 0; i < curData.length; i++) {
+        var curItem = curData[i];
+        var curValue = Math.round(parseFloat(curItem.value.replace(/,/, '.')));
+        var curWidth = curValue / maxValue * maxWidthLine + 1;
+
+        var flag = '';
+        for (var j = 0; j < cubeFlags.length; j++) {
+            if (cubeFlags[j].country == curItem.title) {
+                flag = cubeFlags[j].image;
+            }
+        }
+
+        if (curItem.title == 'Россия') {
+            if (Number(curItem.place) > 10) {
+                newHTML += '<div class="face-46-2-item-sep"></div>';
+            }
+            newHTML += '<div class="face-46-2-item-rus"><div class="face-46-2-item-rus-inner">';
+        }
+
+        if (Number(curItem.place) < 11 || curItem.title == 'Россия') {
+            newHTML += '<div class="face-46-2-item">' +
+                            '<div class="face-46-2-item-flag"><img src="' + flag + '" alt="" /></div>' +
+                            '<div class="face-46-2-item-title">' + curItem.place + '. ' + curItem.title + '</div>' +
+                            '<div class="face-46-2-item-line"><div class="face-46-2-item-line-inner" style="width:' + curWidth + 'px"></div></div>' +
+                            '<div class="face-46-2-item-value">' + curItem.value + '</div>' +
+                       '</div>';
+        }
+
+        if (curItem.title == 'Россия') {
+            newHTML += '</div></div>';
+        }
+    }
+
+    $('.face-46-2-list').html(newHTML);
+
+    $('.face-46-2-container').mCustomScrollbar('destroy');
+    $('.face-46-2-container').mCustomScrollbar({
+        axis: 'y'
+    });
 }

@@ -172,6 +172,7 @@
                             <li><a href="#">Куб 20<br class="on-mobile" /> Грань 2</a></li>
                             <li><a href="#">Куб 48<br class="on-mobile" /> Грань 1</a></li>
                             <li><a href="#">Куб 48<br class="on-mobile" /> Грань 3</a></li>
+                            <li><a href="#">Куб 46<br class="on-mobile" /> Грань 2</a></li>
                         </ul>
                     </div>
                     <!-- cube menu END -->
@@ -814,6 +815,93 @@
                                 'title'     : 'Севастополь',
                                 'svg'       : '<path d="M10.79,455.36l.59,2.23.55,1.55L15.81,457l-.49-1-.09-.75.47-.48,1.26.47.7-.93-.84-1,.27-.68.82.14.16-1.08-1.58-.54-1.74.83-1.17,1.2-1.64.19Z" transform="translate(-10.22 -8)"/>'
                             }
+                        ];
+
+                        var cubeFlags = [
+                                            {
+                                                'country'   : 'Китай',
+                                                'image'     : 'images/flags/China.png'
+                                            },
+
+                                            {
+                                                'country'   : 'США',
+                                                'image'     : 'images/flags/United-States.png'
+                                            },
+
+                                            {
+                                                'country'   : 'Индия',
+                                                'image'     : 'images/flags/India.png'
+                                            },
+
+                                            {
+                                                'country'   : 'Германия',
+                                                'image'     : 'images/flags/Germany.png'
+                                            },
+
+                                            {
+                                                'country'   : 'Великобритания',
+                                                'image'     : 'images/flags/United-Kingdom.png'
+                                            },
+
+                                            {
+                                                'country'   : 'Юж. Корея',
+                                                'image'     : 'images/flags/South-Korea.png'
+                                            },
+
+                                            {
+                                                'country'   : 'Япония',
+                                                'image'     : 'images/flags/Japan.png'
+                                            },
+
+                                            {
+                                                'country'   : 'Франция',
+                                                'image'     : 'images/flags/France.png'
+                                            },
+
+                                            {
+                                                'country'   : 'Россия',
+                                                'image'     : 'images/flags/Russia.png'
+                                            },
+
+                                            {
+                                                'country'   : 'Иран',
+                                                'image'     : 'images/flags/Iran.png'
+                                            },
+
+                                            {
+                                                'country'   : 'Италия',
+                                                'image'     : 'images/flags/Italy.png'
+                                            },
+
+                                            {
+                                                'country'   : 'Канада',
+                                                'image'     : 'images/flags/Canada.png'
+                                            },
+
+                                            {
+                                                'country'   : 'Австралия',
+                                                'image'     : 'images/flags/Australia.png'
+                                            },
+
+                                            {
+                                                'country'   : 'Бразилия',
+                                                'image'     : 'images/flags/Brazil.png'
+                                            },
+
+                                            {
+                                                'country'   : 'Испания',
+                                                'image'     : 'images/flags/Spain.png'
+                                            },
+
+                                            {
+                                                'country'   : 'Нидерланды',
+                                                'image'     : 'images/flags/Netherlands.png'
+                                            },
+
+                                            {
+                                                'country'   : 'Швейцария',
+                                                'image'     : 'images/flags/Switzerland.png'
+                                            }
                         ];
 
                     </script>
@@ -3689,9 +3777,223 @@
                             <!-- cube face -->
                             <div class="cube-face">
 
-                                <div class="cube-face-title"></div>
+                                <div class="cube-face-title">Ранжирование стран – до России – по количеству вузов и месту по количеству в топ-500 для рейтинга QS</div>
 
-                                <div class="cube-face-footer"></div>
+                                <div class="cube-face-footer">
+                                    <div class="cube-face-download"><a href="#"><span>xls</span>Скачать данные в Excel</a></div>
+                                </div>
+
+                                <div class="face-46-2-header">
+                                    <div class="face-46-2-year">
+                                        <div class="face-46-2-year-current">2019</div>
+                                        <ul>
+                                            <li data-year="2017"><a href="#">2017</a></li>
+                                            <li data-year="2018"><a href="#">2018</a></li>
+                                            <li class="active" data-year="2019"><a href="#">2019</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <script>
+                                    var face46_2_data = [
+                                        {
+                                            'year'  : '2017',
+                                            'data'  : [
+                                                {
+                                                    'title' : 'США',
+                                                    'value' : '89',
+                                                    'place' : '1'
+                                                },
+                                                {
+                                                    'title' : 'Великобритания',
+                                                    'value' : '50',
+                                                    'place' : '2'
+                                                },
+                                                {
+                                                    'title' : 'Германия',
+                                                    'value' : '29',
+                                                    'place' : '3'
+                                                },
+                                                {
+                                                    'title' : 'Австралия',
+                                                    'value' : '26',
+                                                    'place' : '4'
+                                                },
+                                                {
+                                                    'title' : 'Китай',
+                                                    'value' : '24',
+                                                    'place' : '5'
+                                                },
+                                                {
+                                                    'title' : 'Япония',
+                                                    'value' : '17',
+                                                    'place' : '6'
+                                                },
+                                                {
+                                                    'title' : 'Канада',
+                                                    'value' : '16',
+                                                    'place' : '7'
+                                                },
+                                                {
+                                                    'title' : 'Франция',
+                                                    'value' : '15',
+                                                    'place' : '8'
+                                                },
+                                                {
+                                                    'title' : 'Япония',
+                                                    'value' : '14',
+                                                    'place' : '9'
+                                                },
+                                                {
+                                                    'title' : 'Италия',
+                                                    'value' : '13',
+                                                    'place' : '10'
+                                                },
+                                                {
+                                                    'title' : 'Юж. Корея',
+                                                    'value' : '12',
+                                                    'place' : '11'
+                                                },
+                                                {
+                                                    'title' : 'Нидерланды',
+                                                    'value' : '11',
+                                                    'place' : '12'
+                                                },
+                                                {
+                                                    'title' : 'Россия',
+                                                    'value' : '10',
+                                                    'place' : '13'
+                                                }
+                                            ]
+                                        },
+
+                                        {
+                                            'year'  : '2018',
+                                            'data'  : [
+                                                {
+                                                    'title' : 'США',
+                                                    'value' : '93',
+                                                    'place' : '1'
+                                                },
+                                                {
+                                                    'title' : 'Великобритания',
+                                                    'value' : '51',
+                                                    'place' : '2'
+                                                },
+                                                {
+                                                    'title' : 'Германия',
+                                                    'value' : '32',
+                                                    'place' : '3'
+                                                },
+                                                {
+                                                    'title' : 'Австралия',
+                                                    'value' : '23',
+                                                    'place' : '4'
+                                                },
+                                                {
+                                                    'title' : 'Китай',
+                                                    'value' : '21',
+                                                    'place' : '5'
+                                                },
+                                                {
+                                                    'title' : 'Канада',
+                                                    'value' : '19',
+                                                    'place' : '6'
+                                                },
+                                                {
+                                                    'title' : 'Франция',
+                                                    'value' : '19',
+                                                    'place' : '6'
+                                                },
+                                                {
+                                                    'title' : 'Япония',
+                                                    'value' : '15',
+                                                    'place' : '7'
+                                                },
+                                                {
+                                                    'title' : 'Италия',
+                                                    'value' : '14',
+                                                    'place' : '8'
+                                                },
+                                                {
+                                                    'title' : 'Юж. Корея',
+                                                    'value' : '14',
+                                                    'place' : '8'
+                                                },
+                                                {
+                                                    'title' : 'Нидерланды',
+                                                    'value' : '13',
+                                                    'place' : '9'
+                                                },
+                                                {
+                                                    'title' : 'Россия',
+                                                    'value' : '13',
+                                                    'place' : '9'
+                                                }
+                                            ]
+                                        },
+
+                                        {
+                                            'year'  : '2019',
+                                            'data'  : [
+                                                {
+                                                    'title' : 'США',
+                                                    'value' : '94',
+                                                    'place' : '1'
+                                                },
+                                                {
+                                                    'title' : 'Великобритания',
+                                                    'value' : '51',
+                                                    'place' : '2'
+                                                },
+                                                {
+                                                    'title' : 'Германия',
+                                                    'value' : '30',
+                                                    'place' : '3'
+                                                },
+                                                {
+                                                    'title' : 'Австралия',
+                                                    'value' : '25',
+                                                    'place' : '4'
+                                                },
+                                                {
+                                                    'title' : 'Китай',
+                                                    'value' : '22',
+                                                    'place' : '5'
+                                                },
+                                                {
+                                                    'title' : 'Канада',
+                                                    'value' : '18',
+                                                    'place' : '6'
+                                                },
+                                                {
+                                                    'title' : 'Франция',
+                                                    'value' : '17',
+                                                    'place' : '7'
+                                                },
+                                                {
+                                                    'title' : 'Япония',
+                                                    'value' : '17',
+                                                    'place' : '7'
+                                                },
+                                                {
+                                                    'title' : 'Россия',
+                                                    'value' : '15',
+                                                    'place' : '8'
+                                                }
+                                            ]
+                                        }
+                                    ];
+                                </script>
+
+                                <div class="face-46-2-list-headers">
+                                    <div class="face-46-2-list-header">Страна и место</div>
+                                    <div class="face-46-2-list-header">Кол-во вузов</div>
+                                </div>
+                                <div class="face-46-2-container">
+                                    <div class="face-46-2-list">
+                                    </div>
+                                </div>
 
                             </div>
                             <!-- cube face END -->

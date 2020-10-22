@@ -3587,3 +3587,56 @@ canvas {user-select:none}
     .face-19-2-window .face-1-chart-icon-count-inner {left:13.5px; right:auto}
     .face-19-2-window .face-1-chart-icon svg {width:27px; height:10px}
 }
+
+.face-46-2-header {padding:30px 0 0 30px; text-transform:uppercase; font:12.5px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; text-transform:uppercase}
+.face-46-2-header::after {content:""; display:block; clear:both}
+
+.face-46-2-year {float:left; position:relative}
+.face-46-2-year.open {z-index:9999}
+.face-46-2-year-current {display:inline-block; vertical-align:top; color:#757575; transition:all 0.2s; cursor:pointer; padding:0 19px 0 0; position:relative}
+.face-46-2-year-current::after {content:""; display:block; position:absolute; right:0; top:50%; width:11px; height:8px; background:url(../images/map-russia-sort-type.svg) no-repeat; margin-top:-4px}
+.face-46-2-year-current:hover {color:#fe6600}
+.face-46-2-year ul {margin:0; padding:5px 0; list-style:none; display:none; z-index:9999; position:absolute; left:-20px; top:100%; white-space:nowrap; background:#fff; border:1px solid #e6e6e6; box-sizing:border-box}
+.face-46-2-year.open ul {display:block}
+.face-46-2-year ul li {margin:0; padding:0; color:#a6a6a6; cursor:pointer}
+.face-46-2-year ul li::before {display:none}
+.face-46-2-year ul li a {color:#a6a6a6; text-decoration:none; display:block; padding:5px 20px}
+.face-46-2-year ul li a:hover {color:#fe6600}
+.face-46-2-year ul li.active a {color:#2f2f2f}
+
+@media screen and (max-width:1139px) {
+    .face-46-2-header {padding:20px 0 0 20px; font:9px/18px HelveticaNeueCyr, sans-serif}
+}
+
+.face-46-2-list-headers {margin:16px 62px 0 62px; border-bottom:2px solid #d5d5d5; padding:0 0 11px 0; font-size:12px; line-height:12px; text-transform:uppercase; color:#656565}
+.face-46-2-list-headers::after {content:""; display:block; clear:both}
+.face-46-2-list-header {float:left; width:50%}
+.face-46-2-container {position:relative; overflow:auto; max-height:532px}
+.face-46-2-container .mCSB_inside > .mCSB_container {margin-right:0}
+.face-46-2-list {color:#121212; padding:8px 62px}
+.face-46-2-item-rus::after {content:""; display:block; clear:both}
+.face-46-2-item-rus-inner {float:left; position:relative; width:100%}
+.face-46-2-item-rus-inner::before {content:""; display:block; background:rgba(254, 102, 0, 0.1); position:absolute; left:-10px; right:-10px; top:0; bottom:0}
+.face-46-2-item {display:table; position:relative; table-layout:fixed}
+.face-46-2-item-rus .face-46-2-item {margin:0}
+.face-46-2-item-flag {display:table-cell; vertical-align:middle; line-height:0; width:54px; padding:8px 0; box-sizing:border-box}
+.face-46-2-item-flag img {width:34px}
+.face-46-2-item-title {display:table-cell; padding:8px 0; vertical-align:middle; text-align:left; width:198px; text-transform:uppercase; font-size:14px; line-height:14px}
+.face-46-2-item-line {display:table-cell; vertical-align:middle; padding:8px 0}
+.face-46-2-item-line-inner {height:11px; background:#fe6600; width:0}
+.face-46-2-item-value {display:table-cell; vertical-align:middle; padding:8px 0 8px 20px; font-size:16px; line-height:16px}
+.face-46-2-item-sep {height:1px; background:#d7d7d7; margin:17px 0}
+
+@media screen and (max-width:1139px) {
+    .face-46-2-list-headers {margin:8px 20px 0 20px; padding:0 0 7px 0; font-size:10px; line-height:10px}
+    .face-46-2-list-header:nth-child(1) {width:196px}
+    .face-46-2-list-header:nth-child(2) {width:auto}
+    .face-46-2-container {max-height:283px}
+    .face-46-2-list {padding:4px 20px}
+    .face-46-2-item-flag {width:38px; padding:4px 0}
+    .face-46-2-item-flag img {width:22px}
+    .face-46-2-item-title {width:160px; font-size:12px; line-height:12px; padding:4px 0}
+    .face-46-2-item-line {padding:4px 0}
+    .face-46-2-item-line-inner {height:7px}
+    .face-46-2-item-value {padding:4px 0 4px 14px; font-size:10px; line-height:10px}
+}
