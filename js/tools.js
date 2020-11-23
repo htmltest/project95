@@ -1008,7 +1008,7 @@ function createChartMap(blockID, data) {
 function makeChartMap(curBlock, data) {
     var newHTML = '';
 
-    newHTML +=  '<div class="opendata-chart-map-wrapper"><div class="opendata-chart-map-inner"><svg width="1040" height="591" viewBox="0 0 1107.77 630.12" fill="none" xmlns="http://www.w3.org/2000/svg"></svg></div></div>';
+    newHTML +=  '<div class="opendata-chart-map-wrapper"><div class="opendata-chart-map-inner"><svg width="1110" height="631" viewBox="0 0 1107.77 630.12" fill="none" xmlns="http://www.w3.org/2000/svg"></svg></div></div>';
 
     if (curBlock.data('year') === undefined) {
         curBlock.data('year', data.data[0].year);
