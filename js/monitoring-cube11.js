@@ -486,9 +486,9 @@ function face47_1_Redraw() {
     }
 
     $('.face-47-1-content').html(newHTML);
-    
+
     var firstY = 0;
-    
+
     $('.face-47-1-item:eq(0) .face-47-1-item-content').each(function() {
         var curItem = $(this);
         var curScopus;
@@ -550,3 +550,212 @@ function face47_1_Redraw() {
         axis: 'x'
     });
 }
+
+$(window).on('load resize', function() {
+    $('.cube-formula-text').mCustomScrollbar('destroy');
+    $('.cube-formula-text').mCustomScrollbar({
+        axis: 'y'
+    });
+});
+
+$(document).ready(function() {
+
+    $('body').on('click', '.face-46-1-chart-year a, .face-46-1-chart-point.active', function(e) {
+        var curLi = $(this);
+        var curYear = $(this).attr('data-year');
+
+        $('html').addClass('window-open');
+
+        if ($('.window').length > 0) {
+            $('.window').remove();
+        }
+        $('body').append('<div class="window window-monitoring"><div class="window-loading"></div></div>');
+
+        var windowData = null;
+
+        for (var i = 0; i < face46_1data.length; i++) {
+            var dataItem = face46_1data[i];
+            if (dataItem.year == curYear) {
+                if (dataItem.rates !== null) {
+                    windowData = dataItem.rates;
+                }
+            }
+        }
+
+        var newHTML = '';
+        var hasRussia = false;
+        if (windowData != null) {
+
+            for (var i = 0; i < windowData.length; i++) {
+                var curItem = windowData[i];
+                if (Number(curItem.place) < 11 || curItem.title == 'Россия') {
+                    var flag = '';
+                    for (var j = 0; j < cubeFlags.length; j++) {
+                        if (cubeFlags[j].country == curItem.title) {
+                            flag = cubeFlags[j].image;
+                        }
+                    }
+
+                    if (curItem.title == 'Россия') {
+                        if (Number(curItem.place) > 10) {
+                            newHTML += '<div class="face-4-item-sep"></div>';
+                        }
+                        hasRussia = true;
+                        newHTML += '<div class="face-4-item-rus"><div class="face-4-item-rus-inner">';
+                    }
+
+                    newHTML += '<div class="face-4-item">' +
+                                    '<div class="face-4-item-flag"><img src="' + flag + '" alt="" /></div>' +
+                                    '<div class="face-4-item-title">' + curItem.place + '. ' + curItem.title + '</div>' +
+                               '</div>';
+
+                    if (curItem.title == 'Россия') {
+                        newHTML += '</div></div>';
+                    }
+                }
+            }
+
+        }
+
+        var windowHTML   =  '<div class="window-face46-1">';
+        windowHTML      +=      '<div class="window-face46-1-title">Место Российской Федерации в мире по присутствию университетов в топ-500 глобальных рейтингов университетов за ' + curYear + ' год</div>';
+        windowHTML      +=      '<div class="window-face46-1-list">' + newHTML + '</div>';
+        windowHTML      +=      '<div class="window-face1-btn">' + $('.cube-face.active .cube-face-footer').html() + '</div>';
+        windowHTML      +=  '</div>';
+
+        $('.window').append('<div class="window-container window-container-load"><div class="window-content">' + windowHTML + '<a href="#" class="window-close"></a></div></div>')
+
+        $('.window-container').removeClass('window-container-load');
+        windowPosition();
+
+        e.preventDefault();
+    });
+
+});
+
+$(window).on('load resize', function() {
+    var face46_1Labels = [];
+    var face46_1DataActually = [];
+    var face46_1DataForecast = [];
+
+    for (var i = 0; i < face46_1data.length; i++) {
+        var curYear = face46_1data[i];
+        face46_1Labels.push(curYear.year);
+
+        if (curYear.rates !== null) {
+            var curRates = curYear.rates;
+            var curPlace = 0;
+            for (var k = 0; k < curRates.length; k++) {
+                if (curRates[k].title == 'Россия') {
+                    curPlace = Number(curRates[k].place);
+                }
+            }
+            face46_1DataActually.push({"year": curYear.year, "place": curPlace});
+            if (curYear.forecast !== null) {
+                face46_1DataForecast.push(Number(curYear.forecast));
+            } else {
+                face46_1DataForecast.push(null);
+            }
+        } else {
+            face46_1DataActually.push(null);
+            if (curYear.forecast !== null) {
+                face46_1DataForecast.push(Number(curYear.forecast));
+            }
+        }
+    }
+    $('.face-46-1-chart').width(face46_1Labels.length * 79 - 37);
+
+    var minPlace = 9999;
+    var maxPlace = 0;
+    var curScroll = 0;
+
+    for (var i = 0; i < face46_1DataActually.length; i++) {
+        if (face46_1DataActually[i] != null) {
+            if (face46_1DataActually[i].place < minPlace) {
+                minPlace = face46_1DataActually[i].place;
+            }
+            if (face46_1DataActually[i].place > maxPlace) {
+                maxPlace = face46_1DataActually[i].place;
+            }
+        }
+    }
+
+    for (var i = 0; i < face46_1DataForecast.length; i++) {
+        if (face46_1DataForecast[i] != null) {
+            if (face46_1DataForecast[i] < minPlace) {
+                minPlace = face46_1DataForecast[i];
+            }
+            if (face46_1DataForecast[i] > maxPlace) {
+                maxPlace = face46_1DataForecast[i];
+            }
+        }
+    }
+
+    function angle_point(a, b, c) {
+        var x1 = a[0] - b[0];
+        var x2 = c[0] - b[0];
+        var y1 = a[1] - b[1];
+        var y2 = c[1] - b[1];
+
+        var d1 = Math.sqrt(x1 * x1 + y1 * y1);
+        var d2 = Math.sqrt(x2 * x2 + y2 * y2);
+        return Math.acos((x1 * x2 + y1 * y2) / (d1 * d2)) * 180 / Math.PI;
+    }
+
+    $('.face-46-1-chart-graph').html('');
+    for (var i = 0; i < face46_1DataActually.length; i++) {
+        if (face46_1DataActually[i] != null) {
+            var curX = (i * 79);
+            curScroll = curX;
+            var curY = ((face46_1DataActually[i].place - minPlace) / (maxPlace - minPlace)) * $('.face-46-1-chart-graph').height();
+            if (face46_1DataActually[i - 1] != null) {
+                var prevX = ((i - 1) * 79);
+                var prevY = ((face46_1DataActually[i - 1].place - minPlace) / (maxPlace - minPlace)) * $('.face-46-1-chart-graph').height();
+                var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+                var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+                if (curY < prevY) {
+                    curAngle = -curAngle;
+                }
+                $('.face-46-1-chart-graph').append('<div class="face-46-1-chart-line active" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+            }
+            $('.face-46-1-chart-graph').append('<div class="face-46-1-chart-point active" data-year="' + face46_1DataActually[i].year + '" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong><em>' + face46_1DataActually[i].place + '</em></strong><em>место</em></span></div>');
+        }
+    }
+
+    for (var i = 0; i < face46_1DataForecast.length; i++) {
+        if (face46_1DataForecast[i] != null) {
+            var curX = (i * 79);
+            var curY = ((face46_1DataForecast[i] - minPlace) / (maxPlace - minPlace)) * $('.face-46-1-chart-graph').height();
+            if (face46_1DataForecast[i - 1] != null) {
+                var prevX = ((i - 1) * 79);
+                var prevY = ((face46_1DataForecast[i - 1] - minPlace) / (maxPlace - minPlace)) * $('.face-46-1-chart-graph').height();
+                var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+                var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+                if (curY < prevY) {
+                    curAngle = -curAngle;
+                }
+                $('.face-46-1-chart-graph').append('<div class="face-46-1-chart-line" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+            }
+            $('.face-46-1-chart-graph').append('<div class="face-46-1-chart-point" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong>' + face46_1DataForecast[i] + '</strong>место</span></div>');
+        }
+    }
+
+    $('.face-46-1-chart-labels').html('');
+    for (var i = 0; i < face46_1Labels.length; i++) {
+        if (face46_1DataActually[i] != null) {
+            $('.face-46-1-chart-labels').append('<div class="face-46-1-chart-year" style="left:' + (i * 79) + 'px"><a href="#" data-year="' + face46_1Labels[i] + '">' + face46_1Labels[i] + '</a></div>');
+        } else {
+            $('.face-46-1-chart-labels').append('<div class="face-46-1-chart-year" style="left:' + (i * 79) + 'px"><span>' + face46_1Labels[i] + '</span></div>');
+        }
+    }
+
+    $('.face-46-1-container').mCustomScrollbar('destroy');
+    $('.face-46-1-container').mCustomScrollbar({
+        axis: 'x',
+        setLeft: '-' + (curScroll - $('.face-46-1-container').width() / 2) + 'px',
+        scrollButtons: {
+            enable: true
+        }
+    });
+
+});
