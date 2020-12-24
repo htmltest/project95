@@ -1119,6 +1119,11 @@ $(window).on('load resize', function() {
         }
     });
 
+    $('body').on('click', '.opendata-chart-map-inner g', function(e) {
+        var curURL = $(this).attr('data-url');
+        windowOpen(curURL);
+    });
+
 });
 
 function createChartMap(blockID, data) {
@@ -1187,6 +1192,7 @@ function makeChartMap(curBlock, data) {
                 if (curRegion.id == curData[i][0]) {
                     var curColorIndex = -1;
                     var curValue = Number(curData[i][1]);
+                    var curURL = curData[i][2];
                     for (var c = 0; c < data.ranges.length; c++) {
                         if (curValue >= data.ranges[c][0] && curValue <= data.ranges[c][1]) {
                             curColorIndex = c;
@@ -1198,10 +1204,89 @@ function makeChartMap(curBlock, data) {
 
                     var curColor = data.ranges[curColorIndex][2];
 
-                    newMap += '<g style="fill:' + curColor + '" data-id="' + curRegion.id + '" data-title="' + curRegion.title + '" data-value="' + curValue + '" data-name="' + data.titleRanges + '">' + curRegion.svg + '</g>';
+                    newMap += '<g style="fill:' + curColor + '" data-id="' + curRegion.id + '" data-title="' + curRegion.title + '" data-value="' + curValue + '" data-name="' + data.titleRanges + '" data-url="' + curURL + '">' + curRegion.svg + '</g>';
                 }
             }
         }
         curBlock.find('.opendata-chart-map-inner svg').html(newMap);
     }
 }
+
+$(document).ready(function(e) {
+
+    $('body').on('click', '.window-region-indicator-table thead th a', function(e) {
+        var curLink = $(this);
+        var sortDir = 'up'
+        var curTable = curLink.parents().filter('table');
+        if (!curLink.hasClass('active')) {
+            curTable.find('th a.active').removeClass('active up down');
+            curLink.addClass('active up');
+        } else {
+            if (curLink.hasClass('up')) {
+                curLink.removeClass('up').addClass('down');
+                sortDir = 'down';
+            } else {
+                curLink.removeClass('down').addClass('up');
+            }
+        }
+        var curIndex = curTable.find('th').index(curLink.parent());
+
+        function windowRegionSortTitleUp(a, b) {
+            var value1 = $(a).find('td').eq(curIndex).html();
+            var value2 = $(b).find('td').eq(curIndex).html();
+            if (value1 < value2) return -1;
+            if (value1 == value2) return 0;
+            if (value1 > value2) return 1;
+        }
+
+        function windowRegionSortTitleDown(a, b) {
+            var value1 = $(a).find('td').eq(curIndex).html();
+            var value2 = $(b).find('td').eq(curIndex).html();
+            if (value1 > value2) return -1;
+            if (value1 == value2) return 0;
+            if (value1 < value2) return 1;
+        }
+
+        function windowRegionSortValueUp(a, b) {
+            var value1 = Number($(a).find('td').eq(curIndex).html().replace(/ /g, '').replace(',', '.'));
+            var value2 = Number($(b).find('td').eq(curIndex).html().replace(/ /g, '').replace(',', '.'));
+            if (value1 < value2) return -1;
+            if (value1 == value2) return 0;
+            if (value1 > value2) return 1;
+        }
+
+        function windowRegionSortValueDown(a, b) {
+            var value1 = Number($(a).find('td').eq(curIndex).html().replace(/ /g, '').replace(',', '.'));
+            var value2 = Number($(b).find('td').eq(curIndex).html().replace(/ /g, '').replace(',', '.'));
+            if (value1 > value2) return -1;
+            if (value1 == value2) return 0;
+            if (value1 < value2) return 1;
+        }
+
+        curTable.find('tbody').each(function() {
+            var curBody = $(this);
+            var curRows = curBody.find('tr');
+            if (curIndex == 0) {
+                if (sortDir == 'up') {
+                    curRows.sort(windowRegionSortTitleUp);
+                } else {
+                    curRows.sort(windowRegionSortTitleDown);
+                }
+            } else {
+                if (sortDir == 'up') {
+                    curRows.sort(windowRegionSortValueUp);
+                } else {
+                    curRows.sort(windowRegionSortValueDown);
+                }
+            }
+            var newHTML = '';
+            for (var i = 0; i < curRows.length; i++) {
+                newHTML += '<tr>' + $(curRows[i]).html() + '</tr>';
+            }
+            curBody.html(newHTML);
+        });
+
+        e.preventDefault();
+    });
+
+});

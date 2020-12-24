@@ -2032,3 +2032,86 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .opendata-chart-map-region-hint-container {padding:23px 20px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); background:#fff; position:relative; max-width:440px}
 .opendata-chart-map-region-hint-container::before {content:""; display:block; position:absolute; left:21px; top:-6px; width:25px; height:25px; background:#fff; transform:rotate(45deg)}
 .opendata-chart-map-region-hint-title {font-weight:500; font-size:16px; line-height:19px; color:#121212}
+
+.indicators-group-inner ul li a {display:inline}
+.indicators-group-inner ul li span {color:#fe6600}
+.indicators-groups-monitoring-notice {margin:30px 0 0 0; font-size:14px; line-height:20px; color:#000; font-family:HelveticaNeueCyrLight, sans-serif}
+.indicators-groups-monitoring-notice span {color:#fe6600}
+.indicators-groups-monitoring-notice a {display:inline; white-space:normal; color:#000; text-decoration:none; border-bottom:1px solid #fe6600}
+.indicators-groups-monitoring-notice a:hover {border-bottom-color:transparent}
+
+@media screen and (max-width:1139px) {
+    .indicators-groups-monitoring-notice {margin:20px 0 0 0}
+}
+
+.window-region {width:777px}
+.window-region-title {background:#fff6ef; font-size:20px; line-height:26px; color:#121212; padding:20px 0 15px 37px;  HelveticaNeueCyrLight, sans-serif; padding:}
+.window-region-title span {display:inline-block; vertical-align:middle; margin:-2px 0 0 32px; font-size:16px; color:#656565; position:relative}
+.window-region-title span::before {content:""; display:block; width:1px; height:15px; background:#ddd; position:absolute; left:-17px; top:50%; margin-top:-7.5px}
+.window-region+.window-close {display:block; width:15px; height:16px; position:absolute; right:40px; top:23px; background:url(../images/window-close-map.svg) no-repeat}
+.window-region-container {padding:34px 38px 25px 38px}
+.window-region-header::after {content:""; display:block; clear:both}
+.window-region-header-text {float:left; margin:3px 0 0 0}
+.window-region-subtitle {font-weight:bold; font-size:26px; line-height:34px; color:#121212}
+.window-region-header-btn {float:right}
+.window-region-header-btn a {display:inline-block; vertical-align:top; height:37px; padding:0 16px; background:#fff6ef; border-radius:5px; font-size:13px; line-height:37px; color:#000; text-decoration:none}
+.window-region-header-btn a:hover {background:#fe6600; color:#fff}
+.window-region-header-btn a svg {display:inline-block; vertical-align:middle; margin:-2px 10px 0 0}
+.window-region-header-btn a path {stroke:#fe6600; transition:all 0.2s}
+.window-region-header-btn a:hover path {stroke:#fff}
+.window-region-header-btn a span {font-family:HelveticaNeueCyrLight, sans-serif; color:#434343; transition:all 0.2s}
+.window-region-header-btn a:hover span {color:#fff}
+
+.window-region-general {margin:15px 0 0 0}
+.window-region-general::after {content:""; display:block; clear:both}
+.window-region-map {float:left; width:360px; line-height:0}
+.window-region-map img {display:block; width:100%}
+.window-region-general-info {float:right; width:300px}
+.window-region-general-title {padding:27px 0 0 10px; font-weight:bold; font-size:18px; line-height:27px; color:#202020}
+.window-region-general-list {margin:20px 0 0 0}
+.window-region-general-item {padding:6px 0 6px 10px}
+.window-region-general-item:nth-child(odd) {background:#fff7f2}
+.window-region-general-item-row {margin:8px 0 0 0}
+.window-region-general-item-row:first-child {margin:0}
+.window-region-general-item-row::after {content:""; display:block; clear:both}
+.window-region-general-item-title {float:left; width:150px; font-size:14px; line-height:21px; color:#6c6c6c; font-family:HelveticaNeueCyrLight, sans-serif; box-sizing:border-box}
+.window-region-general-item-title-sub {padding-left:10px}
+.window-region-general-item-value {margin:0 0 0 160px; font-size:14px; line-height:21px; color:#202020}
+
+.window-region-indicators {margin:60px 0 0 0}
+.window-region-indicators-btn {float:right; padding:3px 0 0 0}
+.window-region-indicators-btn a {display:inline-block; vertical-align:top; padding:0 16px; height:33px; border-radius:5px; font:10px/33px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.03em; text-transform:uppercase; text-decoration:none; color:#171717; background:#ffeadb}
+.window-region-indicators-btn a::after {content:""; display:inline-block; vertical-align:middle; width:15px; height:9px; background:url(../images/sidebar-all.svg) no-repeat; margin:-2px 0 0 7px; transition:all 0.2s}
+.window-region-indicators-btn a:hover::after {transform:translateX(5px)}
+
+.window-region-indicator {margin:40px 0 0 0}
+.window-region-indicator-title {font-weight:bold; font-size:18px; line-height:37px; color:#202020}
+.window-region-indicator-subtitle {font-style:italic; margin:2px 0 23px 0; font-size:14px; line-height:21px; color:#6c6c6c; font-family:HelveticaNeueCyrLight, sans-serif}
+.window-region-indicator-table {margin:10px 0 0 0}
+.window-region-indicator-table table {margin:0; width:auto}
+.window-region-indicator-table thead th {border:none; font-size:11px; line-height:17px; padding:0 40px 11px 10px; text-align:left; font-weight:normal; vertical-align:top; text-transform:uppercase; letter-spacing:0.05em}
+.window-region-indicator-table thead th:first-child {padding:0 40px 11px 10px}
+.window-region-indicator-table thead th a {color:#fe6600; text-decoration:none}
+.window-region-indicator-table thead th a::after {content:""; display:inline-block; vertical-align:middle; width:8px; height:1px; margin:-2px 0 0 5px; background:url(../images/window-region-sort-no.svg) no-repeat}
+.window-region-indicator-table thead th a.active::after {height:7px; background:url(../images/window-region-sort-arrow.svg) no-repeat}
+.window-region-indicator-table thead th a.active.down::after {transform:rotate(-180deg)}
+.window-region-indicator-table tbody td {border:none; vertical-align:middle; padding:8px 40px 8px 10px; font-size:14px; line-height:18px; font-family:HelveticaNeueCyrMedium, sans-serif; color:#000; white-space:nowrap}
+.window-region-indicator-table tbody td:first-child {padding:8px 40px 8px 10px; font-family:HelveticaNeueCyrLight, sans-serif; color:#6c6c6c; white-space:normal}
+.window-region-indicator-table thead+tbody td {padding:8px 40px 8px 10px}
+.window-region-indicator-table thead tr:before {display:none}
+.window-region-indicator-table thead tr:after {display:none}
+.window-region-indicator-table tbody tr:before {display:none}
+.window-region-indicator-table tbody tr:after {display:none}
+.window-region-indicator-table thead+tbody tr:first-child td {border-top:1px solid #fe6600}
+.window-region-indicator-table tbody tr:first-child td {border-top:1px solid #fe6600}
+.window-region-indicator-table thead+tbody tr:last-child td {border-bottom:none}
+.window-region-indicator-table tbody tr:nth-child(odd) td {background:#fff7f2}
+.window-region-indicator-table tbody tr:hover {background:none}
+.window-region-indicator-table tbody td:first-child span {color:#ee0000}
+.window-region-indicator-table tbody td strong {color:#ee0000; font-weight:normal}
+.window-region-indicator-table tbody td span {color:#fe6600}
+.window-region-indicator-table-notice {margin:20px 0 0 0; font-size:12px; line-height:18px; color:#fe6600}
+.window-region-indicator-table-notice span {color:#ee0000}
+
+.window-region-notice {margin:40px 0 0 0; border-top:1px solid #e2e2e2; padding:20px 0 0 0; font-size:14px; line-height:20px; color:#000; font-family:HelveticaNeueCyrLight, sans-serif}
+.window-region-notice span {color:#fe6600}
