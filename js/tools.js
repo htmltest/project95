@@ -1290,3 +1290,126 @@ $(document).ready(function(e) {
     });
 
 });
+
+function createChartWindowRegionBar(blockID, data) {
+    var curBlock = $('[data-id="' + blockID + '"]');
+    if (curBlock.length == 1) {
+        var newHTML = '';
+
+        newHTML +=  '<div class="window-region-chart-content">' +
+                        '<div class="window-region-chart-bars">' +
+                            '<div class="window-region-chart-bars-container">' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="window-region-chart-bars-legend">';
+        for (var i = 0; i < data.legend.length; i++) {
+            newHTML +=      '<div class="window-region-chart-bars-legend-item">' +
+                                '<div class="window-region-chart-bars-legend-item-title">' + data.legend[i].title + '</div>' +
+                                '<div class="window-region-chart-bars-legend-item-color" style="background-color:' + data.legend[i].color + '"></div>' +
+                            '</div>';
+        }
+        newHTML +=      '</div>' +
+                    '</div>';
+        curBlock.html(newHTML);
+
+        var curMax = 0;
+        for (var i = 0; i < data.data.length; i++) {
+            for (var j = 0; j < data.data[i].values.length; j++) {
+                if (curMax < Number(data.data[i].values[j])) {
+                    curMax = Number(data.data[i].values[j]);
+                }
+            }
+        }
+
+        var curGraph = curBlock.find('.window-region-chart-bars-container');
+        for (var i = 0; i < data.data.length; i++) {
+            var itemHTML =  '<div class="window-region-chart-bars-item">' +
+                                '<div class="window-region-chart-bars-item-year">' + data.data[i].year + '</div>';
+            var curSumm = 0;
+            for (var j = 0; j < data.data[i].values.length; j++) {
+                curSumm += Number(data.data[i].values[j]);
+            }
+            for (var j = 0; j < data.data[i].values.length; j++) {
+                itemHTML +=     '<div class="window-region-chart-bars-item-bar" style="background-color:' + data.legend[j].color + '; height:' + (Number(data.data[i].values[j]) / curMax * 100) + '%"><span>' + numberWithSpaces(data.data[i].values[j]) + '</span></div>';
+            }
+            itemHTML +=     '</div>';
+            curGraph.append(itemHTML);
+        }
+    }
+}
+
+function numberWithSpaces(x) {
+    var parts = x.toString().split('.');
+    parts[0] = parts[0].replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;');
+    return parts.join('.');
+}
+
+function createChartWindowRegionDonut(blockID, data) {
+    var curBlock = $('[data-id="' + blockID + '"]');
+    if (curBlock.length == 1) {
+        var newHTML = '';
+
+        newHTML +=  '<div class="window-region-chart-donut-content">' +
+                        '<div class="window-region-chart-donut-chart">' +
+                            '<div class="window-region-chart-donut-chart-inner">' +
+                                '<canvas></canvas>' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="window-region-chart-donut-legend">' +
+                            '<div class="window-region-chart-donut-legend-inner">' +
+                                '<div class="window-region-chart-donut-legend-col">';
+        for (var i = 0; i < data.legend.length; i++) {
+            if (i == Math.round(data.legend.length / 2)) {
+                newHTML +=      '</div>' +
+                                '<div class="window-region-chart-donut-legend-col">';
+            }
+            newHTML +=              '<div class="window-region-chart-donut-legend-item">' +
+                                        '<div class="window-region-chart-donut-legend-item-title">' + data.legend[i].title + '</div>' +
+                                        '<div class="window-region-chart-donut-legend-item-color" style="background-color:' + data.legend[i].color + '"></div>' +
+                                    '</div>';
+        }
+        newHTML +=              '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+        curBlock.html(newHTML);
+
+        var curSumm = 0;
+        for (var i = 0; i < data.data.length; i++) {
+            curSumm += Number(data.data[i]);
+        }
+
+        var pieWidth = 235;
+        var pieHeight = 235;
+
+        var canvas = $('.window-region-chart-donut-chart-inner canvas')[0];
+        var context = canvas.getContext('2d');
+
+        canvas.width = pieWidth;
+        canvas.height = pieHeight;
+
+        var summPercent = 0;
+        var currentAngle = -0.5 * Math.PI;
+        for (var i = 0; i < data.data.length; i++) {
+            var curValue = Number(data.data[i]);
+            var newPercent = Math.round(curValue / curSumm * 100);
+            if (i == data.data.length - 1) {
+                newPercent = 100 - summPercent;
+            }
+            var sliceAngle = newPercent / 100 * 2 * Math.PI;
+            context.beginPath();
+            context.fillStyle = data.legend[i].color;
+            context.strokeStyle = data.legend[i].color;
+            context.moveTo(pieWidth / 2, pieHeight / 2);
+            context.arc(pieWidth / 2, pieHeight / 2, pieWidth / 2, currentAngle, currentAngle + sliceAngle);
+            context.lineTo(pieWidth / 2, pieHeight / 2);
+            context.fill();
+            curBlock.find('.window-region-chart-donut-chart-inner').append('<div class="window-region-chart-donut-chart-legend" style="transform:rotate(' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)"><span style="transform:translate(-50%, 0) rotate(-' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)">' + curValue + '</span></div>');
+            currentAngle += sliceAngle;
+            if (i != data.data.length - 1) {
+                summPercent += newPercent;
+            }
+        }
+
+    }
+}

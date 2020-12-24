@@ -277,10 +277,87 @@
 
             <div class="window-region-indicator">
                 <div class="window-region-indicator-title">Число аспирантов и лиц, защитивших кандидатские диссертации, чел.</div>
+                <div class="window-region-chart-container" data-id="uniqID-1"></div>
+                <script>
+                    createChartWindowRegionBar('uniqID-1', {
+                        'legend' : [
+                            {
+                                'color' : '#4e7a95',
+                                'title' : 'Аспиранты'
+                            },
+
+                            {
+                                'color' : '#91d9d0',
+                                'title' : 'Диссертации,предстваленые к защите'
+                            },
+
+                            {
+                                'color' : '#d99191',
+                                'title' : 'Защищенные диссертации'
+                            }
+                        ],
+                        'data' : [
+                            {
+                                'year'      : '2017',
+                                'values'    : [1131, 157, 142]
+                            },
+                            {
+                                'year'      : '2018',
+                                'values'    : [1289, 138, 120]
+                            },
+                            {
+                                'year'      : '2019',
+                                'values'    : [1230, 134, 110]
+                            }
+                        ]
+                    });
+                </script>
             </div>
 
             <div class="window-region-indicator">
                 <div class="window-region-indicator-title">Научная инфраструктура</div>
+                <div class="window-region-chart-container" data-id="uniqID-2"></div>
+                <script>
+                    createChartWindowRegionDonut('uniqID-2', {
+                        'legend' : [
+                            {
+                                'color' : '#67beff',
+                                'title' : 'ВУЗы'
+                            },
+
+                            {
+                                'color' : '#64db1b',
+                                'title' : 'НИИ'
+                            },
+
+                            {
+                                'color' : '#77eaea',
+                                'title' : 'ЦКП'
+                            },
+
+                            {
+                                'color' : '#7147e7',
+                                'title' : 'УНУ'
+                            },
+
+                            {
+                                'color' : '#f98a3a',
+                                'title' : 'Технопарки'
+                            },
+
+                            {
+                                'color' : '#c370d7',
+                                'title' : 'ЦМИТ'
+                            },
+
+                            {
+                                'color' : '#cf219e',
+                                'title' : 'Инжиниринговые центры'
+                            }
+                        ],
+                        'data' : [1, 1, 2, 2, 3, 4, 5]
+                    });
+                </script>
             </div>
 
             <div class="window-region-notice">

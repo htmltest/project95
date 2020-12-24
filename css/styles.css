@@ -2045,6 +2045,7 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 }
 
 .window-region {width:777px}
+.window-region * {box-sizing:border-box}
 .window-region-title {background:#fff6ef; font-size:20px; line-height:26px; color:#121212; padding:20px 0 15px 37px;  HelveticaNeueCyrLight, sans-serif; padding:}
 .window-region-title span {display:inline-block; vertical-align:middle; margin:-2px 0 0 32px; font-size:16px; color:#656565; position:relative}
 .window-region-title span::before {content:""; display:block; width:1px; height:15px; background:#ddd; position:absolute; left:-17px; top:50%; margin-top:-7.5px}
@@ -2112,6 +2113,35 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .window-region-indicator-table tbody td span {color:#fe6600}
 .window-region-indicator-table-notice {margin:20px 0 0 0; font-size:12px; line-height:18px; color:#fe6600}
 .window-region-indicator-table-notice span {color:#ee0000}
+
+.window-region-chart-bars {margin:50px 0 0 0; white-space:nowrap; font-size:0; line-height:0; letter-spacing:-1px}
+.window-region-chart-bars-container {position:relative; border-bottom:2px solid #d6d6d6; display:inline-block; vertical-align:top; height:140px; padding:0 70px 0 0}
+.window-region-chart-bars-container::before {content:""; display:block; position:absolute; left:0; top:28px; right:0; height:56px; border-top:1px solid #e1e1e1; border-bottom:1px solid #e1e1e1}
+.window-region-chart-bars-item {display:inline-block; vertical-align:top; position:relative; height:138px; margin:0 0 0 135px; line-height:138px}
+.window-region-chart-bars-item:first-child {margin:0}
+.window-region-chart-bars-item-year {position:absolute; left:0; right:0; bottom:-34px; text-align:center; font:14px/14px HelveticaNeueCyrMedium, sans-serif; color:#000; letter-spacing:0}
+.window-region-chart-bars-item-bar {display:inline-block; vertical-align:bottom; width:40px; position:relative}
+.window-region-chart-bars-item-bar span {position:absolute; left:50%; top:-23px; white-space:nowrap; transform:translateX(-50%); font-size:14px; line-height:14px; letter-spacing:0; color:#000}
+.window-region-chart-bars-legend {text-align:center; font-size:0; line-height:0; letter-spacing:-1px; margin:40px -10px 0 -10px}
+.window-region-chart-bars-legend-item {display:inline-block; vertical-align:top; margin:20px 10px 0 10px; position:relative; padding:0 0 0 24px}
+.window-region-chart-bars-legend-item-title {font-size:14px; line-height:14px; letter-spacing:0; color:#000}
+.window-region-chart-bars-legend-item-color {position:absolute; left:0; top:0; width:14px; height:14px}
+
+.window-region-chart-donut-content {margin:30px 0 0 0; display:table; width:100%}
+.window-region-chart-donut-content::after {content:""; display:block; clear:both}
+.window-region-chart-donut-chart {display:table-cell; vertical-align:middle; width:235px}
+.window-region-chart-donut-chart-inner {width:235px; height:235px; position:relative}
+.window-region-chart-donut-legend {display:table-cell; vertical-align:middle; padding:0 0 0 10px}
+.window-region-chart-donut-legend-inner {display:table}
+.window-region-chart-donut-legend-col {display:table-cell; vertical-align:top; padding:20px 0 0 60px}
+.window-region-chart-donut-legend-item {display:block; margin:0 0 20px 0; position:relative; padding:0 0 0 24px}
+.window-region-chart-donut-legend-item-title {font-size:14px; line-height:14px; letter-spacing:0; color:#000}
+.window-region-chart-donut-legend-item-color {position:absolute; left:0; top:0; width:14px; height:14px}
+.window-region-chart-donut-chart-inner {position:relative}
+.window-region-chart-donut-chart-inner canvas {display:block}
+.window-region-chart-donut-chart-inner::after {content:""; display:block; width:152px; height:152px; position:absolute; left:50%; top:50%; margin:-76px 0 0 -76px; background:#fff; border-radius:50%}
+.window-region-chart-donut-chart-legend {position:absolute; left:50%; top:50%; width:0; height:0; font-size:14px; line-height:14px; color:#000; letter-spacing:0}
+.window-region-chart-donut-chart-legend span {display:block; position:absolute; left:0; top:-105px}
 
 .window-region-notice {margin:40px 0 0 0; border-top:1px solid #e2e2e2; padding:20px 0 0 0; font-size:14px; line-height:20px; color:#000; font-family:HelveticaNeueCyrLight, sans-serif}
 .window-region-notice span {color:#fe6600}
