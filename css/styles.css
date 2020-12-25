@@ -1998,6 +1998,8 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
     .main-map-title {font-size:24px; line-height:31px}
 }
 
+.main-map-container {position:relative}
+
 .main-regions-map {position:relative; overflow:hidden; height:631px}
 .main-regions-map-zoom {position:absolute; right:0; top:0; width:32px; text-align:center; font-size:24px; line-height:28px; color:#fe6600; user-select:none; background:#fff}
 .main-regions-map-zoom-inc {width:32px; height:32px; border:1px solid #cbcbcb; box-sizing:border-box; cursor:pointer}
@@ -2032,6 +2034,32 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .opendata-chart-map-region-hint-container {padding:23px 20px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); background:#fff; position:relative; max-width:440px}
 .opendata-chart-map-region-hint-container::before {content:""; display:block; position:absolute; left:21px; top:-6px; width:25px; height:25px; background:#fff; transform:rotate(45deg)}
 .opendata-chart-map-region-hint-title {font-weight:500; font-size:16px; line-height:19px; color:#121212}
+
+.main-regions-map-filter {position:absolute; left:0; top:27px}
+.main-regions-map-filter-link {padding:0 16px; height:44px; line-height:44px; font-size:14px}
+.main-regions-map-filter-window {display:none; width:455px; position:absolute; left:0; top:100%; margin-top:20px; z-index:999; padding:20px 20px 0 20px; background:#fff; border:1px solid #ececec; box-shadow:8px 8px 30px rgba(145, 145, 145, 0.1)}
+.main-regions-map-filter-open .main-regions-map-filter-window {display:block}
+.main-regions-map-filter-search {position:relative; background:#f2f2f2; border-radius:5px; height:44px}
+.main-regions-map-filter-search::before {content:""; display:block; width:41px; position:absolute; right:0; top:0; bottom:0; background:url(../images/main-regions-map-filter-search.svg) no-repeat center}
+.main-regions-map-filter-search input {position:relative; border:none; font:16px/21px HelveticaNeueCyrLight, sans-serif; color:#000; vertical-align:top; margin:0; padding:12px 41px 11px 18px; width:100%; height:44px; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; outline:none; border-radius:5px; background:transparent; -webkit-appearance:none}
+.main-regions-map-filter-search input::-webkit-input-placeholder {opacity:1; color:#858585}
+.main-regions-map-filter-search input::-moz-placeholder {opacity:1; color:#858585}
+.main-regions-map-filter-search input:-ms-input-placeholder {opacity:1; color:#858585}
+.main-regions-map-filter-list {margin:20px 0 0 0}
+.main-regions-map-filter-group {border-top:1px solid #e5e5e5}
+.main-regions-map-filter-group.hidden {display:none}
+.main-regions-map-filter-group-header {position:relative; padding:10px 20px; margin:0 -20px; color:#202020; font-size:16px; line-height:24px; cursor:pointer; transition:background 0.2s}
+.main-regions-map-filter-group-header:hover {background:#fff2e9}
+.main-regions-map-filter-group-header::after {content:""; display:block; position:absolute; right:20px; top:10px; width:24px; height:24px; background:url(../images/main-regions-map-filter-group-header.svg) no-repeat}
+.main-regions-map-filter-group.open .main-regions-map-filter-group-header::after {transform:rotate(-180deg)}
+.main-regions-map-filter-group-container {display:none; padding:10px 0 20px 0; margin:0 -20px; position:relative}
+.main-regions-map-filter-group-container::before {content:""; display:block; position:absolute; left:50%; top:10px; bottom:20px; width:1px; background:#e6e6e6}
+.main-regions-map-filter-group-container::after {content:""; display:block; clear:both}
+.main-regions-map-filter-group-container-col {float:left; width:50%}
+.main-regions-map-filter-group.open .main-regions-map-filter-group-container {display:block}
+.main-regions-map-filter-group-item {cursor:pointer; font:14px/20px HelveticaNeueCyrLight, sans-serif; color:#202020; transition:background 0.2s; padding:8px 20px; position:relative}
+.main-regions-map-filter-group-item.hidden {display:none}
+.main-regions-map-filter-group-item:hover {background:#fff2e9}
 
 .indicators-group-inner ul li a {display:inline}
 .indicators-group-inner ul li span {color:#fe6600}

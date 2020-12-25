@@ -1413,3 +1413,80 @@ function createChartWindowRegionDonut(blockID, data) {
 
     }
 }
+
+$(document).ready(function() {
+
+    $('.main-regions-map-filter-link').click(function(e) {
+        $('html').toggleClass('main-regions-map-filter-open');
+        e.preventDefault();
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.main-regions-map-filter').length == 0) {
+            $('html').removeClass('main-regions-map-filter-open');
+        }
+    });
+
+    $('.main-regions-map-filter').each(function() {
+        var newHTML = '';
+
+        for (var i = 0; i < opendataDistricts.length; i++) {
+            newHTML +=  '<div class="main-regions-map-filter-group">';
+            newHTML +=      '<div class="main-regions-map-filter-group-header">' + opendataDistricts[i].title + '</div>';
+            newHTML +=      '<div class="main-regions-map-filter-group-container">';
+            newHTML +=          '<div class="main-regions-map-filter-group-container-col">';
+            var count = 0;
+            for (var j = 0; j < opendataRegions.length; j++) {
+                if (opendataRegions[j].district == opendataDistricts[i].id) {
+                    count++;
+                }
+            }
+            var current = 0;
+            for (var j = 0; j < opendataRegions.length; j++) {
+                if (opendataRegions[j].district == opendataDistricts[i].id) {
+                    if (current >= Math.round(count / 2)) {
+                        newHTML +=  '</div>';
+                        newHTML +=  '<div class="main-regions-map-filter-group-container-col">';
+                    }
+                    newHTML +=      '<div class="main-regions-map-filter-group-item" data-id="' + opendataRegions[j].id + '">' + opendataRegions[j].title + '</div>';
+                    current++;
+                }
+            }
+            newHTML +=          '</div>';
+            newHTML +=      '</div>';
+            newHTML +=  '</div>';
+        }
+
+        $('.main-regions-map-filter-list').html(newHTML);
+    });
+
+    $('body').on('click', '.main-regions-map-filter-group-header', function() {
+        $(this).parent().toggleClass('open');
+    });
+
+    $('body').on('click', '.main-regions-map-filter-group-item', function() {
+        $('.opendata-chart-map-inner g[data-id="' + $(this).attr('data-id') + '"]').click();
+    });
+
+    $('.main-regions-map-filter-search input').attr('autocomplete', 'off');
+    $('.main-regions-map-filter-search input').on('keyup', function() {
+        var curValue = $(this).val().toLowerCase();
+        $('.main-regions-map-filter-group-item').each(function() {
+            var curItem = $(this);
+            if (curItem.html().toLowerCase().indexOf(curValue) == -1) {
+                curItem.addClass('hidden');
+            } else {
+                curItem.removeClass('hidden');
+            }
+        });
+        $('.main-regions-map-filter-group').each(function() {
+            var curGroup = $(this);
+            if (curGroup.find('.main-regions-map-filter-group-item').length == curGroup.find('.main-regions-map-filter-group-item.hidden').length) {
+                curGroup.addClass('hidden');
+            } else {
+                curGroup.removeClass('hidden');
+            }
+        });
+    });
+
+});
