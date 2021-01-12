@@ -1058,39 +1058,6 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-});
-
-$(window).on('load resize', function() {
-
-    $('.sidebar-content').mCustomScrollbar('destroy');
-    $('.sidebar-content').mCustomScrollbar({
-        axis: 'y'
-    });
-
-    $('.main-tabs-analitycs').each(function() {
-        var curList = $(this);
-
-        curList.find('.main-tabs-analitycs-item-container').css({'min-height': '0px'});
-
-        curList.find('.main-tabs-analitycs-item-container').each(function() {
-            var curBlock = $(this);
-            var curHeight = curBlock.outerHeight();
-            var curTop = curBlock.offset().top;
-
-            curList.find('.main-tabs-analitycs-item-container').each(function() {
-                var otherBlock = $(this);
-                if (otherBlock.offset().top == curTop) {
-                    var newHeight = otherBlock.outerHeight();
-                    if (newHeight > curHeight) {
-                        curBlock.css({'min-height': newHeight + 'px'});
-                    } else {
-                        otherBlock.css({'min-height': curHeight + 'px'});
-                    }
-                }
-            });
-        });
-    });
-
     $('body').on('mouseenter', '.opendata-chart-map-inner g', function(e) {
         if ($(window).width() > 1119) {
             $('.opendata-chart-map-region-hint').remove();
@@ -1122,6 +1089,39 @@ $(window).on('load resize', function() {
     $('body').on('click', '.opendata-chart-map-inner g', function(e) {
         var curURL = $(this).attr('data-url');
         windowOpen(curURL);
+    });
+
+});
+
+$(window).on('load resize', function() {
+
+    $('.sidebar-content').mCustomScrollbar('destroy');
+    $('.sidebar-content').mCustomScrollbar({
+        axis: 'y'
+    });
+
+    $('.main-tabs-analitycs').each(function() {
+        var curList = $(this);
+
+        curList.find('.main-tabs-analitycs-item-container').css({'min-height': '0px'});
+
+        curList.find('.main-tabs-analitycs-item-container').each(function() {
+            var curBlock = $(this);
+            var curHeight = curBlock.outerHeight();
+            var curTop = curBlock.offset().top;
+
+            curList.find('.main-tabs-analitycs-item-container').each(function() {
+                var otherBlock = $(this);
+                if (otherBlock.offset().top == curTop) {
+                    var newHeight = otherBlock.outerHeight();
+                    if (newHeight > curHeight) {
+                        curBlock.css({'min-height': newHeight + 'px'});
+                    } else {
+                        otherBlock.css({'min-height': curHeight + 'px'});
+                    }
+                }
+            });
+        });
     });
 
 });
