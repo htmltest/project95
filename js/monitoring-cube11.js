@@ -169,6 +169,7 @@ $(window).on('load resize', function() {
     face47_2_Redraw();
     face47_3_Redraw();
     face47_1_Redraw();
+    face41_2_Redraw();
 
 });
 
@@ -759,3 +760,456 @@ $(window).on('load resize', function() {
     });
 
 });
+
+$(document).ready(function() {
+
+    $('.face-41-2-year-current').click(function(e) {
+        $(this).parent().toggleClass('open');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.face-41-2-year').length == 0) {
+            $('.face-41-2-year').removeClass('open');
+        }
+    });
+
+    $('.face-41-2-year ul li a').click(function(e) {
+        var curLi = $(this).parent();
+        if (!curLi.hasClass('active')) {
+            $('.face-41-2-year ul li.active').removeClass('active');
+            curLi.addClass('active');
+            $('.face-41-2-year-current').html($(this).html());
+            $('.face-41-2-year-text').html($(this).html());
+            face41_2_Redraw();
+        }
+        $('.face-41-2-year').removeClass('open');
+        e.preventDefault();
+    });
+
+    $('body').on('mouseenter', '.map-russia-41-2-district', function(e) {
+        $('.monitoring-map-region-hint').remove();
+        if ($(window).width() > 1139) {
+            $('body').append('<div class="monitoring-map-region-hint">' + $(this).attr('data-title') + '</div>');
+            var curLeft = e.pageX;
+            var curTop = e.pageY;
+            $('.monitoring-map-region-hint').css({'left': curLeft, 'top': curTop});
+        }
+    });
+
+    $('body').on('mousemove', '.map-russia-41-2-district', function(e) {
+        var curLeft = e.pageX;
+        var curTop = e.pageY;
+        $('.monitoring-map-region-hint').css({'left': curLeft, 'top': curTop});
+    });
+
+    $('body').on('mouseleave', '.map-russia-41-2-district', function(e) {
+        $('.monitoring-map-region-hint').remove();
+    });
+
+    $('body').on('mouseenter', '.map-russia-41-2-region', function(e) {
+        $('.monitoring-map-region-hint').remove();
+        if ($(window).width() > 1139) {
+            $('body').append('<div class="monitoring-map-region-hint">' + $(this).attr('data-title') + '</div>');
+            var curLeft = e.pageX;
+            var curTop = e.pageY;
+            $('.monitoring-map-region-hint').css({'left': curLeft, 'top': curTop});
+        }
+    });
+
+    $('body').on('mousemove', '.map-russia-41-2-region', function(e) {
+        var curLeft = e.pageX;
+        var curTop = e.pageY;
+        $('.monitoring-map-region-hint').css({'left': curLeft, 'top': curTop});
+    });
+
+    $('body').on('mouseleave', '.map-russia-41-2-region', function(e) {
+        $('.monitoring-map-region-hint').remove();
+    });
+
+    $('body').on('click', '.face-41-2-table-head a', function(e) {
+        if (!$(this).parent().hasClass('active')) {
+            $('.face-41-2-table-head.active').removeClass('active');
+            $(this).parent().addClass('active');
+            face41_2_Redraw();
+        }
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.map-russia-41-2-district, .face-41-2-table-name-link-district', function(e) {
+        var districtID = $(this).attr('data-id');
+        var curYear = $('.face-41-2-year-text').html();
+        var curData = null;
+        for (var i = 0; i < faceData41_2.length; i++) {
+            if (faceData41_2[i].year == curYear) {
+                for (var j = 0; j < faceData41_2[i].data.length; j++) {
+                    if (faceData41_2[i].data[j].id == districtID) {
+                        curData = faceData41_2[i].data[j];
+                    }
+                }
+            }
+        }
+        if (curData !== null) {
+
+            $('html').addClass('window-open');
+
+            if ($('.window').length > 0) {
+                $('.window').remove();
+            }
+            $('body').append('<div class="window window-monitoring"><div class="window-loading"></div></div>');
+
+            var districtTitle = '';
+            for (var r = 0; r < russiaDistricts.length; r++) {
+                if (russiaDistricts[r].id == districtID) {
+                    districtTitle = russiaDistricts[r].title;
+                }
+            }
+
+            var maxSumm = 0;
+            if (parseFloat(curData.summ1) > maxSumm) {
+                maxSumm = parseFloat(curData.summ1);
+            }
+            if (parseFloat(curData.summ2) > maxSumm) {
+                maxSumm = parseFloat(curData.summ2);
+            }
+            if (parseFloat(curData.summ3) > maxSumm) {
+                maxSumm = parseFloat(curData.summ3);
+            }
+            var countLines = Math.ceil(maxSumm / 10) + 1;
+            maxSumm = countLines * 10;
+
+            var windowHTML   =  '<div class="window-41-2">';
+            windowHTML      +=      '<div class="window-41-2-title">' + districtTitle + ', ' + curYear + '</div>';
+            windowHTML      +=      '<div class="window-41-2-scale">';
+            windowHTML      +=          '<div class="window-41-2-scale-item"><span>0</span></div>';
+            for (var i = 0; i < countLines; i++) {
+                windowHTML      +=      '<div class="window-41-2-scale-item" style="left:' + ((i + 1) / countLines* 100) + '%"><span>' + ((i + 1) * 10) + '%</span></div>';
+            }
+            windowHTML      +=      '</div>';
+
+            windowHTML      +=      '<div class="window-41-2-list">';
+
+            windowHTML      +=          '<div class="window-41-2-item">';
+            windowHTML      +=              '<div class="window-41-2-item-title">Всего</div>';
+            windowHTML      +=              '<div class="window-41-2-item-values">';
+            for (var i = 0; i < countLines; i++) {
+                windowHTML      +=              '<div class="window-41-2-item-values-sep" style="left:' + ((i + 1) / countLines* 100) + '%"></div>';
+            }
+            windowHTML      +=                  '<div class="window-41-2-item-value" style="width:' + (parseFloat(curData.summ1) / maxSumm * 100) + '%"><span>' + curData.summ1 + '%</span></div>';
+            windowHTML      +=              '</div>';
+            windowHTML      +=          '</div>';
+
+            windowHTML      +=          '<div class="window-41-2-item">';
+            windowHTML      +=              '<div class="window-41-2-item-title">Учебно-лабораторные здания</div>';
+            windowHTML      +=              '<div class="window-41-2-item-values">';
+            for (var i = 0; i < countLines; i++) {
+                windowHTML      +=              '<div class="window-41-2-item-values-sep" style="left:' + ((i + 1) / countLines* 100) + '%"></div>';
+            }
+            windowHTML      +=                  '<div class="window-41-2-item-value" style="width:' + (parseFloat(curData.summ2) / maxSumm * 100) + '%"><span>' + curData.summ2 + '%</span></div>';
+            windowHTML      +=              '</div>';
+            windowHTML      +=          '</div>';
+
+            windowHTML      +=          '<div class="window-41-2-item">';
+            windowHTML      +=              '<div class="window-41-2-item-title">Общежития</div>';
+            windowHTML      +=              '<div class="window-41-2-item-values">';
+            for (var i = 0; i < countLines; i++) {
+                windowHTML      +=              '<div class="window-41-2-item-values-sep" style="left:' + ((i + 1) / countLines* 100) + '%"></div>';
+            }
+            windowHTML      +=                  '<div class="window-41-2-item-value" style="width:' + (parseFloat(curData.summ3) / maxSumm * 100) + '%"><span>' + curData.summ3 + '%</span></div>';
+            windowHTML      +=              '</div>';
+            windowHTML      +=          '</div>';
+
+            windowHTML      +=      '</div>';
+
+            windowHTML      +=      '<div class="window-41-2-window-link"><a href="#" class="btn-med" data-id="' + districtID + '">Перейти на карту ФО</a></div>';
+
+            windowHTML      +=  '</div>';
+
+            $('.window').append('<div class="window-container window-container-load"><div class="window-content">' + windowHTML + '<a href="#" class="window-close"></a></div></div>')
+
+            $('.window-container').removeClass('window-container-load');
+            windowPosition();
+        }
+
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.map-russia-41-2-region, .face-41-2-table-name-link-region', function(e) {
+        var districtID = $(this).attr('data-id');
+        var curYear = $('.face-41-2-year-text').html();
+        var curData = null;
+        for (var i = 0; i < faceData41_2_Regions.length; i++) {
+            if (faceData41_2_Regions[i].year == curYear) {
+                for (var j = 0; j < faceData41_2_Regions[i].data.length; j++) {
+                    if (faceData41_2_Regions[i].data[j].id == districtID) {
+                        curData = faceData41_2_Regions[i].data[j];
+                    }
+                }
+            }
+        }
+        if (curData !== null) {
+
+            $('html').addClass('window-open');
+
+            if ($('.window').length > 0) {
+                $('.window').remove();
+            }
+            $('body').append('<div class="window window-monitoring"><div class="window-loading"></div></div>');
+
+            var districtTitle = '';
+            for (var r = 0; r < russiaRegions.length; r++) {
+                if (russiaRegions[r].id == districtID) {
+                    districtTitle = russiaRegions[r].title;
+                }
+            }
+
+            var maxSumm = 0;
+            if (parseFloat(curData.summ1) > maxSumm) {
+                maxSumm = parseFloat(curData.summ1);
+            }
+            if (parseFloat(curData.summ2) > maxSumm) {
+                maxSumm = parseFloat(curData.summ2);
+            }
+            if (parseFloat(curData.summ3) > maxSumm) {
+                maxSumm = parseFloat(curData.summ3);
+            }
+            var countLines = Math.ceil(maxSumm / 10) + 1;
+            maxSumm = countLines * 10;
+
+            var windowHTML   =  '<div class="window-41-2">';
+            windowHTML      +=      '<div class="window-41-2-title">' + districtTitle + ', ' + curYear + '</div>';
+            windowHTML      +=      '<div class="window-41-2-scale">';
+            windowHTML      +=          '<div class="window-41-2-scale-item"><span>0</span></div>';
+            for (var i = 0; i < countLines; i++) {
+                windowHTML      +=      '<div class="window-41-2-scale-item" style="left:' + ((i + 1) / countLines* 100) + '%"><span>' + ((i + 1) * 10) + '%</span></div>';
+            }
+            windowHTML      +=      '</div>';
+
+            windowHTML      +=      '<div class="window-41-2-list">';
+
+            windowHTML      +=          '<div class="window-41-2-item">';
+            windowHTML      +=              '<div class="window-41-2-item-title">Всего</div>';
+            windowHTML      +=              '<div class="window-41-2-item-values">';
+            for (var i = 0; i < countLines; i++) {
+                windowHTML      +=              '<div class="window-41-2-item-values-sep" style="left:' + ((i + 1) / countLines* 100) + '%"></div>';
+            }
+            windowHTML      +=                  '<div class="window-41-2-item-value" style="width:' + (parseFloat(curData.summ1) / maxSumm * 100) + '%"><span>' + curData.summ1 + '%</span></div>';
+            windowHTML      +=              '</div>';
+            windowHTML      +=          '</div>';
+
+            windowHTML      +=          '<div class="window-41-2-item">';
+            windowHTML      +=              '<div class="window-41-2-item-title">Учебно-лабораторные здания</div>';
+            windowHTML      +=              '<div class="window-41-2-item-values">';
+            for (var i = 0; i < countLines; i++) {
+                windowHTML      +=              '<div class="window-41-2-item-values-sep" style="left:' + ((i + 1) / countLines* 100) + '%"></div>';
+            }
+            windowHTML      +=                  '<div class="window-41-2-item-value" style="width:' + (parseFloat(curData.summ2) / maxSumm * 100) + '%"><span>' + curData.summ2 + '%</span></div>';
+            windowHTML      +=              '</div>';
+            windowHTML      +=          '</div>';
+
+            windowHTML      +=          '<div class="window-41-2-item">';
+            windowHTML      +=              '<div class="window-41-2-item-title">Общежития</div>';
+            windowHTML      +=              '<div class="window-41-2-item-values">';
+            for (var i = 0; i < countLines; i++) {
+                windowHTML      +=              '<div class="window-41-2-item-values-sep" style="left:' + ((i + 1) / countLines* 100) + '%"></div>';
+            }
+            windowHTML      +=                  '<div class="window-41-2-item-value" style="width:' + (parseFloat(curData.summ3) / maxSumm * 100) + '%"><span>' + curData.summ3 + '%</span></div>';
+            windowHTML      +=              '</div>';
+            windowHTML      +=          '</div>';
+
+            windowHTML      +=      '</div>';
+
+            windowHTML      +=  '</div>';
+
+            $('.window').append('<div class="window-container window-container-load"><div class="window-content">' + windowHTML + '<a href="#" class="window-close"></a></div></div>')
+
+            $('.window-container').removeClass('window-container-load');
+            windowPosition();
+        }
+
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.window-41-2-window-link a', function(e) {
+        var curID = $(this).attr('data-id');
+        $('.face-41-2-back').addClass('visible').attr('data-id', curID);
+        $('.face-41-2-title-russia').css({'display': 'none'});
+        $('.face-41-2-title-regions').css({'display': 'inline'});
+
+        $('.map-russia-41-2').hide();
+        $('.map-region-41-2[data-id="' + curID + '"]').show();
+
+        windowClose();
+
+        face41_2_Redraw();
+
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.face-41-2-back a', function(e) {
+        $('.face-41-2-back').removeClass('visible').removeAttr('data-id');
+        $('.face-41-2-title-russia').css({'display': 'inline'});
+        $('.face-41-2-title-regions').css({'display': 'none'});
+        $('.map-region-41-2').hide();
+        $('.map-russia-41-2').show();
+
+        face41_2_Redraw();
+
+        e.preventDefault();
+    });
+
+    $('.map-russia-41-2').each(function() {
+        var newMap = '';
+        for (var i = 0; i < russiaDistricts.length; i++) {
+            var districtID = russiaDistricts[i].id;
+            var districtTitle = russiaDistricts[i].title;
+            newMap += '<g class="map-russia-41-2-district" data-id="' + districtID + '" data-title="' + districtTitle + '">';
+            for (var j = 0; j < russiaRegions.length; j++) {
+                var curRegion = russiaRegions[j];
+                if (curRegion.district == districtID) {
+                    newMap += '<g>' + curRegion.svg + '</g>';
+                }
+            }
+            newMap += '</g>';
+        }
+        $('.map-russia-41-2 svg').html(newMap);
+    });
+
+    $('.map-region-41-2').each(function() {
+        var curDistrict = $(this);
+        var districtID = curDistrict.attr('data-id');
+        var newMap = '';
+        for (var i = 0; i < russiaRegions.length; i++) {
+            if (russiaRegions[i].district == districtID) {
+                newMap += '<g class="map-russia-41-2-region" data-id="' + russiaRegions[i].id + '" data-title="' + russiaRegions[i].title + '">' + russiaRegions[i].svg + '</g>';
+            }
+        }
+        curDistrict.find('svg').html(newMap);
+    });
+
+});
+
+function face41_2_Redraw() {
+    var newMap = '';
+    $('.face-41-2-table-row').remove();
+
+    var curYear = $('.face-41-2-year-text').html();
+    var curData = null;
+    for (var i = 0; i < faceData41_2.length; i++) {
+        if (faceData41_2[i].year == curYear) {
+            curData = faceData41_2[i].data;
+        }
+    }
+
+    if ($('.face-41-2-back').hasClass('visible')) {
+        for (var i = 0; i < faceData41_2_Regions.length; i++) {
+            if (faceData41_2_Regions[i].year == curYear) {
+                curData = faceData41_2_Regions[i].data;
+            }
+        }
+    }
+
+    if (curData !== null) {
+        var activeCol1 = '';
+        var activeCol2 = '';
+        var activeCol3 = '';
+        var curIndexSort = $('.face-41-2-table-head').index($('.face-41-2-table-head.active')) - 1;
+        switch (curIndexSort) {
+            case 0:
+                curData.sort(face41_2Sort_1);
+                activeCol1 = ' active';
+                break;
+            case 1:
+                curData.sort(face41_2Sort_2);
+                activeCol2 = ' active';
+                break;
+            case 2:
+                curData.sort(face41_2Sort_3);
+                activeCol3 = ' active';
+                break;
+        }
+
+        if (!$('.face-41-2-back').hasClass('visible')) {
+            for (var i = 0; i < curData.length; i++) {
+                var districtID = curData[i].id;
+                var districtTitle = '';
+                for (var r = 0; r < russiaDistricts.length; r++) {
+                    if (russiaDistricts[r].id == districtID) {
+                        districtTitle = russiaDistricts[r].title.replace(' федеральный округ', '');
+                    }
+                }
+                var russiaClass = '';
+
+                $('.face-41-2-table').append('<div class="face-41-2-table-row' + russiaClass + '">' +
+                                                '<div class="face-41-2-table-name">' +
+                                                    '<a href="#" class="face-41-2-table-name-link face-41-2-table-name-link-district" data-id="' + districtID + '">' + districtTitle + '</a>' +
+                                                '</div>' +
+                                                '<div class="face-41-2-table-value' + activeCol1 + '">' + curData[i].summ1 + '%</div>' +
+                                                '<div class="face-41-2-table-value' + activeCol2 + '">' + curData[i].summ2 + '%</div>' +
+                                                '<div class="face-41-2-table-value' + activeCol3 + '">' + curData[i].summ3 + '%</div>' +
+                                              '</div>');
+            }
+        } else {
+            for (var i = 0; i < curData.length; i++) {
+                var regionID = curData[i].id;
+                var districtID = $('.face-41-2-back').attr('data-id');
+                for (var r = 0; r < russiaRegions.length; r++) {
+                    if (regionID == russiaRegions[r].id && districtID == russiaRegions[r].district) {
+                        var regionTitle = russiaRegions[r].title;
+                        $('.face-41-2-table').append('<div class="face-41-2-table-row">' +
+                                                        '<div class="face-41-2-table-name">' +
+                                                            '<a href="#" class="face-41-2-table-name-link face-41-2-table-name-link-region" data-id="' + regionID + '">' + regionTitle + '</a>' +
+                                                        '</div>' +
+                                                        '<div class="face-41-2-table-value' + activeCol1 + '">' + curData[i].summ1 + '%</div>' +
+                                                        '<div class="face-41-2-table-value' + activeCol2 + '">' + curData[i].summ2 + '%</div>' +
+                                                        '<div class="face-41-2-table-value' + activeCol3 + '">' + curData[i].summ3 + '%</div>' +
+                                                      '</div>');
+                    }
+                }
+            }
+        }
+        $('.face-41-2-table-fixed').css({'width': $('.face-41-2-table-wrap .face-41-2-table-name').eq(0).outerWidth()});
+    }
+    $('.cube').css({'margin-bottom': $('.cube-face.active').find('.cube-face-footer').outerHeight()});
+
+    $('.map-russia-41-2').mCustomScrollbar({
+        axis: 'x'
+    });
+
+    $('.face-41-2-table-wrap').mCustomScrollbar({
+        axis: 'x',
+        scrollButtons: {
+            enable: true
+        }
+    });
+
+}
+
+function face41_2Sort_1(a, b) {
+    var value1 = parseFloat(a.summ1);
+    var value2 = parseFloat(b.summ1);
+    if (a.id == '0') return -1;
+    if (b.id == '0') return 1;
+    if (value1 > value2) return -1;
+    if (value1 == value2) return 0;
+    if (value1 < value2) return 1;
+}
+
+function face41_2Sort_2(a, b) {
+    var value1 = parseFloat(a.summ2);
+    var value2 = parseFloat(b.summ2);
+    if (a.id == '0') return -1;
+    if (b.id == '0') return 1;
+    if (value1 > value2) return -1;
+    if (value1 == value2) return 0;
+    if (value1 < value2) return 1;
+}
+
+function face41_2Sort_3(a, b) {
+    var value1 = parseFloat(a.summ3);
+    var value2 = parseFloat(b.summ3);
+    if (a.id == '0') return -1;
+    if (b.id == '0') return 1;
+    if (value1 > value2) return -1;
+    if (value1 == value2) return 0;
+    if (value1 < value2) return 1;
+}
