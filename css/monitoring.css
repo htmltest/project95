@@ -1268,7 +1268,19 @@ canvas {user-select:none}
     .face-16-1-container .face-1-chart-icon-count {width:23px}
 }
 
-.face-16-3-container {padding:130px 30px 0 40px}
+.face-16-3-container {padding:130px 30px 0 40px; position:relative}
+.face-16-3-year {position:absolute; left:20px; top:20px; font:12px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em}
+.face-16-3-year.open {z-index:9999}
+.face-16-3-year-current {display:inline-block; vertical-align:top; color:#757575; transition:all 0.2s; cursor:pointer; padding:0 19px 0 0; position:relative}
+.face-16-3-year-current::after {content:""; display:block; position:absolute; right:0; top:50%; width:11px; height:8px; background:url(../images/map-russia-sort-type.svg) no-repeat; margin-top:-4px}
+.face-16-3-year-current:hover {color:#fe6600}
+.face-16-3-year ul {margin:0; padding:5px 0; list-style:none; display:none; z-index:9999; position:absolute; left:-20px; top:100%; white-space:nowrap; background:#fff; border:1px solid #e6e6e6; box-sizing:border-box}
+.face-16-3-year.open ul {display:block}
+.face-16-3-year ul li {margin:0; padding:0; color:#a6a6a6; cursor:pointer}
+.face-16-3-year ul li::before {display:none}
+.face-16-3-year ul li a {color:#a6a6a6; text-decoration:none; display:bloc; padding:5px 20px}
+.face-16-3-year ul li a:hover {color:#fe6600}
+.face-16-3-year ul li.active a {color:#2f2f2f}
 .face-16-3-header {display:table; width:100%}
 .face-16-3-header-flag {display:table-cell; vertical-align:middle; width:36px; line-height:0}
 .face-16-3-header-flag img {display:block; max-width:none; width:36px}
@@ -1277,6 +1289,7 @@ canvas {user-select:none}
 
 @media screen and (max-width:1139px) {
     .face-16-3-container {padding:40px 20px 0 20px}
+    .face-16-3-year {top:15px; font:12px/18px HelveticaNeueCyr, sans-serif}
     .face-16-3-header-flag {width:27px}
     .face-16-3-header-flag img {width:27px}
     .face-16-3-header-title {padding:0 0 0 9px; font:16px/16px HelveticaNeueCyr, sans-serif}

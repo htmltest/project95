@@ -446,9 +446,41 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    $('.face-16-3-year-current').click(function(e) {
+        $(this).parent().toggleClass('open');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.face-16-3-year').length == 0) {
+            $('.face-16-3-year').removeClass('open');
+        }
+    });
+
+    $('.face-16-3-year ul li a').click(function(e) {
+        var curLi = $(this).parent();
+        if (!curLi.hasClass('active')) {
+            $('.face-16-3-year ul li.active').removeClass('active');
+            curLi.addClass('active');
+            $('.face-16-3-year-current').html($(this).html());
+            face16_3_Redraw();
+        }
+        $('.face-16-3-year').removeClass('open');
+        e.preventDefault();
+    });
+
 });
 
 function face16_3_Redraw() {
+    var curYear = $('.face-16-3-year-current').html();
+    
+    var curData = null;
+    for (var i = 0; i < face16_3_data.length; i++) {
+        if (curYear == face16_3_data[i].year) {
+            curData = face16_3_data[i].data;
+            $('.face-16-3-header-value span').html(face16_3_data[i].summ);
+        }
+    }
+
     $('.face-16-3-list').each(function() {
         var maxWidthLine = 225;
         if ($(window).width() < 1140) {
@@ -456,8 +488,8 @@ function face16_3_Redraw() {
         }
 
         var maxValue = 0;
-        for (var i = 0; i < face16_3_data.length; i++) {
-            var curValue = parseFloat(face16_3_data[i].value.replace(/,/, '.'));
+        for (var i = 0; i < curData.length; i++) {
+            var curValue = parseFloat(curData[i].value.replace(/,/, '.'));
             if (maxValue < curValue) {
                 maxValue = curValue;
             }
@@ -465,8 +497,8 @@ function face16_3_Redraw() {
 
         var newHTML = '';
 
-        for (var i = 0; i < face16_3_data.length; i++) {
-            var curItem = face16_3_data[i];
+        for (var i = 0; i < curData.length; i++) {
+            var curItem = curData[i];
             var curValue = parseFloat(curItem.value.replace(/,/, '.'));
             var curWidth = curValue / maxValue * maxWidthLine + 1;
             var curIcon = '';
