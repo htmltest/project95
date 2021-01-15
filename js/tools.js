@@ -650,14 +650,16 @@ $(window).on('load resize scroll', function() {
         $('.up-link').removeClass('visible');
     }
 
-    if ($(window).scrollTop() + windowHeight > $('footer').offset().top) {
-        var curDiff = $(window).scrollTop() + windowHeight - $('footer').offset().top;
-        $('.sidebar').css({'margin-bottom': curDiff});
-        $('.up-link').removeClass('visible');
-    } else {
-        $('.sidebar').css({'margin-bottom': 0});
-        if ($(window).scrollTop() > windowHeight) {
-            $('.up-link').addClass('visible');
+    if (typeof($('footer').offset()) !== 'undefined') {
+        if ($(window).scrollTop() + windowHeight > $('footer').offset().top) {
+            var curDiff = $(window).scrollTop() + windowHeight - $('footer').offset().top;
+            $('.sidebar').css({'margin-bottom': curDiff});
+            $('.up-link').removeClass('visible');
+        } else {
+            $('.sidebar').css({'margin-bottom': 0});
+            if ($(window).scrollTop() > windowHeight) {
+                $('.up-link').addClass('visible');
+            }
         }
     }
 
@@ -1095,9 +1097,11 @@ $(document).ready(function() {
 
 $(window).on('load resize', function() {
 
-    $('.sidebar-content').mCustomScrollbar('destroy');
-    $('.sidebar-content').mCustomScrollbar({
-        axis: 'y'
+    $('.sidebar-content').each(function() {
+        $('.sidebar-content').mCustomScrollbar('destroy');
+        $('.sidebar-content').mCustomScrollbar({
+            axis: 'y'
+        });
     });
 
     $('.main-tabs-analitycs').each(function() {
