@@ -3221,7 +3221,8 @@ canvas {user-select:none}
 .face-47-1-item:first-child {padding:0}
 .face-47-1-item-container {height:512px; padding:218px 0 0 0; box-sizing:border-box}
 .face-47-1-item-content {position:relative}
-.face-47-1-item-content svg {display:block; position:absolute; left:50%; top:0; transform:translateX(-50%)}
+.face-47-1-item-svg {display:block; position:absolute; left:50%; top:0; transform:translateX(-50%); border-radius:50%; overflow:hidden}
+.face-47-1-item-svg svg {display:block; position:relative}
 .face-47-1-item-year span {display:inline-block; vertical-align:top; width:42px; height:18px; background:rgba(255, 220, 197, 0.67); border-radius:5px; color:#262626; font:11px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em}
 .face-47-1-item-scopus {margin:0 auto; border-radius:50%; background:#91d9d0; color:#000; font-size:14px; line-height:14px; letter-spacing:0; position:relative}
 .face-47-1-item-scopus span {display:block; position:absolute; left:50%; top:50%; margin-top:-32px; transform:translate(-50%, -50%)}

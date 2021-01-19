@@ -449,24 +449,14 @@ function face47_1_Redraw() {
             newHTML +=          '<div class="face-47-1-item-wos-not" style="width:' + (0.75 * maxWidth) + 'px; height:' + (0.75 * maxWidth) + 'px; margin-top:-' + 0.35 * maxWidth + 'px"></div>';
         }
         if (typeof curItem.scopus !== 'undefined' && typeof curItem.wos !== 'undefined') {
-            newHTML +=          '<svg width="' + scopusWidth + '" height="' + scopusWidth + '" viewBox="0 0 ' + scopusWidth + ' ' + scopusWidth + '" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-                                    '<mask id="mask' + i + '" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="' + scopusWidth + '" height="' + scopusWidth + '">' +
-                                        '<circle cx="' + scopusWidth / 2 + '" cy="' + scopusWidth / 2 + '" r="' + scopusWidth / 2 + '" fill="#91d9d0"/>' +
-                                    '</mask>' +
-                                    '<g mask="url(#mask' + i + ')">' +
-                                        '<circle cx="' + scopusWidth / 2 + '" cy="' + (scopusWidth + wosWidth / 2 - bothSize) + '" r="' + wosWidth / 2 + '" fill="#8caabc"/>' +
-                                    '</g>'
-                                '</svg>';
+            newHTML +=          '<div class="face-47-1-item-svg" style="width:' + scopusWidth + 'px; height:' + scopusWidth + 'px"><svg width="' + scopusWidth + '" height="' + scopusWidth + '" viewBox="0 0 ' + scopusWidth + ' ' + scopusWidth + '" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+                                    '<circle cx="' + scopusWidth / 2 + '" cy="' + (scopusWidth + wosWidth / 2 - bothSize) + '" r="' + wosWidth / 2 + '" fill="#8caabc"/>' +
+                                '</svg></div>';
         } else {
             bothSize = 0.75 * maxWidth / 2;
-            newHTML +=          '<svg style="margin-top:4px;" width="' + (0.75 * maxWidth) + '" height="' + (0.75 * maxWidth) + '" viewBox="0 0 ' + (0.75 * maxWidth) + ' ' + (0.75 * maxWidth) + '" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-                                    '<mask id="mask' + i + '" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="' + (0.75 * maxWidth) + '" height="' + (0.75 * maxWidth) + '">' +
-                                        '<circle cx="' + (0.75 * maxWidth) / 2 + '" cy="' + (0.75 * maxWidth) / 2 + '" r="' + (0.75 * maxWidth) / 2 + '" fill="#91d9d0"/>' +
-                                    '</mask>' +
-                                    '<g mask="url(#mask' + i + ')">' +
-                                        '<circle cx="' + (0.75 * maxWidth) / 2 + '" cy="' + ((0.75 * maxWidth) + (0.75 * maxWidth) / 2 - bothSize) + '" r="' + (0.75 * maxWidth) / 2 + '" fill="#8caabc"/>' +
-                                    '</g>'
-                                '</svg>';
+            newHTML +=          '<div class="face-47-1-item-svg" style="width:' + (0.75 * maxWidth) + 'px; height:' + (0.75 * maxWidth) + 'px"><svg style="margin-top:4px;" width="' + (0.75 * maxWidth) + '" height="' + (0.75 * maxWidth) + '" viewBox="0 0 ' + (0.75 * maxWidth) + ' ' + (0.75 * maxWidth) + '" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+                                    '<circle cx="' + (0.75 * maxWidth) / 2 + '" cy="' + ((0.75 * maxWidth) + (0.75 * maxWidth) / 2 - bothSize) + '" r="' + (0.75 * maxWidth) / 2 + '" fill="#8caabc"/>' +
+                                '</svg></div>';
         }
         var bothText = '';
         if (typeof curItem.forecast !== 'undefined') {
