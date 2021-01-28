@@ -295,29 +295,38 @@ $(document).ready(function() {
 
 $(window).on('load resize', function() {
     if ($(window).width() > 1139) {
-        $('.monitoring-menu ul').each(function() {
-            var curList = $(this);
-            if (curList.hasClass('slick-slider')) {
-                curList.slick('unslick');
-                curList.find('li:gt(0)').before(' ');
-            }
+        $('.monitoring-menu').each(function() {
+            $(this).mCustomScrollbar('destroy');
         });
 
         $('.monitoring-map-inner svg').attr('width', $('.monitoring-map-inner svg').attr('data-desktopwidth'));
         $('.monitoring-map-inner svg').attr('height', $('.monitoring-map-inner svg').attr('data-desktopheight'));
     } else {
-        $('.monitoring-menu ul').each(function() {
-            var curList = $(this);
-            if (!curList.hasClass('slick-slider')) {
-                curList.slick({
-                    infinite: false,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    arrows: false,
-                    adaptiveHeight: true,
-                    variableWidth: true,
-                    dots: false
-                });
+        $('.monitoring-menu').mCustomScrollbar({
+            axis: 'x',
+            scrollButtons: {
+                enable: true,
+                scrollAmount: 30
+            },
+            callbacks: {
+                onInit: function() {
+                    $('.monitoring-menu').removeClass('with-left');
+                    $('.monitoring-menu').addClass('with-right');
+                },
+                whileScrolling: function() {
+                    if (this.mcs.leftPct == 100) {
+                        $('.monitoring-menu').removeClass('with-right');
+                    } else {
+                        $('.monitoring-menu').addClass('with-right');
+                    }
+
+                    if (this.mcs.leftPct == 0) {
+                        $('.monitoring-menu').removeClass('with-left');
+                    } else {
+                        $('.monitoring-menu').addClass('with-left');
+
+                    }
+                }
             }
         });
 
@@ -351,6 +360,11 @@ $(document).ready(function() {
         }
     });
 
+    $('.monitoring-regions-filter-window-close').click(function(e) {
+        $('html').removeClass('monitoring-regions-filter-open');
+        e.preventDefault();
+    });
+
     $('.monitoring-regions-filter').each(function() {
         var newHTML = '';
 
@@ -358,6 +372,7 @@ $(document).ready(function() {
             newHTML +=  '<div class="monitoring-regions-filter-group">';
             newHTML +=      '<div class="monitoring-regions-filter-group-header">' + opendataDistricts[i].title + '</div>';
             newHTML +=      '<div class="monitoring-regions-filter-group-container">';
+            newHTML +=          '<div class="monitoring-regions-filter-group-item-main" data-id="' + opendataDistricts[i].id + '">Показать данные по округу</div>';
             newHTML +=          '<div class="monitoring-regions-filter-group-container-col">';
             var count = 0;
             for (var j = 0; j < opendataRegions.length; j++) {
@@ -396,6 +411,7 @@ $(document).ready(function() {
         var curItem = $(this);
         if (!curItem.hasClass('active')) {
             $('.monitoring-regions-filter-group-item.active').removeClass('active');
+            $('.monitoring-regions-filter-group-item-main.active').removeClass('active');
             curItem.addClass('active');
             $('.monitoring-regions-filter-current-value span').html(curItem.html());
             $('.monitoring-regions-filter-current').addClass('visible');
@@ -404,15 +420,47 @@ $(document).ready(function() {
                 type: 'POST',
                 url: $('.monitoring-regions-filter').attr('data-url'),
                 dataType: 'html',
-                data: 'id=' + curItem.attr('data-id'),
+                data: 'region=' + curItem.attr('data-id'),
                 cache: false
             }).done(function(html) {
                 $('.monitoring-regions-data').html(html);
                 $('.monitoring-regions-data-fixed').html($('.monitoring-regions-data-scroll').html());
 
-                $('.monitoring-regions-data-scroll').mCustomScrollbar({
-                    axis: 'x'
-                });
+                $(window).trigger('resize');
+
+                $('.monitoring-regions-data').removeClass('loading');
+            });
+        } else {
+            curItem.removeClass('active');
+            $('.monitoring-regions-filter-current').removeClass('visible');
+            $('.monitoring-regions-data').html($('.monitoring-regions-empty-template').html());
+            $('.monitoring-regions-data').removeClass('loading');
+        }
+        $('html').removeClass('monitoring-regions-filter-open');
+    });
+
+    $('body').on('click', '.monitoring-regions-filter-group-item-main', function() {
+        var curItem = $(this);
+        if (!curItem.hasClass('active')) {
+            $('.monitoring-regions-filter-group-item.active').removeClass('active');
+            $('.monitoring-regions-filter-group-item-main.active').removeClass('active');
+            curItem.addClass('active');
+            for (var i = 0; i < opendataDistricts.length; i++) {
+                if (curItem.attr('data-id') == opendataDistricts[i].id) {
+                    $('.monitoring-regions-filter-current-value span').html(opendataDistricts[i].title);
+                    $('.monitoring-regions-filter-current').addClass('visible');
+                }
+            }
+            $('.monitoring-regions-data').addClass('loading');
+            $.ajax({
+                type: 'POST',
+                url: $('.monitoring-regions-filter').attr('data-url'),
+                dataType: 'html',
+                data: 'district=' + curItem.attr('data-id'),
+                cache: false
+            }).done(function(html) {
+                $('.monitoring-regions-data').html(html);
+                $('.monitoring-regions-data-fixed').html($('.monitoring-regions-data-scroll').html());
 
                 $(window).trigger('resize');
 
@@ -450,6 +498,7 @@ $(document).ready(function() {
 
     $('.monitoring-regions-filter-current-value a').click(function(e) {
         $('.monitoring-regions-filter-group-item.active').trigger('click');
+        $('.monitoring-regions-filter-group-item-main.active').trigger('click');
         e.preventDefault();
     });
 
@@ -521,6 +570,30 @@ $(document).ready(function() {
         $('.monitoring-regions-data-scroll .monitoring-regions-data-group-header').eq(curIndex).parent().toggleClass('open');
     });
 
+    $('body').on('mouseenter', '.monitoring-regions-data-scroll .monitoring-regions-data-group-header', function() {
+        $(this).addClass('hover');
+        var curIndex = $('.monitoring-regions-data-scroll .monitoring-regions-data-group-header').index($(this));
+        $('.monitoring-regions-data-fixed .monitoring-regions-data-group-header').eq(curIndex).addClass('hover');
+    });
+
+    $('body').on('mouseenter', '.monitoring-regions-data-fixed .monitoring-regions-data-group-header', function() {
+        $(this).addClass('hover');
+        var curIndex = $('.monitoring-regions-data-fixed .monitoring-regions-data-group-header').index($(this));
+        $('.monitoring-regions-data-scroll .monitoring-regions-data-group-header').eq(curIndex).addClass('hover');
+    });
+
+    $('body').on('mouseleave', '.monitoring-regions-data-scroll .monitoring-regions-data-group-header', function() {
+        $(this).removeClass('hover');
+        var curIndex = $('.monitoring-regions-data-scroll .monitoring-regions-data-group-header').index($(this));
+        $('.monitoring-regions-data-fixed .monitoring-regions-data-group-header').eq(curIndex).removeClass('hover');
+    });
+
+    $('body').on('mouseleave', '.monitoring-regions-data-fixed .monitoring-regions-data-group-header', function() {
+        $(this).removeClass('hover');
+        var curIndex = $('.monitoring-regions-data-fixed .monitoring-regions-data-group-header').index($(this));
+        $('.monitoring-regions-data-scroll .monitoring-regions-data-group-header').eq(curIndex).removeClass('hover');
+    });
+
     $('body').on('click', '.monitoring-regions-window-map-zoom-inc', function() {
         var curZomm = $('.monitoring-regions-window-map-zoom').data('zoom');
         curZomm++;
@@ -546,47 +619,7 @@ $(document).ready(function() {
         var curHeight = $('.monitoring-regions-window-map-zoom').data('startHeight') * curZomm;
         $('.monitoring-regions-window-map-inner svg').animate({'width': curWidth, 'height': curHeight/*, 'left': $('.monitoring-regions-window-map-zoom').data('startWidth') / 2 - curWidth / 2, 'top': $('.monitoring-regions-window-map-zoom').data('startHeight') / 2 - curHeight / 2*/});
     });
-/*
-    var mapDrag = false;
-    var mapMove = false;
-    var mapMoveTimer = null;
-    var mapStartX = 0;
-    var mapStartY = 0;
 
-    $('body').on('mousedown', '.monitoring-regions-window-map-inner', function(e) {
-        mapDrag = true;
-        mapStartX = e.pageX;
-        mapStartY = e.pageY;
-    });
-
-    $('body').on('mousemove', '.monitoring-regions-window-map-inner', function(e) {
-        if (mapDrag) {
-            mapMove = true;
-            var curLeft = Number($('.monitoring-regions-window-map-inner svg').css('left').replace(/px/, ''));
-            var curTop = Number($('.monitoring-regions-window-map-inner svg').css('top').replace(/px/, ''));
-            var curDiffX = e.pageX;
-            var curDiffY = e.pageY;
-            curDiffX = curDiffX - mapStartX;
-            curDiffY = curDiffY - mapStartY;
-            curLeft += curDiffX;
-            curTop += curDiffY;
-            mapStartX = e.pageX;
-            mapStartY = e.pageY;
-            $('.monitoring-regions-window-map-inner svg').css({'left': curLeft, 'top': curTop});
-        }
-    });
-
-    $(document).on('mouseup', function(e) {
-        mapDrag = false;
-        if (mapMove) {
-            window.clearTimeout(mapMoveTimer);
-            mapMoveTimer = null;
-            mapMoveTimer = window.setTimeout(function() {
-                mapMove = false;
-            }, 100);
-        }
-    });
-*/
     $('body').on('mouseenter', '.monitoring-regions-window-map-inner g', function(e) {
         $('.monitoring-map-region-hint').remove();
         $('body').append('<div class="monitoring-map-region-hint">' + $(this).attr('data-title') + '</div>');
@@ -607,28 +640,83 @@ $(document).ready(function() {
 
 });
 
+$(window).on('load resize', function() {
+    var windowScroll = $(window).scrollTop();
+    $('body').append('<div id="body-test-height" style="position:fixed; left:0; top:0; right:0; bottom:0; z-index:-1"></div>');
+    var windowHeight = $('#body-test-height').height();
+    $('#body-test-height').remove();
+
+    if ($(window).width() > 1139) {
+        $('.monitoring-regions-data-scroll').mCustomScrollbar({
+            axis: 'x',
+            scrollButtons: {
+                enable: true
+            },
+            callbacks: {
+                onInit: function() {
+                    $('.monitoring-regions-data-wrapper').removeClass('with-left');
+                    $('.monitoring-regions-data-wrapper').addClass('with-right');
+                },
+                whileScrolling: function() {
+                    if (this.mcs.leftPct == 100) {
+                        $('.monitoring-regions-data-wrapper').removeClass('with-right');
+                    } else {
+                        $('.monitoring-regions-data-wrapper').addClass('with-right');
+                    }
+
+                    if (this.mcs.leftPct == 0) {
+                        $('.monitoring-regions-data-wrapper').removeClass('with-left');
+                    } else {
+                        $('.monitoring-regions-data-wrapper').addClass('with-left');
+
+                    }
+                }
+            }
+        });
+
+        $('.monitoring-regions-data-row-item-values').each(function() {
+            $('.monitoring-regions-data-row-item-values').mCustomScrollbar('destroy');
+        });
+
+    } else {
+        $('.monitoring-regions-data-scroll').each(function() {
+            $('.monitoring-regions-data-scroll').mCustomScrollbar('destroy');
+        });
+
+        $('.monitoring-regions-data-row-item-values').mCustomScrollbar({
+            axis: 'x',
+            scrollButtons: {
+                enable: true
+            }
+        });
+    }
+
+});
+
 $(window).on('load resize scroll', function() {
     var windowScroll = $(window).scrollTop();
     $('body').append('<div id="body-test-height" style="position:fixed; left:0; top:0; right:0; bottom:0; z-index:-1"></div>');
     var windowHeight = $('#body-test-height').height();
     $('#body-test-height').remove();
 
-    $('.monitoring-regions-data-scroll .mCSB_scrollTools').each(function() {
-        var curTools = $(this);
-        var curBlock = curTools.parent();
-        if (windowScroll + windowHeight > curBlock.offset().top && windowScroll + windowHeight < curBlock.offset().top + curBlock.height()) {
-            curTools.css({'position': 'fixed', 'z-index': 2, 'left': curBlock.offset().left, 'bottom': 20, 'right': 'auto', 'width': curBlock.width() - 310});
-        } else {
-            curTools.css({'position': 'absolute', 'left': 0, 'bottom': 0, 'right': 0, 'width': 'auto'});
-        }
-    });
+    if ($(window).width() > 1139) {
+        $('.monitoring-regions-data-scroll .mCSB_scrollTools').each(function() {
+            var curTools = $(this);
+            var curBlock = curTools.parent();
+            if (windowScroll + windowHeight > curBlock.offset().top && windowScroll + windowHeight < curBlock.offset().top + curBlock.height()) {
+                curTools.css({'position': 'fixed', 'z-index': 2, 'left': curBlock.offset().left, 'bottom': 40, 'right': 'auto', 'width': curBlock.width() - 310});
+            } else {
+                curTools.css({'position': 'absolute', 'left': 0, 'bottom': 28, 'right': 0, 'width': 'auto'});
+            }
+        });
 
-    $('.monitoring-regions-data-headers-wrapper').each(function() {
-        if (windowScroll >= $(this).offset().top) {
-            $('.monitoring-regions-data-headers-wrapper').addClass('fixed');
-        } else {
-            $('.monitoring-regions-data-headers-wrapper').removeClass('fixed');
-        }
-    });
+        $('.monitoring-regions-data-headers-wrapper').each(function() {
+            if (windowScroll >= $(this).offset().top) {
+                $('.monitoring-regions-data-headers-wrapper').addClass('fixed');
+            } else {
+                $('.monitoring-regions-data-headers-wrapper').removeClass('fixed');
+            }
+        });
+    }
 
 });

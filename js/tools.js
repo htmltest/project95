@@ -1056,6 +1056,8 @@ $(document).ready(function() {
             var curIndex = curTabs.find('.main-tabs-menu-item').index(curItem);
             curTabs.find('.main-tabs-content.active').removeClass('active');
             curTabs.find('.main-tabs-content').eq(curIndex).addClass('active');
+            curTabs.find('.main-tabs-menu-current').html($(this).html());
+            curTabs.find('.main-tabs-menu').removeClass('open');
         }
         e.preventDefault();
     });
@@ -1315,6 +1317,12 @@ function createChartWindowRegionBar(blockID, data) {
         newHTML +=      '</div>' +
                     '</div>';
         curBlock.html(newHTML);
+        curBlock.find('.window-region-chart-bars').mCustomScrollbar({
+            axis: 'x',
+            scrollButtons: {
+                enable: true
+            }
+        });
 
         var curMax = 0;
         for (var i = 0; i < data.data.length; i++) {
@@ -1431,6 +1439,11 @@ $(document).ready(function() {
         }
     });
 
+    $('.main-regions-map-filter-window-close').click(function(e) {
+        $('html').removeClass('main-regions-map-filter-open');
+        e.preventDefault();
+    });
+
     $('.main-regions-map-filter').each(function() {
         var newHTML = '';
 
@@ -1491,6 +1504,22 @@ $(document).ready(function() {
                 curGroup.removeClass('hidden');
             }
         });
+    });
+
+    $('.challenges-item-more .main-tabs-menu-current').click(function(e) {
+        var curMenu = $(this).parent();
+        if (curMenu.hasClass('open')) {
+            curMenu.removeClass('open');
+        } else {
+            $('.challenges-item-more .main-tabs-menu.open').removeClass('open');
+            curMenu.addClass('open');
+        }
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.main-tabs-menu').length == 0) {
+            $('.challenges-item-more .main-tabs-menu.open').removeClass('open');
+        }
     });
 
 });
