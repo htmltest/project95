@@ -890,23 +890,23 @@
     #chartjs-tooltip-3-group {box-shadow:0px 4px 10px rgba(0, 0, 0, 0.025)}
 }
 
-.face-3-group-content {position:relative; margin:80px 0 0 40px; width:300px; height:300px}
+.face-3-group-content {position:relative; margin:110px 0 0 70px; width:270px; height:270px}
 .face-3-group-content.without-second {margin:120px auto 0 auto; width:352px; height:352px}
 .face-3-group-hints {position:absolute; left:0; top:0; right:0; bottom:0; pointer-events:none; font-size:14px; line-height:14px; font-family:HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#393939; white-space:nowrap}
 .face-3-group-hints-item {position:absolute; left:50%; top:50%; width:0; height:0}
-.face-3-group-hints-item span {display:block; position:absolute; left:0; top:-195px}
+.face-3-group-hints-item span {display:block; position:absolute; left:0; top:-180px}
 .face-3-group-content.without-second .face-3-group-hints-item span {top:-215px}
 .face-3-group-content canvas {position:relative}
 
 @media screen and (max-width:1139px) {
-    .face-3-group-content {margin:47px 0 0 20px; width:186px; height:186px}
+    .face-3-group-content {margin:77px 0 0 50px; width:156px; height:156px}
     .face-3-group-content.without-second {margin:50px auto 0 auto; width:200px; height:200px}
-    .face-3-group-hints {font-size:12px; line-height:12px}
-    .face-3-group-hints-item span {top:-125px}
+    .face-3-group-hints {font-size:12.5px; line-height:12.5px}
+    .face-3-group-hints-item span {top:-110px}
     .face-3-group-content.without-second .face-3-group-hints-item span {top:-135px}
 }
 
-.face-3-group-second {position:absolute; left:409px; top:0; width:68px; height:300px; visibility:hidden}
+.face-3-group-second {position:absolute; left:409px; top:0; width:68px; height:270px; visibility:hidden}
 .face-3-group-second.visible {visibility:visible}
 .face-3-group-second-item {position:absolute; left:0; right:0}
 .face-3-group-second-item-bg {position:absolute; left:0; top:0; right:0; bottom:0; transition:all 0.2s}
@@ -923,7 +923,7 @@
 }
 
 @media screen and (max-width:1139px) {
-    .face-3-group-second {left:240px; top:0; width:27px; height:186px}
+    .face-3-group-second {left:200px; top:0; width:27px; height:156px}
     .face-3-group-second-item-title {font-size:12px; line-height:12px; margin-left:8px}
 }
 
