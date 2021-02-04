@@ -275,6 +275,9 @@
 .face-1-chart-point.active {cursor:pointer}
 .face-1-chart-point.active:hover {box-shadow:0px 2px 4px rgba(0, 0, 0, 0.25)}
 .face-1-chart-point span {display:block; position:absolute; white-space:nowrap; text-align:center; bottom:20px; left:50%; transform:translateX(-50%); color:#393939; opacity:0.6; font-size:12px; line-height:14px; letter-spacing:0.04em}
+.face-1-chart.inverse .face-1-chart-point span {bottom:auto; top:20px}
+.face-1-chart.inverse .face-1-chart-point.active span {bottom:20px; top:auto}
+.face-1-chart.inverse-active .face-1-chart-point.active span {top:20px; bottom:auto}
 .face-1-chart-point strong {font-weight:normal; font-family:HelveticaNeueCyrMedium, sans-serif; display:block}
 .face-1-chart-point em {font-style:normal; position:relative}
 .face-1-chart-point em::after {content:""; display:block; position:absolute; left:0; bottom:0; right:0; border-top:1px dashed #fe6600}
@@ -1186,8 +1189,8 @@ canvas {user-select:none}
 .face-vzir2-container .face-1-chart-graph {top:70px; bottom:95px}
 
 @media screen and (max-width:1139px) {
-    .face-vzir2-container .face-1-content {height:286px}
-    .face-vzir2-container .face-1-chart {height:286px}
+    .face-vzir2-container .face-1-content {height:285px}
+    .face-vzir2-container .face-1-chart {height:285px}
     .face-vzir2-container .face-1-chart-labels {bottom:30px}
     .face-vzir2-container .face-1-chart-graph {top:20px; bottom:65px}
 }
@@ -1367,8 +1370,8 @@ canvas {user-select:none}
 .face-22-2-container .mCSB_horizontal {bottom:20px}
 
 @media screen and (max-width:1139px) {
-    .face-22-2-container .face-1-content {height:349px; padding:0 0 0 40px}
-    .face-22-2-container .face-1-chart {height:349px}
+    .face-22-2-container .face-1-content {height:348px; padding:0 0 0 40px}
+    .face-22-2-container .face-1-chart {height:348px}
     .face-22-2-container .face-1-container {margin:0}
     .face-22-2-container .face-1-chart-graph {top:30px; bottom:250px}
     .face-22-2-container .face-1-chart-point span {font-size:9px; line-height:11px}
@@ -3004,8 +3007,8 @@ canvas {user-select:none}
 .face-48-1-container .face-1-chart-point-2.active {background:#cc1c46; border-color:#cc1c46}
 
 @media screen and (max-width:1139px) {
-    .face-48-1-container .face-1-content {height:349px}
-    .face-48-1-container .face-1-chart {height:349px}
+    .face-48-1-container .face-1-content {height:348px}
+    .face-48-1-container .face-1-chart {height:348px}
     .face-48-1-container .face-1-container {margin:0}
     .face-48-1-container .face-1-chart-graph {top:50px; bottom:100px}
     .face-48-1-container .face-1-chart-point span {font-size:9px; line-height:11px}
