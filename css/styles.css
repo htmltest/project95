@@ -2193,7 +2193,7 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .window-region-indicator {margin:40px 0 0 0}
 .window-region-indicator-title {font-weight:bold; font-size:18px; line-height:37px; color:#202020}
 .window-region-indicator-subtitle {font-style:italic; margin:2px 0 23px 0; font-size:14px; line-height:21px; color:#6c6c6c; font-family:HelveticaNeueCyrLight, sans-serif}
-.window-region-indicator-table {margin:10px 0 0 0}
+.window-region-indicator-table {margin:10px 0 0 0; overflow:auto; position:relative}
 .window-region-indicator-table table {margin:0; width:auto}
 .window-region-indicator-table thead th {border:none; font-size:11px; line-height:17px; padding:0 40px 11px 10px; text-align:left; font-weight:normal; vertical-align:top; text-transform:uppercase; letter-spacing:0.05em}
 .window-region-indicator-table thead th:first-child {padding:0 40px 11px 10px}
@@ -2228,14 +2228,13 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
     .window-region-indicator-table table {display:block; border-top:2px solid #fe6600}
     .window-region-indicator-table thead {display:none}
     .window-region-indicator-table tbody {display:block}
-    .window-region-indicator-table tbody tr {display:block; padding:24px 20px 36px 20px}
+    .window-region-indicator-table tbody tr {display:block; padding:0 20px 36px 20px; margin:0 0 0 -40px}
     .window-region-indicator-table tbody tr:nth-child(odd) {background:#fff7f2}
     .window-region-indicator-table tbody tr:nth-child(odd) td {background:none}
     .window-region-indicator-table tbody tr::after {content:""; display:block; clear:both}
-    .window-region-indicator-table tbody td {float:left; padding:0; margin:0 0 0 40px; font-size:18px; line-height:23px}
-    .window-region-indicator-table tbody td:first-child {padding:0 0 20px 0; margin:0; width:100%}
-    .window-region-indicator-table tbody td:nth-child(2) {margin:0}
-    .window-region-indicator-table thead+tbody td {padding:0}
+    .window-region-indicator-table tbody td {float:left; padding:24px 0 0 0; margin:0 0 0 40px; font-size:18px; line-height:23px}
+    .window-region-indicator-table tbody td:first-child {padding:24px 0 0 0; width:100%}
+    .window-region-indicator-table thead+tbody td {padding:24px 0 0 0}
     .window-region-indicator-table thead+tbody tr:first-child td {border-top:none}
     .window-region-indicator-table tbody tr:first-child td {border-top:none}
     .window-region-indicator-year-mobile {display:block; margin:0 0 6px 0; font:16px/22px HelveticaNeueCyrLight, sans-serif; color:#393939}
@@ -2243,14 +2242,15 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 }
 
 .window-region-chart-bars {margin:50px 0 0 0; white-space:nowrap; font-size:0; line-height:0; letter-spacing:-1px}
-.window-region-chart-bars-container {position:relative; border-bottom:2px solid #d6d6d6; display:inline-block; vertical-align:top; height:140px; padding:0 70px 0 0}
-.window-region-chart-bars-container::before {content:""; display:block; position:absolute; left:0; top:28px; right:0; height:56px; border-top:1px solid #e1e1e1; border-bottom:1px solid #e1e1e1}
+.window-region-chart-bars-container {position:relative; display:inline-block; vertical-align:top; height:197px; padding:23px 70px 34px 0}
+.window-region-chart-bars-container::before {content:""; display:block; position:absolute; left:0; top:51px; right:0; height:56px; border-top:1px solid #e1e1e1; border-bottom:1px solid #e1e1e1}
+.window-region-chart-bars-container::after {content:""; display:block; position:absolute; left:0; bottom:34px; right:0; height:2px; background:#d6d6d6}
 .window-region-chart-bars-item {display:inline-block; vertical-align:top; position:relative; height:138px; margin:0 0 0 135px; line-height:138px}
 .window-region-chart-bars-item:first-child {margin:0}
 .window-region-chart-bars-item-year {position:absolute; left:0; right:0; bottom:-34px; text-align:center; font:14px/14px HelveticaNeueCyrMedium, sans-serif; color:#000; letter-spacing:0}
 .window-region-chart-bars-item-bar {display:inline-block; vertical-align:bottom; width:40px; position:relative}
 .window-region-chart-bars-item-bar span {position:absolute; left:50%; top:-23px; white-space:nowrap; transform:translateX(-50%); font-size:14px; line-height:14px; letter-spacing:0; color:#000}
-.window-region-chart-bars-legend {text-align:center; font-size:0; line-height:0; letter-spacing:-1px; margin:40px -10px 0 -10px}
+.window-region-chart-bars-legend {text-align:center; font-size:0; line-height:0; letter-spacing:-1px; margin:6px -10px 0 -10px}
 .window-region-chart-bars-legend-item {display:inline-block; vertical-align:top; margin:20px 10px 0 10px; position:relative; padding:0 0 0 24px}
 .window-region-chart-bars-legend-item-title {font-size:14px; line-height:14px; letter-spacing:0; color:#000}
 .window-region-chart-bars-legend-item-color {position:absolute; left:0; top:0; width:14px; height:14px}
@@ -2267,7 +2267,9 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 
 @media screen and (max-width:1139px) {
     .window-region-chart-bars {margin:60px 0 0 0; overflow:auto; position:relative}
-    .window-region-chart-bars-container {margin:23px 0 34px 0; padding:0}
+    .window-region-chart-bars-container {margin:23px 0 34px 0; padding:0; height:140px; border-bottom:2px solid #d6d6d6}
+    .window-region-chart-bars-container::before {top:28px}
+    .window-region-chart-bars-container::after {display:none}
     .window-region-chart-bars-legend {text-align:left; margin:40px 0 0 0}
     .window-region-chart-bars-legend-item {display:block; margin:20px 0 0 0}
     .window-region-chart-bars-legend-item-title {font-size:16px; line-height:16px}

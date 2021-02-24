@@ -1092,7 +1092,7 @@ $(document).ready(function() {
 
     $('body').on('click', '.opendata-chart-map-inner g', function(e) {
         var curURL = $(this).attr('data-url');
-        windowOpen(curURL);
+        windowOpen(curURL, null, function() {$(window).trigger('resize')});
     });
 
 });
@@ -1128,6 +1128,20 @@ $(window).on('load resize', function() {
                 }
             });
         });
+    });
+
+    $('.window-region-indicator-table').each(function() {
+        var curTable = $(this);
+        if ($(window).width() > 1139) {
+            curTable.mCustomScrollbar({
+                axis: 'x',
+                scrollButtons: {
+                    enable: true
+                }
+            });
+        } else {
+            curTable.mCustomScrollbar('destroy');
+        }
     });
 
 });
@@ -1254,16 +1268,36 @@ $(document).ready(function(e) {
         }
 
         function windowRegionSortValueUp(a, b) {
-            var value1 = Number($(a).find('td').eq(curIndex).html().replace(/ /g, '').replace(',', '.'));
-            var value2 = Number($(b).find('td').eq(curIndex).html().replace(/ /g, '').replace(',', '.'));
+            var curA = $('<div>' + $(a).find('td').eq(curIndex).html() + '</div>');
+            curA.find('.window-region-indicator-year-mobile').remove();
+            var curB = $('<div>' + $(b).find('td').eq(curIndex).html() + '</div>');
+            curB.find('.window-region-indicator-year-mobile').remove();
+            var value1 = Number(curA.html().replace(/ /g, '').replace(',', '.'));
+            var value2 = Number(curB.html().replace(/ /g, '').replace(',', '.'));
+            if (isNaN(value1)) {
+                value1 = 0;
+            }
+            if (isNaN(value2)) {
+                value2 = 0;
+            }
             if (value1 < value2) return -1;
             if (value1 == value2) return 0;
             if (value1 > value2) return 1;
         }
 
         function windowRegionSortValueDown(a, b) {
-            var value1 = Number($(a).find('td').eq(curIndex).html().replace(/ /g, '').replace(',', '.'));
-            var value2 = Number($(b).find('td').eq(curIndex).html().replace(/ /g, '').replace(',', '.'));
+            var curA = $('<div>' + $(a).find('td').eq(curIndex).html() + '</div>');
+            curA.find('.window-region-indicator-year-mobile').remove();
+            var curB = $('<div>' + $(b).find('td').eq(curIndex).html() + '</div>');
+            curB.find('.window-region-indicator-year-mobile').remove();
+            var value1 = Number(curA.html().replace(/ /g, '').replace(',', '.'));
+            var value2 = Number(curB.html().replace(/ /g, '').replace(',', '.'));
+            if (isNaN(value1)) {
+                value1 = 0;
+            }
+            if (isNaN(value2)) {
+                value2 = 0;
+            }
             if (value1 > value2) return -1;
             if (value1 == value2) return 0;
             if (value1 < value2) return 1;
