@@ -721,6 +721,28 @@ $(window).on('load resize', function() {
         });
     }
 
+    $('.monitoring-regions-data').each(function() {
+        $('.monitoring-regions-data-headers-year').css({'width': 'auto'});
+        $('.monitoring-regions-data-row-item-value').css({'width': 'auto'});
+
+        $('.monitoring-regions-data-scroll .monitoring-regions-data-headers-year').each(function() {
+            var curYear = $(this);
+            var curIndex = $('.monitoring-regions-data-scroll .monitoring-regions-data-headers-year').index(curYear);
+            var maxWidth = curYear.outerWidth();
+            $('.monitoring-regions-data-row-item').each(function() {
+                var curWidth = $(this).find('.monitoring-regions-data-row-item-value').eq(curIndex).outerWidth()
+                if (curWidth > maxWidth) {
+                    maxWidth = curWidth;
+                }
+            });
+            curYear.css({'width': maxWidth});
+            $('.monitoring-regions-data-fixed .monitoring-regions-data-headers-year').eq(curIndex).css({'width': maxWidth});
+            $('.monitoring-regions-data-row-item').each(function() {
+                $(this).find('.monitoring-regions-data-row-item-value').eq(curIndex).css({'width': maxWidth});
+            });
+        });
+    });
+
 });
 
 $(window).on('load resize scroll', function() {

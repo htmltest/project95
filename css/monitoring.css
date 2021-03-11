@@ -3897,6 +3897,7 @@ canvas {user-select:none}
 @media screen and (max-width:1139px) {
     .monitoring-regions {margin:35px 0 0 0}
     .monitoring-regions-filter-link {font-size:16px; font-weight:bold}
+    .monitoring-regions-filter-current {max-width:calc(100% - 250px)}
     .monitoring-regions-filter-current-value {font-size:16px}
 }
 
@@ -4036,7 +4037,7 @@ canvas {user-select:none}
 .monitoring-regions-data-header-title::after {content:""; display:block; position:absolute; right:0; top:-3px; bottom:0; width:1px; background:#c4c4c4}
 .monitoring-regions-data-headers-years {display:inline-block; vertical-align:top; position:relative; font-size:0; line-height:0; letter-spacing:-1px; padding:0 0 0 50px}
 .monitoring-regions-data-headers-years-inner {display:inline-block; vertical-align:top; position:relative}
-.monitoring-regions-data-headers-year {display:inline-block; vertical-align:top; width:100px; font-size:13px; line-height:20px; letter-spacing:0.05em}
+.monitoring-regions-data-headers-year {display:inline-block; vertical-align:top; min-width:100px; font-size:13px; line-height:20px; letter-spacing:0.05em; padding:0 30px 0 0; box-sizing:border-box}
 
 @media screen and (min-width:1140px) {
     .monitoring-regions-data-fixed.fixed .monitoring-regions-data-headers {position:fixed; z-index:99; left:50%; top:0; width:1110px; margin-left:-555px; background:#fff; padding:15px 0}
@@ -4046,6 +4047,7 @@ canvas {user-select:none}
 
 @media screen and (max-width:1139px) {
     .monitoring-regions-data-headers-wrapper {display:none}
+    .monitoring-regions-data-headers-year {width:auto !important}
 }
 
 .monitoring-regions-data-group {margin:15px 0 0 0; position:relative}
@@ -4074,36 +4076,44 @@ canvas {user-select:none}
 .monitoring-regions-data-row {padding:20px 0}
 .monitoring-regions-data-row:nth-child(even) {background:#f6f6f6}
 .monitoring-regions-data-row-title {font-size:16px; line-height:24px; max-width:610px; padding:0 0 0 20px}
-.monitoring-regions-data-row-title a {display:inline-block; position:relative; vertical-align:top; padding:0 27px 0 0; color:#202020; text-decoration:none}
+.monitoring-regions-data-row-title a {display:inline-block; position:relative; vertical-align:top; padding:0 32px 0 0; color:#202020; text-decoration:none}
 .monitoring-regions-data-row-title a:hover {color:#fe6600}
-.monitoring-regions-data-row-title a::after {content:""; display:block; width:17px; height:17px; position:absolute; right:0; top:50%; margin-top:-8.5px; background:url(../images/monitoring-regions-data-link.svg) no-repeat}
+.monitoring-regions-data-row-title a::after {content:""; display:block; width:23px; height:23px; position:absolute; right:0; top:12px; margin-top:-11.5px; border-radius:50%; background:url(../images/monitoring-regions-data-link.svg) no-repeat center}
+.monitoring-regions-data-row-title a:hover::after {background-color:#f6f6f6}
+.monitoring-regions-data-row:nth-child(even) .monitoring-regions-data-row-title a:hover::after {background-color:#fff}
 .monitoring-regions-data-row-list {margin:20px 0 0 0}
 .monitoring-regions-data-row-item {font-size:0; line-height:0; letter-spacing:-1px; position:relative; margin:20px 0 0 0; white-space:nowrap}
 .monitoring-regions-data-row-item-title {display:inline-block; vertical-align:top; position:relative; padding:0 20px 0 20px; width:310px; font-family:HelveticaNeueCyrLight, sans-serif; font-size:14px; line-height:21px; letter-spacing:0; white-space:normal}
 .monitoring-regions-data-row-item-title::after {content:""; display:block; position:absolute; right:0; top:-11px; bottom:-13px; width:1px; background:#c4c4c4}
-.monitoring-regions-data-row-item-title a {display:inline-block; vertical-align:top; position:relative; vertical-align:top; padding:0 27px 0 0; color:#202020; text-decoration:none}
+.monitoring-regions-data-row-item-title a {display:block; vertical-align:top; position:relative; vertical-align:top; padding:0 32px 0 0; color:#202020; text-decoration:none}
 .monitoring-regions-data-row-item-title a:hover {color:#fe6600}
-.monitoring-regions-data-row-item-title a::after {content:""; display:block; width:17px; height:17px; position:absolute; right:0; top:50%; margin-top:-8.5px; background:url(../images/monitoring-regions-data-link.svg) no-repeat}
+.monitoring-regions-data-row-item-title a::after {content:""; display:block; width:23px; height:23px; position:absolute; right:0; top:11px; border-radius:50%; margin-top:-11.5px; background:url(../images/monitoring-regions-data-link.svg) no-repeat center}
+.monitoring-regions-data-row-item-title a:hover::after {background-color:#f6f6f6}
+.monitoring-regions-data-row:nth-child(even) .monitoring-regions-data-row-item-title a:hover::after {background-color:#fff}
 .monitoring-regions-data-row-item-title strong {font-weight:normal; font-family:HelveticaNeueCyrMedium, sans-serif; color:#7d7d7d}
 .monitoring-regions-data-row-item-values {display:inline-block; vertical-align:top; position:relative; font-size:0; line-height:0; letter-spacing:-1px; padding:0 0 0 50px}
 .monitoring-regions-data-row-item-values-inner {display:inline-block; vertical-align:top; position:relative}
-.monitoring-regions-data-row-item-value {display:inline-block; vertical-align:top; width:100px; color:#000; font-size:14px; line-height:21px; letter-spacing:0}
+.monitoring-regions-data-row-item-value {display:inline-block; vertical-align:top; min-width:100px; color:#000; font-size:14px; line-height:21px; letter-spacing:0; padding:0 30px 0 0; box-sizing:border-box}
 .monitoring-regions-data-row-item-value span {color:#ff2525}
 .monitoring-regions-data-row-item-value em {display:none}
 
 @media screen and (max-width:1139px) {
     .monitoring-regions-data-row {padding:30px 35px; margin:0 -35px}
     .monitoring-regions-data-row-title {font-size:20px; line-height:30px; max-width:none; padding:0}
-    .monitoring-regions-data-row-title a::after {width:20px; height:20px; display:inline-block; vertical-align:middle; position:relative; right:auto; top:auto; margin:-2px 0 0 10px; background:url(../images/monitoring-regions-data-link-mobile.svg) no-repeat}
+    .monitoring-regions-data-row-title a::after {width:20px; height:20px; display:inline-block; vertical-align:middle; position:relative; right:auto; border-radius:0; top:auto; margin:-2px 0 0 10px; background:url(../images/monitoring-regions-data-link-mobile.svg) no-repeat}
+    .monitoring-regions-data-row-title a:hover::after {background-color:transparent}
+    .monitoring-regions-data-row:nth-child(even) .monitoring-regions-data-row-title a:hover::after {background-color:transparent}
     .monitoring-regions-data-row-list {margin:30px 0 0 0}
     .monitoring-regions-data-row-item {margin:30px 0 0 0; white-space:normal}
     .monitoring-regions-data-row-item+.monitoring-regions-data-row-item {margin:40px 0 0 0}
     .monitoring-regions-data-row-item-title {display:block; padding:0; width:auto; font-size:18px; line-height:27px}
     .monitoring-regions-data-row-item-title::after {display:none}
     .monitoring-regions-data-row-item-title a {display:inline; padding:0}
-    .monitoring-regions-data-row-item-title a::after {width:20px; height:20px; display:inline-block; vertical-align:middle; position:relative; right:auto; top:auto; margin:-2px 0 0 10px; background:url(../images/monitoring-regions-data-link-mobile.svg) no-repeat}
+    .monitoring-regions-data-row-item-title a::after {width:20px; height:20px; display:inline-block; vertical-align:middle; position:relative; right:auto; border-radius:0; top:auto; margin:-2px 0 0 10px; background:url(../images/monitoring-regions-data-link-mobile.svg) no-repeat}
+    .monitoring-regions-data-row-item-title a:hover::after {background-color:transparent}
+    .monitoring-regions-data-row:nth-child(even) .monitoring-regions-data-row-item-title a:hover::after {background-color:transparent}
     .monitoring-regions-data-row-item-values {margin:20px 0 0 0; white-space:nowrap; padding:0; overflow:auto; display:block; width:100%}
-    .monitoring-regions-data-row-item-value {border-left:1px solid #eee; padding:0 40px 0 20px; width:auto; font-size:20px; line-height:20px}
+    .monitoring-regions-data-row-item-value {border-left:1px solid #eee; padding:0 40px 0 20px; width:auto; font-size:20px; line-height:20px; width:auto !important}
     .monitoring-regions-data-row-item-value:first-child {border-left:0; padding-left:0}
     .monitoring-regions-data-row-item-value:last-child {padding-right:0}
     .monitoring-regions-data-row-item-value em {display:block; font-style:normal; font-size:16px; line-height:24px; letter-spacing:0; color:#fe6600; margin:0 0 20px 0}
