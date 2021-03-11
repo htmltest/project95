@@ -3884,10 +3884,10 @@ canvas {user-select:none}
 .monitoring-regions {margin:30px 0 0 0; position:relative}
 .monitoring-regions-filter {position:relative}
 .monitoring-regions-filter::after {content:""; display:block; clear:both}
-.monitoring-regions-filter-link {float:left; width:127px; padding:0; text-align:center; height:44px; font-size:14px; line-height:44px}
+.monitoring-regions-filter-link {float:left; width:auto; padding:0 16px; text-align:center; height:44px; font-size:14px; line-height:44px}
 .monitoring-regions-filter-link svg {display:inline-block; vertical-align:middle; margin:-2px 10px 0 0}
 .monitoring-regions-filter-link path {fill:#fff}
-.monitoring-regions-filter-current {display:none; margin:0 0 0 147px; position:relative}
+.monitoring-regions-filter-current {display:none; float:left; margin:0 0 0 20px; position:relative}
 .monitoring-regions-filter-current.visible {display:block}
 .monitoring-regions-filter-current-value {float:left; max-width:100%; position:relative; padding:0 44px 0 16px; background:#f1f1f1; border-radius:5px; font-size:14px; line-height:44px; white-space:nowrap; color:#000; box-sizing:border-box}
 .monitoring-regions-filter-current-value span {display:block; position:relative; overflow:hidden; text-overflow:ellipsis}
@@ -3896,12 +3896,11 @@ canvas {user-select:none}
 
 @media screen and (max-width:1139px) {
     .monitoring-regions {margin:35px 0 0 0}
-    .monitoring-regions-filter-link {width:141px; font-size:16px; font-weight:bold}
-    .monitoring-regions-filter-current {margin:0 0 0 161px}
+    .monitoring-regions-filter-link {font-size:16px; font-weight:bold}
     .monitoring-regions-filter-current-value {font-size:16px}
 }
 
-.monitoring-regions-filter-window {display:none; width:455px; position:absolute; left:0; top:100%; margin-top:20px; z-index:999; padding:20px 20px 0 20px; background:#fff; border:1px solid #ececec; box-shadow:8px 8px 30px rgba(145, 145, 145, 0.1)}
+.monitoring-regions-filter-window {display:none; width:455px; position:absolute; left:0; top:100%; margin-top:20px; z-index:999; padding:20px 20px 0 20px; background:#fff; border:1px solid #ececec; box-shadow:8px 8px 30px rgba(145, 145, 145, 0.1); max-height:470px; overflow:auto}
 .monitoring-regions-filter-open .monitoring-regions-filter-window {display:block}
 .monitoring-regions-filter-search {position:relative; background:#f2f2f2; border-radius:5px; height:44px}
 .monitoring-regions-filter-search::before {content:""; display:block; width:41px; position:absolute; right:0; top:0; bottom:0; background:url(../images/main-regions-map-filter-search.svg) no-repeat center}
@@ -3909,6 +3908,9 @@ canvas {user-select:none}
 .monitoring-regions-filter-search input::-webkit-input-placeholder {opacity:1; color:#858585}
 .monitoring-regions-filter-search input::-moz-placeholder {opacity:1; color:#858585}
 .monitoring-regions-filter-search input:-ms-input-placeholder {opacity:1; color:#858585}
+.monitoring-regions-filter-search-clear {display:none; position:absolute; right:46px; top:50%; margin-top:-16.5px; width:33px; height:33px; background:url(../images/monitoring-regions-filter-group-item.svg) no-repeat center; transition:background-color 0.2s; border-radius:50%; cursor:pointer}
+.monitoring-regions-filter-search-clear.visible {display:block}
+.monitoring-regions-filter-search-clear:hover {background-color:rgba(255, 255, 255, 0.7)}
 .monitoring-regions-filter-map-link {margin:20px 0 0 0; font-size:16px; line-height:24px}
 .monitoring-regions-filter-map-link a {display:inline-block; position:relative; padding:0 0 0 29px; text-decoration:none; color:#000; background:url(../images/monitoring-regions-filter-map-link.svg) no-repeat left center}
 .monitoring-regions-filter-map-link a:hover {color:#fe6600}
@@ -3929,6 +3931,7 @@ canvas {user-select:none}
 .monitoring-regions-filter-group-item:hover {background:#fff2e9}
 .monitoring-regions-filter-group-item.active {background:#fff2e9}
 .monitoring-regions-filter-group-item.active::after {content:""; display:block; width:23px; height:23px; position:absolute; right:7px; top:50%; margin-top:-11.5px; background:url(../images/monitoring-regions-filter-group-item.svg) no-repeat}
+.monitoring-regions-filter-group-item span {background:#fcff9c}
 .monitoring-regions-filter-group-item-main {cursor:pointer; background:#fff; font:14px/20px HelveticaNeueCyrMedium, sans-serif; color:#202020; transition:background 0.2s; padding:8px 40px 8px 20px; position:relative}
 .monitoring-regions-filter-group-item-main:hover {background:#fff2e9}
 .monitoring-regions-filter-group-item-main.active {background:#fff2e9}
@@ -3936,7 +3939,7 @@ canvas {user-select:none}
 .monitoring-regions-filter-window-close {display:none}
 
 @media screen and (max-width:1139px) {
-    .monitoring-regions-filter-window {position:fixed; left:0; top:0; right:0; bottom:0; background:rgba(0, 0, 0, 0.5); margin:0; padding:0; border:none; box-shadow:none; width:auto; height:auto}
+    .monitoring-regions-filter-window {position:fixed; left:0; top:0; right:0; bottom:0; background:rgba(0, 0, 0, 0.5); margin:0; padding:0; border:none; box-shadow:none; width:auto; height:auto; max-height:none; overflow:visible}
     .monitoring-regions-filter-window-content {position:absolute; left:0; top:217px; right:0; bottom:0; background:#fff; overflow:auto; padding:30px 30px 0 30px; border-radius:6px 6px 0 0}
     .monitoring-regions-filter-search input {font-size:18px}
     .monitoring-regions-filter-map-link {text-align:right; font-size:18px}
@@ -4029,12 +4032,17 @@ canvas {user-select:none}
 
 .monitoring-regions-data-headers-wrapper {position:relative; height:29px}
 .monitoring-regions-data-headers {font-size:0; line-height:0; padding:0 0 8px 0; letter-spacing:-1px; text-transform:uppercase; color:#fe6600; position:relative; border-bottom:1px solid #fe6600; white-space:nowrap; overflow:hidden}
-/*.monitoring-regions-data-headers-wrapper.fixed .monitoring-regions-data-headers {position:fixed; z-index:99; left:50%; top:0; width:1110px; margin-left:-555px; background:#fff; padding:15px 0}*/
 .monitoring-regions-data-header-title {display:inline-block; vertical-align:top; width:310px; position:relative; font-size:13px; line-height:20px; letter-spacing:0.05em}
 .monitoring-regions-data-header-title::after {content:""; display:block; position:absolute; right:0; top:-3px; bottom:0; width:1px; background:#c4c4c4}
 .monitoring-regions-data-headers-years {display:inline-block; vertical-align:top; position:relative; font-size:0; line-height:0; letter-spacing:-1px; padding:0 0 0 50px}
 .monitoring-regions-data-headers-years-inner {display:inline-block; vertical-align:top; position:relative}
 .monitoring-regions-data-headers-year {display:inline-block; vertical-align:top; width:100px; font-size:13px; line-height:20px; letter-spacing:0.05em}
+
+@media screen and (min-width:1140px) {
+    .monitoring-regions-data-fixed.fixed .monitoring-regions-data-headers {position:fixed; z-index:99; left:50%; top:0; width:1110px; margin-left:-555px; background:#fff; padding:15px 0}
+    .monitoring-regions-data-fixed.fixed::after {content:""; display:block; position:fixed; z-index:99; left:50%; top:51px; width:1110px; margin-left:-555px; height:30px; background:linear-gradient(180deg, rgba(0, 0, 0, 0.19) 0%, rgba(0, 0, 0, 0) 100%); pointer-events:none}
+    .monitoring-regions-data-fixed.fixed .monitoring-regions-data-headers-years {opacity:1; overflow:hidden}
+}
 
 @media screen and (max-width:1139px) {
     .monitoring-regions-data-headers-wrapper {display:none}
@@ -4071,7 +4079,7 @@ canvas {user-select:none}
 .monitoring-regions-data-row-title a::after {content:""; display:block; width:17px; height:17px; position:absolute; right:0; top:50%; margin-top:-8.5px; background:url(../images/monitoring-regions-data-link.svg) no-repeat}
 .monitoring-regions-data-row-list {margin:20px 0 0 0}
 .monitoring-regions-data-row-item {font-size:0; line-height:0; letter-spacing:-1px; position:relative; margin:20px 0 0 0; white-space:nowrap}
-.monitoring-regions-data-row-item-title {display:inline-block; vertical-align:top; position:relative; padding:0 0 0 20px; width:310px; font-family:HelveticaNeueCyrLight, sans-serif; font-size:14px; line-height:21px; letter-spacing:0}
+.monitoring-regions-data-row-item-title {display:inline-block; vertical-align:top; position:relative; padding:0 20px 0 20px; width:310px; font-family:HelveticaNeueCyrLight, sans-serif; font-size:14px; line-height:21px; letter-spacing:0; white-space:normal}
 .monitoring-regions-data-row-item-title::after {content:""; display:block; position:absolute; right:0; top:-11px; bottom:-13px; width:1px; background:#c4c4c4}
 .monitoring-regions-data-row-item-title a {display:inline-block; vertical-align:top; position:relative; vertical-align:top; padding:0 27px 0 0; color:#202020; text-decoration:none}
 .monitoring-regions-data-row-item-title a:hover {color:#fe6600}
