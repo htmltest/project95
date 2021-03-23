@@ -3887,18 +3887,21 @@ canvas {user-select:none}
 .monitoring-regions-filter-link {float:left; width:auto; padding:0 16px; text-align:center; height:44px; font-size:14px; line-height:44px}
 .monitoring-regions-filter-link svg {display:inline-block; vertical-align:middle; margin:-2px 10px 0 0}
 .monitoring-regions-filter-link path {fill:#fff}
-.monitoring-regions-filter-current {display:none; float:left; margin:0 0 0 20px; position:relative}
-.monitoring-regions-filter-current.visible {display:block}
+.monitoring-regions-filter-current {float:left; margin:0 0 0 20px; position:relative}
 .monitoring-regions-filter-current-value {float:left; max-width:100%; position:relative; padding:0 44px 0 16px; background:#f1f1f1; border-radius:5px; font-size:14px; line-height:44px; white-space:nowrap; color:#000; box-sizing:border-box}
 .monitoring-regions-filter-current-value span {display:block; position:relative; overflow:hidden; text-overflow:ellipsis}
 .monitoring-regions-filter-current-value a {display:block; position:absolute; right:5px; top:5px; width:33px; height:33px; background:url(../images/monitoring-regions-filter-group-item.svg) no-repeat center; transition:background-color 0.2s; border-radius:50%}
 .monitoring-regions-filter-current-value a:hover {background-color:rgba(255, 255, 255, 0.7)}
+.monitoring-regions-filter-current.default .monitoring-regions-filter-current-value {padding:0 0 0 4px; background:none; font-size:18px; border-radius:0; color:#6d6d6d}
+.monitoring-regions-filter-current.default .monitoring-regions-filter-current-value a {display:none}
 
 @media screen and (max-width:1139px) {
     .monitoring-regions {margin:35px 0 0 0}
     .monitoring-regions-filter-link {font-size:16px; font-weight:bold}
     .monitoring-regions-filter-current {max-width:calc(100% - 250px)}
+    .monitoring-regions-filter-current.default {max-width:none; width:100%; margin:23px 0 0 0}
     .monitoring-regions-filter-current-value {font-size:16px}
+    .monitoring-regions-filter-current.default .monitoring-regions-filter-current-value {font-size:18px; line-height:27px; white-space:normal}
 }
 
 .monitoring-regions-filter-window {display:none; width:455px; position:absolute; left:0; top:100%; margin-top:20px; z-index:999; padding:20px 20px 0 20px; background:#fff; border:1px solid #ececec; box-shadow:8px 8px 30px rgba(145, 145, 145, 0.1); max-height:470px; overflow:auto}
@@ -3913,7 +3916,7 @@ canvas {user-select:none}
 .monitoring-regions-filter-search-clear.visible {display:block}
 .monitoring-regions-filter-search-clear:hover {background-color:rgba(255, 255, 255, 0.7)}
 .monitoring-regions-filter-map-link {margin:20px 0 0 0; font-size:16px; line-height:24px}
-.monitoring-regions-filter-map-link a {display:inline-block; position:relative; padding:0 0 0 29px; text-decoration:none; color:#000; background:url(../images/monitoring-regions-filter-map-link.svg) no-repeat left center}
+.monitoring-regions-filter-map-link a {display:inline-block; position:relative; padding:0 0 0 55px; text-decoration:none; color:#000; background:url(../images/monitoring-regions-filter-map-link-new.svg) no-repeat left center}
 .monitoring-regions-filter-map-link a:hover {color:#fe6600}
 .monitoring-regions-filter-list {margin:20px 0 0 0}
 .monitoring-regions-filter-group {border-top:1px solid #e5e5e5}
@@ -3981,12 +3984,22 @@ canvas {user-select:none}
 .monitoring-regions-window-map-zoom-dec:hover {border-color:#fe6600; position:relative}
 .monitoring-regions-window-map-zoom-dec.disabled {pointer-events:none; color:#cbcbcb}
 
+.monitoring-regions-window-map-zoom-new {position:absolute; right:20px; top:55px; width:32px; text-align:center; font-size:24px; line-height:28px; color:#fe6600; user-select:none; background:#fff}
+.monitoring-regions-window-map-zoom-inc-new {width:32px; height:32px; border:1px solid #cbcbcb; box-sizing:border-box; cursor:pointer}
+.monitoring-regions-window-map-zoom-inc-new:hover {border-color:#fe6600; position:relative}
+.monitoring-regions-window-map-zoom-inc-new.disabled {pointer-events:none; color:#cbcbcb}
+.monitoring-regions-window-map-zoom-dec-new {width:32px; height:32px; border:1px solid #cbcbcb; margin:-1px 0 0 0; box-sizing:border-box; cursor:pointer}
+.monitoring-regions-window-map-zoom-dec-new:hover {border-color:#fe6600; position:relative}
+.monitoring-regions-window-map-zoom-dec-new.disabled {pointer-events:none; color:#cbcbcb}
+
 .monitoring-regions-window-map-wrapper {position:relative}
 .monitoring-regions-window-map-inner {position:relative; height:442px; overflow:auto; line-height:0}
 .monitoring-regions-window-map-inner svg {display:block}
 .monitoring-regions-window-map-inner g {cursor:pointer; stroke:#fff; fill:#82c7be}
 .monitoring-regions-window-map-inner g:hover {fill:#ffb07a}
-.monitoring-regions-window-map-inner circle {position:relative}
+.monitoring-regions-window-map-inner circle {position:relative; fill:#ff0}
+.monitoring-regions-empty-template .monitoring-regions-window-map-inner {height:574px}
+.monitoring-regions-empty-template .monitoring-regions-window-map {height:574px}
 
 .monitoring-regions-window-map-wrapper .mCSB_horizontal.mCSB_inside > .mCSB_container {margin-bottom:0}
 .monitoring-regions-window-map-wrapper .mCSB_container_wrapper {margin:0}
@@ -3997,7 +4010,8 @@ canvas {user-select:none}
 .monitoring-regions-window-map-wrapper .mCSB_scrollTools.mCSB_scrollTools_vertical .mCSB_draggerRail {width:4px; margin:0; border-radius:2px; background:#f1f1f1}
 .monitoring-regions-window-map-wrapper .mCSB_scrollTools.mCSB_scrollTools_vertical .mCSB_dragger .mCSB_dragger_bar {width:4px; margin:0; border-radius:2px; background:#fe6600}
 
-.monitoring-regions-data {margin:40px 0 0 0; position:relative; min-height:100px}
+.monitoring-regions-data {margin:40px 0 0 0; position:relative; min-height:100px; width:100%}
+.monitoring-regions-data.hidden {position:absolute; left:-9999px; top:-9999px}
 .monitoring-regions-data.loading::after {content:""; display:block; position:absolute; left:0; top:0; right:0; bottom:0; background:rgba(255, 255, 255, 0.7) url(../images/main-calendar-loading.gif) no-repeat top center}
 .monitoring-regions-data * {box-sizing:border-box}
 
@@ -4141,8 +4155,5 @@ canvas {user-select:none}
     .monitoring-regions-data-notice {color:#0a0909}
 }
 
-.monitoring-regions-empty-template {display:none}
-.monitoring-regions-empty {border:1px solid #e2e2e2; margin:35px 0 0 0; padding:66px 30px 67px 30px; text-align:center}
-.monitoring-regions-empty-icon {width:82px; height:82px; margin:0 auto; text-align:center; line-height:82px; background:#ffa96f; border-radius:50%; font-weight:bold; font-size:40px; color:#fff}
-.monitoring-regions-empty-title {margin:29px 0 0 0; text-align:center; color:#202020; font-family:HelveticaNeueCyrMedium, sans-serif; font-size:24px; line-height:36px}
-.monitoring-regions-empty-text {color:#171717}
+.monitoring-regions-empty-template {position:absolute; left:-9999px; top:-9999px; width:100%}
+.monitoring-regions-empty-template.visible {position:relative; left:auto; top:auto}
