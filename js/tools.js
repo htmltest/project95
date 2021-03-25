@@ -958,6 +958,8 @@ function windowOpen(linkWindow, dataWindow, callbackWindow) {
         $('.window form').each(function() {
             initForm($(this));
         });
+        
+        $(window).trigger('resize');
     });
 }
 

@@ -4002,6 +4002,7 @@ canvas {user-select:none}
 .monitoring-regions-empty-template .monitoring-regions-window-map {height:574px}
 
 .monitoring-regions-window-map-wrapper .mCSB_horizontal.mCSB_inside > .mCSB_container {margin-bottom:0}
+.monitoring-regions-window-map-wrapper .mCSB_container_wrapper > .mCSB_container {padding:0}
 .monitoring-regions-window-map-wrapper .mCSB_container_wrapper {margin:0}
 .monitoring-regions-window-map-wrapper .mCSB_scrollTools.mCSB_scrollTools_horizontal {height:4px}
 .monitoring-regions-window-map-wrapper .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {height:4px; margin:0; border-radius:2px; background:#f1f1f1}

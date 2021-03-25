@@ -442,7 +442,11 @@ $(document).ready(function() {
         $('.monitoring-regions-window-map-zoom-dec-new').removeClass('disabled');
         var curWidth = $('.monitoring-regions-window-map-zoom-new').data('startWidth') * curZomm;
         var curHeight = $('.monitoring-regions-window-map-zoom-new').data('startHeight') * curZomm;
-        $('.monitoring-regions-empty-template .monitoring-regions-window-map-inner svg').animate({'width': curWidth, 'height': curHeight});
+        $('.monitoring-regions-empty-template .monitoring-regions-window-map-inner').mCustomScrollbar('destroy');
+        $('.monitoring-regions-empty-template .monitoring-regions-window-map-inner svg').css({'width': curWidth, 'height': curHeight});
+        $('.monitoring-regions-empty-template .monitoring-regions-window-map-inner').mCustomScrollbar({
+            axis: 'xy'
+        });
     });
 
     $('body').on('click', '.monitoring-regions-window-map-zoom-dec-new', function() {
@@ -455,7 +459,11 @@ $(document).ready(function() {
         $('.monitoring-regions-window-map-zoom-inc-new').removeClass('disabled');
         var curWidth = $('.monitoring-regions-window-map-zoom-new').data('startWidth') * curZomm;
         var curHeight = $('.monitoring-regions-window-map-zoom-new').data('startHeight') * curZomm;
-        $('.monitoring-regions-empty-template .monitoring-regions-window-map-inner svg').animate({'width': curWidth, 'height': curHeight});
+        $('.monitoring-regions-empty-template .monitoring-regions-window-map-inner').mCustomScrollbar('destroy');
+        $('.monitoring-regions-empty-template .monitoring-regions-window-map-inner svg').css({'width': curWidth, 'height': curHeight});
+        $('.monitoring-regions-empty-template .monitoring-regions-window-map-inner').mCustomScrollbar({
+            axis: 'xy'
+        });
     });
 
     $('body').on('click', '.monitoring-regions-filter-group-header', function() {
@@ -691,7 +699,11 @@ $(document).ready(function() {
         $('.monitoring-regions-window-map-zoom-dec').removeClass('disabled');
         var curWidth = $('.monitoring-regions-window-map-zoom').data('startWidth') * curZomm;
         var curHeight = $('.monitoring-regions-window-map-zoom').data('startHeight') * curZomm;
-        $('.monitoring-regions-window .monitoring-regions-window-map-inner svg').animate({'width': curWidth, 'height': curHeight});
+        $('.monitoring-regions-window .monitoring-regions-window-map-inner').mCustomScrollbar('destroy');
+        $('.monitoring-regions-window .monitoring-regions-window-map-inner svg').css({'width': curWidth, 'height': curHeight});
+        $('.monitoring-regions-window .monitoring-regions-window-map-inner').mCustomScrollbar({
+            axis: 'xy'
+        });
     });
 
     $('body').on('click', '.monitoring-regions-window-map-zoom-dec', function() {
@@ -704,7 +716,11 @@ $(document).ready(function() {
         $('.monitoring-regions-window-map-zoom-inc').removeClass('disabled');
         var curWidth = $('.monitoring-regions-window-map-zoom').data('startWidth') * curZomm;
         var curHeight = $('.monitoring-regions-window-map-zoom').data('startHeight') * curZomm;
-        $('.monitoring-regions-window .monitoring-regions-window-map-inner svg').animate({'width': curWidth, 'height': curHeight});
+        $('.monitoring-regions-window .monitoring-regions-window-map-inner').mCustomScrollbar('destroy');
+        $('.monitoring-regions-window .monitoring-regions-window-map-inner svg').css({'width': curWidth, 'height': curHeight});
+        $('.monitoring-regions-window .monitoring-regions-window-map-inner').mCustomScrollbar({
+            axis: 'xy'
+        });
     });
 
     $('body').on('mouseenter', '.monitoring-regions-window-map-inner g', function(e) {
