@@ -7,6 +7,11 @@ $(document).ready(function() {
             $('.cube-menu li.active').removeClass('active');
             curLi.addClass('active');
 
+            var curHash = $(this).attr('data-id');
+            if (curHash != 'undefined') {
+                window.location.hash = '#' + curHash;
+            }
+
             var curIndex = $('.cube-menu li').index(curLi);
 
             switch(curIndex) {
@@ -1504,3 +1509,19 @@ function face5Redraw() {
     });
 
 }
+
+$(window).on('load', function() {
+    $('.cube-menu').each(function() {
+        if (window.location.hash != '') {
+            $('.cube-menu a').each(function() {
+                var curLink = $(this);
+                var curHash = curLink.attr('data-id');
+                if (curHash != 'undefined') {
+                    if (('#' + curHash) == window.location.hash) {
+                        curLink.trigger('click');
+                    }
+                }
+            });
+        }
+    });
+});
