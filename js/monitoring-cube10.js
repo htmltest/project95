@@ -831,6 +831,18 @@ $(document).ready(function() {
                 }
             }
         }
+        if (curRatingsArray.length == 0) {
+            for (var c = 0; c < mapColorsRegions_20_2.length; c++) {
+                if (curID == mapColorsRegions_20_2[c].id) {
+                    var cy = mapColorsRegions_20_2[c].years.length - 1;
+                    for (var ct = 0; ct < mapColorsRegions_20_2[c].years[cy].types.length; ct++) {
+                        if (curSort == mapColorsRegions_20_2[c].years[cy].types[ct].type) {
+                            curRatingsArray = mapColorsRegions_20_2[c].years[cy].types[ct].colors;
+                        }
+                    }
+                }
+            }
+        }
 
         var legendHTML = '';
         for (var ra = 0; ra < curRatingsArray.length; ra++) {
