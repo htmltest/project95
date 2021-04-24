@@ -1692,7 +1692,7 @@ function createChartWindowRegionBubble(blockID, data) {
             }
         }
 
-        curBlock.find('.window-region-chart-bubble-graph').css({'max-width': 'calc(100% - ' + (curBlock.find('.window-region-chart-bubble-legend').width() + 50) + 'px)'});
+        curBlock.find('.window-region-chart-bubble-graph').css({'max-width': 'calc(100% - ' + (curBlock.find('.window-region-chart-bubble-legend').width() + 20) + 'px)'});
 
         if ($(window).width() > 1119) {
             curBlock.find('.window-region-chart-bubble-graph').each(function() {

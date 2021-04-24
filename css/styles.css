@@ -2389,8 +2389,8 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .window-region-chart-bubble-legend-item-inner {display:table-cell; vertical-align:middle; height:80px; padding:15px 0; position:relative}
 .window-region-chart-bubble-legend-item-inner-text {position:relative; padding:0 0 0 11px}
 .window-region-chart-bubble-legend-item-color {position:absolute; left:0; top:2px; width:4px; bottom:0}
-.window-region-chart-bubble-graph {float:right; max-width:calc(100% - 230px); position:relative; overflow:auto}
-.window-region-chart-bubble-graph.shadowLeft::before {content:""; display:block; position:absolute; left:0; top:0; bottom:49px; width:1px; background:rgba(214, 214, 214, 0.5); box-shadow:0px 0px 5px rgba(0, 0, 0, 0.5); z-index:3; pointer-events:none}
+.window-region-chart-bubble-graph {float:left; max-width:calc(100% - 230px); margin:0 0 0 20px; position:relative; overflow:auto}
+.window-region-chart-bubble-graph::before {content:""; display:block; position:absolute; left:0; top:0; bottom:49px; width:1px; background:rgba(214, 214, 214, 0.5); box-shadow:0px 0px 5px rgba(0, 0, 0, 0.5); z-index:3; pointer-events:none}
 .window-region-chart-bubble-graph.shadowRight::after {content:""; display:block; position:absolute; right:0; top:0; bottom:49px; width:1px; background:rgba(214, 214, 214, 0.5); box-shadow:0px 0px 5px rgba(0, 0, 0, 0.5); z-index:3; pointer-events:none; transform:scale(-1, 1)}
 .window-region-chart-bubble-graph-container {display:inline-block; vertical-align:top; position:relative; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; padding:0 40px}
 .window-region-chart-bubble-graph-item {display:table; width:100%; position:relative; z-index:2}
@@ -2399,7 +2399,7 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .window-region-chart-bubble-graph-item-bubble {display:inline-block; vertical-align:middle; width:80px; height:80px; position:relative; left:-25px}
 .window-region-chart-bubble-graph-item-bubble.hidden {opacity:0.6}
 .window-region-chart-bubble-graph-item-bubble-prev {position:absolute; left:-50%; top:50%; right:50%; height:1px; z-index:-1}
-.window-region-chart-bubble-graph-item-bubble-bg {position:absolute; left:50%; top:50%; border-radius:50%; transform:translate(-50%, -50%) scale(0.625); cursor:pointer}
+.window-region-chart-bubble-graph-item-bubble-bg {position:absolute; left:50%; top:50%; border-radius:50%; transform:translate(-50%, -50%) scale(0.625); cursor:pointer; min-width:33.33%; min-height:33.33%}
 .window-region-chart-bubble-graph-item-bubble-value {position:absolute; left:50%; top:50%; border-radius:50%; transform:translate(-50%, -50%); font-size:12px; line-height:21px; letter-spacing:0; pointer-events:none; color:#000}
 .window-region-chart-bubble-graph-years {border-top:2px solid #d6d6d6; padding:18px 55px 0 55px; margin:15px -40px 0 -40px}
 .window-region-chart-bubble-graph-years-fixed {display:none; border-top:2px solid #1e4854; padding:18px 55px; position:fixed; z-index:2; bottom:47px; white-space:nowrap; font-size:0; line-height:0; letter-spacing:-1px; overflow:hidden; background:#fff}
@@ -2426,8 +2426,8 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 
 @media screen and (max-width:1139px) {
     .window-region-chart-bubble-legend {display:none}
-    .window-region-chart-bubble-graph {float:none; max-width:none !important}
-    .window-region-chart-bubble-graph.shadowLeft::before {display:none}
+    .window-region-chart-bubble-graph {float:none; max-width:none !important; margin:0}
+    .window-region-chart-bubble-graph::before {display:none}
     .window-region-chart-bubble-graph.shadowRight::after {display:none}
     .window-region-chart-bubble-graph-years-fixed.visible {display:none}
     .window-region-chart-bubble-graph-container {display:block}
