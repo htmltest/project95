@@ -4158,3 +4158,45 @@ canvas {user-select:none}
 
 .monitoring-regions-empty-template {position:absolute; left:-9999px; top:-9999px; width:100%}
 .monitoring-regions-empty-template.visible {position:relative; left:auto; top:auto}
+
+.face-34-1-container .face-1-chart-point.active {cursor:default; pointer-events:none}
+.face-34-1-container .face-1-chart-point em::after {display:none}
+.face-34-1-container .face-1-chart-graph {top:50px; bottom:75px}
+.face-34-1-container .face-1-chart-labels {bottom:10px}
+.face-34-1-container .face-1-chart-year strong {display:block; font-size:11px; height:18px; text-decoration:none; color:#262626; border-radius:5px; background:rgba(255, 220, 197, 0.67); font-weight:normal}
+.face-34-1-container .face-1-chart-year span {font-size:11px}
+.face-34-1-container .face-1-chart-point span {font-size:14px}
+.face-34-1-container .face-1-chart-point.bottom span {bottom:auto; top:20px}
+.face-34-1-container .face-1-chart-icons {position:absolute; left:0; right:0; bottom:75px; top:50px; white-space:nowrap}
+.face-34-1-container .face-1-chart-icon {position:absolute; bottom:0; top:0; font-size:0; line-height:140px; width:48px}
+.face-34-1-container .face-1-chart-icon span {white-space:nowrap; position:absolute; left:50%; transform:translateX(-50%); color:#595959; font-size:14px; line-height:14px}
+.face-34-1-container .face-1-chart-icon-summ {position:absolute; left:0; bottom:0; line-height:0; right:0}
+.face-34-1-container .face-1-chart-icon-summ-inner {position:absolute; left:0; bottom:0; top:0; right:0; background:#a1b7c4}
+.face-34-1-container .face-1-chart-icon-summ-inner span {bottom:100%; margin-bottom:10px}
+.face-34-1-container .face-1-chart-icon-forecast .face-1-chart-icon-summ-inner {background:repeating-linear-gradient(0deg, #a1b7c4, #a1b7c4 7px, transparent 7px, transparent 14px); opacity:0.6}
+.face-34-1-container .face-1-chart-icon-count {position:absolute; left:0; bottom:0; line-height:0; right:0}
+.face-34-1-container .face-1-chart-icon-count-inner {position:absolute; left:0; bottom:0; top:0; right:0; background:#c2e6e1}
+.face-34-1-container .face-1-chart-icon-count-inner span {top:100%; margin-top:10px}
+.face-34-1-container .face-1-chart-icon-forecast .face-1-chart-icon-count-inner {background:repeating-linear-gradient(0deg, #c2e6e1, #c2e6e1 7px, transparent 7px, transparent 14px); opacity:0.6}
+.face-34-1-container .face-1-chart-point span {color:#000; opacity:1}
+.face-34-1-container .face-1-chart-point em {font-style:normal; position:absolute}
+.face-34-1-list .face3-list-item-icon-inner {border-radius:0}
+.face-34-1-list .face3-list-item-title {color:#121212; font-weight:normal; font-family:HelveticaNeueCyr, sans-serif}
+
+@media screen and (max-width:1139px) {
+    .face-34-1-container .face-1-container {margin:0}
+    .face-34-1-container .face-1-chart-graph {top:50px; bottom:50px}
+    .face-34-1-container .face-1-chart-point span {font-size:12px; line-height:12px}
+    .face-34-1-container .face-1-chart-labels {bottom:0}
+    .face-34-1-container .face-1-chart-year span {font-size:10px}
+    .face-34-1-container .face-1-chart-year strong {font-size:10px; height:18px; margin:0 -3px}
+    .face-34-1-container .face-1-chart-icons {bottom:50px; top:50px}
+    .face-34-1-container .face-1-chart-icon {width:26px}
+    .face-34-1-container .face-1-chart-icon-forecast .face-1-chart-icon-summ-inner {background:repeating-linear-gradient(0deg, #a1b7c4, #a1b7c4 4px, transparent 4px, transparent 8px)}
+    .face-34-1-container .face-1-chart-icon-forecast .face-1-chart-icon-count-inner {background:repeating-linear-gradient(0deg, #c2e6e1, #c2e6e1 4px, transparent 4px, transparent 8px)}
+    .face-34-1-container .face-1-chart-icon span {font-size:12px; line-height:12px}
+    .face-34-1-container .face-1-chart-point {width:9px; height:9px; margin-left:9px}
+    .face-34-1-container .face-1-chart-line {margin-left:17px; margin-top:0px}
+    .face-34-1-container .face-1-chart-point span {bottom:10px}
+    .face-34-1-container .face-1-chart-point.bottom span {bottom:auto; top:10px}
+}
