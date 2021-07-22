@@ -1898,9 +1898,9 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .sidebar-news .main-tabs-event {width:100%; padding:20px 10px 0 10px}
 .sidebar-news .main-tabs-event:first-child {padding-top:0}
 
-.main-tabs-calendar {margin:40px 0 0 0; border:1px solid #e5e5e5; font-size:0; line-height:0; letter-spacing:-1px}
-.main-tabs-calendar-month {display:inline-block; vertical-align:top; width:33.33%; box-sizing:border-box; border-left:1px solid #e5e5e5; padding:44px 50px 24px 50px; text-align:center}
-.main-tabs-calendar-month:nth-child(3n - 2) {border-left:none}
+.main-tabs-calendar {margin:40px 0 0 0; border:1px solid #e5e5e5; border-left:none; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; position:relative; overflow:hidden}
+.main-tabs-calendar.slick-initialized {overflow:visible}
+.main-tabs-calendar-month {display:inline-block; vertical-align:top; width:33.33%; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; border-left:1px solid #e5e5e5; padding:44px 50px 24px 50px; text-align:center; white-space:normal}
 .main-tabs-calendar-month-title {font:22px/24px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0; color:#1d1d1d}
 .main-tabs-calendar-week-days {margin:34px 0 0 0}
 .main-tabs-calendar-week-days span {display:inline-block; vertical-align:top; width:14.28%; font-weight:bold; font-size:10px; line-height:16px; letter-spacing:1.5px; color:#ffb17d; text-transform:uppercase}
@@ -1908,10 +1908,21 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .main-tabs-calendar-day {display:inline-block; vertical-align:top; width:14.28%; height:32px; margin:10px 0 0 0; font:14px/32px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0; color:#2f2f2f}
 .main-tabs-calendar-day.other {font-family:HelveticaNeueCyrLight, sans-serif; color:#656565}
 .main-tabs-calendar-day.holiday {color:#ee0000}
-.main-tabs-calendar-day a {display:block; width:32px; height:32px; margin:0 auto; box-sizing:border-box; border:2px solid rgba(252, 201, 0, 0.42); border-radius:50%; line-height:28px; text-decoration:none; color:inherit}
+.main-tabs-calendar-day a {display:block; width:32px; height:32px; margin:0 auto; box-sizing:border-box; border:2px solid rgba(252, 201, 0, 0.42); border-radius:50%; line-height:29px; text-decoration:none; color:inherit}
+.main-tabs-calendar-day a:hover,
+.main-tabs-calendar-day a:focus {color:inherit; background-color:rgba(252, 201, 0, 0.42)}
+
+@media screen and (min-width:1140px) {
+    .main-tabs-calendar .slick-prev,
+    .main-tabs-calendar .slick-next {display:block; position:absolute; z-index:2; top:50%; width:20px; height:49px; border:none; border-radius:0; margin:-25px 0 0 0; padding:0; outline:none; -webkit-appearance:none; cursor:pointer; background:url(../images/main-calendar-list-arrows.png)}
+    .main-tabs-calendar .slick-prev {left:-40px}
+    .main-tabs-calendar .slick-next {right:-40px; background-position:-21px top}
+    .main-tabs-calendar .slick-prev.slick-disabled,
+    .main-tabs-calendar .slick-next.slick-disabled {display:none !important}
+}
 
 @media screen and (max-width:1139px) {
-    .main-tabs-calendar {white-space:nowrap; margin:60px 0 116px 0}
+    .main-tabs-calendar {white-space:nowrap; margin:60px 0 116px 0; border-left:1px solid #e5e5e5}
     .main-tabs-calendar-month {width:100%; white-space:normal; border-left:none; padding:44px 45px 30px 45px}
     .main-tabs-calendar-week-days {margin:40px 0 0 0}
     .main-tabs-calendar-week-days span {font-size:12px}

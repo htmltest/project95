@@ -248,17 +248,12 @@
 
                     <!-- main tabs -->
                     <div class="main-tabs">
-                        <div class="main-tabs-menu">
-                            <div class="main-tabs-menu-item active"><a href="#">Новости</a></div>
-                            <div class="main-tabs-menu-item"><a href="#">События</a></div>
-                            <div class="main-tabs-menu-item"><a href="#">Аналитические материалы</a></div>
-                            <div class="main-tabs-menu-item"><a href="#">Документы</a></div>
-                        </div>
+                        <div class="main-tabs-menu"></div>
 
                         <div class="main-tabs-container">
 
                             <!-- main tabs content -->
-                            <div class="main-tabs-content active">
+                            <div class="main-tabs-content" data-title="Новости">
                                 <div class="main-tabs-header">
                                     <div class="main-tabs-header-title">Новости</div>
                                     <div class="main-tabs-header-all"><a href="#">все новости</a></div>
@@ -286,7 +281,7 @@
                             <!-- main tabs content END -->
 
                             <!-- main tabs content -->
-                            <div class="main-tabs-content">
+                            <div class="main-tabs-content" data-title="События">
                                 <div class="main-tabs-header">
                                     <div class="main-tabs-header-title">Календарь ключевых событий</div>
                                     <div class="main-tabs-header-all"><a href="#">Все события</a></div>
@@ -477,7 +472,7 @@
                             <!-- main tabs content END -->
 
                             <!-- main tabs content -->
-                            <div class="main-tabs-content">
+                            <div class="main-tabs-content" data-title="Аналитика">
                                 <div class="main-tabs-header">
                                     <div class="main-tabs-header-title">Аналитические материалы</div>
                                     <div class="main-tabs-header-all"><a href="#">Все материалы</a></div>
@@ -525,7 +520,7 @@
                             <!-- main tabs content END -->
 
                             <!-- main tabs content -->
-                            <div class="main-tabs-content">
+                            <div class="main-tabs-content" data-title="Документы">
                                 <div class="main-tabs-header">
                                     <div class="main-tabs-header-title">Документы</div>
                                     <div class="main-tabs-header-all"><a href="#">Все документы</a></div>
@@ -810,12 +805,7 @@
         <div class="sidebar">
             <div class="sidebar-title-mobile">Дополнительные материалы</div>
             <a href="#" class="sidebar-link"></a>
-            <div class="sidebar-tabs-menu">
-                <div class="sidebar-tabs-menu-item active"><a href="#">Новости</a></div>
-                <div class="sidebar-tabs-menu-item"><a href="#">События</a></div>
-                <div class="sidebar-tabs-menu-item"><a href="#">Аналитика</a></div>
-                <div class="sidebar-tabs-menu-item"><a href="#">Документы</a></div>
-            </div>
+            <div class="sidebar-tabs-menu"></div>
 
             <div class="sidebar-container">
                 <div class="sidebar-content-title">Новости</div>
@@ -823,16 +813,10 @@
                     <div class="sidebar-inner">
 
                         <!-- sidebar tab -->
-                        <div class="sidebar-tab active">
-                            <div class="sidebar-section-menu">
-                                <div class="sidebar-section-menu-current">Государственные программы</div>
-                                <ul>
-                                    <li class="active"><a href="#">Государственные программы</a></li>
-                                    <li><a href="#">ИНТЕРВЬЮ</a></li>
-                                </ul>
-                            </div>
+                        <div class="sidebar-tab" data-title="Новости">
+                            <div class="sidebar-section-menu"></div>
                             <div class="sidebar-section-tabs">
-                                <div class="sidebar-section-tab active">
+                                <div class="sidebar-section-tab" data-title="Государственные программы">
                                     <div class="sidebar-news">
                                         <div class="sidebar-news-item">
                                             <div class="sidebar-news-item-date">31 сентября 2020</div>
@@ -860,7 +844,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="sidebar-section-tab">
+                                <div class="sidebar-section-tab" data-title="ИНТЕРВЬЮ">
                                     <div class="sidebar-news">
                                         <div class="sidebar-news-item">
                                             <div class="sidebar-news-item-date">1 сентября 2020</div>
@@ -894,16 +878,10 @@
                         <!-- sidebar tab END -->
 
                         <!-- sidebar tab -->
-                        <div class="sidebar-tab">
-                            <div class="sidebar-section-menu">
-                                <div class="sidebar-section-menu-current">ИНТЕРВЬЮ</div>
-                                <ul>
-                                    <li class="active"><a href="#">ИНТЕРВЬЮ</a></li>
-                                    <li><a href="#">КАЛЕНДАРЬ</a></li>
-                                </ul>
-                            </div>
+                        <div class="sidebar-tab" data-title="События">
+                            <div class="sidebar-section-menu"></div>
                             <div class="sidebar-section-tabs">
-                                <div class="sidebar-section-tab active">
+                                <div class="sidebar-section-tab" data-title="ИНТЕРВЬЮ">
                                     <div class="sidebar-news">
                                         <div class="main-tabs-event">
                                             <div class="main-tabs-event-photo"><a href="#"><img src="files/main-events-1.jpg" alt="" /></a></div>
@@ -931,7 +909,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="sidebar-section-tab">
+                                <div class="sidebar-section-tab" data-title="КАЛЕНДАРЬ">
                                     <div class="sidebar-news">
                                         <div class="main-tabs-event">
                                             <div class="main-tabs-event-photo"><a href="#"><img src="files/main-events-4.jpg" alt="" /></a></div>
@@ -965,16 +943,10 @@
                         <!-- sidebar tab END -->
 
                         <!-- sidebar tab -->
-                        <div class="sidebar-tab">
-                            <div class="sidebar-section-menu">
-                                <div class="sidebar-section-menu-current">Брошюра</div>
-                                <ul>
-                                    <li class="active"><a href="#">Брошюра</a></li>
-                                    <li><a href="#">Дайджест</a></li>
-                                </ul>
-                            </div>
+                        <div class="sidebar-tab" data-title="Аналитика">
+                            <div class="sidebar-section-menu"></div>
                             <div class="sidebar-section-tabs">
-                                <div class="sidebar-section-tab active">
+                                <div class="sidebar-section-tab" data-title="Брошюра">
                                     <div class="sidebar-analytics">
                                         <div class="sidebar-analytics-item">
                                             <a href="#" class="sidebar-analytics-item-download">
@@ -1002,7 +974,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="sidebar-section-tab">
+                                <div class="sidebar-section-tab" data-title="Дайджест">
                                     <div class="sidebar-analytics">
                                         <div class="sidebar-analytics-item">
                                             <a href="#" class="sidebar-analytics-item-download">
@@ -1036,16 +1008,10 @@
                         <!-- sidebar tab END -->
 
                         <!-- sidebar tab -->
-                        <div class="sidebar-tab">
-                            <div class="sidebar-section-menu">
-                                <div class="sidebar-section-menu-current">Федеральный закон</div>
-                                <ul>
-                                    <li class="active"><a href="#">Федеральный закон</a></li>
-                                    <li><a href="#">Указ Правительства Российской Федерации</a></li>
-                                </ul>
-                            </div>
+                        <div class="sidebar-tab" data-title="Документы">
+                            <div class="sidebar-section-menu"></div>
                             <div class="sidebar-section-tabs">
-                                <div class="sidebar-section-tab active">
+                                <div class="sidebar-section-tab" data-title="Федеральный закон">
                                     <div class="sidebar-docs">
                                         <div class="main-tabs-doc">
                                             <div class="main-tabs-doc-title">Федеральный закон "Об официальном статистическом учете и системе государственной статистики в Российской Федерации"</div>
@@ -1115,7 +1081,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="sidebar-section-tab">
+                                <div class="sidebar-section-tab" data-title="Указ Правительства Российской Федерации">
                                     <div class="sidebar-docs">
                                         <div class="main-tabs-doc">
                                             <div class="main-tabs-doc-title">Федеральный закон 127-ФЗ "О научной, научно-технической и инновационной деятельности в Российской Федерации"</div>

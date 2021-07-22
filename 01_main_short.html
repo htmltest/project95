@@ -181,17 +181,12 @@
 
                     <!-- main tabs -->
                     <div class="main-tabs">
-                        <div class="main-tabs-menu">
-                            <div class="main-tabs-menu-item active"><a href="#">Новости</a></div>
-                            <div class="main-tabs-menu-item"><a href="#">События</a></div>
-                            <div class="main-tabs-menu-item"><a href="#"><span class="no-mobile">Аналитические материалы</span><span class="on-mobile">Аналитика</span></a></div>
-                            <div class="main-tabs-menu-item"><a href="#">Документы</a></div>
-                        </div>
+                        <div class="main-tabs-menu"></div>
 
                         <div class="main-tabs-container">
 
                             <!-- main tabs content -->
-                            <div class="main-tabs-content active">
+                            <div class="main-tabs-content" data-title="Новости">
                                 <div class="main-tabs-header">
                                     <div class="main-tabs-header-title">Новости</div>
                                     <div class="main-tabs-header-all"><a href="#">все новости</a></div>
@@ -219,7 +214,7 @@
                             <!-- main tabs content END -->
 
                             <!-- main tabs content -->
-                            <div class="main-tabs-content">
+                            <div class="main-tabs-content" data-title="События">
                                 <div class="main-tabs-header">
                                     <div class="main-tabs-header-title">Календарь ключевых событий</div>
                                     <div class="main-tabs-header-all"><a href="#">Все события</a></div>
@@ -246,7 +241,7 @@
                             <!-- main tabs content END -->
 
                             <!-- main tabs content -->
-                            <div class="main-tabs-content">
+                            <div class="main-tabs-content" data-title="Аналитика">
                                 <div class="main-tabs-header">
                                     <div class="main-tabs-header-title">Аналитические материалы</div>
                                     <div class="main-tabs-header-all"><a href="#">Все материалы</a></div>
@@ -294,7 +289,7 @@
                             <!-- main tabs content END -->
 
                             <!-- main tabs content -->
-                            <div class="main-tabs-content">
+                            <div class="main-tabs-content" data-title="Документы">
                                 <div class="main-tabs-header">
                                     <div class="main-tabs-header-title">Документы</div>
                                     <div class="main-tabs-header-all"><a href="#">Все документы</a></div>
@@ -540,8 +535,8 @@
                     </div>
 
                     <!-- main tabs calendar -->
-                    <div class="main-tabs-calendar">
-                        <div class="main-tabs-calendar-month">
+                    <div class="main-tabs-calendar" data-prev-url="ajax/main-tabs-calendar-prev.html" data-next-url="ajax/main-tabs-calendar-next.html">
+                        <div class="main-tabs-calendar-month" data-month="6" data-year="2020">
                             <div class="main-tabs-calendar-month-title">Июнь 2020</div>
                             <div class="main-tabs-calendar-week-days">
                                 <span>пн</span>
@@ -556,9 +551,69 @@
                                 <div class="main-tabs-calendar-day other">28</div>
                                 <div class="main-tabs-calendar-day other">29</div>
                                 <div class="main-tabs-calendar-day other">30</div>
-                                <div class="main-tabs-calendar-day"><a href="#">1</a></div>
-                                <div class="main-tabs-calendar-day"><a href="#">2</a></div>
-                                <div class="main-tabs-calendar-day holiday"><a href="#">3</a></div>
+                                <div class="main-tabs-calendar-day">
+                                    <a href="#" class="main-calendar-item-day-link">1</a>
+                                    <div class="main-calendar-item-day-content">
+                                        <div class="main-calendar-window-wrap">
+                                            <div class="main-calendar-window-title">1 Июня 2020</div>
+                                            <div class="main-calendar-window-list">
+                                                <div class="main-calendar-window-list-inner">
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-1.png" alt=""> Проекты</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">Cостоялся семинар «Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования», организованный РИЭПП совместно с Открытым университетом Сколково</a></div>
+                                                    </div>
+
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-2.png" alt=""> Наука</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">28 сентября 2017 года в 16.00 в ИЦ "Сколково" состоится семинар на тему "Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования"</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main-tabs-calendar-day">
+                                    <a href="#" class="main-calendar-item-day-link">2</a>
+                                    <div class="main-calendar-item-day-content">
+                                        <div class="main-calendar-window-wrap">
+                                            <div class="main-calendar-window-title">2 Июня 2020</div>
+                                            <div class="main-calendar-window-list">
+                                                <div class="main-calendar-window-list-inner">
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-1.png" alt=""> Проекты</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">Cостоялся семинар «Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования», организованный РИЭПП совместно с Открытым университетом Сколково</a></div>
+                                                    </div>
+
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-2.png" alt=""> Наука</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">28 сентября 2017 года в 16.00 в ИЦ "Сколково" состоится семинар на тему "Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования"</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main-tabs-calendar-day holiday">
+                                    <a href="#" class="main-calendar-item-day-link">3</a>
+                                    <div class="main-calendar-item-day-content">
+                                        <div class="main-calendar-window-wrap">
+                                            <div class="main-calendar-window-title">3 Июня 2020</div>
+                                            <div class="main-calendar-window-list">
+                                                <div class="main-calendar-window-list-inner">
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-1.png" alt=""> Проекты</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">Cостоялся семинар «Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования», организованный РИЭПП совместно с Открытым университетом Сколково</a></div>
+                                                    </div>
+
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-2.png" alt=""> Наука</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">28 сентября 2017 года в 16.00 в ИЦ "Сколково" состоится семинар на тему "Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования"</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="main-tabs-calendar-day holiday">4</div>
                                 <div class="main-tabs-calendar-day">5</div>
                                 <div class="main-tabs-calendar-day">6</div>
@@ -591,7 +646,7 @@
                             </div>
                         </div>
 
-                        <div class="main-tabs-calendar-month">
+                        <div class="main-tabs-calendar-month" data-month="7" data-year="2020">
                             <div class="main-tabs-calendar-month-title">Июль 2020</div>
                             <div class="main-tabs-calendar-week-days">
                                 <span>пн</span>
@@ -607,23 +662,128 @@
                                 <div class="main-tabs-calendar-day other">29</div>
                                 <div class="main-tabs-calendar-day other">30</div>
                                 <div class="main-tabs-calendar-day">1</div>
-                                <div class="main-tabs-calendar-day"><a href="#">2</a></div>
+                                <div class="main-tabs-calendar-day">
+                                    <a href="#" class="main-calendar-item-day-link">2</a>
+                                    <div class="main-calendar-item-day-content">
+                                        <div class="main-calendar-window-wrap">
+                                            <div class="main-calendar-window-title">2 Июля 2020</div>
+                                            <div class="main-calendar-window-list">
+                                                <div class="main-calendar-window-list-inner">
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-1.png" alt=""> Проекты</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">Cостоялся семинар «Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования», организованный РИЭПП совместно с Открытым университетом Сколково</a></div>
+                                                    </div>
+
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-2.png" alt=""> Наука</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">28 сентября 2017 года в 16.00 в ИЦ "Сколково" состоится семинар на тему "Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования"</a></div>
+                                                    </div>
+
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-1.png" alt=""> Проекты</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">Cостоялся семинар «Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования», организованный РИЭПП совместно с Открытым университетом Сколково</a></div>
+                                                    </div>
+
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-2.png" alt=""> Наука</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">28 сентября 2017 года в 16.00 в ИЦ "Сколково" состоится семинар на тему "Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования"</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="main-tabs-calendar-day holiday">3</div>
                                 <div class="main-tabs-calendar-day holiday">4</div>
                                 <div class="main-tabs-calendar-day">5</div>
                                 <div class="main-tabs-calendar-day">6</div>
                                 <div class="main-tabs-calendar-day">7</div>
-                                <div class="main-tabs-calendar-day"><a href="#">8</a></div>
+                                <div class="main-tabs-calendar-day">
+                                    <a href="#" class="main-calendar-item-day-link">8</a>
+                                    <div class="main-calendar-item-day-content">
+                                        <div class="main-calendar-window-wrap">
+                                            <div class="main-calendar-window-title">8 Июля 2020</div>
+                                            <div class="main-calendar-window-list">
+                                                <div class="main-calendar-window-list-inner">
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-1.png" alt=""> Проекты</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">Cостоялся семинар «Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования», организованный РИЭПП совместно с Открытым университетом Сколково</a></div>
+                                                    </div>
+
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-2.png" alt=""> Наука</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">28 сентября 2017 года в 16.00 в ИЦ "Сколково" состоится семинар на тему "Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования"</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="main-tabs-calendar-day">9</div>
                                 <div class="main-tabs-calendar-day holiday">10</div>
                                 <div class="main-tabs-calendar-day holiday">11</div>
                                 <div class="main-tabs-calendar-day">12</div>
-                                <div class="main-tabs-calendar-day"><a href="#">13</a></div>
-                                <div class="main-tabs-calendar-day"><a href="#">14</a></div>
+                                <div class="main-tabs-calendar-day">
+                                    <a href="#" class="main-calendar-item-day-link">13</a>
+                                    <div class="main-calendar-item-day-content">
+                                        <div class="main-calendar-window-wrap">
+                                            <div class="main-calendar-window-title">13 Июля 2020</div>
+                                            <div class="main-calendar-window-list">
+                                                <div class="main-calendar-window-list-inner">
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-1.png" alt=""> Проекты</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">Cостоялся семинар «Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования», организованный РИЭПП совместно с Открытым университетом Сколково</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main-tabs-calendar-day">
+                                    <a href="#" class="main-calendar-item-day-link">14</a>
+                                    <div class="main-calendar-item-day-content">
+                                        <div class="main-calendar-window-wrap">
+                                            <div class="main-calendar-window-title">14 Июля 2020</div>
+                                            <div class="main-calendar-window-list">
+                                                <div class="main-calendar-window-list-inner">
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-1.png" alt=""> Проекты</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">Cостоялся семинар «Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования», организованный РИЭПП совместно с Открытым университетом Сколково</a></div>
+                                                    </div>
+
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-2.png" alt=""> Наука</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">28 сентября 2017 года в 16.00 в ИЦ "Сколково" состоится семинар на тему "Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования"</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="main-tabs-calendar-day">15</div>
                                 <div class="main-tabs-calendar-day">16</div>
                                 <div class="main-tabs-calendar-day holiday">17</div>
-                                <div class="main-tabs-calendar-day holiday"><a href="#">18</a></div>
+                                <div class="main-tabs-calendar-day holiday">
+                                    <a href="#" class="main-calendar-item-day-link">18</a>
+                                    <div class="main-calendar-item-day-content">
+                                        <div class="main-calendar-window-wrap">
+                                            <div class="main-calendar-window-title">18 Июля 2020</div>
+                                            <div class="main-calendar-window-list">
+                                                <div class="main-calendar-window-list-inner">
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-1.png" alt=""> Проекты</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">Cостоялся семинар «Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования», организованный РИЭПП совместно с Открытым университетом Сколково</a></div>
+                                                    </div>
+
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-2.png" alt=""> Наука</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">28 сентября 2017 года в 16.00 в ИЦ "Сколково" состоится семинар на тему "Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования"</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="main-tabs-calendar-day">19</div>
                                 <div class="main-tabs-calendar-day">20</div>
                                 <div class="main-tabs-calendar-day">21</div>
@@ -641,8 +801,368 @@
                             </div>
                         </div>
 
-                        <div class="main-tabs-calendar-month">
+                        <div class="main-tabs-calendar-month" data-month="8" data-year="2020">
                             <div class="main-tabs-calendar-month-title">Август 2020</div>
+                            <div class="main-tabs-calendar-week-days">
+                                <span>пн</span>
+                                <span>вт</span>
+                                <span>ср</span>
+                                <span>чт</span>
+                                <span>пт</span>
+                                <span>сб</span>
+                                <span>вс</span>
+                            </div>
+                            <div class="main-tabs-calendar-days">
+                                <div class="main-tabs-calendar-day other">28</div>
+                                <div class="main-tabs-calendar-day other">29</div>
+                                <div class="main-tabs-calendar-day other">30</div>
+                                <div class="main-tabs-calendar-day">1</div>
+                                <div class="main-tabs-calendar-day">2</div>
+                                <div class="main-tabs-calendar-day holiday">3</div>
+                                <div class="main-tabs-calendar-day holiday">4</div>
+                                <div class="main-tabs-calendar-day">5</div>
+                                <div class="main-tabs-calendar-day">6</div>
+                                <div class="main-tabs-calendar-day">7</div>
+                                <div class="main-tabs-calendar-day">8</div>
+                                <div class="main-tabs-calendar-day">9</div>
+                                <div class="main-tabs-calendar-day holiday">10</div>
+                                <div class="main-tabs-calendar-day holiday">11</div>
+                                <div class="main-tabs-calendar-day">12</div>
+                                <div class="main-tabs-calendar-day">13</div>
+                                <div class="main-tabs-calendar-day">14</div>
+                                <div class="main-tabs-calendar-day">15</div>
+                                <div class="main-tabs-calendar-day">16</div>
+                                <div class="main-tabs-calendar-day holiday">17</div>
+                                <div class="main-tabs-calendar-day holiday">18</div>
+                                <div class="main-tabs-calendar-day">19</div>
+                                <div class="main-tabs-calendar-day">20</div>
+                                <div class="main-tabs-calendar-day">21</div>
+                                <div class="main-tabs-calendar-day">22</div>
+                                <div class="main-tabs-calendar-day">23</div>
+                                <div class="main-tabs-calendar-day holiday">24</div>
+                                <div class="main-tabs-calendar-day holiday">25</div>
+                                <div class="main-tabs-calendar-day">26</div>
+                                <div class="main-tabs-calendar-day">27</div>
+                                <div class="main-tabs-calendar-day">28</div>
+                                <div class="main-tabs-calendar-day">29</div>
+                                <div class="main-tabs-calendar-day">30</div>
+                                <div class="main-tabs-calendar-day holiday">31</div>
+                                <div class="main-tabs-calendar-day other">1</div>
+                            </div>
+                        </div>
+
+                        <div class="main-tabs-calendar-month" data-month="9" data-year="2020">
+                            <div class="main-tabs-calendar-month-title">Сентябрь 2020</div>
+                            <div class="main-tabs-calendar-week-days">
+                                <span>пн</span>
+                                <span>вт</span>
+                                <span>ср</span>
+                                <span>чт</span>
+                                <span>пт</span>
+                                <span>сб</span>
+                                <span>вс</span>
+                            </div>
+                            <div class="main-tabs-calendar-days">
+                                <div class="main-tabs-calendar-day other">28</div>
+                                <div class="main-tabs-calendar-day other">29</div>
+                                <div class="main-tabs-calendar-day other">30</div>
+                                <div class="main-tabs-calendar-day">
+                                    <a href="#" class="main-calendar-item-day-link">1</a>
+                                    <div class="main-calendar-item-day-content">
+                                        <div class="main-calendar-window-wrap">
+                                            <div class="main-calendar-window-title">1 Июня 2020</div>
+                                            <div class="main-calendar-window-list">
+                                                <div class="main-calendar-window-list-inner">
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-1.png" alt=""> Проекты</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">Cостоялся семинар «Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования», организованный РИЭПП совместно с Открытым университетом Сколково</a></div>
+                                                    </div>
+
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-2.png" alt=""> Наука</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">28 сентября 2017 года в 16.00 в ИЦ "Сколково" состоится семинар на тему "Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования"</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main-tabs-calendar-day">
+                                    <a href="#" class="main-calendar-item-day-link">2</a>
+                                    <div class="main-calendar-item-day-content">
+                                        <div class="main-calendar-window-wrap">
+                                            <div class="main-calendar-window-title">2 Июня 2020</div>
+                                            <div class="main-calendar-window-list">
+                                                <div class="main-calendar-window-list-inner">
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-1.png" alt=""> Проекты</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">Cостоялся семинар «Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования», организованный РИЭПП совместно с Открытым университетом Сколково</a></div>
+                                                    </div>
+
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-2.png" alt=""> Наука</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">28 сентября 2017 года в 16.00 в ИЦ "Сколково" состоится семинар на тему "Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования"</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main-tabs-calendar-day holiday">
+                                    <a href="#" class="main-calendar-item-day-link">3</a>
+                                    <div class="main-calendar-item-day-content">
+                                        <div class="main-calendar-window-wrap">
+                                            <div class="main-calendar-window-title">3 Июня 2020</div>
+                                            <div class="main-calendar-window-list">
+                                                <div class="main-calendar-window-list-inner">
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-1.png" alt=""> Проекты</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">Cостоялся семинар «Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования», организованный РИЭПП совместно с Открытым университетом Сколково</a></div>
+                                                    </div>
+
+                                                    <div class="main-calendar-window-item">
+                                                        <div class="main-calendar-window-item-group"><a href="#" tabindex="0"><img src="files/main-news-icon-2.png" alt=""> Наука</a></div>
+                                                        <div class="main-calendar-window-item-title"><a href="#" tabindex="0">28 сентября 2017 года в 16.00 в ИЦ "Сколково" состоится семинар на тему "Единая отраслевая рамка квалификаций для сферы исследований, разработок и образования"</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main-tabs-calendar-day holiday">4</div>
+                                <div class="main-tabs-calendar-day">5</div>
+                                <div class="main-tabs-calendar-day">6</div>
+                                <div class="main-tabs-calendar-day">7</div>
+                                <div class="main-tabs-calendar-day">8</div>
+                                <div class="main-tabs-calendar-day">9</div>
+                                <div class="main-tabs-calendar-day holiday">10</div>
+                                <div class="main-tabs-calendar-day holiday">11</div>
+                                <div class="main-tabs-calendar-day">12</div>
+                                <div class="main-tabs-calendar-day">13</div>
+                                <div class="main-tabs-calendar-day">14</div>
+                                <div class="main-tabs-calendar-day">15</div>
+                                <div class="main-tabs-calendar-day">16</div>
+                                <div class="main-tabs-calendar-day holiday">17</div>
+                                <div class="main-tabs-calendar-day holiday">18</div>
+                                <div class="main-tabs-calendar-day">19</div>
+                                <div class="main-tabs-calendar-day">20</div>
+                                <div class="main-tabs-calendar-day">21</div>
+                                <div class="main-tabs-calendar-day">22</div>
+                                <div class="main-tabs-calendar-day">23</div>
+                                <div class="main-tabs-calendar-day holiday">24</div>
+                                <div class="main-tabs-calendar-day holiday">25</div>
+                                <div class="main-tabs-calendar-day">26</div>
+                                <div class="main-tabs-calendar-day">27</div>
+                                <div class="main-tabs-calendar-day">28</div>
+                                <div class="main-tabs-calendar-day">29</div>
+                                <div class="main-tabs-calendar-day">30</div>
+                                <div class="main-tabs-calendar-day holiday">31</div>
+                                <div class="main-tabs-calendar-day other">1</div>
+                            </div>
+                        </div>
+
+                        <div class="main-tabs-calendar-month" data-month="10" data-year="2020">
+                            <div class="main-tabs-calendar-month-title">Октябрь 2020</div>
+                            <div class="main-tabs-calendar-week-days">
+                                <span>пн</span>
+                                <span>вт</span>
+                                <span>ср</span>
+                                <span>чт</span>
+                                <span>пт</span>
+                                <span>сб</span>
+                                <span>вс</span>
+                            </div>
+                            <div class="main-tabs-calendar-days">
+                                <div class="main-tabs-calendar-day other">28</div>
+                                <div class="main-tabs-calendar-day other">29</div>
+                                <div class="main-tabs-calendar-day other">30</div>
+                                <div class="main-tabs-calendar-day">1</div>
+                                <div class="main-tabs-calendar-day">2</div>
+                                <div class="main-tabs-calendar-day holiday">3</div>
+                                <div class="main-tabs-calendar-day holiday">4</div>
+                                <div class="main-tabs-calendar-day">5</div>
+                                <div class="main-tabs-calendar-day">6</div>
+                                <div class="main-tabs-calendar-day">7</div>
+                                <div class="main-tabs-calendar-day">8</div>
+                                <div class="main-tabs-calendar-day">9</div>
+                                <div class="main-tabs-calendar-day holiday">10</div>
+                                <div class="main-tabs-calendar-day holiday">11</div>
+                                <div class="main-tabs-calendar-day">12</div>
+                                <div class="main-tabs-calendar-day">13</div>
+                                <div class="main-tabs-calendar-day">14</div>
+                                <div class="main-tabs-calendar-day">15</div>
+                                <div class="main-tabs-calendar-day">16</div>
+                                <div class="main-tabs-calendar-day holiday">17</div>
+                                <div class="main-tabs-calendar-day holiday">18</div>
+                                <div class="main-tabs-calendar-day">19</div>
+                                <div class="main-tabs-calendar-day">20</div>
+                                <div class="main-tabs-calendar-day">21</div>
+                                <div class="main-tabs-calendar-day">22</div>
+                                <div class="main-tabs-calendar-day">23</div>
+                                <div class="main-tabs-calendar-day holiday">24</div>
+                                <div class="main-tabs-calendar-day holiday">25</div>
+                                <div class="main-tabs-calendar-day">26</div>
+                                <div class="main-tabs-calendar-day">27</div>
+                                <div class="main-tabs-calendar-day">28</div>
+                                <div class="main-tabs-calendar-day">29</div>
+                                <div class="main-tabs-calendar-day">30</div>
+                                <div class="main-tabs-calendar-day holiday">31</div>
+                                <div class="main-tabs-calendar-day other">1</div>
+                            </div>
+                        </div>
+
+                        <div class="main-tabs-calendar-month" data-month="11" data-year="2020">
+                            <div class="main-tabs-calendar-month-title">Ноябрь 2020</div>
+                            <div class="main-tabs-calendar-week-days">
+                                <span>пн</span>
+                                <span>вт</span>
+                                <span>ср</span>
+                                <span>чт</span>
+                                <span>пт</span>
+                                <span>сб</span>
+                                <span>вс</span>
+                            </div>
+                            <div class="main-tabs-calendar-days">
+                                <div class="main-tabs-calendar-day other">28</div>
+                                <div class="main-tabs-calendar-day other">29</div>
+                                <div class="main-tabs-calendar-day other">30</div>
+                                <div class="main-tabs-calendar-day">1</div>
+                                <div class="main-tabs-calendar-day">2</div>
+                                <div class="main-tabs-calendar-day holiday">3</div>
+                                <div class="main-tabs-calendar-day holiday">4</div>
+                                <div class="main-tabs-calendar-day">5</div>
+                                <div class="main-tabs-calendar-day">6</div>
+                                <div class="main-tabs-calendar-day">7</div>
+                                <div class="main-tabs-calendar-day">8</div>
+                                <div class="main-tabs-calendar-day">9</div>
+                                <div class="main-tabs-calendar-day holiday">10</div>
+                                <div class="main-tabs-calendar-day holiday">11</div>
+                                <div class="main-tabs-calendar-day">12</div>
+                                <div class="main-tabs-calendar-day">13</div>
+                                <div class="main-tabs-calendar-day">14</div>
+                                <div class="main-tabs-calendar-day">15</div>
+                                <div class="main-tabs-calendar-day">16</div>
+                                <div class="main-tabs-calendar-day holiday">17</div>
+                                <div class="main-tabs-calendar-day holiday">18</div>
+                                <div class="main-tabs-calendar-day">19</div>
+                                <div class="main-tabs-calendar-day">20</div>
+                                <div class="main-tabs-calendar-day">21</div>
+                                <div class="main-tabs-calendar-day">22</div>
+                                <div class="main-tabs-calendar-day">23</div>
+                                <div class="main-tabs-calendar-day holiday">24</div>
+                                <div class="main-tabs-calendar-day holiday">25</div>
+                                <div class="main-tabs-calendar-day">26</div>
+                                <div class="main-tabs-calendar-day">27</div>
+                                <div class="main-tabs-calendar-day">28</div>
+                                <div class="main-tabs-calendar-day">29</div>
+                                <div class="main-tabs-calendar-day">30</div>
+                                <div class="main-tabs-calendar-day holiday">31</div>
+                                <div class="main-tabs-calendar-day other">1</div>
+                            </div>
+                        </div>
+
+                        <div class="main-tabs-calendar-month" data-month="12" data-year="2020">
+                            <div class="main-tabs-calendar-month-title">Декабрь 2020</div>
+                            <div class="main-tabs-calendar-week-days">
+                                <span>пн</span>
+                                <span>вт</span>
+                                <span>ср</span>
+                                <span>чт</span>
+                                <span>пт</span>
+                                <span>сб</span>
+                                <span>вс</span>
+                            </div>
+                            <div class="main-tabs-calendar-days">
+                                <div class="main-tabs-calendar-day other">28</div>
+                                <div class="main-tabs-calendar-day other">29</div>
+                                <div class="main-tabs-calendar-day other">30</div>
+                                <div class="main-tabs-calendar-day">1</div>
+                                <div class="main-tabs-calendar-day">2</div>
+                                <div class="main-tabs-calendar-day holiday">3</div>
+                                <div class="main-tabs-calendar-day holiday">4</div>
+                                <div class="main-tabs-calendar-day">5</div>
+                                <div class="main-tabs-calendar-day">6</div>
+                                <div class="main-tabs-calendar-day">7</div>
+                                <div class="main-tabs-calendar-day">8</div>
+                                <div class="main-tabs-calendar-day">9</div>
+                                <div class="main-tabs-calendar-day holiday">10</div>
+                                <div class="main-tabs-calendar-day holiday">11</div>
+                                <div class="main-tabs-calendar-day">12</div>
+                                <div class="main-tabs-calendar-day">13</div>
+                                <div class="main-tabs-calendar-day">14</div>
+                                <div class="main-tabs-calendar-day">15</div>
+                                <div class="main-tabs-calendar-day">16</div>
+                                <div class="main-tabs-calendar-day holiday">17</div>
+                                <div class="main-tabs-calendar-day holiday">18</div>
+                                <div class="main-tabs-calendar-day">19</div>
+                                <div class="main-tabs-calendar-day">20</div>
+                                <div class="main-tabs-calendar-day">21</div>
+                                <div class="main-tabs-calendar-day">22</div>
+                                <div class="main-tabs-calendar-day">23</div>
+                                <div class="main-tabs-calendar-day holiday">24</div>
+                                <div class="main-tabs-calendar-day holiday">25</div>
+                                <div class="main-tabs-calendar-day">26</div>
+                                <div class="main-tabs-calendar-day">27</div>
+                                <div class="main-tabs-calendar-day">28</div>
+                                <div class="main-tabs-calendar-day">29</div>
+                                <div class="main-tabs-calendar-day">30</div>
+                                <div class="main-tabs-calendar-day holiday">31</div>
+                                <div class="main-tabs-calendar-day other">1</div>
+                            </div>
+                        </div>
+
+                        <div class="main-tabs-calendar-month" data-month="1" data-year="2021">
+                            <div class="main-tabs-calendar-month-title">Январь 2021</div>
+                            <div class="main-tabs-calendar-week-days">
+                                <span>пн</span>
+                                <span>вт</span>
+                                <span>ср</span>
+                                <span>чт</span>
+                                <span>пт</span>
+                                <span>сб</span>
+                                <span>вс</span>
+                            </div>
+                            <div class="main-tabs-calendar-days">
+                                <div class="main-tabs-calendar-day other">28</div>
+                                <div class="main-tabs-calendar-day other">29</div>
+                                <div class="main-tabs-calendar-day other">30</div>
+                                <div class="main-tabs-calendar-day">1</div>
+                                <div class="main-tabs-calendar-day">2</div>
+                                <div class="main-tabs-calendar-day holiday">3</div>
+                                <div class="main-tabs-calendar-day holiday">4</div>
+                                <div class="main-tabs-calendar-day">5</div>
+                                <div class="main-tabs-calendar-day">6</div>
+                                <div class="main-tabs-calendar-day">7</div>
+                                <div class="main-tabs-calendar-day">8</div>
+                                <div class="main-tabs-calendar-day">9</div>
+                                <div class="main-tabs-calendar-day holiday">10</div>
+                                <div class="main-tabs-calendar-day holiday">11</div>
+                                <div class="main-tabs-calendar-day">12</div>
+                                <div class="main-tabs-calendar-day">13</div>
+                                <div class="main-tabs-calendar-day">14</div>
+                                <div class="main-tabs-calendar-day">15</div>
+                                <div class="main-tabs-calendar-day">16</div>
+                                <div class="main-tabs-calendar-day holiday">17</div>
+                                <div class="main-tabs-calendar-day holiday">18</div>
+                                <div class="main-tabs-calendar-day">19</div>
+                                <div class="main-tabs-calendar-day">20</div>
+                                <div class="main-tabs-calendar-day">21</div>
+                                <div class="main-tabs-calendar-day">22</div>
+                                <div class="main-tabs-calendar-day">23</div>
+                                <div class="main-tabs-calendar-day holiday">24</div>
+                                <div class="main-tabs-calendar-day holiday">25</div>
+                                <div class="main-tabs-calendar-day">26</div>
+                                <div class="main-tabs-calendar-day">27</div>
+                                <div class="main-tabs-calendar-day">28</div>
+                                <div class="main-tabs-calendar-day">29</div>
+                                <div class="main-tabs-calendar-day">30</div>
+                                <div class="main-tabs-calendar-day holiday">31</div>
+                                <div class="main-tabs-calendar-day other">1</div>
+                            </div>
+                        </div>
+
+                        <div class="main-tabs-calendar-month" data-month="2" data-year="2021">
+                            <div class="main-tabs-calendar-month-title">Февраль 2021</div>
                             <div class="main-tabs-calendar-week-days">
                                 <span>пн</span>
                                 <span>вт</span>
@@ -836,12 +1356,7 @@
         <div class="sidebar">
             <div class="sidebar-title-mobile">Дополнительные материалы</div>
             <a href="#" class="sidebar-link"></a>
-            <div class="sidebar-tabs-menu">
-                <div class="sidebar-tabs-menu-item active"><a href="#">Новости</a></div>
-                <div class="sidebar-tabs-menu-item"><a href="#">События</a></div>
-                <div class="sidebar-tabs-menu-item"><a href="#">Аналитика</a></div>
-                <div class="sidebar-tabs-menu-item"><a href="#">Документы</a></div>
-            </div>
+            <div class="sidebar-tabs-menu"></div>
 
             <div class="sidebar-container">
                 <div class="sidebar-content-title">Новости</div>
@@ -849,16 +1364,10 @@
                     <div class="sidebar-inner">
 
                         <!-- sidebar tab -->
-                        <div class="sidebar-tab active">
-                            <div class="sidebar-section-menu">
-                                <div class="sidebar-section-menu-current">Государственные программы</div>
-                                <ul>
-                                    <li class="active"><a href="#">Государственные программы</a></li>
-                                    <li><a href="#">ИНТЕРВЬЮ</a></li>
-                                </ul>
-                            </div>
+                        <div class="sidebar-tab" data-title="Новости">
+                            <div class="sidebar-section-menu"></div>
                             <div class="sidebar-section-tabs">
-                                <div class="sidebar-section-tab active">
+                                <div class="sidebar-section-tab" data-title="Государственные программы">
                                     <div class="sidebar-news">
                                         <div class="sidebar-news-item">
                                             <div class="sidebar-news-item-date">31 сентября 2020</div>
@@ -886,7 +1395,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="sidebar-section-tab">
+                                <div class="sidebar-section-tab" data-title="ИНТЕРВЬЮ">
                                     <div class="sidebar-news">
                                         <div class="sidebar-news-item">
                                             <div class="sidebar-news-item-date">1 сентября 2020</div>
@@ -920,16 +1429,10 @@
                         <!-- sidebar tab END -->
 
                         <!-- sidebar tab -->
-                        <div class="sidebar-tab">
-                            <div class="sidebar-section-menu">
-                                <div class="sidebar-section-menu-current">ИНТЕРВЬЮ</div>
-                                <ul>
-                                    <li class="active"><a href="#">ИНТЕРВЬЮ</a></li>
-                                    <li><a href="#">КАЛЕНДАРЬ</a></li>
-                                </ul>
-                            </div>
+                        <div class="sidebar-tab" data-title="События">
+                            <div class="sidebar-section-menu"></div>
                             <div class="sidebar-section-tabs">
-                                <div class="sidebar-section-tab active">
+                                <div class="sidebar-section-tab" data-title="ИНТЕРВЬЮ">
                                     <div class="sidebar-news">
                                         <div class="main-tabs-event">
                                             <div class="main-tabs-event-photo"><a href="#"><img src="files/main-events-1.jpg" alt="" /></a></div>
@@ -957,7 +1460,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="sidebar-section-tab">
+                                <div class="sidebar-section-tab" data-title="КАЛЕНДАРЬ">
                                     <div class="sidebar-news">
                                         <div class="main-tabs-event">
                                             <div class="main-tabs-event-photo"><a href="#"><img src="files/main-events-4.jpg" alt="" /></a></div>
@@ -991,16 +1494,10 @@
                         <!-- sidebar tab END -->
 
                         <!-- sidebar tab -->
-                        <div class="sidebar-tab">
-                            <div class="sidebar-section-menu">
-                                <div class="sidebar-section-menu-current">Брошюра</div>
-                                <ul>
-                                    <li class="active"><a href="#">Брошюра</a></li>
-                                    <li><a href="#">Дайджест</a></li>
-                                </ul>
-                            </div>
+                        <div class="sidebar-tab" data-title="Аналитика">
+                            <div class="sidebar-section-menu"></div>
                             <div class="sidebar-section-tabs">
-                                <div class="sidebar-section-tab active">
+                                <div class="sidebar-section-tab" data-title="Брошюра">
                                     <div class="sidebar-analytics">
                                         <div class="sidebar-analytics-item">
                                             <a href="#" class="sidebar-analytics-item-download">
@@ -1028,7 +1525,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="sidebar-section-tab">
+                                <div class="sidebar-section-tab" data-title="Дайджест">
                                     <div class="sidebar-analytics">
                                         <div class="sidebar-analytics-item">
                                             <a href="#" class="sidebar-analytics-item-download">
@@ -1062,16 +1559,10 @@
                         <!-- sidebar tab END -->
 
                         <!-- sidebar tab -->
-                        <div class="sidebar-tab">
-                            <div class="sidebar-section-menu">
-                                <div class="sidebar-section-menu-current">Федеральный закон</div>
-                                <ul>
-                                    <li class="active"><a href="#">Федеральный закон</a></li>
-                                    <li><a href="#">Указ Правительства Российской Федерации</a></li>
-                                </ul>
-                            </div>
+                        <div class="sidebar-tab" data-title="Документы">
+                            <div class="sidebar-section-menu"></div>
                             <div class="sidebar-section-tabs">
-                                <div class="sidebar-section-tab active">
+                                <div class="sidebar-section-tab" data-title="Федеральный закон">
                                     <div class="sidebar-docs">
                                         <div class="main-tabs-doc">
                                             <div class="main-tabs-doc-title">Федеральный закон "Об официальном статистическом учете и системе государственной статистики в Российской Федерации"</div>
@@ -1141,7 +1632,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="sidebar-section-tab">
+                                <div class="sidebar-section-tab" data-title="Указ Правительства Российской Федерации">
                                     <div class="sidebar-docs">
                                         <div class="main-tabs-doc">
                                             <div class="main-tabs-doc-title">Федеральный закон 127-ФЗ "О научной, научно-технической и инновационной деятельности в Российской Федерации"</div>

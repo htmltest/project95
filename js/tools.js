@@ -663,23 +663,6 @@ $(window).on('load resize scroll', function() {
         }
     }
 
-    if ($(window).width() < 1140) {
-        if (!$('.main-tabs-calendar').hasClass('slick-slider')) {
-            $('.main-tabs-calendar').slick({
-                dots: true,
-                infinite: true,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                prevArrow: '<button type="button" class="slick-prev"></button>',
-                nextArrow: '<button type="button" class="slick-next"></button>'
-            });
-        }
-    } else {
-        if ($('.main-tabs-calendar').hasClass('slick-slider')) {
-            $('.main-tabs-calendar').slick('unslick');
-        }
-    }
-
 });
 
 $(window).on('load', function() {
@@ -958,7 +941,7 @@ function windowOpen(linkWindow, dataWindow, callbackWindow) {
         $('.window form').each(function() {
             initForm($(this));
         });
-        
+
         $(window).trigger('resize');
     });
 }
@@ -1008,6 +991,24 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    $('.sidebar').each(function() {
+        $('.sidebar-tabs-menu').html('');
+        $('.sidebar-tab').each(function() {
+            var curTab = $(this);
+            $('.sidebar-tabs-menu').append('<div class="sidebar-tabs-menu-item"><a href="#">' + curTab.attr('data-title') + '</a></div>');
+            if (curTab.find('.sidebar-section-tab').length > 1) {
+                curTab.find('.sidebar-section-menu').append('<div class="sidebar-section-menu-current">' + curTab.find('.sidebar-section-tab').eq(0).attr('data-title') + '</div><ul></ul>');
+                curTab.find('.sidebar-section-tab').each(function() {
+                    curTab.find('.sidebar-section-menu ul').append('<li><a href="#">' + $(this).attr('data-title') + '</a></li>');
+                });
+                curTab.find('.sidebar-section-menu li').eq(0).addClass('active');
+            }
+            curTab.find('.sidebar-section-tab').eq(0).addClass('active');
+        });
+        $('.sidebar-tab').eq(0).addClass('active');
+        $('.sidebar-tabs-menu-item').eq(0).addClass('active');
+    });
+
     $('.sidebar-tabs-menu-item a').click(function(e) {
         $('.sidebar').addClass('open');
         var curItem = $(this).parent();
@@ -1047,6 +1048,18 @@ $(document).ready(function() {
             curMenu.parent().find('.sidebar-section-tab').eq(curIndex).addClass('active');
         }
         e.preventDefault();
+    });
+
+    $('.main-tabs').each(function() {
+        var curTabs = $(this);
+        if (curTabs.find('.main-tabs-content').length > 1) {
+            curTabs.find('.main-tabs-menu').append('<div class="main-tabs-menu-current">' + curTabs.find('.main-tabs-content').eq(0).attr('data-title') + '</div><div class="main-tabs-menu-list"></div>');
+            curTabs.find('.main-tabs-content').each(function() {
+                curTabs.find('.main-tabs-menu-list').append('<div class="main-tabs-menu-item"><a href="#">' + $(this).attr('data-title') + '</a></div>');
+            });
+            curTabs.find('.main-tabs-menu-item').eq(0).addClass('active');
+        }
+        curTabs.find('.main-tabs-content').eq(0).addClass('active');
     });
 
     $('.main-tabs-menu-item a').click(function(e) {
@@ -1095,6 +1108,77 @@ $(document).ready(function() {
     $('body').on('click', '.opendata-chart-map-inner g', function(e) {
         var curURL = $(this).attr('data-url');
         windowOpen(curURL, null, function() {$(window).trigger('resize')});
+    });
+
+    var slickAnimation2 = false;
+    $('.main-tabs-calendar').slick({
+        infinite: false,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        initialSlide: 3,
+        prevArrow: '<button type="button" class="slick-prev"></button>',
+        nextArrow: '<button type="button" class="slick-next"></button>',
+        dots: false,
+        responsive: [
+            {
+                breakpoint: 1139,
+                settings: {
+                   slidesToShow: 1,
+                   slidesToScroll: 1
+                }
+            }
+        ]
+    }).on('setPosition', function(event, slick) {
+        if ($('.main-calendar-window').length > 0) {
+            $('.main-calendar-window').remove();
+        }
+        if (!$('.main-tabs-calendar .slick-prev').hasClass('slick-disabled') && !$('.main-tabs-calendar .slick-next').hasClass('slick-disabled')) {
+            slickAnimation2 = false;
+            $('.main-tabs-calendar').removeClass('prevLoading nextLoading');
+        }
+        if ($('.main-tabs-calendar .slick-prev').hasClass('slick-disabled')) {
+            if (!slickAnimation2) {
+                if (!$('.main-tabs-calendar-month:first').hasClass('last')) {
+                    slickAnimation2 = true;
+                    $('.main-tabs-calendar').addClass('prevLoading');
+                    var loadURL = $('.main-tabs-calendar').data('prev-url');
+                    var loadMonth = $('.main-tabs-calendar-month:first').data('month');
+                    var loadYear = $('.main-tabs-calendar-month:first').data('year');
+                    $.ajax({
+                        type: 'POST',
+                        url: loadURL,
+                        dataType: 'html',
+                        data: 'month=' + loadMonth + '&year=' + loadYear,
+                        cache: false
+                    }).done(function(html) {
+                        var curLength = $('.main-tabs-calendar-month').length;
+                        $('.main-tabs-calendar').slick('slickAdd', html, true);
+                        var curLength = $('.main-tabs-calendar-month').length - curLength;
+                        $('.main-tabs-calendar').slick('slickGoTo', curLength, true);
+                    });
+                }
+            }
+        }
+        if ($('.main-tabs-calendar .slick-next').hasClass('slick-disabled')) {
+            if (!slickAnimation2) {
+                if (!$('.main-tabs-calendar-month:last').hasClass('last')) {
+                    slickAnimation2 = true;
+                    $('.main-tabs-calendar').addClass('nextLoading');
+                    var loadURL = $('.main-tabs-calendar').data('next-url');
+                    var loadMonth = $('.main-tabs-calendar-month:last').data('month');
+                    var loadYear = $('.main-tabs-calendar-month:last').data('year');
+                    $.ajax({
+                        type: 'POST',
+                        url: loadURL,
+                        dataType: 'html',
+                        data: 'month=' + loadMonth + '&year=' + loadYear,
+                        cache: false
+                    }).done(function(html) {
+                        $('.main-tabs-calendar').slick('slickAdd', html);
+                    });
+                }
+            }
+        }
     });
 
 });
