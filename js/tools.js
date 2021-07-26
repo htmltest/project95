@@ -474,6 +474,10 @@ $(document).ready(function() {
         $('.main-subscribe .form-checkbox').slideDown();
     });
 
+    $('.main-tabs-subscribe-field .form-input input').focus(function() {
+        $('.main-tabs-subscribe .form-checkbox').slideDown();
+    });
+
     // $('.header-menu-col-title a').click(function(e) {
     //     $(this).parent().toggleClass('open');
     //     e.preventDefault();
@@ -784,8 +788,9 @@ function initForm(curForm) {
     });
 
 
-		if (curForm.parent().hasClass('main-subscribe')) {
+		if (curForm.parent().hasClass('main-subscribe') || curForm.parent().hasClass('main-tabs-subscribe')) {
             curForm.validate({
+                ignore: '',
                 submitHandler: function(form, validatorcalc) {
                     $.ajax({
                         type: 'POST',
