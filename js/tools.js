@@ -138,6 +138,7 @@ $(document).ready(function() {
             $('.main-calendar-window').remove();
         }
         $('.main-calendar-item-day.active').removeClass('active');
+        $('.main-tabs-calendar-day.active').removeClass('active');
         if (!$('.main-calendar-list .slick-prev').hasClass('slick-disabled') && !$('.main-calendar-list .slick-next').hasClass('slick-disabled')) {
             slickAnimation = false;
             $('.main-calendar-list').removeClass('prevLoading nextLoading');
@@ -369,6 +370,7 @@ $(document).ready(function() {
                 $('.main-calendar-window').remove();
             }
             $('.main-calendar-item-day.active').removeClass('active');
+            $('.main-tabs-calendar-day.active').removeClass('active');
             curDay.addClass('active');
             $('.wrapper').append('<div class="main-calendar-window">' + curDay.find('.main-calendar-item-day-content').html() + '</div>');
             var curWindow = $('.main-calendar-window');
@@ -389,6 +391,7 @@ $(document).ready(function() {
                 $('.main-calendar-window').remove();
             }
             $('.main-calendar-item-day.active').removeClass('active');
+            $('.main-tabs-calendar-day.active').removeClass('active');
         }
     });
 
