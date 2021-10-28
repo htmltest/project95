@@ -303,3 +303,141 @@ function face34_1_Redraw() {
     });
 
 }
+
+$(window).on('load resize', function() {
+
+    face49_3_Redraw();
+
+});
+
+$(document).ready(function() {
+
+    $('.face-49-3-type-current').click(function(e) {
+        $(this).parent().toggleClass('open');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.face-49-3-type').length == 0) {
+            $('.face-49-3-type').removeClass('open');
+        }
+    });
+
+    $('.face-49-3-type ul li a').click(function(e) {
+        var curLi = $(this).parent();
+        if (!curLi.hasClass('active')) {
+            $('.face-49-3-type ul li.active').removeClass('active');
+            curLi.addClass('active');
+            $('.face-49-3-type-current').html($(this).html());
+            face49_3_Redraw();
+        }
+        $('.face-49-3-type').removeClass('open');
+        e.preventDefault();
+    });
+
+});
+
+
+function face49_3_Redraw() {
+    var curType = $('.face-49-3-type li.active').attr('data-type');
+
+    var curData = null;
+
+    for (var i = 0; i < faceData49_3.length; i++) {
+        if (faceData49_3[i].type == curType) {
+            curData = faceData49_3[i].years;
+        }
+    }
+
+    var curMax = 0;
+
+    for (var k = 0; k < faceData49_3.length; k++) {
+        var tmpData = faceData49_3[k].years;
+        for (var i = 0; i < tmpData.length; i++) {
+            for (var j = 0; j < tmpData[i].data.length; j++) {
+                var curCount = Number(String(tmpData[i].data[j].summ).replace(',', '').replace(' ', ''));
+                if (curMax < curCount) {
+                    curMax = curCount;
+                }
+            }
+        }
+    }
+
+    var scaleStep = Math.floor(curMax / 4 / 100000) * 100000;
+    var scaleCount = Math.ceil(curMax / scaleStep);
+    var scaleMax = scaleCount * 100000;
+
+    $('.face-49-3-scale').html('');
+    for (var i = 0; i < scaleCount; i++) {
+        $('.face-49-3-scale').append('<div class="face-49-3-scale-item" style="bottom:' + (i * (100 / scaleCount)) + '%"><span>' + String(i * scaleStep).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</span></div>');
+    }
+    $('.face-49-3-scale').append('<div class="face-49-3-scale-item" style="bottom:100%"><span>' + String(scaleCount * scaleStep).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + '</span></div>');
+
+    $('.face-49-3-graph').html('');
+    for (var i = 0; i < curData.length; i++) {
+        var curFullTime = Number(String(curData[i].data[0].summ).replace(',', '').replace(' ', ''));
+        var curAll = Number(String(curData[i].data[1].summ).replace(',', '').replace(' ', ''));
+        var curCount = Number(String(curData[i].data[2].summ).replace(',', '').replace(' ', ''));
+
+        newHTML = '<div class="face-49-3-graph-item">' +
+                        '<div class="face-49-3-graph-item-bar">' +
+                            '<div class="face-49-3-graph-item-bar-container" style="height:' + (curCount / scaleMax * 100) + '%">';
+        newHTML +=              '<div class="face-49-3-graph-item-bar-item" data-year="' + curData[i].year + '" data-info="summ" style="background:#91d9d0; bottom:0%; height:' + (curFullTime / curCount * 100) + '%"></div>';
+        newHTML +=              '<div class="face-49-3-graph-item-bar-item" data-year="' + curData[i].year + '" data-info="summ" style="background:#79b8bb; bottom:' + (curFullTime / curCount * 100) + '%; height:' + ((curAll - curFullTime) / curCount * 100) + '%"></div>';
+        newHTML +=              '<div class="face-49-3-graph-item-bar-item" data-year="' + curData[i].year + '" data-info="count" style="background:#4f7b96; bottom:0%; height:100%"></div>';
+        newHTML +=          '</div>' +
+                        '</div>' +
+                        '<div class="face-49-3-graph-item-year">' + curData[i].year + '</div>' +
+                  '</div>';
+        $('.face-49-3-graph').append(newHTML);
+    }
+
+    $('.face-49-3-content').mCustomScrollbar('destroy');
+    $('.face-49-3-content').mCustomScrollbar({
+        axis: 'x',
+        callbacks: {
+            onScrollStart: function() {
+                $('.face-49-3-window').remove();
+            }
+        }
+    });
+
+    $('.face-49-3-graph-item-bar-item').on('mouseover', function(e) {
+        $('.face-49-3-window').remove();
+        var curItem = $(this);
+        var curX = curItem.offset().left + curItem.width() / 2 - $(window).scrollLeft();
+        var curY = curItem.offset().top + curItem.height() / 2 - $(window).scrollTop();
+        var curYear = Number(curItem.attr('data-year'));
+        var curInfo = curItem.attr('data-info');
+        var curType = $('.face-49-3-type li.active').attr('data-type');
+        for (var i = 0; i < faceData49_3.length; i++) {
+            if (faceData49_3[i].type == curType) {
+                var tmpData = faceData49_3[i].years;
+                for (var j = 0; j < tmpData.length; j++) {
+                    if (tmpData[j].year == curYear) {
+                        if (curInfo == 'summ') {
+                            $('body').append('<div class="face-49-3-window" style="left:' + curX + 'px; top:' + curY + 'px">' +
+                                                '<div class="face-49-3-window-title">' + tmpData[j].data[1].name + ': <span>' + String(tmpData[j].data[1].summ).replace(',', '').replace(' ', '').replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + ' чел.</span></div>' +
+                                                '<div class="face-49-3-window-list-title">Включая:</div>' +
+                                                '<div class="face-49-3-window-list">' +
+                                                    '<div class="face-49-3-window-item">' + tmpData[j].data[0].name + ' <span>' + String(tmpData[j].data[0].summ).replace(',', '').replace(' ', '').replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + ' чел.</span></div>' +
+                                                '</div>' +
+                                             '</div>');
+                        } else {
+                            $('body').append('<div class="face-49-3-window" style="left:' + curX + 'px; top:' + curY + 'px">' +
+                                                '<div class="face-49-3-window-title">' + tmpData[j].data[2].name + ': <span>' + String(tmpData[j].data[2].summ).replace(',', '').replace(' ', '').replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') + ' чел.</span></div>' +
+                                             '</div>');
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    $('.face-49-3-graph-item-bar-item').on('mouseout', function(e) {
+        $('.face-49-3-window').remove();
+    });
+
+    $(window).on('scroll', function() {
+        $('.face-49-3-window').remove();
+    });
+}
