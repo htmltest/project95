@@ -441,3 +441,105 @@ function face49_3_Redraw() {
         $('.face-49-3-window').remove();
     });
 }
+
+$(window).on('load resize', function() {
+
+    face49_1_Redraw();
+
+});
+
+function face49_1_Redraw() {
+    var face1DataActually = [];
+
+    $('.face-49-1-chart').html('');
+
+    var itemWidth = 42;
+    if ($(window).width() < 1140) {
+        itemWidth = 32;
+    }
+
+    var itemMargin = 22;
+    if ($(window).width() < 1140) {
+        itemMargin = 20;
+    }
+
+    for (var i = 0; i < faceData49_1.length; i++) {
+        var curData = faceData49_1[i];
+
+        if (typeof curData.value !== 'undefined') {
+            face1DataActually.push(Number(curData.value));
+        } else {
+            face1DataActually.push(null);
+        }
+    }
+
+    var minPlace = 0;
+    var maxPlace = 100;
+
+    function angle_point(a, b, c) {
+        var x1 = a[0] - b[0];
+        var x2 = c[0] - b[0];
+        var y1 = a[1] - b[1];
+        var y2 = c[1] - b[1];
+
+        var d1 = Math.sqrt(x1 * x1 + y1 * y1);
+        var d2 = Math.sqrt(x2 * x2 + y2 * y2);
+        return Math.acos((x1 * x2 + y1 * y2) / (d1 * d2)) * 180 / Math.PI;
+    }
+
+    for (var i = 0; i < face1DataActually.length; i++) {
+        if (face1DataActually[i] != null) {
+            var curX = (i * itemWidth) + ((i + 1) * itemMargin);
+            curScroll = curX;
+            var curY = ((face1DataActually[i] - maxPlace) / (minPlace - maxPlace)) * $('.face-49-1-chart').height();
+            if (face1DataActually[i - 1] != null) {
+                var prevX = ((i - 1) * itemWidth) + (i * itemMargin);
+                var prevY = ((face1DataActually[i - 1] - maxPlace) / (minPlace - maxPlace)) * $('.face-49-1-chart').height();
+                var curWidth = Math.sqrt(Math.pow((curX - prevX), 2) + Math.pow((curY - prevY), 2));
+                var curAngle = angle_point([curX, curY], [prevX, prevY], [curX, prevY]);
+                if (curY < prevY) {
+                    curAngle = -curAngle;
+                }
+                $('.face-49-1-chart').append('<div class="face-1-chart-line active" style="left:' + prevX + 'px; top:' + prevY + 'px; width:' + curWidth + 'px; transform:rotate(' + curAngle + 'deg)"></div>');
+            }
+            $('.face-49-1-chart').append('<div class="face-1-chart-point active" style="left:' + curX + 'px; top:' + curY + 'px"><span><strong>' + face1DataActually[i] + '<em>%</em></strong></span></div>');
+        }
+    }
+
+    var curMax = 0;
+    for (var i = 0; i < faceData49_1.length; i++) {
+        if (faceData49_1[i].actually !== undefined && curMax < faceData49_1[i].actually) {
+            curMax = faceData49_1[i].actually;
+        }
+        if (faceData49_1[i].forecast !== undefined && curMax < faceData49_1[i].forecast) {
+            curMax = faceData49_1[i].forecast;
+        }
+    }
+
+    var newHTML = '';
+    for (var i = 0; i < faceData49_1.length; i++) {
+        var classBoth = '';
+        if (faceData49_1[i].actually !== undefined && faceData49_1[i].forecast !== undefined) {
+            classBoth = ' both';
+        }
+        newHTML +=  '<div class="face-49-1-graph-item' + classBoth + '">';
+        if (faceData49_1[i].actually !== undefined) {
+            var classToBottom = '';
+            newHTML +=  '<div class="face-49-1-graph-item-actually" style="height:' + (Number(faceData49_1[i].actually) / curMax * 100) + '%"><div class="face-49-1-graph-item-actually-value">' + faceData49_1[i].actually + '</div></div>';
+        }
+        if (faceData49_1[i].forecast !== undefined) {
+            var classToBottom = '';
+            newHTML +=  '<div class="face-49-1-graph-item-forecast" style="height:' + (Number(faceData49_1[i].forecast) / curMax * 100) + '%"><div class="face-49-1-graph-item-forecast-value">' + faceData49_1[i].forecast + '</div></div>';
+        }
+        newHTML +=      '<div class="face-49-1-graph-item-year">' + faceData49_1[i].year + '</div>';
+        newHTML +=  '</div>';
+    }
+    $('.face-49-1-graph').mCustomScrollbar('destroy');
+    $('.face-49-1-graph-inner').html(newHTML);
+    $('.face-49-1-graph').mCustomScrollbar({
+        axis: 'x',
+        scrollButtons: {
+            enable: true
+        }
+    });
+}

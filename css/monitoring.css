@@ -4309,3 +4309,49 @@ canvas {user-select:none}
     .face-49-3-window::before {display:none}
     .face-49-3-window::after {content:""; display:block; position:fixed; z-index:98; left:-9999px; top:-9999px; right:-9999px; bottom:-9999px; background:rgba(255, 255, 255, 0.5); pointer-events:none}
 }
+
+.face-49-1-container {position:relative; height:577px; margin:0 40px}
+.face-49-1-graph {position:absolute; left:0; top:0; right:0; height:577px; overflow:auto}
+.face-49-1-graph-inner {display:inline-block; vertical-align:top; height:331px; position:relative; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; padding:0; margin:168px 0 0 0}
+.face-49-1-graph-item {display:inline-block; vertical-align:top; height:230px; width:42px; margin:71px 0 0 22px; position:relative}
+.face-49-1-graph-item:first-child {margin-left:22px}
+.face-49-1-graph-item-actually {position:absolute; left:50%; bottom:0; margin-left:-10px; width:20px; background:#4f7b96}
+.face-49-1-graph-item.both .face-49-1-graph-item-actually {margin-left:-20px}
+.face-49-1-graph-item-actually-value {position:absolute; left:50%; bottom:100%; margin-bottom:12px; transform:translateX(-50%); font:11px/11px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626}
+.face-49-1-graph-item.both .face-49-1-graph-item-actually-value {margin-left:-10px}
+.face-49-1-graph-item-forecast {position:absolute; left:50%; bottom:0; margin-left:-10px; width:20px; background:url(../images/cube-face-18-1-forecast.svg) left bottom}
+.face-49-1-graph-item.both .face-49-1-graph-item-forecast {margin-left:0}
+.face-49-1-graph-item-forecast-value {position:absolute; left:50%; bottom:100%; margin-bottom:12px; transform:translateX(-50%); font:11px/11px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626}
+.face-49-1-graph-item.both .face-49-1-graph-item-forecast-value {margin-left:10px}
+.face-49-1-graph-item-year {position:absolute; left:0; bottom:-30px; right:0; height:18px; background:#fbe3d4; border-radius:5px; text-align:center; font:11px/18px HelveticaNeueCyrMedium, sans-serif; letter-spacing:0.04em; color:#262626}
+.face-49-1-chart {position:absolute; left:0; top:30px; right:0; height:168px}
+.face-49-1-chart .face-1-chart-point {margin-left:13px}
+.face-49-1-chart .face-1-chart-point.active {cursor:default}
+.face-49-1-chart .face-1-chart-point.active:hover {box-shadow:none}
+.face-49-1-chart .face-1-chart-point span {font-size:14px}
+.face-49-1-chart .face-1-chart-point.bottom span {bottom:auto; top:20px}
+.face-49-1-chart .face-1-chart-point span {color:#000; opacity:1}
+.face-49-1-chart .face-1-chart-point em {font-style:normal; position:absolute}
+.face-49-1-chart .face-1-chart-point em::after {display:none}
+
+@media screen and (max-width:1139px) {
+    .face-49-1-container {height:348px; margin:0}
+    .face-49-1-graph {height:348px}
+    .face-49-1-graph-inner {height:359px; padding:0 40px 0 0; margin:20px 0 0 0}
+    .face-49-1-graph-item {height:167px; width:32px; margin:93px 0 0 20px}
+    .face-49-1-graph-item:first-child {margin:93px 0 0 20px}
+    .face-49-1-graph-item-actually {margin-left:-8px; width:16px}
+    .face-49-1-graph-item.both .face-49-1-graph-item-actually {margin-left:-16px}
+    .face-49-1-graph-item-forecast {margin-left:-8px; width:16px; background-size:100%}
+    .face-49-1-container .mCSB_scrollTools.mCSB_scrollTools_horizontal a + .mCSB_draggerContainer {margin:0}
+    .face-49-1-container .mCSB_scrollTools a {display:none !important}
+    .face-49-1-container .mCSB_scrollTools.mCSB_scrollTools_horizontal {margin:0; height:6px}
+    .face-49-1-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {margin:0; height:6px}
+    .face-49-1-container .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {margin:0; height:6px}
+    .face-49-1-chart {top:20px; height:93px}
+    .face-49-1-chart .face-1-chart-point span {font-size:12px; line-height:12px}
+    .face-49-1-chart .face-1-chart-point {width:9px; height:9px; margin-left:9px}
+    .face-49-1-chart .face-1-chart-line {margin-left:17px; margin-top:0px}
+    .face-49-1-chart .face-1-chart-point span {bottom:10px}
+    .face-49-1-chart .face-1-chart-point.bottom span {bottom:auto; top:10px}
+}
