@@ -2400,3 +2400,68 @@ $(document).ready(function() {
     });
 
 });
+
+$(document).ready(function() {
+
+    $('.strategy-menu-item').click(function(e) {
+        var curLink = $(this);
+        if (!curLink.hasClass('active')) {
+            $('.strategy-menu-item.active').removeClass('active');
+            curLink.addClass('active');
+            var curIndex = $('.strategy-menu-item').index(curLink);
+            $('.strategy-tab.active').removeClass('active');
+            $('.strategy-tab').eq(curIndex).addClass('active');
+        }
+        e.preventDefault();
+    });
+
+    $('.strategy-left-title').click(function(e) {
+        var curRow = $(this).parents().filter('.strategy-row');
+        curRow.toggleClass('open');
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.window-strategy-menu-item a', function(e) {
+        var curItem = $(this).parent();
+        if (!curItem.hasClass('active')) {
+            $('.window-strategy-menu-item.active').removeClass('active');
+            curItem.addClass('active');
+            var curIndex = $('.window-strategy-menu-item').index(curItem);
+            $('.window-strategy-tab.active').removeClass('active');
+            $('.window-strategy-tab').eq(curIndex).addClass('active');
+        }
+        e.preventDefault();
+    });
+
+    $('.strategy-left-item').on('mouseenter', function() {
+        var curItem = $(this);
+        var curItemID = curItem.attr('data-id');
+        var curRow = curItem.parents().filter('.strategy-row');
+        curRow.addClass('row-hover');
+        curItem.addClass('item-hover');
+        curRow.find('.strategy-right-item').each(function() {
+            var curRightItem = $(this);
+            if (typeof (curRightItem.attr('data-rel')) !== 'undefined') {
+                var curRightRel = curRightItem.attr('data-rel').split(',');
+                if (curRightRel.indexOf(curItemID) !== -1) {
+                    curRightItem.addClass('item-hover');
+                }
+            }
+        });
+        var firstIndex = curRow.find('.strategy-right-item').index(curRow.find('.strategy-right-item.item-hover:first')) + 1;
+        var lastIndex = curRow.find('.strategy-right-item').index(curRow.find('.strategy-right-item.item-hover:last'));
+        for (var i = firstIndex; i < lastIndex; i++)  {
+            curRow.find('.strategy-right-item').eq(i).addClass('item-hover-middle');
+        }
+        curRow.find('.strategy-right-item.item-hover:first').addClass('item-hover-first');
+        curRow.find('.strategy-right-item.item-hover:last').addClass('item-hover-last');
+    });
+
+    $('.strategy-left-item').on('mouseleave', function() {
+        $('.strategy-row.row-hover').removeClass('row-hover');
+        $('.strategy-left-item.item-hover').removeClass('item-hover');
+        $('.strategy-right-item.item-hover').removeClass('item-hover');
+        $('.strategy-right-item').removeClass('item-hover-middle item-hover-first item-hover-last');
+    });
+
+});
