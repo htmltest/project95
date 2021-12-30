@@ -2499,7 +2499,7 @@ $(document).ready(function() {
         $('.strategy-left-item.item-hover').removeClass('item-hover');
         $('.strategy-right-item.item-hover').removeClass('item-hover');
         $('.strategy-right-item').removeClass('item-hover-middle item-hover-first item-hover-last');
-        
+
         updateRightLines();
     });
 
@@ -2587,3 +2587,15 @@ function updateRightLines() {
         }
     });
 }
+
+$(window).on('load resize scroll', function() {
+    var windowScroll = $(window).scrollTop();
+
+    $('.strategy-menu').each(function() {
+        if (windowScroll >= $('.strategy-menu').offset().top - 31) {
+            $('.strategy-menu').addClass('fixed');
+        } else {
+            $('.strategy-menu').removeClass('fixed');
+        }
+    });
+});

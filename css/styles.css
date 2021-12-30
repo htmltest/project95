@@ -2532,8 +2532,11 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
     .window-region-lines-legend-item {display:inline-block; vertical-align:top; margin:20px 20px 0 24px}
 }
 
-.strategy-menu {margin:71px 0 0 0; font-size:0; line-height:0; letter-spacing:-1px}
-.strategy-menu-main {display:inline-block; vertical-align:top; margin:0 0 0 10px; padding:13px 20px 10px 20px; color:#fff; background:#fe6600; border-radius:10px; font-size:14px; line-height:18px; letter-spacing:0; transition:color 0.2s, background 0.2s; text-decoration:none}
+.strategy-menu {margin:71px 0 0 0; font-size:0; line-height:0; letter-spacing:-1px; position:relative; height:64px}
+.strategy-menu.fixed .strategy-menu-inner {position:fixed; left:0; top:0; right:0; padding:31px 0 10px 0; background:#fff; box-shadow:0px 4px 20px rgba(0, 0, 0, 0.1); z-index:99}
+.strategy-menu-inner .container {padding:0}
+.strategy-menu.fixed .strategy-menu-inner .container {padding:0 15px}
+.strategy-menu-main {display:inline-block; vertical-align:top; margin:0; padding:13px 20px 10px 20px; color:#fff; background:#fe6600; border-radius:10px; font-size:14px; line-height:18px; letter-spacing:0; transition:color 0.2s, background 0.2s; text-decoration:none}
 .strategy-menu-main strong {display:block; font-weight:bold; font-size:18px; line-height:23px}
 .strategy-menu-list {display:inline-block; vertical-align:top; position:relative; margin:0 0 0 30px; padding:0 0 0 20px; border-left:1px solid #eaeaea}
 .strategy-menu-list-title {position:absolute; left:30px; top:-31px; font-size:14px; line-height:21px; color:#979797; letter-spacing:0}
@@ -2618,6 +2621,9 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .strategy-right-item a span {border-bottom:1px dashed #005ac5; transition:border-color 0.3s}
 .strategy-right-item a:hover span {border-bottom-color:transparent}
 
+.strategy-row:not(.without-rels) .strategy-right-item.not-arrow a {color:#aeaeae}
+.strategy-row:not(.without-rels) .strategy-right-item.not-arrow a span {border-bottom-color:transparent}
+
 .strategy-right-list-line-back {position:absolute; left:-11px; top:0; height:0; width:1px; background:#dfe7f3}
 .strategy-right-list-line-front {position:absolute; left:-11px; top:0; height:0; width:1px; background:#fe6600}
 
@@ -2630,7 +2636,6 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 
 .strategy-right-item.not-arrow::before {display:none}
 
-.strategy-right-item-not-arrow::before {display:none}
 .strategy-row-priority .strategy-right-item::before {display:none}
 .strategy-row-priority .strategy-right-list-line-back {display:none}
 .strategy-row-priority .strategy-right-list-line-front {display:none}
