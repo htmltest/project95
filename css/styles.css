@@ -2676,3 +2676,13 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .window-strategy-task::after {content:""; display:block; clear:both}
 .window-strategy-task-title {float:left; width:100px; font-weight:bold; font-size:16px; line-height:21px; color:#fe6600}
 .window-strategy-task-text {margin:0 0 0 100px; font-size:16px; line-height:21px; color:#000; font-family:HelveticaNeueCyrLight, sans-serif}
+
+.events-list-short .event:nth-child(n+11) {display:none}
+.events-list-short .event.visible {display:block}
+.events-list-short-more {display:none; margin:20px 0 0 0; text-align:center}
+.events-list-short-more.visible {display:block}
+.events-list-short-more a {display:inline-block; vertical-align:middle; margin:0 5px; padding:0 20px; width:auto}
+.events-list-short-more a span:nth-child(2) {display:none}
+.events-list-short-more.reverse a span:nth-child(1) {display:none}
+.events-list-short-more.reverse a span:nth-child(2) {display:inline}
+.events-list-short-more.reverse a.events-list-short-more-all {display:none}

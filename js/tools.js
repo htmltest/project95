@@ -2599,3 +2599,34 @@ $(window).on('load resize scroll', function() {
         }
     });
 });
+
+$(document).ready(function() {
+    $('.events-list-short').each(function() {
+        var curBlock = $(this);
+        if (curBlock.find('.event:visible').length < curBlock.find('.event').length) {
+            curBlock.parent().find('.events-list-short-more').addClass('visible');
+        }
+    });
+
+    $('.events-list-short-more-10').click(function(e) {
+        var curBlock = $(this).parent().parent();
+        if (curBlock.find('.events-list-short-more').hasClass('reverse')) {
+            curBlock.find('.events-list-short-more').removeClass('reverse');
+            curBlock.find('.event.visible').removeClass('visible');
+        } else {
+            var curCount = curBlock.find('.event:visible').length;
+            curBlock.find('.event:lt(' + (curCount + 10) + ')').addClass('visible');
+            if (curBlock.find('.event:visible').length >= curBlock.find('.event').length) {
+                curBlock.find('.events-list-short-more').addClass('reverse');
+            }
+        }
+        e.preventDefault();
+    });
+
+    $('.events-list-short-more-all').click(function(e) {
+        var curBlock = $(this).parent().parent();
+        curBlock.find('.events-list-short-more').addClass('reverse');
+        curBlock.find('.event').addClass('visible');
+        e.preventDefault();
+    });
+});
