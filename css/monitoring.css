@@ -3936,8 +3936,8 @@ canvas {user-select:none}
 
 @media screen and (max-width:1139px) {
     .monitoring-regions {margin:35px 0 0 0}
-    .monitoring-regions-filter-link {font-size:16px; font-weight:bold}
-    .monitoring-regions-filter-current {max-width:calc(100% - 250px)}
+    .monitoring-regions-filter-link {font-size:14px; font-weight:bold}
+    .monitoring-regions-filter-current {clear:left; max-width:100%; margin:20px 0 0 0}
     .monitoring-regions-filter-current.default {max-width:none; width:100%; margin:23px 0 0 0}
     .monitoring-regions-filter-current-value {font-size:16px}
     .monitoring-regions-filter-current.default .monitoring-regions-filter-current-value {font-size:18px; line-height:27px; white-space:normal}
@@ -3983,7 +3983,7 @@ canvas {user-select:none}
 
 @media screen and (max-width:1139px) {
     .monitoring-regions-filter-window {position:fixed; left:0; top:0; right:0; bottom:0; background:rgba(0, 0, 0, 0.5); margin:0; padding:0; border:none; box-shadow:none; width:auto; height:auto; max-height:none; overflow:visible}
-    .monitoring-regions-filter-window-content {position:absolute; left:0; top:217px; right:0; bottom:0; background:#fff; overflow:auto; padding:30px 30px 0 30px; border-radius:6px 6px 0 0}
+    .monitoring-regions-filter-window-content {position:absolute; left:0; top:40px; right:0; bottom:0; background:#fff; overflow:auto; padding:30px 30px 0 30px; border-radius:6px 6px 0 0}
     .monitoring-regions-filter-search input {font-size:18px}
     .monitoring-regions-filter-map-link {text-align:right; font-size:18px}
     .monitoring-regions-filter-group-header {font-size:22px; line-height:33px; padding:16px 34px 16px 0; margin:0; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; width:100%; box-sizing:border-box}
@@ -3997,7 +3997,7 @@ canvas {user-select:none}
     .monitoring-regions-filter-group-item.active::after {right:23px}
     .monitoring-regions-filter-group-item-main {font-size:20px; line-height:28px; padding:11px 50px}
     .monitoring-regions-filter-group-item-main.active::after {right:23px}
-    .monitoring-regions-filter-window-close {display:block; position:absolute; right:20px; top:157px; width:39px; height:39px; background:url(../images/monitoring-regions-filter-window-close.svg) no-repeat center}
+    .monitoring-regions-filter-window-close {display:block; position:absolute; right:0; top:0; width:39px; height:39px; background:url(../images/monitoring-regions-filter-window-close.svg) no-repeat center}
 }
 
 .monitoring-regions-window {width:930px}
@@ -4032,8 +4032,8 @@ canvas {user-select:none}
 .monitoring-regions-window-map-zoom-dec-new.disabled {pointer-events:none; color:#cbcbcb}
 
 .monitoring-regions-window-map-wrapper {position:relative}
-.monitoring-regions-window-map-inner {position:relative; height:442px; overflow:auto; line-height:0}
-.monitoring-regions-window-map-inner svg {display:block}
+.monitoring-regions-window-map-inner {position:relative; height:442px; overflow:hidden; line-height:0}
+.monitoring-regions-window-map-inner svg {display:block; position:relative; left:0; top:0}
 .monitoring-regions-window-map-inner g {cursor:pointer; stroke:#fff; fill:#82c7be}
 .monitoring-regions-window-map-inner g:hover {fill:#ffb07a}
 .monitoring-regions-window-map-inner circle {position:relative; fill:#ff0}
@@ -4174,6 +4174,7 @@ canvas {user-select:none}
 }
 
 .monitoring-regions-data-wrapper .mCSB_horizontal.mCSB_inside > .mCSB_container {margin-bottom:64px}
+.monitoring-regions-data.hidden .monitoring-regions-data-wrapper .mCSB_scrollTools.mCSB_scrollTools_horizontal {position:absolute !important}
 .monitoring-regions-data-wrapper .mCSB_scrollTools.mCSB_scrollTools_horizontal a + .mCSB_draggerContainer {margin-left:0; margin-right:0}
 .monitoring-regions-data-wrapper .mCSB_scrollTools.mCSB_scrollTools_horizontal {height:10px; margin-left:310px; bottom:28px}
 .monitoring-regions-data-wrapper .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {height:4px; margin:3px 0 0 0; border-radius:2px; background:#f1f1f1}

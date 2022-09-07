@@ -2081,6 +2081,9 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .main-regions-map-filter-search input::-webkit-input-placeholder {opacity:1; color:#858585}
 .main-regions-map-filter-search input::-moz-placeholder {opacity:1; color:#858585}
 .main-regions-map-filter-search input:-ms-input-placeholder {opacity:1; color:#858585}
+.main-regions-map-filter-search-clear {display:none; position:absolute; right:46px; top:50%; margin-top:-16.5px; width:33px; height:33px; background:url(../images/monitoring-regions-filter-group-item.svg) no-repeat center; transition:background-color 0.2s; border-radius:50%; cursor:pointer}
+.main-regions-map-filter-search-clear.visible {display:block}
+.main-regions-map-filter-search-clear:hover {background-color:rgba(255, 255, 255, 0.7)}
 .main-regions-map-filter-list {margin:20px 0 0 0}
 .main-regions-map-filter-group {border-top:1px solid #e5e5e5}
 .main-regions-map-filter-group.hidden {display:none}
@@ -2096,12 +2099,13 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .main-regions-map-filter-group-item {cursor:pointer; font:14px/20px HelveticaNeueCyrLight, sans-serif; color:#202020; transition:background 0.2s; padding:8px 20px; position:relative}
 .main-regions-map-filter-group-item.hidden {display:none}
 .main-regions-map-filter-group-item:hover {background:#fff2e9}
+.main-regions-map-filter-group-item span {background:#fcff9c}
 .main-regions-map-filter-window-close {display:none}
 
 @media screen and (max-width:1139px) {
     .main-regions-map-filter {left:35px; top:20px}
     .main-regions-map-filter-window {position:fixed; left:0; top:0; right:0; bottom:0; background:rgba(0, 0, 0, 0.5); margin:0; padding:0; border:none; box-shadow:none; width:auto; height:auto}
-    .main-regions-map-filter-window-content {position:absolute; left:0; top:217px; right:0; bottom:0; background:#fff; overflow:auto; padding:30px 30px 0 30px; border-radius:6px 6px 0 0}
+    .main-regions-map-filter-window-content {position:absolute; left:0; top:40px; right:0; bottom:0; background:#fff; overflow:auto; padding:30px 30px 0 30px; border-radius:6px 6px 0 0}
     .main-regions-map-filter-search input {font-size:18px}
     .main-regions-map-filter-map-link {text-align:right; font-size:18px}
     .main-regions-map-filter-group-header {font-size:22px; line-height:33px; padding:16px 34px 16px 0; margin:0; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; width:100%; box-sizing:border-box}
@@ -2115,7 +2119,7 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
     .main-regions-map-filter-group-item.active::after {right:23px}
     .main-regions-map-filter-group-item-main {font-size:20px; line-height:28px; padding:11px 50px}
     .main-regions-map-filter-group-item-main.active::after {right:23px}
-    .main-regions-map-filter-window-close {display:block; position:absolute; right:20px; top:157px; width:39px; height:39px; background:url(../images/monitoring-regions-filter-window-close.svg) no-repeat center}
+    .main-regions-map-filter-window-close {display:block; position:absolute; right:20px; top:0; width:39px; height:39px; background:url(../images/monitoring-regions-filter-window-close.svg) no-repeat center}
 }
 
 .indicators-group-inner ul li a {display:inline}
@@ -2136,6 +2140,8 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .window-region-title span::before {content:""; display:block; width:1px; height:15px; background:#ddd; position:absolute; left:-17px; top:50%; margin-top:-7.5px}
 .window-region+.window-close {display:block; width:15px; height:16px; position:absolute; right:40px; top:23px; background:url(../images/window-close-map.svg) no-repeat}
 .window-region-container {padding:34px 38px 25px 38px}
+.window-region-container > *:first-child {margin-top:0}
+.window-region-container > *:last-child {margin-bottom:0}
 .window-region-header::after {content:""; display:block; clear:both}
 .window-region-header-text {float:left; margin:3px 0 0 0}
 .window-region-subtitle {font-weight:bold; font-size:26px; line-height:34px; color:#121212}
@@ -2147,6 +2153,8 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .window-region-header-btn a:hover path {stroke:#fff}
 .window-region-header-btn a span {font-family:HelveticaNeueCyrLight, sans-serif; color:#434343; transition:all 0.2s}
 .window-region-header-btn a:hover span {color:#fff}
+.window-region-btns {padding:20px; border-top:1px solid #fe6600; text-align:center}
+.window-region-btns a {display:inline-block; vertical-align:top; margin:0 5px; width:auto; padding:0 15px}
 
 @media screen and (max-width:1139px) {
     .window-region {width:420px}
