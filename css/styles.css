@@ -2051,8 +2051,8 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 }
 
 .opendata-chart-map-inner svg {position:relative; left:0; top:0}
-.opendata-chart-map-inner g {cursor:pointer}
-.opendata-chart-map-inner g:hover {stroke:#fff; stroke-width:2px}
+.opendata-chart-map-inner g {cursor:pointer; stroke:#FEFEFE; stroke-width:0.4px; transition:fill 0.2s}
+.opendata-chart-map-inner g:hover {fill:#FFB07A !important}
 .opendata-chart-map-inner circle {position:relative}
 
 @media screen and (max-width:1139px) {
@@ -2065,11 +2065,6 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
     .opendata-chart-map-inner .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {height:6px; margin:0; border-radius:3px}
     .opendata-chart-map-inner .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {height:6px; margin:0; border-radius:3px}
 }
-
-.window-region-chart-hint {position:absolute; margin:11px 0 0 -34px; pointer-events:none; z-index:99}
-.window-region-chart-hint-container {padding:23px 20px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); background:#fff; position:relative; max-width:440px}
-.window-region-chart-hint-container::before {content:""; display:block; position:absolute; left:21px; top:-6px; width:25px; height:25px; background:#fff; transform:rotate(45deg)}
-.window-region-chart-hint-title {font-weight:500; font-size:16px; line-height:19px; color:#121212}
 
 .main-regions-map-filter {position:absolute; left:0; top:27px}
 .main-regions-map-filter-link {padding:0 16px; height:44px; line-height:44px; font-size:14px}
@@ -2466,10 +2461,10 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
     .window-region-chart-bubble-graph .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonRight {visibility:visible}
 }
 
-.window-region-chart-hint {position:absolute; margin:10px 0 0 -18px; pointer-events:none; z-index:99999}
-.window-region-chart-hint-container {padding:20px; box-shadow:4px 4px 40px rgba(0, 0, 0, 0.1); background:#fff; position:relative; max-width:306px; box-sizing:border-box; border:1px solid #e7e7e7}
-.window-region-chart-hint-container::before {content:""; display:block; position:absolute; left:6px; top:-4px; width:25px; height:25px; background:#fff; transform:rotate(45deg)}
-.window-region-chart-hint-title {font:14px/21px HelveticaNeueCyrMedium, sans-serif; color:#202020}
+.window-region-chart-hint {position:absolute; margin:-10px 0 0 -24px; pointer-events:none; z-index:99999}
+.window-region-chart-hint-container {padding:12px 16px; box-shadow:2px 2px 20px rgba(0, 0, 0, 0.15); background:#fff; position:relative; max-width:306px; box-sizing:border-box; border:1px solid #DFDFDF; transform:translateY(-100%)}
+.window-region-chart-hint-container::before {content:""; display:block; position:absolute; left:20px; bottom:-5px; width:7px; height:7px; background:#fff; border-right:1px solid #DFDFDF; border-bottom:1px solid #DFDFDF; transform:rotate(45deg)}
+.window-region-chart-hint-title {font:16px/21px HelveticaNeueCyrLight, sans-serif; color:#202020; letter-spacing:0.02em}
 .window-region-chart-hint-values-title {margin:1px 0 0 0}
 .window-region-chart-hint-values {display:table; font:14px/14px HelveticaNeueCyrLight, sans-serif; color:#000}
 .window-region-chart-hint-value {display:table-row}
