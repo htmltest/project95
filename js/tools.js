@@ -2653,4 +2653,10 @@ $(document).ready(function() {
         curBlock.find('.event').addClass('visible');
         e.preventDefault();
     });
+
+    $('.cookies-message-close').click(function(e) {
+        $('.cookies-message').fadeOut(500);
+        e.preventDefault();
+    });
+
 });
