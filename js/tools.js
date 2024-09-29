@@ -2660,3 +2660,79 @@ $(document).ready(function() {
     });
 
 });
+
+$(document).ready(function() {
+
+    $('.challenges-2024-item-header, .challenges-2024-item-footer').click(function(e) {
+        var curBlock = $(this).parents().filter('.challenges-2024-item');
+        curBlock.toggleClass('open');
+        curBlock.find('.challenges-2024-item-more').toggle();
+        updateChallengesHeaders();
+        e.preventDefault();
+    });
+
+});
+
+$(window).on('load resize scroll', function() {
+
+    $('.directions-2024-item, .tasks-2024-item, .challenges-2024-item').each(function() {
+        var curBlock = $(this);
+        if (!curBlock.hasClass('on-scroll-visible')) {
+            if (curBlock.offset().top + curBlock.outerHeight() / 2 < $(window).scrollTop() + $(window).height()) {
+                curBlock.addClass('on-scroll-visible');
+            }
+        }
+    });
+
+});
+
+function updateChallengesHeaders() {
+    $('.challenges-2024-item-header-item-anonce').css({'min-height': 0});
+    $('.challenges-2024-item-header-item-sub').css({'min-height': 0});
+    $('.challenges-2024-item-header').each(function() {
+        var curHeader = $(this);
+        curHeader.find('.challenges-2024-item-header-item').each(function() {
+            var curItem = $(this);
+            curItem.find('.challenges-2024-item-header-item-sub').each(function() {
+                var curSub = $(this);
+                var curIndex = curItem.find('.challenges-2024-item-header-item-sub').index(curSub);
+                var minHeight = curSub.find('.challenges-2024-item-header-item-anonce').outerHeight();
+                curHeader.find('.challenges-2024-item-header-item').each(function() {
+                    var curHeight = $(this).find('.challenges-2024-item-header-item-sub').eq(curIndex).find('.challenges-2024-item-header-item-anonce').outerHeight();
+                    if (curHeight > minHeight) {
+                        minHeight = curHeight;
+                    }
+                });
+                curHeader.find('.challenges-2024-item-header-item').each(function() {
+                    $(this).find('.challenges-2024-item-header-item-sub').eq(curIndex).find('.challenges-2024-item-header-item-anonce').css({'min-height': minHeight});
+                });
+            });
+        });
+    });
+    $('.challenges-2024-item-header').each(function() {
+        var curHeader = $(this);
+        curHeader.find('.challenges-2024-item-header-item').each(function() {
+            var curItem = $(this);
+            curItem.find('.challenges-2024-item-header-item-sub').each(function() {
+                var curSub = $(this);
+                var curIndex = curItem.find('.challenges-2024-item-header-item-sub').index(curSub);
+                var minHeight = curSub.outerHeight();
+                curHeader.find('.challenges-2024-item-header-item').each(function() {
+                    var curHeight = $(this).find('.challenges-2024-item-header-item-sub').eq(curIndex).outerHeight();
+                    if (curHeight > minHeight) {
+                        minHeight = curHeight;
+                    }
+                });
+                curHeader.find('.challenges-2024-item-header-item').each(function() {
+                    $(this).find('.challenges-2024-item-header-item-sub').eq(curIndex).css({'min-height': minHeight});
+                });
+            });
+        });
+    });
+}
+
+$(window).on('load resize', function() {
+
+    updateChallengesHeaders();
+
+});
