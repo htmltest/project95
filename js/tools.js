@@ -2708,6 +2708,12 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    $('.task-2024-item-more-link a').click(function(e) {
+        var curItem = $(this).parents().filter('.task-2024-item');
+        curItem.toggleClass('open');
+        e.preventDefault();
+    });
+
     $('.media-2024-filter-item-current').click(function(e) {
         var curItem = $(this).parents().filter('.media-2024-filter-item');
         if (curItem.hasClass('open')) {
@@ -2844,7 +2850,7 @@ $(document).ready(function() {
         $('.media-2024-filter-item-tag input').prop('checked', false).trigger('change');
         e.preventDefault();
     });
-    
+
     $('.media-2024-filter-clear').click(function(e) {
         $('.media-2024-filter-item-list-item input').prop('checked', false).trigger('change');
         $('.media-2024-filter-item-tag input').prop('checked', false).trigger('change');
@@ -2958,6 +2964,18 @@ $(document).ready(function() {
         }
     });
 
+    $('.docs-2024-index-item-header').click(function(e) {
+        var curItem = $(this).parent();
+        curItem.toggleClass('open');
+        curItem.find('.docs-2024-index-item-container').slideToggle();
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.main-tabs-doc-new-descr-more a', function(e) {
+        $(this).parent().parent().toggleClass('open');
+        e.preventDefault();
+    });
+
 });
 
 $(window).on('load resize scroll', function() {
@@ -3057,6 +3075,12 @@ function media2024Update() {
             $('.media-2024-filter-results-count').html(newHTML.attr('data-count'));
             $('.media-2024-filter-item-tags-results-count span').html(newHTML.attr('data-count'));
             $('.media-2024').removeClass('empty');
+            $('.main-tabs-doc-new-descr').each(function() {
+                var curItem = $(this);
+                if (curItem.find('.main-tabs-doc-new-descr-text').height() < curItem.find('.main-tabs-doc-new-descr-text-inner').height()) {
+                    curItem.addClass('with-more');
+                }
+            });
         } else {
             $('.media-2024').addClass('empty');
             $('.media-2024-content-list').html(newHTML.find('.media-2024-content-list').html());
@@ -3073,3 +3097,12 @@ function media2024Update() {
         }
     });
 }
+
+$(window).on('load', function() {
+    $('.main-tabs-doc-new-descr').each(function() {
+        var curItem = $(this);
+        if (curItem.find('.main-tabs-doc-new-descr-text').height() < curItem.find('.main-tabs-doc-new-descr-text-inner').height()) {
+            curItem.addClass('with-more');
+        }
+    });
+});
