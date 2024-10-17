@@ -2666,8 +2666,9 @@ $(document).ready(function() {
     $('.challenges-2024-item-header, .challenges-2024-item-footer').click(function(e) {
         var curBlock = $(this).parents().filter('.challenges-2024-item');
         curBlock.toggleClass('open');
-        curBlock.find('.challenges-2024-item-more').toggle();
-        updateChallengesHeaders();
+        curBlock.find('.challenges-2024-item-more, .challenges-2024-item-header-item-type-notice, .challenges-2024-item-header-item-detail').slideToggle(function() {
+            updateChallengesHeaders();
+        });
         e.preventDefault();
     });
 
@@ -2711,7 +2712,14 @@ $(document).ready(function() {
     $('.task-2024-item-more-link a').click(function(e) {
         var curItem = $(this).parents().filter('.task-2024-item');
         curItem.toggleClass('open');
+        curItem.find('.task-2024-item-row:nth-child(n + 2)').slideToggle();
         e.preventDefault();
+    });
+
+    $('.task-2024-item-title').click(function(e) {
+        var curItem = $(this).parents().filter('.task-2024-item');
+        curItem.find('.task-2024-item-more-link a').trigger('click');
+        curItem.find('.task-2024-item-detail-link a').trigger('click');
     });
 
     $('.media-2024-filter-item-current').click(function(e) {
@@ -2731,7 +2739,12 @@ $(document).ready(function() {
     });
 
     $('.media-2024-filter-item-list-item input').change(function() {
+        var curInput = $(this);
         var curItem = $(this).parents().filter('.media-2024-filter-item');
+        if (curInput.prop('checked')) {
+            curItem.find('.media-2024-filter-item-list-item input:checked').prop('checked', false);
+            curInput.prop('checked', true);
+        }
         var countChecked = curItem.find('.media-2024-filter-item-list-item input:checked').length;
         if (countChecked > 0) {
             curItem.addClass('active');
@@ -3042,9 +3055,20 @@ $(window).on('load resize', function() {
 
 });
 
-var isPageClick = false;
+
+var timerUpdateMedia2024 = null;
+var periodUpdateMedia2024 = 300;
 
 function media2024Update() {
+    window.clearTimeout(timerUpdateMedia2024);
+    timerUpdateMedia2024 = null;
+
+    timerUpdateMedia2024 = window.setTimeout(function() { media2024UpdateStart(); }, periodUpdateMedia2024);
+}
+
+var isPageClick = false;
+
+function media2024UpdateStart() {
     var curForm = $('.media-2024-filter-form form');
     $('.media-2024-content').addClass('loading');
 

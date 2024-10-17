@@ -2804,7 +2804,8 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .challenges-header-2024-link {margin:10px 0 0 0; display:flex}
 .challenges-header-2024-link a {display:flex; align-items:center; color:#B3B3B3; font-size:16px; line-height:21px; text-decoration:none}
 .challenges-header-2024-link a:hover {text-decoration:underline}
-.challenges-header-2024-link a svg {min-width:20px; max-width:20px; height:20px; margin:0 0 0 5px; fill:#B3B3B3}
+.challenges-header-2024-link a svg {min-width:20px; max-width:20px; height:20px; margin:0 0 0 5px; fill:#B3B3B3; transition:transform 0.2s}
+.challenges-header-2024-link a:hover svg {transform:translateX(5px)}
 
 @media screen and (max-width:1139px) {
     .challenges-header-2024 {margin:50px 0 40px 0}
@@ -2828,13 +2829,11 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .challenges-2024-item.open .challenges-2024-item-header-item {background:#FFFFFF}
 .challenges-2024-item-header-item-type {font-weight:bold; font-size:11px; line-height:14px; letter-spacing:0.05em; color:#B2B2B2; text-transform:uppercase; transition:color 0.3s}
 .challenges-2024-item.open .challenges-2024-item-header-item-type {color:#FE6600}
-.challenges-2024-item-header-item-type-notice {display:none; margin:5px 0 0 0}
-.challenges-2024-item.open .challenges-2024-item-header-item-type-notice {display:block; font-size:11px; line-height:14px; color:#B2B2B2}
+.challenges-2024-item-header-item-type-notice {display:none; margin:5px 0 0 0; font-size:11px; line-height:14px; color:#B2B2B2}
 .challenges-2024-item-header-item-title {padding:20px 0 0 0; font:20px/28px HelveticaNeueCyrMedium, sans-serif; color:#000000}
 .challenges-2024-item-header:hover .challenges-2024-item-header-item-title {text-decoration:underline}
 .challenges-2024-item-header-item-number {margin:5px 0 0 0; font-size:20px; line-height:28px; color:#FE6600}
 .challenges-2024-item-header-item-detail {display:none; font-size:14px; line-height:21px; margin:20px -20px 0 -20px; padding:20px 20px 0 20px; border-top:1px solid #F5F7FC}
-.challenges-2024-item.open .challenges-2024-item-header-item-detail {display:block}
 .challenges-2024-item-header-item-detail-list-item {margin:0; padding:0}
 .challenges-2024-item-header-item-detail-list-item {margin:10px 0 0 0; padding:0 0 0 30px; position:relative}
 .challenges-2024-item-header-item-detail-list-item:first-child {margin:0}
@@ -2843,7 +2842,6 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .challenges-2024-item-header-item-sub+.challenges-2024-item-header-item-sub {margin:20px -20px 0 -20px; padding:0 20px; border-top:1px solid #E2E5EE}
 .challenges-2024-item.open .challenges-2024-item-header-item-sub+.challenges-2024-item-header-item-sub {padding-top:20px; border-top:10px solid #F5F7FC}
 .challenges-2024-item-header-item-sub+.challenges-2024-item-header-item-sub .challenges-2024-item-header-item-type {display:none}
-.challenges-2024-item.open .challenges-2024-item-header-item-sub+.challenges-2024-item-header-item-sub .challenges-2024-item-header-item-type {display:block}
 
 @media screen and (max-width:1139px) {
     .challenges-2024-item-header {display:block; padding:20px 0}
@@ -2933,7 +2931,7 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .main-tabs-event-new-photo a:hover {opacity:0.9}
 .main-tabs-event-new-photo img {display:block; width:100%; border-radius:6px}
 .main-tabs-event-new-container {display:flex; width:100%; flex-direction:column}
-.main-tabs-event-new-type {font-size:12px; line-height:16px}
+.main-tabs-event-new-type {font-size:14px; line-height:18px}
 .main-tabs-event-new-type a {color:#FE6600; text-decoration:none}
 .main-tabs-event-new-type a:hover {text-decoration:underline}
 .main-tabs-event-new-type img {display:inline-block; vertical-align:middle; margin:-2px 6px 0 0; width:16px}
@@ -2943,8 +2941,8 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .main-tabs-event-new-authors {margin:10px 0 0 0; font-size:14px; line-height:18px}
 .main-tabs-event-new-bottom {display:flex; margin:20px 0 0 0; font-size:14px; line-height:18px; color:#B9B9B9}
 .main-tabs-event-new-date {white-space:nowrap}
-.main-tabs-event-new-tags {margin:0 0 0 20px; display:flex; align-items:center; padding:0 0 0 20px; border-left:1px solid rgba(185, 185, 185, 0.5)}
-.main-tabs-event-new-tags img {min-width:16px; max-width:16px; height:16px; margin:2px 6px 0 0}
+.main-tabs-event-new-tags {margin:0 0 0 20px; align-items:center; padding:0 0 0 20px; border-left:1px solid rgba(185, 185, 185, 0.5)}
+.main-tabs-event-new-tags img {display:inline-block; vertical-align:middle; width:16px; height:16px; margin:-2px 6px 0 0}
 .main-tabs-event-new-tags a {color:#B9B9B9; text-decoration:none}
 .main-tabs-event-new-tags a:hover {text-decoration:underline}
 
@@ -3124,12 +3122,11 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .task-2024-list-2 .task-2024-item {padding:15px 0 15px 50px; position:relative}
 .task-2024-list-2 .task-2024-item::before {content:""; position:absolute; left:0; top:15px; width:30px; height:30px; background:url(../images/task-2024-list-2-arrow.svg) no-repeat; transition:transform 0.2s}
 .task-2024-list-2 .task-2024-item.open::before {transform:rotate(-180deg)}
-.task-2024-item-title {font:20px/30px HelveticaNeueCyrMedium, sans-serif; color:#000000}
+.task-2024-item-title {font:20px/30px HelveticaNeueCyrMedium, sans-serif; color:#000000; cursor:pointer}
 .task-2024-item-info {margin:10px 0 0 0}
 .task-2024-item-row {margin:10px 0 0 0; display:flex}
 .task-2024-item-row:first-child {margin:0}
 .task-2024-list-2 .task-2024-item-row:nth-child(n + 2) {display:none}
-.task-2024-list-2 .task-2024-item.open .task-2024-item-row:nth-child(n + 2) {display:flex}
 .task-2024-item-row-title {min-width:180px; max-width:180px; margin:6px 20px 0 0; font-weight:bold; font-size:11px; line-height:14px; color:#FE6600; text-transform:uppercase; letter-spacing:0.05em}
 .task-2024-item-row-value {font-size:16px; line-height:24px; color:#717171}
 .task-2024-item-row-value *:first-child {margin-top:0}
@@ -3253,14 +3250,14 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
     .media-2024-filter-item-current-arrow {margin:0; position:absolute; right:12px; top:21px}
 }
 
-.media-2024-filter-item-window {position:absolute; left:-9999px; top:-9999px; margin-top:6px; width:300px; z-index:9; background:#FFFFFF; border:1px solid #E6E6E6; border-radius:4px; box-shadow:0px 4px 20px rgba(0, 0, 0, 0.15)}
+.media-2024-filter-item-window {position:absolute; left:-9999px; top:-9999px; margin-top:6px; width:400px; z-index:9; background:#FFFFFF; border:1px solid #E6E6E6; border-radius:4px; box-shadow:0px 4px 20px rgba(0, 0, 0, 0.15)}
 .media-2024-filter-item.open .media-2024-filter-item-window {left:0; top:100%}
 
 @media screen and (max-width:1139px) {
     .media-2024-filter-item-window {width:100%}
 }
 
-.media-2024-filter-item-list {font-size:14px; line-height:18px; white-space:nowrap; max-height:258px; overflow:auto; margin:0 4px 0 0; position:relative}
+.media-2024-filter-item-list {font-size:14px; line-height:18px; max-height:258px; overflow:auto; margin:0 4px 0 0; position:relative}
 .media-2024-filter-item-list::-webkit-scrollbar-thumb {background:#717171; border-radius:2px}
 .media-2024-filter-item-list::-webkit-scrollbar {width:2px; height:2px; background:#FFFFFF}
 .media-2024-filter-item-list-item {border-top:1px solid #F5F7FC; margin:0 4px 0 0}
@@ -3392,10 +3389,10 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .media-2024-detail-back svg {min-width:30px; max-width:30px; height:30px; fill:#FE6600; transition:fill 0.2s}
 .media-2024-detail-back:hover svg {fill:#FFFFFF}
 .media-2024-detail-header h1 {margin:0; text-transform:none; font-size:30px; line-height:42px; color:#000000}
-.media-2024-detail-ctrl {display:flex; margin:10px 0 0 0; width:100%; align-items:center; font-size:14px; line-height:14px; color:#B9B9B9}
+.media-2024-detail-ctrl {display:flex; margin:10px 0 0 0; width:100%; align-items:center; font-size:14px; line-height:14px; color:#B9B9B9; justify-content:space-between}
 .media-2024-detail-date {white-space:nowrap; padding:0 0 0 21px; position:relative}
 .media-2024-detail-date::before {content:""; position:absolute; left:0; top:-2px; width:16px; height:16px; background:url(../images/media-2024-detail-date.svg) no-repeat}
-.media-2024-detail-type {white-space:nowrap; margin:0 0 0 20px; color:#FE6600}
+.media-2024-detail-type {white-space:nowrap; margin:0 0 0 20px; color:#FE6600; flex:1}
 .media-2024-detail-type a {color:#FE6600; text-decoration:none}
 .media-2024-detail-type a:hover {text-decoration:underline}
 .media-2024-detail-category {white-space:nowrap; position:relative; overflow:hidden; text-overflow:ellipsis; padding:0 0 0 21px; margin:0 0 0 20px; max-width:100%; flex:1; box-sizing:border-box}
@@ -3450,7 +3447,7 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .media-2024-detail-others-item {display:flex; flex-direction:column; min-width:calc(33.33% - 20px); max-width:calc(33.33% - 20px); margin:20px 10px 0 10px}
 .media-2024-detail-others-item-photo a {display:block}
 .media-2024-detail-others-item-photo img {display:block; width:100%; border-radius:5px}
-.media-2024-detail-others-item-type {margin:20px 0 0 0; font-size:12px; line-height:18px; text-transform:uppercase}
+.media-2024-detail-others-item-type {margin:20px 0 0 0; font-size:12px; line-height:18px}
 .media-2024-detail-others-item-type a {color:#FE6600; text-decoration:none}
 .media-2024-detail-others-item-type a:hover {text-decoration:underline}
 .media-2024-detail-others-item-title {margin:20px 0 0 0; font-size:18px; line-height:23px; flex-grow:1}
@@ -3483,7 +3480,7 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .docs-2024-index-item-title {width:100%; margin:0 20px 0 40px; font-weight:bold; font-size:24px; line-height:34px; color:#000000}
 .docs-2024-index-item-header:hover .docs-2024-index-item-title {text-decoration:underline}
 .docs-2024-index-item-arrow {min-width:34px; max-width:34px}
-.docs-2024-index-item-arrow svg {width:34px; height:34px; fill:#FE6600; transition:transform 0.2s}
+.docs-2024-index-item-arrow svg {display:block; width:34px; height:34px; fill:#FE6600; transition:transform 0.2s}
 .docs-2024-index-item.open .docs-2024-index-item-arrow svg {transform:rotate(-180deg)}
 .docs-2024-index-item-container {display:none; margin:-4px 0 0 0; padding:0 30px 24px 120px}
 .docs-2024-index-item-content {background:#FFFFFF; padding:20px; border-radius:4px}
@@ -3493,6 +3490,27 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .docs-2024-index-item-section-title a {color:#000000; text-decoration:none}
 .docs-2024-index-item-section-title a:hover {text-decoration:underline}
 .docs-2024-index-item-section-count {margin:10px 0 0 0; font-size:14px; line-height:18px; color:#B3B3B3}
+
+.docs-2024-index-2 .docs-2024-index-item-header {padding:30px 40px}
+.docs-2024-index-2 .docs-2024-index-item-title {margin:0 20px 0 0}
+.docs-2024-index-2 .docs-2024-index-item-arrow {min-width:30px; max-width:30px}
+.docs-2024-index-2 .docs-2024-index-item-arrow svg {width:30px; height:30px}
+.docs-2024-index-2 .docs-2024-index-item-container {margin:-10px 0 0 0; padding:0 40px 30px 40px}
+.docs-2024-index-2 .docs-2024-index-item-content {border-top:1px solid #E2E5EE; background:none; padding:20px 0 0 0}
+.docs-2024-index-2 .docs-2024-index-item-section {border-top:none; padding:0 0 0 25px; position:relative}
+.docs-2024-index-2 .docs-2024-index-item-section:first-child {padding:0 0 0 25px}
+.docs-2024-index-2 .docs-2024-index-item-section::before {content:""; position:absolute; left:0; top:9px; width:6px; height:6px; background:#FE6600; border-radius:50%}
+.docs-2024-index-2 .docs-2024-index-item-section-title {font:18px/25px HelveticaNeueCyr, sans-serif}
+.docs-2024-index-2 .docs-2024-index-item-section-title a {color:#3175A7}
+.docs-2024-index-2 .docs-2024-index-item-section-count {margin:5px 0 0 0}
+
+@media (max-width:1139px) {
+    .docs-2024-index-2 {margin:40px -20px 0 -20px}
+    .docs-2024-index-2 .docs-2024-index-item {border-radius:10px}
+    .docs-2024-index-2 .docs-2024-index-item-header {padding:30px 20px; align-items:flex-start}
+    .docs-2024-index-2 .docs-2024-index-item-title {font-size:22px; line-height:31px}
+    .docs-2024-index-2 .docs-2024-index-item-container {padding:0 20px 30px 20px}
+}
 
 .docs-2024-section-link {font-size:14px; line-height:14px; color:#FE6600}
 .docs-2024-section-link a {color:#FE6600; text-decoration:none}
