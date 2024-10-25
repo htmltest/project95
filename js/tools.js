@@ -2776,9 +2776,12 @@ $(document).ready(function() {
         }
     });
 
+    var dpFilterCalendar;
+
     $('.media-2024-filter-item-current-value a').click(function(e) {
         var curItem = $(this).parents().filter('.media-2024-filter-item');
         curItem.find('.media-2024-filter-item-list-item input').prop('checked', false).trigger('change');
+        dpFilterCalendar.clear();
         return false;
     });
 
@@ -2867,7 +2870,31 @@ $(document).ready(function() {
     $('.media-2024-filter-clear').click(function(e) {
         $('.media-2024-filter-item-list-item input').prop('checked', false).trigger('change');
         $('.media-2024-filter-item-tag input').prop('checked', false).trigger('change');
+        if (dpFilterCalendar) {
+            dpFilterCalendar.clear();
+        }
         e.preventDefault();
+    });
+
+    $('.media-2024-filter-item-calendar').each(function() {
+        var curCalendar = $(this);
+        dpFilterCalendar = new AirDatepicker('#' + $(this).attr('id'), {
+            range: true,
+            prevHtml: '<svg viewBox="0 0 24 24"><path d="M15 18L9 12L15 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>',
+            nextHtml: '<svg viewBox="0 0 24 24"><path d="M9 18L15 12L9 6" troke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>',
+            onSelect(date, formattedDate) {
+                curCalendar.parent().find('> input[type="hidden"]').val(date.formattedDate.join(','));
+                var curItem = curCalendar.parents().filter('.media-2024-filter-item');
+                if (date.formattedDate.length > 0) {
+                    curItem.addClass('active');
+                    curItem.find('.media-2024-filter-item-current-value span').html(date.formattedDate.join(' — '));
+                } else {
+                    curItem.removeClass('active');
+                }
+                media2024Update();
+            }
+
+        });
     });
 
     $('body').on('click', '.pager-size-select-current', function() {
@@ -2989,6 +3016,11 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    $('body').on('click', '.main-tabs-doc-new-tags-more a', function(e) {
+        $(this).parent().parent().toggleClass('open');
+        e.preventDefault();
+    });
+
 });
 
 $(window).on('load resize scroll', function() {
@@ -3105,6 +3137,12 @@ function media2024UpdateStart() {
                     curItem.addClass('with-more');
                 }
             });
+            $('.main-tabs-doc-new-tags').each(function() {
+                var curItem = $(this);
+                if (curItem.find('.main-tabs-doc-new-tags-text').height() < curItem.find('.main-tabs-doc-new-tags-text-inner').height()) {
+                    curItem.addClass('with-more');
+                }
+            });
         } else {
             $('.media-2024').addClass('empty');
             $('.media-2024-content-list').html(newHTML.find('.media-2024-content-list').html());
@@ -3129,4 +3167,139 @@ $(window).on('load', function() {
             curItem.addClass('with-more');
         }
     });
+    $('.main-tabs-doc-new-tags').each(function() {
+        var curItem = $(this);
+        if (curItem.find('.main-tabs-doc-new-tags-text').height() < curItem.find('.main-tabs-doc-new-tags-text-inner').height()) {
+            curItem.addClass('with-more');
+        }
+    });
+});
+
+$(document).ready(function() {
+
+    $('.header-fixed-burger').click(function(e) {
+        $('.header-menu-link').trigger('click');
+        e.preventDefault();
+    });
+
+    $('.main-tabs-catalogue-page-size-select-current').click(function() {
+        $(this).parent().toggleClass('open');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.main-tabs-catalogue-page-size-select').length == 0) {
+            $('.main-tabs-catalogue-page-size-select').removeClass('open');
+        }
+    });
+
+    $('.main-tabs-catalogue-page-size-select-item label input').change(function() {
+        var curSelect = $(this).parents().filter('.main-tabs-catalogue-page-size');
+        var curTab = curSelect.parents().filter('.main-tabs-content');
+        var curText = '';
+        curSelect.find('.main-tabs-catalogue-page-size-select-item label input:checked').each(function() {
+            curText = $(this).parent().find('span').html();
+        });
+        curSelect.find('.main-tabs-catalogue-page-size-select-current span').html(curText);
+        $('.main-tabs-catalogue-page-size-select').removeClass('open');
+        updateMainTabsCatalogue(curTab);
+    });
+
+    $('body').on('click', '.main-tabs-catalogue-paging .pager a', function(e) {
+        var curLink = $(this);
+        var curTab = curLink.parents().filter('.main-tabs-content');
+        if (!curLink.hasClass('active')) {
+            curTab.find('.main-tabs-catalogue-paging .pager a.active').removeClass('active');
+            curLink.addClass('active');
+            if (e.originalEvent === undefined) {
+                updateMainTabsCatalogue(curTab);
+            } else {
+                updateMainTabsCatalogue(curTab, true);
+            }
+        }
+        e.preventDefault();
+    });
+
+    $('.main-tabs-catalogue-header-filter-item-current').click(function(e) {
+        var curItem = $(this).parents().filter('.main-tabs-catalogue-header-filter-item');
+        if (curItem.hasClass('open')) {
+            curItem.removeClass('open');
+        } else {
+            $('.main-tabs-catalogue-header-filter-item.open').removeClass('open');
+            curItem.addClass('open');
+        }
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.main-tabs-catalogue-header-filter-item').length == 0) {
+            $('.main-tabs-catalogue-header-filter-item.open').removeClass('open');
+        }
+    });
+
+    var dpTabsFilterCalendar;
+
+    $('.main-tabs-catalogue-header-filter-item-current-value a').click(function(e) {
+        var curItem = $(this).parents().filter('.main-tabs-catalogue-header-filter-item');
+        dpTabsFilterCalendar.clear();
+        return false;
+    });
+
+    $('.main-tabs-catalogue-header-filter-item-calendar').each(function() {
+        var curCalendar = $(this);
+        dpTabsFilterCalendar = new AirDatepicker('#' + $(this).attr('id'), {
+            range: true,
+            prevHtml: '<svg viewBox="0 0 24 24"><path d="M15 18L9 12L15 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>',
+            nextHtml: '<svg viewBox="0 0 24 24"><path d="M9 18L15 12L9 6" troke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>',
+            onSelect(date, formattedDate) {
+                curCalendar.parent().find('> input[type="hidden"]').val(date.formattedDate.join(','));
+                var curItem = curCalendar.parents().filter('.main-tabs-catalogue-header-filter-item');
+                if (date.formattedDate.length > 0) {
+                    curItem.addClass('active');
+                    curItem.find('.main-tabs-catalogue-header-filter-item-current-value span').html(date.formattedDate.join(' — '));
+                } else {
+                    curItem.removeClass('active');
+                }
+                var curTab = curCalendar.parents().filter('.main-tabs-content');
+                updateMainTabsCatalogue(curTab);
+            }
+        });
+    });
+
+});
+
+function updateMainTabsCatalogue(curTab, isScroll) {
+    curTab.find('.main-tabs-catalogue-list').addClass('loading');
+    var curForm = curTab.find('.main-tabs-catalogue-header-filter-form form');
+    var curData = curForm.serialize();
+    curData += '&page=' + curTab.find('.pager a.active').attr('data-value');
+    curData += '&size=' + curTab.find('.main-tabs-catalogue-page-size input:checked').val();
+    $.ajax({
+        type: 'POST',
+        url: curForm.attr('action'),
+        dataType: 'html',
+        data: curData,
+        cache: false
+    }).done(function(html) {
+        curTab.find('.main-tabs-catalogue-list').html($(html).find('.main-tabs-catalogue-list').html())
+        curTab.find('.main-tabs-catalogue-paging .pager').html($(html).find('.pager').html())
+        curTab.find('.main-tabs-catalogue-header-results-from').html($(html).find('.main-tabs-catalogue-list').attr('data-statusfrom'));
+        curTab.find('.main-tabs-catalogue-header-results-to').html($(html).find('.main-tabs-catalogue-list').attr('data-statusto'));
+        curTab.find('.main-tabs-catalogue-header-results-count').html($(html).find('.main-tabs-catalogue-list').attr('data-statuscount'));
+        curTab.find('.main-tabs-catalogue-list').removeClass('loading');
+        if (isScroll) {
+            $('html, body').animate({'scrollTop': curTab.find('.main-tabs-catalogue-list').offset().top - $('.header-fixed').outerHeight()});
+        }
+    });
+}
+
+$(window).on('load resize scroll', function() {
+    var windowScroll = $(window).scrollTop();
+
+    $('.header-2024').each(function() {
+        if (windowScroll > $('.header-2024').outerHeight()) {
+            $('.header-fixed').addClass('visible');
+        } else {
+            $('.header-fixed').removeClass('visible');
+        }
+    });
+
 });

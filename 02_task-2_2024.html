@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="js/slick/slick.css" />
         <link rel="stylesheet" href="js/jquery-ui-1.12.1.custom/jquery-ui.css" />
         <link rel="stylesheet" href="js/jscrollpane/jquery.jscrollpane.css" />
+        <link rel="stylesheet" href="js/air-datepicker/air-datepicker.css">
 
         <link rel="stylesheet" href="css/print.css" media="print" />
 
@@ -25,6 +26,7 @@
         <script src="js/isotope.pkgd.min.js"></script>
         <script src="js/jscrollpane/jquery.mousewheel.js"></script>
         <script src="js/jscrollpane/jquery.jscrollpane.min.js"></script>
+        <script src="js/air-datepicker/air-datepicker.js"></script>
         <script src="js/tools.js"></script>
 
         <link rel="icon" type="image/png" href="favicon.png" />
@@ -38,7 +40,23 @@
         <div class="wrapper">
             <div class="wrapper-inner">
 
-                <header>
+                <div class="header-fixed">
+                    <div class="container">
+                        <div class="header-fixed-logo"><a href="#"></a></div>
+                        <div class="header-fixed-title"><div>Научно-технологическое развитие Российской Федерации</div></div>
+                        <div class="header-fixed-menu">
+                            <div class="header-fixed-menu-item"><a href="#">Большие вызовы<br> и&nbsp;приоритеты&nbsp;НТР</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Показатели научно-<br>технологического развития</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Основные направления государственной<br> политики в&nbsp;области&nbsp;НТР</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Аналитические<br> материалы</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Ключевые<br> события</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Нормативные<br> и&nbsp;правовые акты</a></div>
+                        </div>
+                        <a href="#" class="header-fixed-burger"></a>
+                    </div>
+                </div>
+
+                <header class="header-2024">
                     <div class="container">
 
                         <div class="logo"><a href="#"></a><img src="images/logo-print.png" alt="" class="on-print" /></div>
@@ -75,7 +93,7 @@
                                 <div class="header-menu-wrap header-menu-wrap-2024">
                                     <ul>
                                         <li>
-                                            <span>Большие вызовы и приоритеты НТР</span>
+                                            <a href="#">Большие вызовы и приоритеты НТР</a>
                                             <ul>
                                                 <li><a href="#">Выработка и сохранение энергии</a></li>
                                                 <li><a href="#">Старение населения и здоровье нации</a></li>
@@ -85,7 +103,7 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <span>Показатели научно-технологического развития</span>
+                                            <a href="#">Показатели научно-технологического развития</a>
                                             <ul>
                                                 <li><a href="#">По программным документам</a></li>
                                                 <li><a href="#">По типам показателей</a></li>
@@ -95,13 +113,13 @@
                                         </li>
                                     </ul>
                                     <ul>
-                                        <li>
-                                            <span>Основные направления государственной политики в области НТР</span>
+                                        <li class="active">
+                                            <a href="#">Основные направления государственной политики в области НТР</a>
                                             <ul>
                                                 <li><a href="#">Взаимодействие и кооперация</a></li>
                                                 <li><a href="#">Инфраструктура и среда</a></li>
                                                 <li><a href="#">Кадры и человеческий капитал</a></li>
-                                                <li><a href="#">Управление и инвестиции</a></li>
+                                                <li class="active"><a href="#">Управление и инвестиции</a></li>
                                                 <li><a href="#">Сотрудничество и интеграция</a></li>
                                             </ul>
                                         </li>
@@ -142,15 +160,17 @@
 
                     </div>
 
-                    <div class="header-submenu">
+                    <div class="header-submenu-2 header-submenu-2-2024">
                         <div class="container">
-                            <ul>
-                                <li><a href="#">Кадры и человеческий капитал</a></li>
-                                <li><a href="#">Инфраструктура и среда</a></li>
-                                <li><a href="#">Взаимодействие и кооперация</a></li>
-                                <li class="active"><a href="#">Управление и инвестиции</a></li>
-                                <li><a href="#">Сотрудничество и интеграция</a></li>
-                            </ul>
+                            <div class="header-submenu-2-wrap">
+                                <div class="header-submenu-2-inner">
+                                    <div class="header-submenu-2-item active"><a href="#">Управление и инвестиции</a></div>
+                                    <div class="header-submenu-2-item"><a href="#">Взаимодействие и кооперация</a></div>
+                                    <div class="header-submenu-2-item"><a href="#">Инфраструктура и среда</a></div>
+                                    <div class="header-submenu-2-item"><a href="#">Кадры и человеческий капитал</a></div>
+                                    <div class="header-submenu-2-item"><a href="#">Сотрудничество и интеграция</a></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </header>
@@ -179,61 +199,110 @@
                             <!-- main tabs content -->
                             <div class="main-tabs-content" data-title="События">
                                 <div class="tabs-content-2024">
-                                    <div class="tabs-content-2024-title">Календарь ключевых событий</div>
-                                    <div class="main-tabs-events-new">
-                                        <div class="main-tabs-event-new">
-                                            <div class="main-tabs-event-new-photo"><a href="#"><img src="files/main-tabs-event-new-1.jpg" alt=""></a></div>
-                                            <div class="main-tabs-event-new-container">
-                                                <div class="main-tabs-event-new-type"><a href="#">Календарь</a></div>
-                                                <div class="main-tabs-event-new-title"><a href="#">Стипендия для студентов&nbsp;&mdash; будущих оборонщиков учреждена в&nbsp;Тульской области</a></div>
-                                                <div class="main-tabs-event-new-bottom">
-                                                    <div class="main-tabs-event-new-date">29 февраля 2024</div>
-                                                    <div class="main-tabs-event-new-tags">
-                                                        <img src="images/task-event-info-tag.svg" alt="">
-                                                        <a href="#">Информационно-аналитическое издание</a>
+                                    <div class="main-tabs-catalogue-header">
+                                        <div class="tabs-content-2024-title">Календарь ключевых событий</div>
+                                        <div class="main-tabs-catalogue-header-filter">
+                                            <div class="main-tabs-catalogue-header-results">с <span class="main-tabs-catalogue-header-results-from">1</span> по <span class="main-tabs-catalogue-header-results-to">15</span> из <span class="main-tabs-catalogue-header-results-count">987</span></div>
+                                            <div class="main-tabs-catalogue-header-filter-form">
+                                                <form action="ajax/tabs-events.html" method="post">
+                                                    <div class="main-tabs-catalogue-header-filter-item">
+                                                        <div class="main-tabs-catalogue-header-filter-item-current">
+                                                            <div class="main-tabs-catalogue-header-filter-item-label">Дата события</div>
+                                                            <div class="main-tabs-catalogue-header-filter-item-current-value"><span></span><a href="#"><svg><use xlink:href="images/sprite.svg#media-2024-filter-item-current-remove"></use></svg></a></div>
+                                                            <div class="main-tabs-catalogue-header-filter-item-current-arrow"><svg><use xlink:href="images/sprite.svg#media-2024-filter-item-label"></use></svg></div>
+                                                        </div>
+                                                        <div class="main-tabs-catalogue-header-filter-item-window main-tabs-catalogue-header-filter-item-window-calendar">
+                                                            <input type="hidden" name="dates" value="">
+                                                            <div class="main-tabs-catalogue-header-filter-item-calendar" id="main-tabs-catalogue-header-filter-item-calendar-events"></div>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </form>
                                             </div>
                                         </div>
-                                        <div class="main-tabs-event-new">
-                                            <div class="main-tabs-event-new-photo"><a href="#"><img src="files/main-tabs-event-new-2.jpg" alt=""></a></div>
-                                            <div class="main-tabs-event-new-container">
-                                                <div class="main-tabs-event-new-type"><a href="#">Календарь</a></div>
-                                                <div class="main-tabs-event-new-title"><a href="#">&laquo;Яндекс&raquo;, ВШЭ и&nbsp;&laquo;Сириус&raquo; запустили бесплатный курс по&nbsp;ИИ для школьников</a></div>
-                                                <div class="main-tabs-event-new-bottom">
-                                                    <div class="main-tabs-event-new-date">29 февраля 2024</div>
-                                                    <div class="main-tabs-event-new-tags">
-                                                        <img src="images/task-event-info-tag.svg" alt="">
-                                                        <a href="#">Информационно-аналитическое издание</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="main-tabs-event-new">
-                                            <div class="main-tabs-event-new-photo"><a href="#"><img src="files/main-tabs-event-new-3.jpg" alt=""></a></div>
-                                            <div class="main-tabs-event-new-container">
-                                                <div class="main-tabs-event-new-type"><a href="#">Календарь</a></div>
-                                                <div class="main-tabs-event-new-title"><a href="#">Шаг в&nbsp;науку</a></div>
-                                                <div class="main-tabs-event-new-bottom">
-                                                    <div class="main-tabs-event-new-date">29 февраля 2024</div>
-                                                    <div class="main-tabs-event-new-tags">
-                                                        <img src="images/task-event-info-tag.svg" alt="">
-                                                        <a href="#">Информационно-аналитическое издание</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <div class="tabs-content-2024-all"><a href="#">Все события</a></div>
                                     </div>
+                                    <div class="main-tabs-catalogue">
+                                        <div class="main-tabs-catalogue-list">
+                                            <div class="main-tabs-events-new">
+                                                <div class="main-tabs-event-new">
+                                                    <div class="main-tabs-event-new-photo"><a href="#"><img src="files/main-tabs-event-new-1.jpg" alt=""></a></div>
+                                                    <div class="main-tabs-event-new-container">
+                                                        <div class="main-tabs-event-new-type"><a href="#">Календарь</a></div>
+                                                        <div class="main-tabs-event-new-title"><a href="#">Стипендия для студентов&nbsp;&mdash; будущих оборонщиков учреждена в&nbsp;Тульской области</a></div>
+                                                        <div class="main-tabs-event-new-bottom">
+                                                            <div class="main-tabs-event-new-date">29 февраля 2024</div>
+                                                            <div class="main-tabs-event-new-tags">
+                                                                <img src="images/task-event-info-tag.svg" alt="">
+                                                                <a href="#">Информационно-аналитическое издание</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="main-tabs-event-new">
+                                                    <div class="main-tabs-event-new-photo"><a href="#"><img src="files/main-tabs-event-new-2.jpg" alt=""></a></div>
+                                                    <div class="main-tabs-event-new-container">
+                                                        <div class="main-tabs-event-new-type"><a href="#">Календарь</a></div>
+                                                        <div class="main-tabs-event-new-title"><a href="#">&laquo;Яндекс&raquo;, ВШЭ и&nbsp;&laquo;Сириус&raquo; запустили бесплатный курс по&nbsp;ИИ для школьников</a></div>
+                                                        <div class="main-tabs-event-new-bottom">
+                                                            <div class="main-tabs-event-new-date">29 февраля 2024</div>
+                                                            <div class="main-tabs-event-new-tags">
+                                                                <img src="images/task-event-info-tag.svg" alt="">
+                                                                <a href="#">Информационно-аналитическое издание</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="main-tabs-event-new">
+                                                    <div class="main-tabs-event-new-photo"><a href="#"><img src="files/main-tabs-event-new-3.jpg" alt=""></a></div>
+                                                    <div class="main-tabs-event-new-container">
+                                                        <div class="main-tabs-event-new-type"><a href="#">Календарь</a></div>
+                                                        <div class="main-tabs-event-new-title"><a href="#">Шаг в&nbsp;науку</a></div>
+                                                        <div class="main-tabs-event-new-bottom">
+                                                            <div class="main-tabs-event-new-date">29 февраля 2024</div>
+                                                            <div class="main-tabs-event-new-tags">
+                                                                <img src="images/task-event-info-tag.svg" alt="">
+                                                                <a href="#">Информационно-аналитическое издание</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                    <div class="pager">
-                                        <a href="#" class="active">1</a>
-                                        <a href="#">2</a>
-                                        <a href="#">3</a>
-                                        <a href="#">4</a>
-                                        <a href="#">5</a>
-                                        <span>...</span>
-                                        <a href="#">491</a>
-                                        <a href="#">492</a>
+                                        <div class="main-tabs-catalogue-paging">
+                                            <div class="pager">
+                                                <a href="#" class="active" data-value="1">1</a>
+                                                <a href="#" data-value="2">2</a>
+                                                <a href="#" data-value="3">3</a>
+                                                <a href="#" data-value="4">4</a>
+                                                <a href="#" data-value="5">5</a>
+                                                <span>...</span>
+                                                <a href="#" data-value="491">491</a>
+                                                <a href="#" data-value="492">492</a>
+                                            </div>
+                                            <div class="main-tabs-catalogue-page-size">
+                                                <div class="main-tabs-catalogue-page-size-title">На странице:</div>
+                                                <div class="main-tabs-catalogue-page-size-value">
+                                                    <div class="main-tabs-catalogue-page-size-select">
+                                                        <div class="main-tabs-catalogue-page-size-select-current"><span>15</span><svg><use xlink:href="images/sprite.svg#pager-size"></use></svg></div>
+                                                        <div class="main-tabs-catalogue-page-size-select-list">
+                                                            <div class="main-tabs-catalogue-page-size-select-item">
+                                                                <label><input type="radio" name="size" value="15" checked="checked" /><span>15</span></label>
+                                                            </div>
+                                                            <div class="main-tabs-catalogue-page-size-select-item">
+                                                                <label><input type="radio" name="size" value="30" /><span>30</span></label>
+                                                            </div>
+                                                            <div class="main-tabs-catalogue-page-size-select-item">
+                                                                <label><input type="radio" name="size" value="45" /><span>45</span></label>
+                                                            </div>
+                                                            <div class="main-tabs-catalogue-page-size-select-item">
+                                                                <label><input type="radio" name="size" value="60" /><span>60</span></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="tabs-content-2024-all"><a href="#">Все события</a></div>
                                 </div>
@@ -243,61 +312,99 @@
                             <!-- main tabs content -->
                             <div class="main-tabs-content" data-title="Аналитика">
                                 <div class="tabs-content-2024">
-                                    <div class="tabs-content-2024-title">Аналитические материалы</div>
-                                    <div class="main-tabs-events-new">
-                                        <div class="main-tabs-event-new">
-                                            <div class="main-tabs-event-new-photo"><a href="#"><img src="files/main-analitycs-new-1.jpg" alt=""></a></div>
-                                            <div class="main-tabs-event-new-container">
-                                                <div class="main-tabs-event-new-type"><a href="#">Результативность научной деятельности и интеллектуальный капитал</a></div>
-                                                <div class="main-tabs-event-new-title"><a href="#">Реализация научно-технической политики в Российской Федерации: современное состояние и перспективы развития</a></div>
-                                                <div class="main-tabs-event-new-bottom">
-                                                    <div class="main-tabs-event-new-date">29 февраля 2024</div>
-                                                    <div class="main-tabs-event-new-tags">
-                                                        <img src="images/task-event-info-tag-2.svg" alt="">
-                                                        <a href="#">Информационно-аналитическое издание</a>
-                                                    </div>
-                                                </div>
+                                    <div class="main-tabs-catalogue-header">
+                                        <div class="tabs-content-2024-title">Аналитические материалы</div>
+                                        <div class="main-tabs-catalogue-header-filter">
+                                            <div class="main-tabs-catalogue-header-results">с <span class="main-tabs-catalogue-header-results-from">1</span> по <span class="main-tabs-catalogue-header-results-to">15</span> из <span class="main-tabs-catalogue-header-results-count">987</span></div>
+                                            <div class="main-tabs-catalogue-header-filter-form">
+                                                <form action="ajax/tabs-analitycs.html" method="post">
+                                                </form>
                                             </div>
                                         </div>
-                                        <div class="main-tabs-event-new">
-                                            <div class="main-tabs-event-new-photo"><a href="#"><img src="files/main-analitycs-new-2.jpg" alt=""></a></div>
-                                            <div class="main-tabs-event-new-container">
-                                                <div class="main-tabs-event-new-type"><a href="#">Результативность научной деятельности и интеллектуальный капитал</a></div>
-                                                <div class="main-tabs-event-new-title"><a href="#">Атлас научно-технологического развития регионов. Центральный федеральный округ</a></div>
-                                                <div class="main-tabs-event-new-bottom">
-                                                    <div class="main-tabs-event-new-date">29 февраля 2024</div>
-                                                    <div class="main-tabs-event-new-tags">
-                                                        <img src="images/task-event-info-tag-2.svg" alt="">
-                                                        <a href="#">Информационно-аналитическое издание</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="main-tabs-event-new">
-                                            <div class="main-tabs-event-new-photo"><a href="#"><img src="files/main-analitycs-new-3.jpg" alt=""></a></div>
-                                            <div class="main-tabs-event-new-container">
-                                                <div class="main-tabs-event-new-type"><a href="#">Результативность научной деятельности и интеллектуальный капитал</a></div>
-                                                <div class="main-tabs-event-new-title"><a href="#">Реализация научно-технической политики в Российской Федерации: современное состояние и перспективы развития</a></div>
-                                                <div class="main-tabs-event-new-bottom">
-                                                    <div class="main-tabs-event-new-date">29 февраля 2024</div>
-                                                    <div class="main-tabs-event-new-tags">
-                                                        <img src="images/task-event-info-tag.svg" alt="">
-                                                        <a href="#">Информационно-аналитическое издание</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <div class="tabs-content-2024-all"><a href="#">Все материалы</a></div>
                                     </div>
+                                    <div class="main-tabs-catalogue">
+                                        <div class="main-tabs-catalogue-list">
+                                            <div class="main-tabs-events-new">
+                                                <div class="main-tabs-event-new">
+                                                    <div class="main-tabs-event-new-photo"><a href="#"><img src="files/main-analitycs-new-1.jpg" alt=""></a></div>
+                                                    <div class="main-tabs-event-new-container">
+                                                        <div class="main-tabs-event-new-type"><a href="#">Результативность научной деятельности и интеллектуальный капитал</a></div>
+                                                        <div class="main-tabs-event-new-title"><a href="#">Реализация научно-технической политики в Российской Федерации: современное состояние и перспективы развития</a></div>
+                                                        <div class="main-tabs-event-new-bottom">
+                                                            <div class="main-tabs-event-new-date">29 февраля 2024</div>
+                                                            <div class="main-tabs-event-new-tags">
+                                                                <img src="images/task-event-info-tag-2.svg" alt="">
+                                                                <a href="#">Информационно-аналитическое издание</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="main-tabs-event-new">
+                                                    <div class="main-tabs-event-new-photo"><a href="#"><img src="files/main-analitycs-new-2.jpg" alt=""></a></div>
+                                                    <div class="main-tabs-event-new-container">
+                                                        <div class="main-tabs-event-new-type"><a href="#">Результативность научной деятельности и интеллектуальный капитал</a></div>
+                                                        <div class="main-tabs-event-new-title"><a href="#">Атлас научно-технологического развития регионов. Центральный федеральный округ</a></div>
+                                                        <div class="main-tabs-event-new-bottom">
+                                                            <div class="main-tabs-event-new-date">29 февраля 2024</div>
+                                                            <div class="main-tabs-event-new-tags">
+                                                                <img src="images/task-event-info-tag-2.svg" alt="">
+                                                                <a href="#">Информационно-аналитическое издание</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="main-tabs-event-new">
+                                                    <div class="main-tabs-event-new-photo"><a href="#"><img src="files/main-analitycs-new-3.jpg" alt=""></a></div>
+                                                    <div class="main-tabs-event-new-container">
+                                                        <div class="main-tabs-event-new-type"><a href="#">Результативность научной деятельности и интеллектуальный капитал</a></div>
+                                                        <div class="main-tabs-event-new-title"><a href="#">Реализация научно-технической политики в Российской Федерации: современное состояние и перспективы развития</a></div>
+                                                        <div class="main-tabs-event-new-bottom">
+                                                            <div class="main-tabs-event-new-date">29 февраля 2024</div>
+                                                            <div class="main-tabs-event-new-tags">
+                                                                <img src="images/task-event-info-tag.svg" alt="">
+                                                                <a href="#">Информационно-аналитическое издание</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                    <div class="pager">
-                                        <a href="#" class="active">1</a>
-                                        <a href="#">2</a>
-                                        <a href="#">3</a>
-                                        <a href="#">4</a>
-                                        <a href="#">5</a>
-                                        <span>...</span>
-                                        <a href="#">491</a>
-                                        <a href="#">492</a>
+                                        <div class="main-tabs-catalogue-paging">
+                                            <div class="pager">
+                                                <a href="#" data-value="1">1</a>
+                                                <a href="#" data-value="2">2</a>
+                                                <a href="#" class="active" data-value="3">3</a>
+                                                <a href="#" data-value="4">4</a>
+                                                <a href="#" data-value="5">5</a>
+                                                <span>...</span>
+                                                <a href="#" data-value="491">491</a>
+                                                <a href="#" data-value="492">492</a>
+                                            </div>
+                                            <div class="main-tabs-catalogue-page-size">
+                                                <div class="main-tabs-catalogue-page-size-title">На странице:</div>
+                                                <div class="main-tabs-catalogue-page-size-value">
+                                                    <div class="main-tabs-catalogue-page-size-select">
+                                                        <div class="main-tabs-catalogue-page-size-select-current"><span>30</span><svg><use xlink:href="images/sprite.svg#pager-size"></use></svg></div>
+                                                        <div class="main-tabs-catalogue-page-size-select-list">
+                                                            <div class="main-tabs-catalogue-page-size-select-item">
+                                                                <label><input type="radio" name="size" value="15" /><span>15</span></label>
+                                                            </div>
+                                                            <div class="main-tabs-catalogue-page-size-select-item">
+                                                                <label><input type="radio" name="size" value="30" checked="checked" /><span>30</span></label>
+                                                            </div>
+                                                            <div class="main-tabs-catalogue-page-size-select-item">
+                                                                <label><input type="radio" name="size" value="45" /><span>45</span></label>
+                                                            </div>
+                                                            <div class="main-tabs-catalogue-page-size-select-item">
+                                                                <label><input type="radio" name="size" value="60" /><span>60</span></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="tabs-content-2024-all"><a href="#">Все материалы</a></div>
                                 </div>
@@ -307,79 +414,116 @@
                             <!-- main tabs content -->
                             <div class="main-tabs-content" data-title="Документы">
                                 <div class="tabs-content-2024">
-                                    <div class="tabs-content-2024-title">Документы</div>
-
-                                    <div class="main-tabs-docs-new">
-                                        <div class="main-tabs-doc-new">
-                                            <div class="main-tabs-doc-new-subtitle"><span>Изменен</span><em>|</em>№ 127-ФЗ от 23 августа 1996 (в ред. от 13 июля 2015, 23 мая 2016, 26 июля 2019, 24 апреля 2020, 25 мая 2020, 31 июля 2020)</div>
-                                            <div class="main-tabs-doc-new-title">Федеральный закон 127-ФЗ "О науке и государственной научно-технической политике"</div>
-                                            <div class="main-tabs-doc-new-files">
-                                                <div class="main-tabs-doc-new-files-list">
-                                                    <div class="main-tabs-doc-new-file">
-                                                        <div class="main-tabs-doc-new-file-icon"><img src="images/main-tabs-doc-new-file.svg" alt=""></div>
-                                                        <div class="main-tabs-doc-new-file-title">
-                                                            <a href="#">Федеральный закон №127-ФЗ от 23.08.1996 в редакции от 31.07.2020</a>
-                                                            <span>PDF<em>|</em>383.94 КБ</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="main-tabs-doc-new-file">
-                                                        <div class="main-tabs-doc-new-file-icon"><img src="images/main-tabs-doc-new-file.svg" alt=""></div>
-                                                        <div class="main-tabs-doc-new-file-title">
-                                                            <a href="#">Федеральный закон №127-ФЗ от 23.08.1996 в редакции от 31.07.2020</a>
-                                                            <span>PDF<em>|</em>383.94 КБ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                    <div class="main-tabs-catalogue-header">
+                                        <div class="tabs-content-2024-title">Документы</div>
+                                        <div class="main-tabs-catalogue-header-filter">
+                                            <div class="main-tabs-catalogue-header-results">с <span class="main-tabs-catalogue-header-results-from">1</span> по <span class="main-tabs-catalogue-header-results-to">15</span> из <span class="main-tabs-catalogue-header-results-count">987</span></div>
+                                            <div class="main-tabs-catalogue-header-filter-form">
+                                                <form action="ajax/tabs-docs.html" method="post">
+                                                </form>
                                             </div>
                                         </div>
-                                        <div class="main-tabs-doc-new">
-                                            <div class="main-tabs-doc-new-subtitle"><span>Проект</span></div>
-                                            <div class="main-tabs-doc-new-title">Паспорт национального проекта "Наука и университеты"</div>
-                                            <div class="main-tabs-doc-new-files">
-                                                <div class="main-tabs-doc-new-files-list">
-                                                    <div class="main-tabs-doc-new-file">
-                                                        <div class="main-tabs-doc-new-file-icon"><img src="images/main-tabs-doc-new-file.svg" alt=""></div>
-                                                        <div class="main-tabs-doc-new-file-title">
-                                                            <a href="#">Паспорт Национального проекта Наука и университеты</a>
-                                                            <span>PDF<em>|</em>383.94 КБ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="main-tabs-doc-new">
-                                            <div class="main-tabs-doc-new-subtitle"><span>Изменен</span><em>|</em>№ 127-ФЗ от 23 августа 1996 (в ред. от 13 июля 2015, 23 мая 2016, 26 июля 2019, 24 апреля 2020, 25 мая 2020, 31 июля 2020)</div>
-                                            <div class="main-tabs-doc-new-title">Федеральный закон 127-ФЗ "О науке и государственной научно-технической политике"</div>
-                                            <div class="main-tabs-doc-new-files">
-                                                <div class="main-tabs-doc-new-files-list">
-                                                    <div class="main-tabs-doc-new-file">
-                                                        <div class="main-tabs-doc-new-file-icon"><img src="images/main-tabs-doc-new-file.svg" alt=""></div>
-                                                        <div class="main-tabs-doc-new-file-title">
-                                                            <a href="#">Федеральный закон №127-ФЗ от 23.08.1996 в редакции от 31.07.2020</a>
-                                                            <span>PDF<em>|</em>383.94 КБ</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="main-tabs-doc-new-file">
-                                                        <div class="main-tabs-doc-new-file-icon"><img src="images/main-tabs-doc-new-file.svg" alt=""></div>
-                                                        <div class="main-tabs-doc-new-file-title">
-                                                            <a href="#">Федеральный закон №127-ФЗ от 23.08.1996 в редакции от 31.07.2020</a>
-                                                            <span>PDF<em>|</em>383.94 КБ</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <div class="tabs-content-2024-all"><a href="#">Все документы</a></div>
                                     </div>
+                                    <div class="main-tabs-catalogue">
+                                        <div class="main-tabs-catalogue-list">
 
-                                    <div class="pager">
-                                        <a href="#" class="active">1</a>
-                                        <a href="#">2</a>
-                                        <a href="#">3</a>
-                                        <a href="#">4</a>
-                                        <a href="#">5</a>
-                                        <span>...</span>
-                                        <a href="#">491</a>
-                                        <a href="#">492</a>
+                                            <div class="main-tabs-docs-new">
+                                                <div class="main-tabs-doc-new">
+                                                    <div class="main-tabs-doc-new-subtitle"><span>Изменен</span><em>|</em>№ 127-ФЗ от 23 августа 1996 (в ред. от 13 июля 2015, 23 мая 2016, 26 июля 2019, 24 апреля 2020, 25 мая 2020, 31 июля 2020)</div>
+                                                    <div class="main-tabs-doc-new-title">Федеральный закон 127-ФЗ "О науке и государственной научно-технической политике"</div>
+                                                    <div class="main-tabs-doc-new-files">
+                                                        <div class="main-tabs-doc-new-files-list">
+                                                            <div class="main-tabs-doc-new-file">
+                                                                <div class="main-tabs-doc-new-file-icon"><img src="images/main-tabs-doc-new-file.svg" alt=""></div>
+                                                                <div class="main-tabs-doc-new-file-title">
+                                                                    <a href="#">Федеральный закон №127-ФЗ от 23.08.1996 в редакции от 31.07.2020</a>
+                                                                    <span>PDF<em>|</em>383.94 КБ</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="main-tabs-doc-new-file">
+                                                                <div class="main-tabs-doc-new-file-icon"><img src="images/main-tabs-doc-new-file.svg" alt=""></div>
+                                                                <div class="main-tabs-doc-new-file-title">
+                                                                    <a href="#">Федеральный закон №127-ФЗ от 23.08.1996 в редакции от 31.07.2020</a>
+                                                                    <span>PDF<em>|</em>383.94 КБ</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="main-tabs-doc-new">
+                                                    <div class="main-tabs-doc-new-subtitle"><span>Проект</span></div>
+                                                    <div class="main-tabs-doc-new-title">Паспорт национального проекта "Наука и университеты"</div>
+                                                    <div class="main-tabs-doc-new-files">
+                                                        <div class="main-tabs-doc-new-files-list">
+                                                            <div class="main-tabs-doc-new-file">
+                                                                <div class="main-tabs-doc-new-file-icon"><img src="images/main-tabs-doc-new-file.svg" alt=""></div>
+                                                                <div class="main-tabs-doc-new-file-title">
+                                                                    <a href="#">Паспорт Национального проекта Наука и университеты</a>
+                                                                    <span>PDF<em>|</em>383.94 КБ</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="main-tabs-doc-new">
+                                                    <div class="main-tabs-doc-new-subtitle"><span>Изменен</span><em>|</em>№ 127-ФЗ от 23 августа 1996 (в ред. от 13 июля 2015, 23 мая 2016, 26 июля 2019, 24 апреля 2020, 25 мая 2020, 31 июля 2020)</div>
+                                                    <div class="main-tabs-doc-new-title">Федеральный закон 127-ФЗ "О науке и государственной научно-технической политике"</div>
+                                                    <div class="main-tabs-doc-new-files">
+                                                        <div class="main-tabs-doc-new-files-list">
+                                                            <div class="main-tabs-doc-new-file">
+                                                                <div class="main-tabs-doc-new-file-icon"><img src="images/main-tabs-doc-new-file.svg" alt=""></div>
+                                                                <div class="main-tabs-doc-new-file-title">
+                                                                    <a href="#">Федеральный закон №127-ФЗ от 23.08.1996 в редакции от 31.07.2020</a>
+                                                                    <span>PDF<em>|</em>383.94 КБ</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="main-tabs-doc-new-file">
+                                                                <div class="main-tabs-doc-new-file-icon"><img src="images/main-tabs-doc-new-file.svg" alt=""></div>
+                                                                <div class="main-tabs-doc-new-file-title">
+                                                                    <a href="#">Федеральный закон №127-ФЗ от 23.08.1996 в редакции от 31.07.2020</a>
+                                                                    <span>PDF<em>|</em>383.94 КБ</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        <div class="main-tabs-catalogue-paging">
+                                            <div class="pager">
+                                                <a href="#" data-value="1">1</a>
+                                                <a href="#" data-value="2">2</a>
+                                                <a href="#" class="active" data-value="3">3</a>
+                                                <a href="#" data-value="4">4</a>
+                                                <a href="#" data-value="5">5</a>
+                                                <span>...</span>
+                                                <a href="#" data-value="491">491</a>
+                                                <a href="#" data-value="492">492</a>
+                                            </div>
+                                            <div class="main-tabs-catalogue-page-size">
+                                                <div class="main-tabs-catalogue-page-size-title">На странице:</div>
+                                                <div class="main-tabs-catalogue-page-size-value">
+                                                    <div class="main-tabs-catalogue-page-size-select">
+                                                        <div class="main-tabs-catalogue-page-size-select-current"><span>30</span><svg><use xlink:href="images/sprite.svg#pager-size"></use></svg></div>
+                                                        <div class="main-tabs-catalogue-page-size-select-list">
+                                                            <div class="main-tabs-catalogue-page-size-select-item">
+                                                                <label><input type="radio" name="size" value="15" /><span>15</span></label>
+                                                            </div>
+                                                            <div class="main-tabs-catalogue-page-size-select-item">
+                                                                <label><input type="radio" name="size" value="30" checked="checked" /><span>30</span></label>
+                                                            </div>
+                                                            <div class="main-tabs-catalogue-page-size-select-item">
+                                                                <label><input type="radio" name="size" value="45" /><span>45</span></label>
+                                                            </div>
+                                                            <div class="main-tabs-catalogue-page-size-select-item">
+                                                                <label><input type="radio" name="size" value="60" /><span>60</span></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="tabs-content-2024-all"><a href="#">Все документы</a></div>
                                 </div>

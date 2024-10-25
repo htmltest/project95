@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="js/slick/slick.css" />
         <link rel="stylesheet" href="js/jquery-ui-1.12.1.custom/jquery-ui.css" />
         <link rel="stylesheet" href="js/jscrollpane/jquery.jscrollpane.css" />
+        <link rel="stylesheet" href="js/air-datepicker/air-datepicker.css">
 
         <link rel="stylesheet" href="css/monitoring.css" />
         <link rel="stylesheet" href="js/mcustomscrollbar/jquery.mCustomScrollbar.css" />
@@ -28,6 +29,7 @@
         <script src="js/isotope.pkgd.min.js"></script>
         <script src="js/jscrollpane/jquery.mousewheel.js"></script>
         <script src="js/jscrollpane/jquery.jscrollpane.min.js"></script>
+        <script src="js/air-datepicker/air-datepicker.js"></script>
         <script src="js/tools.js"></script>
 
         <script src="js/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
@@ -44,7 +46,23 @@
         <div class="wrapper">
             <div class="wrapper-inner">
 
-                <header>
+                <div class="header-fixed">
+                    <div class="container">
+                        <div class="header-fixed-logo"><a href="#"></a></div>
+                        <div class="header-fixed-title"><div>Научно-технологическое развитие Российской Федерации</div></div>
+                        <div class="header-fixed-menu">
+                            <div class="header-fixed-menu-item"><a href="#">Большие вызовы<br> и&nbsp;приоритеты&nbsp;НТР</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Показатели научно-<br>технологического развития</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Основные направления государственной<br> политики в&nbsp;области&nbsp;НТР</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Аналитические<br> материалы</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Ключевые<br> события</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Нормативные<br> и&nbsp;правовые акты</a></div>
+                        </div>
+                        <a href="#" class="header-fixed-burger"></a>
+                    </div>
+                </div>
+
+                <header class="header-2024">
                     <div class="container">
 
                         <div class="logo"><a href="#"></a><img src="images/logo-print.png" alt="" class="on-print" /></div>
@@ -81,7 +99,7 @@
                                 <div class="header-menu-wrap header-menu-wrap-2024">
                                     <ul>
                                         <li>
-                                            <span>Большие вызовы и приоритеты НТР</span>
+                                            <a href="#">Большие вызовы и приоритеты НТР</a>
                                             <ul>
                                                 <li><a href="#">Выработка и сохранение энергии</a></li>
                                                 <li><a href="#">Старение населения и здоровье нации</a></li>
@@ -90,8 +108,8 @@
                                                 <li><a href="#">Сырьевая зависимость и цифровая революция</a></li>
                                             </ul>
                                         </li>
-                                        <li>
-                                            <span>Показатели научно-технологического развития</span>
+                                        <li class="active">
+                                            <a href="#">Показатели научно-технологического развития</a>
                                             <ul>
                                                 <li><a href="#">По программным документам</a></li>
                                                 <li><a href="#">По типам показателей</a></li>
@@ -102,7 +120,7 @@
                                     </ul>
                                     <ul>
                                         <li>
-                                            <span>Основные направления государственной политики в области НТР</span>
+                                            <a href="#">Основные направления государственной политики в области НТР</a>
                                             <ul>
                                                 <li><a href="#">Взаимодействие и кооперация</a></li>
                                                 <li><a href="#">Инфраструктура и среда</a></li>

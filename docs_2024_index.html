@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="js/slick/slick.css" />
         <link rel="stylesheet" href="js/jquery-ui-1.12.1.custom/jquery-ui.css" />
         <link rel="stylesheet" href="js/jscrollpane/jquery.jscrollpane.css" />
+        <link rel="stylesheet" href="js/air-datepicker/air-datepicker.css">
 
         <link rel="stylesheet" href="css/print.css" media="print" />
 
@@ -25,6 +26,7 @@
         <script src="js/isotope.pkgd.min.js"></script>
         <script src="js/jscrollpane/jquery.mousewheel.js"></script>
         <script src="js/jscrollpane/jquery.jscrollpane.min.js"></script>
+        <script src="js/air-datepicker/air-datepicker.js"></script>
         <script src="js/tools.js"></script>
 
         <link rel="icon" type="image/png" href="favicon.png" />
@@ -38,7 +40,23 @@
         <div class="wrapper">
             <div class="wrapper-inner">
 
-                <header>
+                <div class="header-fixed">
+                    <div class="container">
+                        <div class="header-fixed-logo"><a href="#"></a></div>
+                        <div class="header-fixed-title"><div>Научно-технологическое развитие Российской Федерации</div></div>
+                        <div class="header-fixed-menu">
+                            <div class="header-fixed-menu-item"><a href="#">Большие вызовы<br> и&nbsp;приоритеты&nbsp;НТР</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Показатели научно-<br>технологического развития</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Основные направления государственной<br> политики в&nbsp;области&nbsp;НТР</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Аналитические<br> материалы</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Ключевые<br> события</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Нормативные<br> и&nbsp;правовые акты</a></div>
+                        </div>
+                        <a href="#" class="header-fixed-burger"></a>
+                    </div>
+                </div>
+
+                <header class="header-2024">
                     <div class="container">
 
                         <div class="logo"><a href="#"></a><img src="images/logo-print.png" alt="" class="on-print" /></div>
@@ -75,7 +93,7 @@
                                 <div class="header-menu-wrap header-menu-wrap-2024">
                                     <ul>
                                         <li>
-                                            <span>Большие вызовы и приоритеты НТР</span>
+                                            <a href="#">Большие вызовы и приоритеты НТР</a>
                                             <ul>
                                                 <li><a href="#">Выработка и сохранение энергии</a></li>
                                                 <li><a href="#">Старение населения и здоровье нации</a></li>
@@ -85,7 +103,7 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <span>Показатели научно-технологического развития</span>
+                                            <a href="#">Показатели научно-технологического развития</a>
                                             <ul>
                                                 <li><a href="#">По программным документам</a></li>
                                                 <li><a href="#">По типам показателей</a></li>
@@ -96,7 +114,7 @@
                                     </ul>
                                     <ul>
                                         <li>
-                                            <span>Основные направления государственной политики в области НТР</span>
+                                            <a href="#">Основные направления государственной политики в области НТР</a>
                                             <ul>
                                                 <li><a href="#">Взаимодействие и кооперация</a></li>
                                                 <li><a href="#">Инфраструктура и среда</a></li>
@@ -107,7 +125,7 @@
                                         </li>
                                         <li><a href="#">Аналитические материалы</a></li>
                                         <li><a href="#">Ключевые события</a></li>
-                                        <li><a href="#">Нормативные и правовые акты</a></li>
+                                        <li class="active"><a href="#">Нормативные и правовые акты</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -158,7 +176,7 @@
                             <!-- docs 2024 index item -->
                             <div class="docs-2024-index-item">
                                 <a href="#" class="docs-2024-index-item-header">
-                                    <div class="docs-2024-index-item-number">1</div>
+                                    <div class="docs-2024-index-item-icon"><img src="files/docs-2024-index-1.svg" alt=""></div>
                                     <div class="docs-2024-index-item-title">Государственная политика в&nbsp;научно-технической и&nbsp;инновационной сферах</div>
                                     <div class="docs-2024-index-item-arrow"><svg><use xlink:href="images/sprite.svg#docs-2024-index-item-arrow"></use></svg></div>
                                 </a>
@@ -204,7 +222,7 @@
                             <!-- docs 2024 index item -->
                             <div class="docs-2024-index-item">
                                 <a href="#" class="docs-2024-index-item-header">
-                                    <div class="docs-2024-index-item-number">2</div>
+                                    <div class="docs-2024-index-item-icon"><img src="files/docs-2024-index-2.svg" alt=""></div>
                                     <div class="docs-2024-index-item-title">Субъекты государственного управления в научно-технической сфере</div>
                                     <div class="docs-2024-index-item-arrow"><svg><use xlink:href="images/sprite.svg#docs-2024-index-item-arrow"></use></svg></div>
                                 </a>
@@ -234,7 +252,7 @@
                             <!-- docs 2024 index item -->
                             <div class="docs-2024-index-item">
                                 <a href="#" class="docs-2024-index-item-header">
-                                    <div class="docs-2024-index-item-number">3</div>
+                                    <div class="docs-2024-index-item-icon"><img src="files/docs-2024-index-3.svg" alt=""></div>
                                     <div class="docs-2024-index-item-title">Результаты интеллектуальной деятельности в научно-технической сфере</div>
                                     <div class="docs-2024-index-item-arrow"><svg><use xlink:href="images/sprite.svg#docs-2024-index-item-arrow"></use></svg></div>
                                 </a>
@@ -260,7 +278,7 @@
                             <!-- docs 2024 index item -->
                             <div class="docs-2024-index-item">
                                 <a href="#" class="docs-2024-index-item-header">
-                                    <div class="docs-2024-index-item-number">4</div>
+                                    <div class="docs-2024-index-item-icon"><img src="files/docs-2024-index-4.svg" alt=""></div>
                                     <div class="docs-2024-index-item-title">Организация деятельности научной сферы и сферы высшего образования</div>
                                     <div class="docs-2024-index-item-arrow"><svg><use xlink:href="images/sprite.svg#docs-2024-index-item-arrow"></use></svg></div>
                                 </a>

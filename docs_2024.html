@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="js/slick/slick.css" />
         <link rel="stylesheet" href="js/jquery-ui-1.12.1.custom/jquery-ui.css" />
         <link rel="stylesheet" href="js/jscrollpane/jquery.jscrollpane.css" />
+        <link rel="stylesheet" href="js/air-datepicker/air-datepicker.css">
 
         <link rel="stylesheet" href="css/print.css" media="print" />
 
@@ -25,6 +26,7 @@
         <script src="js/isotope.pkgd.min.js"></script>
         <script src="js/jscrollpane/jquery.mousewheel.js"></script>
         <script src="js/jscrollpane/jquery.jscrollpane.min.js"></script>
+        <script src="js/air-datepicker/air-datepicker.js"></script>
         <script src="js/tools.js"></script>
 
         <link rel="icon" type="image/png" href="favicon.png" />
@@ -38,7 +40,23 @@
         <div class="wrapper">
             <div class="wrapper-inner">
 
-                <header>
+                <div class="header-fixed">
+                    <div class="container">
+                        <div class="header-fixed-logo"><a href="#"></a></div>
+                        <div class="header-fixed-title"><div>Научно-технологическое развитие Российской Федерации</div></div>
+                        <div class="header-fixed-menu">
+                            <div class="header-fixed-menu-item"><a href="#">Большие вызовы<br> и&nbsp;приоритеты&nbsp;НТР</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Показатели научно-<br>технологического развития</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Основные направления государственной<br> политики в&nbsp;области&nbsp;НТР</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Аналитические<br> материалы</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Ключевые<br> события</a></div>
+                            <div class="header-fixed-menu-item"><a href="#">Нормативные<br> и&nbsp;правовые акты</a></div>
+                        </div>
+                        <a href="#" class="header-fixed-burger"></a>
+                    </div>
+                </div>
+
+                <header class="header-2024">
                     <div class="container">
 
                         <div class="logo"><a href="#"></a><img src="images/logo-print.png" alt="" class="on-print" /></div>
@@ -75,7 +93,7 @@
                                 <div class="header-menu-wrap header-menu-wrap-2024">
                                     <ul>
                                         <li>
-                                            <span>Большие вызовы и приоритеты НТР</span>
+                                            <a href="#">Большие вызовы и приоритеты НТР</a>
                                             <ul>
                                                 <li><a href="#">Выработка и сохранение энергии</a></li>
                                                 <li><a href="#">Старение населения и здоровье нации</a></li>
@@ -85,7 +103,7 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <span>Показатели научно-технологического развития</span>
+                                            <a href="#">Показатели научно-технологического развития</a>
                                             <ul>
                                                 <li><a href="#">По программным документам</a></li>
                                                 <li><a href="#">По типам показателей</a></li>
@@ -96,7 +114,7 @@
                                     </ul>
                                     <ul>
                                         <li>
-                                            <span>Основные направления государственной политики в области НТР</span>
+                                            <a href="#">Основные направления государственной политики в области НТР</a>
                                             <ul>
                                                 <li><a href="#">Взаимодействие и кооперация</a></li>
                                                 <li><a href="#">Инфраструктура и среда</a></li>
@@ -107,7 +125,7 @@
                                         </li>
                                         <li><a href="#">Аналитические материалы</a></li>
                                         <li><a href="#">Ключевые события</a></li>
-                                        <li><a href="#">Нормативные и правовые акты</a></li>
+                                        <li class="active"><a href="#">Нормативные и правовые акты</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -198,6 +216,17 @@
                                         </div>
                                         <div class="media-2024-filter-item">
                                             <div class="media-2024-filter-item-current">
+                                                <div class="media-2024-filter-item-label">Дата принятия</div>
+                                                <div class="media-2024-filter-item-current-value"><span></span><a href="#"><svg><use xlink:href="images/sprite.svg#media-2024-filter-item-current-remove"></use></svg></a></div>
+                                                <div class="media-2024-filter-item-current-arrow"><svg><use xlink:href="images/sprite.svg#media-2024-filter-item-label"></use></svg></div>
+                                            </div>
+                                            <div class="media-2024-filter-item-window media-2024-filter-item-window-calendar">
+                                                <input type="hidden" name="dates" value="">
+                                                <div class="media-2024-filter-item-calendar" id="media-2024-filter-item-calendar"></div>
+                                            </div>
+                                        </div>
+                                        <div class="media-2024-filter-item">
+                                            <div class="media-2024-filter-item-current">
                                                 <div class="media-2024-filter-item-label">Теги</div>
                                                 <div class="media-2024-filter-item-current-value media-2024-filter-item-current-value-tag"><span></span></div>
                                                 <div class="media-2024-filter-item-current-count"></div>
@@ -239,6 +268,19 @@
                                         <div class="main-tabs-doc-new">
                                             <div class="main-tabs-doc-new-title">Федеральный закон 127-ФЗ "О науке и государственной научно-технической политике"</div>
                                             <div class="main-tabs-doc-new-subtitle"><span>Изменен</span><em>|</em>№ 127-ФЗ от 23 августа 1996 (в ред. от 13 июля 2015, 23 мая 2016, 26 июля 2019, 24 апреля 2020, 25 мая 2020, 31 июля 2020)</div>
+                                            <div class="main-tabs-doc-new-tags">
+                                                <div class="main-tabs-doc-new-tags-text">
+                                                    <div class="main-tabs-doc-new-tags-text-inner">
+                                                        <div class="main-tabs-doc-new-tags-list">
+                                                            <div class="main-tabs-doc-new-tags-list-item"><a href="#">Социокультурная идентичность</a></div>
+                                                            <div class="main-tabs-doc-new-tags-list-item"><a href="#">Цивилизационные основы и&nbsp;традиционные духовно-нравственные ценности</a></div>
+                                                            <div class="main-tabs-doc-new-tags-list-item"><a href="#">Историко-культурное наследие и&nbsp;языки народов Российской Федерации</a></div>
+                                                            <div class="main-tabs-doc-new-tags-list-item"><a href="#">Технологии формирования и&nbsp;развития общественных и&nbsp;межнациональных отношений</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="main-tabs-doc-new-tags-more"><a href="#"><svg><use xlink:href="images/sprite.svg#task-2024-item-detail-link"></use></svg><span>Показать еще</span><span>Скрыть</span></a></div>
+                                            </div>
                                             <div class="main-tabs-doc-new-descr">
                                                 <div class="main-tabs-doc-new-descr-text">
                                                     <div class="main-tabs-doc-new-descr-text-inner">Основу монографии составили научно-исследовательские материалы, посвященные вопросам развития сектора исследований и разработок в Российской Федерации. Ключевые практические предложения, представленные в монографии, являются результатом проведенных коллективом РИЭПП работ по решению стратегических задач научно-технологического развития России построению эффективной системы управления в области науки, технологий и инноваций.</div>
@@ -266,6 +308,19 @@
                                         </div>
                                         <div class="main-tabs-doc-new">
                                             <div class="main-tabs-doc-new-title">Паспорт национального проекта "Наука и университеты"</div>
+                                            <div class="main-tabs-doc-new-tags">
+                                                <div class="main-tabs-doc-new-tags-text">
+                                                    <div class="main-tabs-doc-new-tags-text-inner">
+                                                        <div class="main-tabs-doc-new-tags-list">
+                                                            <div class="main-tabs-doc-new-tags-list-item"><a href="#">Социокультурная идентичность</a></div>
+                                                            <div class="main-tabs-doc-new-tags-list-item"><a href="#">Цивилизационные основы и&nbsp;традиционные духовно-нравственные ценности</a></div>
+                                                            <div class="main-tabs-doc-new-tags-list-item"><a href="#">Историко-культурное наследие и&nbsp;языки народов Российской Федерации</a></div>
+                                                            <div class="main-tabs-doc-new-tags-list-item"><a href="#">Технологии формирования и&nbsp;развития общественных и&nbsp;межнациональных отношений</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="main-tabs-doc-new-tags-more"><a href="#"><svg><use xlink:href="images/sprite.svg#task-2024-item-detail-link"></use></svg><span>Показать еще</span><span>Скрыть</span></a></div>
+                                            </div>
                                             <div class="main-tabs-doc-new-subtitle"><span>Проект</span></div>
                                             <div class="main-tabs-doc-new-files">
                                                 <div class="main-tabs-doc-new-files-list">
@@ -281,6 +336,19 @@
                                         </div>
                                         <div class="main-tabs-doc-new">
                                             <div class="main-tabs-doc-new-title">Федеральный закон 127-ФЗ "О науке и государственной научно-технической политике"</div>
+                                            <div class="main-tabs-doc-new-tags">
+                                                <div class="main-tabs-doc-new-tags-text">
+                                                    <div class="main-tabs-doc-new-tags-text-inner">
+                                                        <div class="main-tabs-doc-new-tags-list">
+                                                            <div class="main-tabs-doc-new-tags-list-item"><a href="#">Социокультурная идентичность</a></div>
+                                                            <div class="main-tabs-doc-new-tags-list-item"><a href="#">Цивилизационные основы и&nbsp;традиционные духовно-нравственные ценности</a></div>
+                                                            <div class="main-tabs-doc-new-tags-list-item"><a href="#">Историко-культурное наследие и&nbsp;языки народов Российской Федерации</a></div>
+                                                            <div class="main-tabs-doc-new-tags-list-item"><a href="#">Технологии формирования и&nbsp;развития общественных и&nbsp;межнациональных отношений</a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="main-tabs-doc-new-tags-more"><a href="#"><svg><use xlink:href="images/sprite.svg#task-2024-item-detail-link"></use></svg><span>Показать еще</span><span>Скрыть</span></a></div>
+                                            </div>
                                             <div class="main-tabs-doc-new-subtitle"><span>Изменен</span><em>|</em>№ 127-ФЗ от 23 августа 1996 (в ред. от 13 июля 2015, 23 мая 2016, 26 июля 2019, 24 апреля 2020, 25 мая 2020, 31 июля 2020)</div>
                                             <div class="main-tabs-doc-new-descr">
                                                 <div class="main-tabs-doc-new-descr-text">
