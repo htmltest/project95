@@ -4357,3 +4357,7 @@ canvas {user-select:none}
     .face-49-1-chart .face-1-chart-point span {bottom:10px}
     .face-49-1-chart .face-1-chart-point.bottom span {bottom:auto; top:10px}
 }
+
+@media screen and (max-width:1139px) {
+    .cube-face-2024-01 .face-1-chart-labels {bottom:30px}
+}
