@@ -3152,8 +3152,8 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 }
 
 .task-2024-tabs {position:relative}
-.task-2024-tab {position:absolute; width:100%; left:-9999px; top:-9999px}
-.task-2024-tab.active {left:auto; top:auto; position:relative}
+.task-2024-tab {position:absolute; width:100%; left:-9999px; top:-9999px; opacity:0; transition:opacity 0.3s}
+.task-2024-tab.active {left:auto; top:auto; position:relative; opacity:1}
 
 .task-2024-menu {margin:20px 0 0 0; font-size:14px; line-height:14px}
 .task-2024-menu ul {margin:0; padding:0; display:flex}

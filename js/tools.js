@@ -2688,9 +2688,46 @@ $(document).ready(function() {
             var curIndex = $('.task-2024-tabs-menu li').index(curItem);
             $('.task-2024-tab.active').removeClass('active');
             $('.task-2024-tab').eq(curIndex).addClass('active');
+            if (typeof(curItem.attr('data-id')) != 'undefined') {
+                window.location.hash = '#' + curItem.attr('data-id');
+            }
         }
         e.preventDefault();
     });
+
+    $(window).on('hashchange', function(e) {
+        if (window.location.hash != '') {
+            var curItem = $('.task-2024-tabs-menu li[data-id="' + window.location.hash.replace('#', '') + '"]');
+            if (curItem.length == 1) {
+                $('.task-2024-tabs-menu li.active').removeClass('active');
+                curItem.addClass('active');
+                var curIndex = $('.task-2024-tabs-menu li').index(curItem);
+                $('.task-2024-tab.active').removeClass('active');
+                $('.task-2024-tab').eq(curIndex).addClass('active');
+            }
+        } else {
+            if ($('.task-2024-tabs-menu li').length > 0) {
+                var curItem = $('.task-2024-tabs-menu li').eq(0);
+                if (curItem.length == 1) {
+                    $('.task-2024-tabs-menu li.active').removeClass('active');
+                    curItem.addClass('active');
+                    var curIndex = $('.task-2024-tabs-menu li').index(curItem);
+                    $('.task-2024-tab.active').removeClass('active');
+                    $('.task-2024-tab').eq(curIndex).addClass('active');
+                }
+            }
+        }
+    });
+
+    if (window.location.hash != '') {
+        var curItem = $('.task-2024-tabs-menu li[data-id="' + window.location.hash.replace('#', '') + '"]');
+        if (curItem.length == 1) {
+            $('.task-2024-tabs-menu li[data-id="' + window.location.hash.replace('#', '') + '"]').find('a').trigger('click');
+            $(window).on('load', function() {
+                $('html, body').animate({'scrollTop': curItem.offset().top - 60});
+            });
+        }
+    }
 
     $('body').on('click', '.task-2024-menu ul li a', function(e) {
         var curItem = $(this).parent();
