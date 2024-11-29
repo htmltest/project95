@@ -2837,6 +2837,7 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .challenges-2024-item-header-title-type {display:flex; align-items:center; justify-content:space-between; font-weight:bold; font-size:11px; line-height:14px; letter-spacing:0.05em; color:#B2B2B2; text-transform:uppercase}
 .challenges-2024-item-header-title-type svg {display:block; width:30px; height:30px; fill:#FE6600; transition:transform 0.3s}
 .challenges-2024-item.open .challenges-2024-item-header-title-type svg {transform:rotate(-180deg)}
+.challenges-2024-item-header-title-type-notice {display:none; font-size:11px; line-height:14px; color:#B2B2B2}
 .challenges-2024-item-header-title-text {display:flex; margin:10px 0 0 0; font-size:24px; line-height:34px; color:#000000}
 .challenges-2024-item-header-title-text span {min-width:50px; color:#FE6600}
 .challenges-2024-item-header-title-text strong {font-weight:bold; order:1}
@@ -2851,6 +2852,7 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .challenges-2024-item-header-item-type {font-weight:bold; font-size:11px; line-height:14px; letter-spacing:0.05em; color:#B2B2B2; text-transform:uppercase}
 .challenges-2024-item-header-item-left .challenges-2024-item-header-item-type {display:flex; align-items:center; white-space:nowrap}
 .challenges-2024-item-header-item-left .challenges-2024-item-header-item-type::after {content:""; display:block; width:100%; margin:0 0 0 20px; height:8px; background:url(../images/challenges-2024-item-header-item-arrow.svg) no-repeat right top}
+.challenges-2024-item-header-item-type-notice {display:none; margin:5px 0 0 0; font-size:11px; line-height:14px; color:#B2B2B2}
 .challenges-2024-item-header-item-anonce {margin:20px 0 0 0; display:flex; font-size:20px; line-height:28px; color:#000000}
 .challenges-2024-item-header-item-anonce strong {font-weight:normal; font-family:HelveticaNeueCyrMedium, sans-serif; order:1}
 .challenges-2024-item-header-item-anonce span {min-width:50px; color:#FE6600}
@@ -2863,6 +2865,7 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
     .challenges-2024-item.open .challenges-2024-item-header {padding:20px}
     .challenges-2024-item-header-title-type {display:block}
     .challenges-2024-item-header-title-type svg {display:none}
+    .challenges-2024-item-header-title-type-notice {margin:5px 0 0 0}
     .challenges-2024-item-header-title-text {margin:15px 0 0 0; display:block; font-size:20px; line-height:28px}
     .challenges-2024-item-header-title-text strong {display:block; width:auto; font-weight:normal; font-family:HelveticaNeueCyrMedium, sans-serif}
     .challenges-2024-item-header-title-text span {display:block; margin:5px 0 0 0}

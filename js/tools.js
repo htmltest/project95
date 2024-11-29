@@ -2666,7 +2666,7 @@ $(document).ready(function() {
     $('.challenges-2024-item-header, .challenges-2024-item-footer, .challenges-2024-item-hide a').click(function(e) {
         var curBlock = $(this).parents().filter('.challenges-2024-item');
         curBlock.toggleClass('open');
-        curBlock.find('.challenges-2024-item-header-title-descr, .challenges-2024-item-header-item-detail, .challenges-2024-item-header-item-right-sep, .challenges-2024-item-more, .challenges-2024-item-hide').slideToggle();
+        curBlock.find('.challenges-2024-item-header-title-descr, .challenges-2024-item-header-item-detail, .challenges-2024-item-header-item-right-sep, .challenges-2024-item-more, .challenges-2024-item-hide, .challenges-2024-item-header-title-type-notice, .challenges-2024-item-header-item-type-notice').slideToggle();
         e.preventDefault();
     });
 
