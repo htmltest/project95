@@ -2846,9 +2846,8 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .challenges-2024-item-header-title-descr-inner {display:flex; font-size:14px; line-height:21px; color:#717171}
 .challenges-2024-item-header-title-descr span {min-width:50px; color:#FE6600}
 .challenges-2024-item-header-title-descr strong {font-weight:normal; order:1}
-.challenges-2024-item-header-item {margin:20px 0 0 0; padding:20px; border-radius:4px; transition:background 0.3s; display:flex; justify-content:space-between}
+.challenges-2024-item-header-item {margin:20px 0 0 0; padding:20px; border-radius:4px; transition:background 0.3s}
 .challenges-2024-item.open .challenges-2024-item-header-item {background:#FFFFFF}
-.challenges-2024-item-header-item-left {min-width:400px; max-width:400px; margin:0 40px 0 0}
 .challenges-2024-item-header-item-type {font-weight:bold; font-size:11px; line-height:14px; letter-spacing:0.05em; color:#B2B2B2; text-transform:uppercase}
 .challenges-2024-item-header-item-left .challenges-2024-item-header-item-type {display:flex; align-items:center; white-space:nowrap}
 .challenges-2024-item-header-item-left .challenges-2024-item-header-item-type::after {content:""; display:block; width:100%; margin:0 0 0 20px; height:8px; background:url(../images/challenges-2024-item-header-item-arrow.svg) no-repeat right top}
@@ -2857,8 +2856,6 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .challenges-2024-item-header-item-anonce strong {font-weight:normal; font-family:HelveticaNeueCyrMedium, sans-serif; order:1}
 .challenges-2024-item-header-item-anonce span {min-width:50px; color:#FE6600}
 .challenges-2024-item-header-item-detail {display:none; font-size:14px; line-height:21px; margin:10px 0 0 50px; color:#717171}
-.challenges-2024-item-header-item-right {width:100%}
-.challenges-2024-item-header-item-right-sep {display:none; margin:20px 0 0 0; height:1px; background:#EAECF1}
 
 @media screen and (max-width:1139px) {
     .challenges-2024-item-header {padding:20px 20px 0 20px}
@@ -2874,14 +2871,10 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
     .challenges-2024-item-header-title-descr strong {display:block}
     .challenges-2024-item-header-title-descr span {display:block; margin:5px 0 0 0}
     .challenges-2024-item-header-item {margin:10px 0 0 0; display:block}
-    .challenges-2024-item-header-item-left {min-width:0; max-width:none; margin:0}
     .challenges-2024-item-header-item-anonce {margin:15px 0 0 0; display:block; font-size:16px; line-height:22px}
     .challenges-2024-item-header-item-anonce strong {display:block}
     .challenges-2024-item-header-item-anonce span {display:block; margin:5px 0 0 0}
     .challenges-2024-item-header-item-detail {margin:5px 0 0 0}
-    .challenges-2024-item-header-item-right {margin:20px 0 0 0}
-    .challenges-2024-item.open .challenges-2024-item-header-item-right {margin:30px 0 0 0; padding:30px 0 0 0; border-top:1px solid #EAECF1}
-    .challenges-2024-item-header-item-right-sep {display:none !important}
 }
 
 .challenges-2024-item-more {display:none; margin:40px 20px 0 20px}
@@ -3056,13 +3049,10 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .challenge-2024-header-title {display:flex; align-items:flex-start; margin:20px 0 0 0}
 .challenge-2024-header-title-icon {min-width:36px; max-width:36px; height:36px; margin:0 15px 0 0; display:flex; align-items:center; justify-content:center; border-radius:50%; background:#FE6600; color:#FFFFFF; font-size:16px; line-height:22px}
 .challenge-2024-header-title-text {font-weight:bold; font-size:30px; line-height:39px; color:#000000}
-.challenge-2024-header-sub {display:flex; margin:40px 0 0 0}
-.challenge-2024-header-sub-left {min-width:400px; max-width:400px; margin:0 40px 0 0}
+.challenge-2024-header-sub {margin:40px 0 0 0}
 .challenge-2024-header-sub-left .challenge-2024-header-type {display:flex; align-items:center; white-space:nowrap}
 .challenge-2024-header-sub-left .challenge-2024-header-type::after {content:""; display:block; width:100%; margin:0 0 0 20px; height:8px; background:url(../images/challenges-2024-item-header-item-arrow.svg) no-repeat right top}
-.challenge-2024-header-sub-right {width:100%}
 .challenge-2024-header-sub-left .challenge-2024-header-title-icon {background:#0BCCBA}
-.challenge-2024-header-sub-right .challenge-2024-header-title-icon {background:#5480A8}
 .challenge-2024-header-sub .challenge-2024-header-title-text {font-weight:normal; font-size:24px; line-height:31px; font-family:HelveticaNeueCyrMedium, sans-serif}
 
 @media screen and (max-width:1139px) {
@@ -3070,9 +3060,6 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
     .challenge-2024-header-title {margin:10px 0 0 0}
     .challenge-2024-header-title-text {font-size:20px; line-height:26px; margin:5px 0 0 0; font-weight:normal; font-family:HelveticaNeueCyrMedium, sans-serif}
     .challenge-2024-header-sub {display:block}
-    .challenge-2024-header-sub-left {min-width:0; max-width:none; margin:0}
-    .challenge-2024-header-sub-right {width:auto; margin:10px 0 0 0}
-    .challenge-2024-header-sub-right::before {content:""; display:block; width:36px; height:40px; background:url(../images/challenges-2024-item-header-arrow.svg); margin:0 0 10px 0}
     .challenge-2024-header-sub .challenge-2024-header-title {margin:10px 0 0 0}
     .challenge-2024-header-sub .challenge-2024-header-title-text {font-size:16px; line-height:21px}
 }
