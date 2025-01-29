@@ -3754,3 +3754,15 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
     .main-tabs-catalogue-page-size {position:relative; right:auto; top:auto; justify-content:flex-end; margin:40px 0 0 0}
     .main-tabs-catalogue-page-size-select-list {top:auto; bottom:100%}
 }
+
+.main-tabs-event-new-download {margin:10px 0; display:flex}
+.main-tabs-event-new-download a {display:flex; align-items:center; height:36px; color:#000000; border-radius:4px; padding:0 12px; font-size:14px; line-height:18px; text-decoration:none; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; transition:color 0.2s, background 0.2s; background:#FFEADB}
+.main-tabs-event-new-download a:hover {color:#FFFFFF; background:#FE6600}
+.main-tabs-event-new-download a svg {min-width:18px; max-width:18px; height:18px; margin:0 10px 0 0; fill:#FE6600; transition:fill 0.2s}
+.main-tabs-event-new-download a:hover svg {fill:#FFFFFF}
+
+.media-2024-detail-download {margin:20px 0; display:flex}
+.media-2024-detail-download a {display:flex; align-items:center; height:36px; color:#000000; border-radius:4px; padding:0 12px; font-size:14px; line-height:18px; text-decoration:none; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; transition:color 0.2s, background 0.2s; background:#FFEADB}
+.media-2024-detail-download a:hover {color:#FFFFFF; background:#FE6600}
+.media-2024-detail-download a svg {min-width:18px; max-width:18px; height:18px; margin:0 10px 0 0; fill:#FE6600; transition:fill 0.2s}
+.media-2024-detail-download a:hover svg {fill:#FFFFFF}
