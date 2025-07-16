@@ -2686,7 +2686,7 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .events-list-short-more.reverse a span:nth-child(2) {display:inline}
 .events-list-short-more.reverse a.events-list-short-more-all {display:none}
 
-.cookies-message {position:fixed; z-index:990; left:50%; bottom:20px; width:795px; margin:0 0 0 -398px; padding:12px 100px 12px 20px; background:rgba(0, 30, 65, 0.7); backdrop-filter:blur(5px); border-radius:4px}
+.cookies-message {position:fixed; z-index:990; left:50%; bottom:20px; width:795px; transform:translateX(-50%); padding:12px 100px 12px 20px; background:rgba(0, 30, 65, 0.7); backdrop-filter:blur(5px); border-radius:4px}
 .cookies-message-text {font-size:14px; line-height:21px; color:#FFFFFF; font-family:HelveticaNeueCyrLight, sans-serif}
 .cookies-message-text p {margin:10px 0 0 0}
 .cookies-message-text p:first-child {margin:0}
@@ -2698,7 +2698,7 @@ a.indicators-tree-group-item-header-inner:hover .indicators-tree-group-item-head
 .cookies-message-close:hover svg {fill:#FE6600}
 
 @media screen and (max-width:1139px) {
-    .cookies-message {bottom:10px; width:440px; margin:0 0 0 -220px; padding:12px 42px 12px 12px}
+    .cookies-message {bottom:10px; width:440px; padding:12px 42px 12px 12px}
     .cookies-message-text {font-size:12px; line-height:18px}
     .cookies-message-text p {margin:6px 0 0 0}
     .cookies-message-text p:first-child {margin:0}
